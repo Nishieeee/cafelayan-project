@@ -1,6 +1,7 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
-
+import Providers from "@/app/provider";
 
 export const metadata: Metadata = {
   title: "Cafelayan Prototype",
@@ -15,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+          <Providers>{children}</Providers>
       </body>
     </html>
   );

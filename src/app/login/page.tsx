@@ -1,8 +1,11 @@
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
+import { useLogin } from "@/context/loginContext";
 
 
 export default function Login() {
+    const { setisLoggedIn } = useLogin();
     return(
         <>
             <section className="flex items-center justify-center h-screen">
@@ -14,7 +17,7 @@ export default function Login() {
                         <label htmlFor="password">Password</label>
                         <input type="password" placeholder="password" className="border border-gray-300 rounded-md mb-2 py-1 px-3 focus:outline-none focus:ring-blue-500/50 focus:ring-2"/>
                     </div>
-                    <Link href="/dashboard" type="submit" className="text-center bg-blue-600 rounded-md text-white font-bold py-2 w-full hover:outline-3 outline-blue-500/50 hover:scale-102 transition-all duration-250 ease-in-out">Log in</Link>
+                    <Link href="/" type="submit" className="text-center bg-blue-600 rounded-md text-white font-bold py-2 w-full hover:outline-3 outline-blue-500/50 hover:scale-102 transition-all duration-250 ease-in-out" onClick={() => {setisLoggedIn(true)}}>Log in</Link>
 
                     <div>
                         <Link href="/signup">Forgot Password</Link>
