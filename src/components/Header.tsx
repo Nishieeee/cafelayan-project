@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Header() {
   const { isLoggedIn, setisLoggedIn } = useLogin();
   return (
-    <header className="bg-green-600 text-white p-3 md:px-8 lg:px-10 xl:px-12 flex items-center justify-between">
+    <header className="bg-(--foreground) text-white py-4 px-6 md:px-8 lg:px-10 xl:px-12 flex items-center justify-between">
       <div>
         <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold">
           Cafelayan
@@ -14,7 +14,7 @@ export default function Header() {
       </div>
       {isLoggedIn ? (
         <nav>
-          <ul className="flex items-center justify-between gap-3 text-white">
+          <ul className="flex items-center justify-between gap-3 text-white lg:text-xl">
             <li>
               <Link href="/">Home</Link>
             </li>
@@ -38,7 +38,7 @@ export default function Header() {
             <li>
               <Link
                 href="/signup"
-                className="bg-white text-green-500 px-2 py-1 rounded-md "
+                className="bg-white text-(--foreground) px-2 py-1 rounded-md "
               >
                 Sign Up
               </Link>
