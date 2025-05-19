@@ -35,12 +35,12 @@ export default function articlesSection() {
   return (
     <section className="col-span-1 md:col-span-4">
       <div className="px-4 py-2 rounded-md flex items-center justify-between bg-(--foreground)">
-        <h2 className="text-white text-md md:text-xl lg:text-2xl">Articles</h2>
+        <h2 className="text-white text-lg lg:text-xl xl:text-2xl">Articles</h2>
         <Link href="/seemore" className="text-white">
           See More
         </Link>
       </div>
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 py-8">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-5 py-8">
         {Articles.map((article, index) => (
             <Card key={index}
             title={article.title}

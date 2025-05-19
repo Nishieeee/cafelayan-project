@@ -1,7 +1,7 @@
 
 import type { Metadata } from "next";
 import "./globals.css";
-import Providers from "@/app/provider";
+import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Cafelayan Prototype",
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-          <Providers>{children}</Providers>
+          <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

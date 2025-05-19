@@ -15,9 +15,8 @@ export default function Card({
   date: string;
 }) {
   return (
-    <div className="flex flex-col items-center rounded-lg shadow-md shadow-gray-600">
-      <div className="w-full h-50 rounded-md bg-gray-400">
-        
+    <div className="flex flex-col items-center rounded-lg shadow-md shadow-gray-600 hover:scale-103 transition-transform duration-300 ease-in-out">
+      <div className="w-full h-50 rounded-md bg-gray-400">     
       </div>
       <div className="px-3 py-4">
         <a href="#">{category}</a>

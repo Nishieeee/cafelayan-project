@@ -1,14 +1,14 @@
-import MainArticle from "./heropage";
-import ArticlesSection from "./article";
-import Popular from "./mostpupolar";
-import Categories from "./categories";
+import MainArticle from "./components/heropage";
+import ArticlesSection from "./components/article";
+import Popular from "./components/mostpupolar";
+import Partners from "./components/Partners";
 export default function LandingPage() {
     return(
         <>
         <MainArticle />
         <Popular />
         <ArticlesSection />
-        <Categories />
+        <Partners />
         </>
     );
 }

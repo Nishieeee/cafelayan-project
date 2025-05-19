@@ -1,0 +1,55 @@
+// const { orgId } = useParams();
+//   const [city, setCity] = useState("");
+//   const [cityCounts, setCityCounts] = useState<Record<string, number>>({});
+
+//   useEffect(() => {
+//     const logAndLoadScans = async () => {
+//       const res = await fetch("https://ipapi.co/json/");
+//       const data = await res.json();
+//       const userCity = data.city || "Unknown";
+//       setCity(userCity);
+
+//       const scansKey = `scans_${orgId}`;
+//       const existing: ScanEntry[] = JSON.parse(localStorage.getItem(scansKey) || "[]");
+
+//       existing.push({
+//         city: userCity,
+//         timestamp: new Date().toISOString(),
+//       });
+
+//       localStorage.setItem(scansKey, JSON.stringify(existing));
+
+//       const counts: Record<string, number> = {};
+//       for (const entry of existing) {
+//         counts[entry.city] = (counts[entry.city] || 0) + 1;
+//       }
+
+//       setCityCounts(counts);
+//     };
+
+//     logAndLoadScans();
+//   }, [orgId]);
+
+//   const chartData = {
+//     labels: Object.keys(cityCounts),
+//     datasets: [
+//       {
+//         label: "Scans by City",
+//         data: Object.values(cityCounts),
+//         backgroundColor: "#3b82f6",
+//       },
+//     ],
+//   };
+
+//   const chartOptions = {
+//     responsive: true,
+//     plugins: {
+//       legend: {
+//         display: false,
+//       },
+//       title: {
+//         display: true,
+//         text: "QR Scans by City",
+//       },
+//     },
+//   };
