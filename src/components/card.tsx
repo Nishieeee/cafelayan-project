@@ -16,18 +16,18 @@ export default function Card({
 }) {
   return (
     <div className="flex flex-col items-center rounded-lg shadow-md shadow-gray-600">
-      <div className="w-full h-60 rounded-lg bg-gray-200">
-        <h1>There should be an image here</h1>
+      <div className="w-full h-50 rounded-md bg-gray-400">
+        
       </div>
       <div className="px-3 py-4">
         <a href="#">{category}</a>
         <div className="pb-4">
-          <h2 className="text-black font-bold text-2xl">{title}</h2>
-          <h4 className="text-black">
+          <h2 className="text-black font-bold text-xl">{title}</h2>
+          <h4 className="text-black text-sm">
             <span className="font-bold">By</span> {author}
           </h4>
         </div>
-        <p className="text-black">{description}</p>
+        <p className="text-black lg:text-sm">{description}</p>
         <p className="py-4">{date}</p>
       </div>
     </div>

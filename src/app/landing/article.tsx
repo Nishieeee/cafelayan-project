@@ -40,7 +40,7 @@ export default function articlesSection() {
           See More
         </Link>
       </div>
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-8">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 py-8">
         {Articles.map((article, index) => (
             <Card key={index}
             title={article.title}
