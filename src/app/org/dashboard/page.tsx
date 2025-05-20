@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/Header";
+import Header from "@/components/headerNew";
 import Side from "@/components/sidenav";
 
 export default function Dashboard() {

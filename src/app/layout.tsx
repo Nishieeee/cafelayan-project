@@ -1,3 +1,11 @@
+import type React from "react"
+import "@/app/globals.css"
+// import { Inter } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
+
+import { cn } from "@/lib/utils"
+
+// const inter = Inter({ subsets: ["latin"] })
 
 import type { Metadata } from "next";
 import "./globals.css";
@@ -15,8 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      {/* <body className={cn(inter.className, "min-h-screen bg-gray-50")}> */}
+      <body className="min-h-screen bg-gray-50">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <AuthProvider>{children}</AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
