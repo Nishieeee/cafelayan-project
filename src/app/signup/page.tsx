@@ -1,7 +1,8 @@
 "use client"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-
+import { Button } from "@/components/ui/button"
+import { FaGoogle, FaFacebookF} from "react-icons/fa"
 type UserType = "brand" | "org"
 
 export default function SignUpPage() {
@@ -266,6 +267,17 @@ export default function SignUpPage() {
         >
           {loading ? "Signing Up..." : "Sign Up"}
         </button>
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <Button variant="outline" className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <FaGoogle/>
+            oogle
+          </Button>
+          <Button variant="outline" className="hover:bg-blue-700 hover:text-white transition-colors duration-300 ease">
+            <FaFacebookF/>
+            Facebook
+          </Button>
+       </div>
+        
       </form>
     </main>
   )

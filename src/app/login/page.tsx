@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { Role } from "@/context/AuthContext";
+import { Role } from "@/context/AuthContext"
+import { Button } from "@/components/ui/button";
+import { FaGoogle, FaFacebookF} from "react-icons/fa"
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -21,7 +23,7 @@ export default function LoginPage() {
   return (
     <section className="p-8 space-x-4 h-screen flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center border aspect-3/4">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold p-3">Login</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold px-3 py-8">Login</h1>
         <form onSubmit={HandleSubmit} className="flex flex-col px-4 items-center justify-between">
             <input 
             type="text"
@@ -29,9 +31,9 @@ export default function LoginPage() {
             value={name}
             onChange={(e) => setName(e.target.value)} 
             required 
-            className="border border-gray-300 rounded-md mb-2 py-2 px-3 focus:outline-none focus:ring-(--foreground) focus:ring-2"/>
+            className="border w-full border-gray-300 rounded-md mb-2 py-2 px-3 focus:outline-none focus:ring-(--foreground) focus:ring-2"/>
 
-            <input type="password" name="password" id="password" placeholder="password" required className="border border-gray-300 rounded-md mb-4 py-2 px-3 focus:outline-none focus:ring-(--foreground) focus:ring-2"/>
+            <input type="password" name="password" id="password" placeholder="password" required className="border w-full border-gray-300 rounded-md mb-4 py-2 px-3 focus:outline-none focus:ring-(--foreground) focus:ring-2"/>
 
             <select value={role} onChange={(e) => setRole(e.target.value as Role)} className="w-full border border-gray-300 rounded-md mb-4 py-2 px-3 focus:outline-none focus:ring-(--foreground) focus:ring-2">
                 <option value="brand" className="hover:bg-green-300">Brand</option>
@@ -39,7 +41,17 @@ export default function LoginPage() {
             </select>
 
             <button type="submit" className="text-center bg-(--foreground) rounded-md text-white font-bold py-2 w-full hover:outline-3 outline-green-500/50 hover:scale-103 transition-all duration-200 ease-in-out">login</button>
-            <a href="#" className="pt-5 border-b border-(--foreground)">Forgot Password</a>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 py-2 w-full">
+              <Button variant="outline" className="w-full hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+                <FaGoogle/>
+                Google
+              </Button>
+              <Button variant="outline" className="w-full hover:bg-blue-700 hover:text-white transition-colors duration-300 ease">
+                <FaFacebookF/>
+                Facebook
+              </Button>
+            </div>
+            <a href="#" className="pt-3 mb-3 border-b border-(--foreground)">Forgot Password</a>
         </form>
       </div>
     </section>

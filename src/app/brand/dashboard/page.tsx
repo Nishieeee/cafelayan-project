@@ -32,7 +32,7 @@ export default function BrandDashboard() {
   // Mock data - would come from API
   const brandData =  {
     name: "Cafelayan Lettuce Chips",
-    logo: "/placeholder.svg?height=60&width=60",
+    logo: "/cafelayanlogo.jpg",
     totalProducts: 45672,
     totalDonations: 12834,
     totalScans: 28945,

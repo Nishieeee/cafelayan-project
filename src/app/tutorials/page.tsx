@@ -103,14 +103,10 @@ export default function TutorialsPage() {
         {filteredTutorials.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredTutorials.map((tutorial, index) => (
-              <Link key={index} href={`/tutorials/${tutorial.id}`}>
+              <Link key={index} href={`${tutorial.id}`}>
                 <Card className="h-full overflow-hidden hover:shadow-md transition-shadow">
                   <div className="aspect-video overflow-hidden">
-                    <img
-                      src={tutorial.image || "/placeholder.svg"}
-                      alt={tutorial.title}
-                      className="h-full w-full object-cover transition-transform hover:scale-105"
-                    />
+                    <iframe width="366" height="215" src={tutorial.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   </div>
                   <CardHeader className="p-4 pb-2">
                     <div className="flex justify-between items-start mb-2">
@@ -201,7 +197,7 @@ export default function TutorialsPage() {
 function getMockTutorials(packageId: string | null) {
   const allTutorials = [
     {
-      id: "1",
+      id: "https://youtu.be/UB6y0Cy0fd8?si=hGu8H8J_ukNIRkO0",
       title: "Self-Watering Planter from Plastic Bottle",
       description:
         "Transform a plastic bottle into an ingenious self-watering system for your plants. Perfect for herbs and small vegetables.",
@@ -212,6 +208,7 @@ function getMockTutorials(packageId: string | null) {
       organization: "Green Manila Initiative",
       materials: ["Plastic Bottles", "String", "Soil"],
       image: "/placeholder.svg?height=200&width=300",
+      url: "https://www.youtube.com/embed/UB6y0Cy0fd8?si=oDPKcR4V4nnMHSP9"
     },
     {
       id: "2",
@@ -225,9 +222,10 @@ function getMockTutorials(packageId: string | null) {
       organization: "Cebu Eco Warriors",
       materials: ["Cardboard", "Fabric", "Glue"],
       image: "/placeholder.svg?height=200&width=300",
+      url: "https://www.youtube.com/embed/LK3WFqiSbnI?si=7f5ZQnJS4-TE-eV3"
     },
     {
-      id: "3",
+      id: "https://youtu.be/vI1I7HMIQXE?si=WyYJNYRilQJO9S8F",
       title: "Glass Jar Herb Garden",
       description:
         "Turn glass jars into a beautiful hanging herb garden. Perfect for small spaces and adds greenery to your kitchen.",
@@ -238,6 +236,7 @@ function getMockTutorials(packageId: string | null) {
       organization: "Davao Recycling Hub",
       materials: ["Glass Jars", "Wire", "Seeds"],
       image: "/placeholder.svg?height=200&width=300",
+      url: "https://www.youtube.com/embed/vI1I7HMIQXE?si=kzxVDgR_C9K8vhO7",
     },
     {
       id: "4",
@@ -251,9 +250,10 @@ function getMockTutorials(packageId: string | null) {
       organization: "Green Manila Initiative",
       materials: ["Aluminum Cans", "String", "Paint"],
       image: "/placeholder.svg?height=200&width=300",
+      url: "https://www.youtube.com/embed/r_J76L6e1S0?si=_wzw7LWXdwAMeLSy"
     },
     {
-      id: "5",
+      id: "https://youtu.be/ItL4FiZafCc?si=akBtSXtz0KPsfAD1",
       title: "Paper Bag Gift Wrapping",
       description:
         "Transform paper bags into beautiful gift wrapping. Eco-friendly alternative to traditional wrapping paper.",
@@ -264,9 +264,10 @@ function getMockTutorials(packageId: string | null) {
       organization: "EcoHub Philippines",
       materials: ["Paper", "Ribbon", "Stamps"],
       image: "/placeholder.svg?height=200&width=300",
+      url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
     },
     {
-      id: "6",
+      id: "https://youtu.be/00lH3LdW1iQ?si=ZoJ-WrzaAvkoPw70",
       title: "Plastic Bottle Bird Feeder",
       description:
         "Create a bird feeder that will attract local birds to your garden. Easy project that kids will love.",
@@ -277,6 +278,7 @@ function getMockTutorials(packageId: string | null) {
       organization: "Wildlife Conservation PH",
       materials: ["Plastic Bottles", "Wooden Spoons", "Bird Seed"],
       image: "/placeholder.svg?height=200&width=300",
+      url: "https://www.youtube.com/embed/00lH3LdW1iQ?si=zO9lp0CysvB8DurT",
     },
     {
       id: "7",
@@ -290,6 +292,7 @@ function getMockTutorials(packageId: string | null) {
       organization: "Kids Craft Corner",
       materials: ["Cardboard", "Paint", "Tape"],
       image: "/placeholder.svg?height=200&width=300",
+      url : "https://www.youtube.com/embed/qgrrDGOpbh0?si=paSV1GWTPxIbNGgW"
     },
     {
       id: "8",
@@ -300,9 +303,10 @@ function getMockTutorials(packageId: string | null) {
       duration: "35 mins",
       steps: 7,
       rating: 4.6,
-      organization: "Craft Masters Manila",
+      organization: "Craft Masters",
       materials: ["Glass Jars", "LED Lights", "Wire"],
       image: "/placeholder.svg?height=200&width=300",
+      url: "https://www.youtube.com/embed/3mx2mRIgBzg?si=6amOtr0UOC3Vo56F"
     },
   ]
 

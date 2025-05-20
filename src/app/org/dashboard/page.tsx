@@ -29,7 +29,7 @@ export default function OrganizationDashboard() {
   // Mock data - would come from API
   const organizationData = {
     name: "Kids Who Farm",
-    logo: "/placeholder.svg?height=60&width=60",
+    logo: "/kwf.jpg",
     totalDonations: 15847,
     totalDonors: 34,
     activeCities: 8,
