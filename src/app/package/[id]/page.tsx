@@ -135,10 +135,10 @@ export default function PackagePage({ params }: { params: { id: string } }) {
                       </div>
                     </div>
                     <div className="sm:w-32 p-4 bg-gray-50 flex flex-row sm:flex-col items-center justify-center gap-2 border-t sm:border-t-0 sm:border-l">
-                      <Button size="sm" className="w-full">
+                      <Button size="sm" className="w-full hover:text-green-700">
                         Get Directions
                       </Button>
-                      <Button size="sm" variant="outline" className="w-full">
+                      <Button size="sm" variant="outline" className="w-full hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                         Call
                       </Button>
                     </div>
@@ -234,34 +234,34 @@ export default function PackagePage({ params }: { params: { id: string } }) {
 // Mock function to get package data (would be replaced with API call)
 function getPackageData(packageId: string) {
   const packages: { [key: string]: any } = {
-    "demo-bottle-001": {
-      name: "Plastic Water Bottle",
-      brand: "AquaPure 500ml",
+    "demo-plastic-001": {
+      name: "Cafelayan Lettuce Chips - Package",
+      brand: "Cafelayan Lettuce Chips",
       material: "PET Plastic",
-      size: "500ml",
+      size: "250g",
       recyclability: "Highly Recyclable",
       image: "/placeholder.svg?height=200&width=200",
       description:
-        "Single-use plastic water bottle made from PET plastic. This material is widely recyclable and can be turned into new bottles, clothing fibers, or other products.",
+        "Reusable package made from PET plastic. This material is widely recyclable and can be turned into new packages, clothing fibers, or other products.",
       environmentalImpact:
-        "Recycling one plastic bottle saves enough energy to power a 60-watt light bulb for 6 hours. It also reduces the amount of plastic waste that could end up in oceans and harm marine life.",
-      recyclingProcess: "Clean the bottle, remove the label if possible, and place in designated PET recycling bins.",
-      tips: "Rinse thoroughly and crush to save space. Keep the cap on - it's recyclable too!",
+        "Recycling this package saves enough energy to power a 60-watt light bulb for 6 hours. It also reduces the amount of plastic waste that could end up in oceans and harm marine life.",
+      recyclingProcess: "Clean the package and place in designated PET recycling bins.",
+      tips: "Rinse thoroughly and fold to save space.",
       facts:
-        "It takes up to 450 years for a plastic bottle to decompose in a landfill, but it can be recycled in just 60 days.",
+        "It takes up to 450 years for a plastic to decompose in a landfill, but it can be recycled in just 60 days.",
       donationPrep:
-        "Before donating, please rinse the bottle and remove any remaining liquid. Keep the cap on the bottle.",
+        "Before donating, please rinse the package.",
       nearbyOrganizations: [
         {
-          name: "Green Manila Initiative",
-          location: "Makati City",
+          name: "Kids Who Farm",
+          location: "Zamboanga City",
           distance: "2.3 km",
           hours: "Mon-Fri 8AM-5PM",
           accepts: "PET bottles, aluminum cans",
         },
         {
-          name: "EcoHub Philippines",
-          location: "Taguig City",
+          name: "EcoHub ZC",
+          location: "Zamboanga City",
           distance: "4.1 km",
           hours: "Daily 7AM-7PM",
           accepts: "All plastic containers",
@@ -277,10 +277,10 @@ function getPackageData(packageId: string) {
       tutorials: [
         {
           id: "1",
-          title: "Self-Watering Planter from Plastic Bottle",
+          title: "Pot for Plants",
           difficulty: "Easy",
           duration: "15 mins",
-          organization: "Green Manila Initiative",
+          organization: "Kids Who Farm",
           image: "/placeholder.svg?height=150&width=200",
         },
         {
@@ -293,7 +293,7 @@ function getPackageData(packageId: string) {
         },
         {
           id: "3",
-          title: "Plastic Bottle Broom",
+          title: "Plastic Broom",
           difficulty: "Medium",
           duration: "45 mins",
           organization: "Cebu Eco Warriors",
@@ -301,7 +301,7 @@ function getPackageData(packageId: string) {
         },
         {
           id: "4",
-          title: "Vertical Garden from Bottles",
+          title: "Plastice Bag using Plastic packages",
           difficulty: "Hard",
           duration: "1.5 hours",
           organization: "Urban Farmers Manila",

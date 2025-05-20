@@ -70,24 +70,24 @@ export default function TutorialsPage() {
                 <SelectTrigger className="w-full sm:w-[180px]">
                   <SelectValue placeholder="Difficulty" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Levels</SelectItem>
-                  <SelectItem value="Easy">Easy</SelectItem>
-                  <SelectItem value="Medium">Medium</SelectItem>
-                  <SelectItem value="Hard">Hard</SelectItem>
+                <SelectContent className="bg-white">
+                  <SelectItem value="all" className="hover:bg-green-200">All Levels</SelectItem>
+                  <SelectItem value="Easy" className="hover:bg-green-200">Easy</SelectItem>
+                  <SelectItem value="Medium" className="hover:bg-green-200">Medium</SelectItem>
+                  <SelectItem value="Hard" className="hover:bg-green-200">Hard</SelectItem>
                 </SelectContent>
               </Select>
               <Select value={material} onValueChange={setMaterial}>
                 <SelectTrigger className="w-full sm:w-[180px]">
                   <SelectValue placeholder="Material" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Materials</SelectItem>
-                  <SelectItem value="Plastic Bottles">Plastic Bottles</SelectItem>
-                  <SelectItem value="Cardboard">Cardboard</SelectItem>
-                  <SelectItem value="Glass Jars">Glass Jars</SelectItem>
-                  <SelectItem value="Aluminum Cans">Aluminum Cans</SelectItem>
-                  <SelectItem value="Paper">Paper</SelectItem>
+                <SelectContent className="bg-white">
+                  <SelectItem value="all" className="hover:bg-green-200">All Materials</SelectItem>
+                  <SelectItem value="Plastic Bottles" className="hover:bg-green-200">Plastic Bottles</SelectItem>
+                  <SelectItem value="Cardboard" className="hover:bg-green-200">Cardboard</SelectItem>
+                  <SelectItem value="Glass Jars" className="hover:bg-green-200">Glass Jars</SelectItem>
+                  <SelectItem value="Aluminum Cans" className="hover:bg-green-200">Aluminum Cans</SelectItem>
+                  <SelectItem value="Paper" className="hover:bg-green-200">Paper</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -174,6 +174,7 @@ export default function TutorialsPage() {
             </p>
             <Button
               variant="outline"
+              className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease"
               onClick={() => {
                 setSearchTerm("")
                 setDifficulty("all")
@@ -187,7 +188,7 @@ export default function TutorialsPage() {
 
         {/* Back to Scan */}
         <div className="text-center mt-8">
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
             <Link href="/scan">Scan Another Package</Link>
           </Button>
         </div>

@@ -2,7 +2,7 @@
 
 import {createContext, useContext, useState, ReactNode} from "react";
 
-export type Role = "customer" | "brand" | "org"
+export type Role = "brand" | "org"
 
 interface AuthContextType {
     role: Role | null

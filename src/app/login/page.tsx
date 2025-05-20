@@ -9,7 +9,7 @@ export default function LoginPage() {
   const { login } = useAuth();
   const router = useRouter();
   const [role, setRole] = 
-  useState<"customer" | "brand" | "org">("customer");
+  useState<"brand" | "org">("brand");
   const [name, setName] = useState("");
 
   const HandleSubmit = (e: React.FormEvent) => {
@@ -34,12 +34,12 @@ export default function LoginPage() {
             <input type="password" name="password" id="password" placeholder="password" required className="border border-gray-300 rounded-md mb-4 py-2 px-3 focus:outline-none focus:ring-(--foreground) focus:ring-2"/>
 
             <select value={role} onChange={(e) => setRole(e.target.value as Role)} className="w-full border border-gray-300 rounded-md mb-4 py-2 px-3 focus:outline-none focus:ring-(--foreground) focus:ring-2">
-                <option value="customer" className="hover:bg-green-300">Customer</option>
-                <option value="brand">Brand</option>
-                <option value="org">Organization</option>
+                <option value="brand" className="hover:bg-green-300">Brand</option>
+                <option value="org" className="hover:bg-green-300">Organization</option>
             </select>
 
             <button type="submit" className="text-center bg-(--foreground) rounded-md text-white font-bold py-2 w-full hover:outline-3 outline-green-500/50 hover:scale-103 transition-all duration-200 ease-in-out">login</button>
+            <a href="#" className="pt-5 border-b border-(--foreground)">Forgot Password</a>
         </form>
       </div>
     </section>

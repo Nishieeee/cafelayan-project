@@ -40,7 +40,7 @@ export default function ScanPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   <Button asChild size="lg" className="bg-green-700 hover:bg-green-800 text-white">
-                    <Link href="/donate">
+                    <Link href="/package/demo-plastic-001">
                       <QrCode className="mr-2 h-5 w-5" />
                       Donate
                     </Link>

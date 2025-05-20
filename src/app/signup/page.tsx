@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 
-type UserType = "customer" | "brand" | "org"
+type UserType = "brand" | "org"
 
 export default function SignUpPage() {
   const router = useRouter()
@@ -10,7 +10,7 @@ export default function SignUpPage() {
   // Basic
   const [fullName, setFullName] = useState("")
   const [email, setEmail] = useState("")
-  const [userType, setUserType] = useState<UserType>("customer")
+  const [userType, setUserType] = useState<UserType>("brand")
   const [password, setPassword] = useState("")
 
   // Org extra
@@ -23,35 +23,35 @@ export default function SignUpPage() {
   const [productCategory, setProductCategory] = useState("")
   const [brandWebsite, setBrandWebsite] = useState("")
 
-  // Customer extra
-  const [customerCity, setCustomerCity] = useState("")
-  const [interests, setInterests] = useState<string[]>([])
+  // // Customer extra
+  // const [customerCity, setCustomerCity] = useState("")
+  // const [interests, setInterests] = useState<string[]>([])
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Interests options for customer
-  const interestOptions = [
-    "Recycling",
-    "Youth Organizations",
-    "Animal Welfare",
-    "Education",
-  ]
+  // // Interests options for customer
+  // const interestOptions = [
+  //   "Recycling",
+  //   "Youth Organizations",
+  //   "Animal Welfare",
+  //   "Education",
+  // ]
 
-  // Handle checkbox toggle
-  const toggleInterest = (interest: string) => {
-    setInterests((prev) =>
-      prev.includes(interest)
-        ? prev.filter((i) => i !== interest)
-        : [...prev, interest]
-    )
-  }
+  // // Handle checkbox toggle
+  // const toggleInterest = (interest: string) => {
+  //   setInterests((prev) =>
+  //     prev.includes(interest)
+  //       ? prev.filter((i) => i !== interest)
+  //       : [...prev, interest]
+  //   )
+  // }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError(null)
-
+    router.push('/login')
     // Simple validation example
     if (!fullName || !email) {
       setError("Full name and email are required")
@@ -85,10 +85,11 @@ export default function SignUpPage() {
       data.brandName = brandName
       data.productCategory = productCategory
       data.brandWebsite = brandWebsite || null
-    } else if (userType === "customer") {
-      data.customerCity = customerCity || null
-      data.interests = interests.length > 0 ? interests : null
-    }
+    } 
+    // else if (userType === "customer") {
+    //   data.customerCity = customerCity || null
+    //   data.interests = interests.length > 0 ? interests : null
+    // }
 
     // Simulate API delay
     setTimeout(() => {
@@ -151,7 +152,7 @@ export default function SignUpPage() {
           disabled={loading}
           className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-(--foreground) focus:outline-none"
         >
-          <option value="customer">Customer</option>
+          {/* <option value="customer">Customer</option> */}
           <option value="brand">Brand</option>
           <option value="org">Organization</option>
         </select>
@@ -223,7 +224,7 @@ export default function SignUpPage() {
         )}
 
         {/* Customer fields */}
-        {userType === "customer" && (
+        {/* {userType === "customer" && (
           <>
             <input
               type="text"
@@ -252,7 +253,7 @@ export default function SignUpPage() {
               ))}
             </fieldset>
           </>
-        )}
+        )} */}
 
         {error && (
           <p className="text-center text-sm text-red-600">{error}</p>

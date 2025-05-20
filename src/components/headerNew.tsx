@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Recycle, Menu, Search, User, Home } from "lucide-react";
+import { Recycle, Menu, Search, LogOut, Home } from "lucide-react";
 
 import { useAuth } from "@/context/AuthContext";
 // import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const { isLoggedIn, role } = useAuth();
+  const { isLoggedIn, role, logout } = useAuth();
 
   // const pathname = usePathname();
   // const inDashboard = role ? pathname === `/${role}/dashboard` : false;
@@ -30,9 +30,15 @@ export default function Header() {
                     href="/"
                     className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex justify-center"
                   >
-                    <Home className="h-4 w-4 inline mr-1" />
+                    <Home className="h-5 w-5 mr-1 flex items-center justify-center" />
                     Home
-                  </Link>
+                  </Link>                
+                 {isLoggedIn && (
+                    <Link href={`/${ role }/dashboard`}
+                    className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                      Dashboard
+                    </Link>
+                  )}
                   <Link
                     href="/tutorials"
                     className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
@@ -45,18 +51,14 @@ export default function Header() {
                   >
                     Donation Centers
                   </Link>
+                  
                   <Link
                     href="/about"
                     className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     About
                   </Link>
-                  {isLoggedIn && (
-                    <Link href={`/${ role }/dashboard`}
-                    className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-                      Dashboard
-                    </Link>
-                  )}
+                  
                 </div>
               </div>
             </div>
@@ -67,8 +69,10 @@ export default function Header() {
                 <Button variant="ghost" size="icon">
                   <Search className="h-5 w-5" />
                 </Button>
-                <Button variant="ghost" size="icon">
-                  <User className="h-5 w-5" />
+                <Button variant="ghost" size="icon" className="hover:bg-gray-300 " onClick={logout}>
+                  <Link href="/">
+                    <LogOut className="h-10 w-10 text-red-600 " />
+                  </Link>
                 </Button>
               </div>
             </div>

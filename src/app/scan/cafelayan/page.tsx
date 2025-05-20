@@ -1,10 +1,11 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { QrCode, Recycle, MapPin } from "lucide-react"
-
+import Header from "@/components/headerNew";
 export default function LandingPage() {
   return (
     <>
+      <Header />
       {/* Hero Section */}
       <header className="bg-gradient-to-r from-green-50 to-emerald-50 py-20">
         <div className="container px-4 md:px-6">
@@ -26,7 +27,7 @@ export default function LandingPage() {
                 size="lg"
                 className="bg-green-700 hover:bg-green-800 text-white hover:scale-103 transition-transform duration-300 ease"
               >
-                <Link href="/package/demo-plastic-001">
+                <Link href="/donate">
                   <QrCode className="mr-2 h-5 w-5" />
                   Donate
                 </Link>
@@ -106,12 +107,12 @@ export default function LandingPage() {
                   />
                 </div>
                 <div className="flex-grow text-center md:text-left">
-                  <h3 className="text-xl font-bold mb-2">Cafelayan Lettuce Chips</h3>
+                  <h3 className="text-xl font-bold mb-2">AquaPure 500ml Plastic Bottle</h3>
                   <p className="text-gray-600 mb-4">
                     Experience how users will see recycling options after scanning a QR code on this plastic bottle.
                   </p>
                   <Button asChild className="bg-green-700 text-white hover:bg-green-800 hover:scale-103 transition-all duration-300 ease">
-                    <Link href="/package/demo-plastic-001">View Demo Package</Link>
+                    <Link href="/package/demo-bottle-001">View Demo Package</Link>
                   </Button>
                 </div>
               </div>
