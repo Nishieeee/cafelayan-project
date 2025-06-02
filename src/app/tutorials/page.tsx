@@ -10,10 +10,26 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { BookOpen, Clock, Star, Search } from "lucide-react"
 import Link from "next/link"
 
+interface Tutorial {
+  id: string
+  title: string
+  description: string
+  difficulty: "Easy" | "Medium" | "Hard"
+  duration: string
+  steps: number
+  rating: number
+  organization: string
+  materials: string[]
+  image: string
+  url: string
+}
+
+
+
 export default function TutorialsPage() {
   const searchParams = useSearchParams()
   const packageId = searchParams.get("package")
-  const [tutorials, setTutorials] = useState<any[]>([])
+  const [tutorials, setTutorials] = useState<Tutorial[]>([])
   const [searchTerm, setSearchTerm] = useState("")
   const [difficulty, setDifficulty] = useState("all")
   const [material, setMaterial] = useState("all")
@@ -194,8 +210,8 @@ export default function TutorialsPage() {
 }
 
 // Mock function to get tutorials (would be replaced with API call)
-function getMockTutorials(packageId: string | null) {
-  const allTutorials = [
+function getMockTutorials(packageId: string | null): Tutorial[] {
+  const allTutorials: Tutorial[] = [
     {
       id: "https://youtu.be/UB6y0Cy0fd8?si=hGu8H8J_ukNIRkO0",
       title: "Self-Watering Planter from Plastic Bottle",
