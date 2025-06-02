@@ -7,8 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import {
-   BarChart,
-  Bar,
+  //  BarChart,
+  // Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -24,6 +24,21 @@ import { Package, Recycle, MapPin, TrendingUp, Building2, Download, Star, Clock,
 import { PartnershipDetailsDialog } from "@/components/partnership-details-dialog";
 
 import Header from "@/components/headerNew"
+
+type ActivityType = "donation" | "processing" | "pickup"
+
+interface RecentActivity {
+  type: ActivityType
+  donor?: string
+  amount: number
+  material: string
+  city?: string
+  status?: string
+  time: string
+}
+
+interface RequestDetails extends RecentActivity {}
+
 
 export default function OrganizationDashboard() {
   // Mock data - would come from API
@@ -143,13 +158,14 @@ export default function OrganizationDashboard() {
     },
   ]
 
-  const [ selectedRequest, setSelectedRequest ] = useState<any>(null)
+  const [selectedRequest, setSelectedRequest] = useState<RequestDetails | null>(null)
   const [ showDetailsDialog, setShowDetailsDialog] = useState(false)
 
-  const handleViewDetails = (request: any) => {
-    setSelectedRequest(request)
-    setShowDetailsDialog(true)
-  }
+  const handleViewDetails = (request: RequestDetails) => {
+  setSelectedRequest(request)
+  setShowDetailsDialog(true)
+}
+
   return (
     <>
     <Header />

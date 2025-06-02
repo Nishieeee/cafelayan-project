@@ -6,12 +6,24 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { MapPin, Phone, Clock, Navigation, Star } from "lucide-react"
+import { MapPin, Phone, Clock, Navigation } from "lucide-react"
+
+type Organization = {
+  name: string
+  location: string
+  rating: number
+  phone: string
+  hours: string
+  acceptedMaterials: string[]
+  description: string
+}
+
+
 
 export default function DonatePage() {
   const searchParams = useSearchParams()
   const packageId = searchParams.get("package")
-  const [organizations, setOrganizations] = useState<any[]>([])
+  const [organizations, setOrganizations] = useState<Organization[]>([])
   const [searchLocation, setSearchLocation] = useState("")
 
   useEffect(() => {
@@ -112,7 +124,7 @@ export default function DonatePage() {
   )
 }
 
-function getMockOrganizations() {
+function getMockOrganizations(): Organization[] {
   return [
     {
       name: "Kids Who Farm",

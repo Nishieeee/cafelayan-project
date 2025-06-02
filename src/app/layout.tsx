@@ -3,10 +3,9 @@ import "@/app/globals.css"
 // import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 
-import { cn } from "@/lib/utils"
 
 // const inter = Inter({ subsets: ["latin"] })
-import Header from "@/components/headerNew"
+
 import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
