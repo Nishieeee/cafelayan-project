@@ -28,11 +28,11 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
   // Mock data - would come from API
   const product = {
     id: params.id,
-    name: "AquaPure 500ml Water Bottle",
-    brand: "AquaPure",
+    name: "Cafelayan Lettuce Chips",
+    brand: "Cafelayan",
     material: "PET Plastic",
     status: "Active",
-    registrationDate: "2024-01-15",
+    registrationDate: "2025-01-15",
     image: "/placeholder.svg?height=60&width=60",
   }
 
@@ -132,11 +132,11 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
               <SelectTrigger className="w-[140px]">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="7d">Last 7 days</SelectItem>
-                <SelectItem value="30d">Last 30 days</SelectItem>
-                <SelectItem value="90d">Last 90 days</SelectItem>
-                <SelectItem value="1y">Last year</SelectItem>
+              <SelectContent className="bg-white">
+                <SelectItem value="7d" className="hover:bg-green-300">Last 7 days</SelectItem>
+                <SelectItem value="30d" className="hover:bg-green-300">Last 30 days</SelectItem>
+                <SelectItem value="90d" className="hover:bg-green-300">Last 90 days</SelectItem>
+                <SelectItem value="1y" className="hover:bg-green-300">Last year</SelectItem>
               </SelectContent>
             </Select>
             <Button variant="outline">
@@ -152,7 +152,7 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
-          <Card>
+          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Scans</CardTitle>
               <QrCode className="h-4 w-4 text-muted-foreground" />
@@ -163,7 +163,7 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Donations</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -174,7 +174,7 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
               <Target className="h-4 w-4 text-muted-foreground" />
@@ -185,7 +185,7 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Unique Users</CardTitle>
               <Users className="h-4 w-4 text-muted-foreground" />
@@ -196,7 +196,7 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Avg Scans/User</CardTitle>
               <Calendar className="h-4 w-4 text-muted-foreground" />

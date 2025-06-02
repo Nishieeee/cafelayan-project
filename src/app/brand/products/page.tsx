@@ -68,13 +68,13 @@ export default function ProductsPage() {
   // Mock data - would come from API
   const products = [
     {
-      id: "aquapure-500ml-001",
-      name: "AquaPure 500ml Water Bottle",
-      brand: "AquaPure",
+      id: "cafelayan-250g-001",
+      name: "Cafelayan Lettuce Chips",
+      brand: "Cafelayan",
       material: "PET Plastic",
-      category: "Beverages",
+      category: "Food",
       status: "Active",
-      registrationDate: "2024-01-15",
+      registrationDate: "2025-01-15",
       totalScans: 2847,
       totalDonations: 1256,
       conversionRate: 44.1,
@@ -82,66 +82,66 @@ export default function ProductsPage() {
       image: "/placeholder.svg?height=60&width=60",
       recyclability: "Highly Recyclable",
     },
-    {
-      id: "aquapure-1l-002",
-      name: "AquaPure 1L Water Bottle",
-      brand: "AquaPure",
-      material: "PET Plastic",
-      category: "Beverages",
-      status: "Active",
-      registrationDate: "2024-01-20",
-      totalScans: 1923,
-      totalDonations: 834,
-      conversionRate: 43.4,
-      lastScan: "1 day ago",
-      image: "/placeholder.svg?height=60&width=60",
-      recyclability: "Highly Recyclable",
-    },
-    {
-      id: "aquapure-sports-003",
-      name: "AquaPure Sports Drink 750ml",
-      brand: "AquaPure",
-      material: "PET Plastic",
-      category: "Sports Drinks",
-      status: "Active",
-      registrationDate: "2024-02-01",
-      totalScans: 1456,
-      totalDonations: 623,
-      conversionRate: 42.8,
-      lastScan: "3 hours ago",
-      image: "/placeholder.svg?height=60&width=60",
-      recyclability: "Highly Recyclable",
-    },
-    {
-      id: "aquapure-juice-004",
-      name: "AquaPure Orange Juice 500ml",
-      brand: "AquaPure",
-      material: "Tetra Pak",
-      category: "Juices",
-      status: "Draft",
-      registrationDate: "2024-02-10",
-      totalScans: 0,
-      totalDonations: 0,
-      conversionRate: 0,
-      lastScan: "Never",
-      image: "/placeholder.svg?height=60&width=60",
-      recyclability: "Recyclable",
-    },
-    {
-      id: "aquapure-glass-005",
-      name: "AquaPure Glass Bottle 330ml",
-      brand: "AquaPure",
-      material: "Glass",
-      category: "Premium",
-      status: "Inactive",
-      registrationDate: "2024-01-05",
-      totalScans: 892,
-      totalDonations: 445,
-      conversionRate: 49.9,
-      lastScan: "2 weeks ago",
-      image: "/placeholder.svg?height=60&width=60",
-      recyclability: "Highly Recyclable",
-    },
+    // {
+    //   id: "aquapure-1l-002",
+    //   name: "AquaPure 1L Water Bottle",
+    //   brand: "AquaPure",
+    //   material: "PET Plastic",
+    //   category: "Beverages",
+    //   status: "Active",
+    //   registrationDate: "2024-01-20",
+    //   totalScans: 1923,
+    //   totalDonations: 834,
+    //   conversionRate: 43.4,
+    //   lastScan: "1 day ago",
+    //   image: "/placeholder.svg?height=60&width=60",
+    //   recyclability: "Highly Recyclable",
+    // },
+    // {
+    //   id: "aquapure-sports-003",
+    //   name: "AquaPure Sports Drink 750ml",
+    //   brand: "AquaPure",
+    //   material: "PET Plastic",
+    //   category: "Sports Drinks",
+    //   status: "Active",
+    //   registrationDate: "2024-02-01",
+    //   totalScans: 1456,
+    //   totalDonations: 623,
+    //   conversionRate: 42.8,
+    //   lastScan: "3 hours ago",
+    //   image: "/placeholder.svg?height=60&width=60",
+    //   recyclability: "Highly Recyclable",
+    // },
+    // {
+    //   id: "aquapure-juice-004",
+    //   name: "AquaPure Orange Juice 500ml",
+    //   brand: "AquaPure",
+    //   material: "Tetra Pak",
+    //   category: "Juices",
+    //   status: "Draft",
+    //   registrationDate: "2024-02-10",
+    //   totalScans: 0,
+    //   totalDonations: 0,
+    //   conversionRate: 0,
+    //   lastScan: "Never",
+    //   image: "/placeholder.svg?height=60&width=60",
+    //   recyclability: "Recyclable",
+    // },
+    // {
+    //   id: "aquapure-glass-005",
+    //   name: "AquaPure Glass Bottle 330ml",
+    //   brand: "AquaPure",
+    //   material: "Glass",
+    //   category: "Premium",
+    //   status: "Inactive",
+    //   registrationDate: "2024-01-05",
+    //   totalScans: 892,
+    //   totalDonations: 445,
+    //   conversionRate: 49.9,
+    //   lastScan: "2 weeks ago",
+    //   image: "/placeholder.svg?height=60&width=60",
+    //   recyclability: "Highly Recyclable",
+    // },
   ]
 
   const filteredProducts = products.filter((product) => {
@@ -213,7 +213,7 @@ export default function ProductsPage() {
             <h1 className="text-3xl font-bold text-gray-900">Product Management</h1>
             <p className="text-gray-600">Manage your registered products and track their performance</p>
           </div>
-          <Button asChild className="bg-green-700 hover:bg-green-800">
+          <Button asChild className="bg-green-700 text-white hover:bg-green-800 hover:scale-103 transition-transform duration-300 ease">
             <Link href="/brand/register-product">
               <Plus className="mr-2 h-4 w-4" />
               Register New Product
@@ -223,7 +223,7 @@ export default function ProductsPage() {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card>
+          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Products</CardTitle>
               <Package className="h-4 w-4 text-muted-foreground" />
@@ -236,7 +236,7 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Scans</CardTitle>
               <QrCode className="h-4 w-4 text-muted-foreground" />
@@ -249,7 +249,7 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Donations</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -262,7 +262,7 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Avg Conversion</CardTitle>
               <BarChart3 className="h-4 w-4 text-muted-foreground" />
@@ -298,23 +298,23 @@ export default function ProductsPage() {
                   <SelectTrigger className="w-[140px]">
                     <SelectValue placeholder="Status" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Status</SelectItem>
-                    <SelectItem value="active">Active</SelectItem>
-                    <SelectItem value="draft">Draft</SelectItem>
-                    <SelectItem value="inactive">Inactive</SelectItem>
+                  <SelectContent className="bg-white">
+                    <SelectItem value="all" className="hover:bg-green-300">All Status</SelectItem>
+                    <SelectItem value="active" className="hover:bg-green-300">Active</SelectItem>
+                    <SelectItem value="draft" className="hover:bg-green-300">Draft</SelectItem>
+                    <SelectItem value="inactive" className="hover:bg-green-300">Inactive</SelectItem>
                   </SelectContent>
                 </Select>
                 <Select value={materialFilter} onValueChange={setMaterialFilter}>
                   <SelectTrigger className="w-[140px]">
                     <SelectValue placeholder="Material" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Materials</SelectItem>
-                    <SelectItem value="PET Plastic">PET Plastic</SelectItem>
-                    <SelectItem value="Glass">Glass</SelectItem>
-                    <SelectItem value="Tetra Pak">Tetra Pak</SelectItem>
-                    <SelectItem value="Cardboard">Cardboard</SelectItem>
+                  <SelectContent className="bg-white">
+                    <SelectItem value="all" className="hover:bg-green-300">All Materials</SelectItem>
+                    <SelectItem value="PET Plastic" className="hover:bg-green-300">PET Plastic</SelectItem>
+                    <SelectItem value="Glass" className="hover:bg-green-300">Glass</SelectItem>
+                    <SelectItem value="Tetra Pak" className="hover:bg-green-300">Tetra Pak</SelectItem>
+                    <SelectItem value="Cardboard" className="hover:bg-green-300">Cardboard</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -349,8 +349,8 @@ export default function ProductsPage() {
                               <MoreHorizontal className="h-4 w-4" />
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem asChild>
+                          <DropdownMenuContent align="end" className="bg-white">
+                            <DropdownMenuItem asChild className="hover:bg-green-300">
                               <Link href={`/brand/products/${product.id}/edit`}>
                                 <Edit className="mr-2 h-4 w-4" />
                                 Edit Product
@@ -361,24 +361,25 @@ export default function ProductsPage() {
                                 setSelectedProduct(product)
                                 setShowQRDialog(true)
                               }}
+                              className="hover:bg-green-300"
                             >
                               <QrCode className="mr-2 h-4 w-4" />
                               View QR Code
                             </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
+                            <DropdownMenuItem asChild className="hover:bg-green-300">
                               <Link href={`/brand/products/${product.id}/analytics`}>
                                 <BarChart3 className="mr-2 h-4 w-4" />
                                 View Analytics
                               </Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
+                            <DropdownMenuItem asChild className="hover:bg-green-300">
                               <Link href={`/package/${product.id}`} target="_blank">
                                 <Eye className="mr-2 h-4 w-4" />
                                 Preview Page
                               </Link>
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem onClick={() => setDeleteProductId(product.id)} className="text-red-600">
+                            <DropdownMenuItem onClick={() => setDeleteProductId(product.id)} className="text-red-600 hover:bg-green-300">
                               <Trash2 className="mr-2 h-4 w-4" />
                               Delete Product
                             </DropdownMenuItem>
@@ -465,7 +466,7 @@ export default function ProductsPage() {
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction
                 onClick={() => deleteProductId && handleDeleteProduct(deleteProductId)}
-                className="bg-red-600 hover:bg-red-700"
+                className="bg-red-600 text-white hover:bg-red-700"
               >
                 Delete Product
               </AlertDialogAction>
