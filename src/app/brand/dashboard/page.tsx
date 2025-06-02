@@ -106,6 +106,11 @@ export default function BrandDashboard() {
                 Register Product
               </Link>
             </Button>
+            <Button asChild className="bg-green-700 text-white hover:scale-103 transition-transform duration-200 ease">
+              <Link href="/brand/products">
+                View Products
+              </Link>
+            </Button>
           </div>
         </div>
 

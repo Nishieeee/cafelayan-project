@@ -106,7 +106,7 @@ export default function TutorialsPage() {
               <Link key={index} href={`${tutorial.id}`}>
                 <Card className="h-full overflow-hidden hover:shadow-md transition-shadow">
                   <div className="aspect-video overflow-hidden">
-                    <iframe width="366" height="215" src={tutorial.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="366" height="215" src={tutorial.url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                   </div>
                   <CardHeader className="p-4 pb-2">
                     <div className="flex justify-between items-start mb-2">
