@@ -25,21 +25,54 @@ import { PartnershipDetailsDialog } from "@/components/partnership-details-dialo
 
 import Header from "@/components/headerNew"
 
-type ActivityType = "donation" | "processing" | "pickup"
-
-interface RecentActivity {
-  type: ActivityType
-  donor?: string
+type DonationRequest = {
+  type: "donation"
+  donor: string
   amount: number
   material: string
-  city?: string
-  status?: string
+  city: string
   time: string
 }
 
-interface RequestDetails extends RecentActivity {}
+type ProcessingRequest = {
+  type: "processing"
+  amount: number
+  material: string
+  status: string
+  time: string
+}
 
+type PickupRequest = {
+  type: "pickup"
+  donor: string
+  amount: number
+  material: string
+  city: string
+  time: string
+}
 
+type RequestDetails = DonationRequest | ProcessingRequest | PickupRequest
+
+export type PartnershipRequest = {
+  brandName: string
+  logo: string
+  requestDate: string
+  expectedVolume: string
+  partnershipType: string
+  contactPerson: string
+  email: string
+  phone?: string
+  message: string
+  city: string
+  productTypes?: string[]
+  companySize?: string
+  sustainabilityGoals?: string
+}
+interface PartnershipDetailsDialogProps {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  request: PartnershipRequest
+}
 export default function OrganizationDashboard() {
   // Mock data - would come from API
   const organizationData = {
@@ -157,11 +190,10 @@ export default function OrganizationDashboard() {
       time: "1 day ago",
     },
   ]
+const [ showDetailsDialog, setShowDetailsDialog] = useState(false)
+const [selectedRequest, setSelectedRequest] = useState<PartnershipRequest | null>(null)
 
-  const [selectedRequest, setSelectedRequest] = useState<RequestDetails | null>(null)
-  const [ showDetailsDialog, setShowDetailsDialog] = useState(false)
-
-  const handleViewDetails = (request: RequestDetails) => {
+const handleViewDetails = (request: PartnershipRequest) => {
   setSelectedRequest(request)
   setShowDetailsDialog(true)
 }

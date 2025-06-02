@@ -8,9 +8,43 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MapPin, BookOpen, Recycle, Info, ArrowRight, MapPinned, Clock } from "lucide-react"
 
+interface Tutorial {
+  id: string
+  title: string
+  difficulty: "Easy" | "Medium" | "Hard"
+  duration: string
+  organization: string
+  image: string
+}
+
+interface Organization {
+  name: string
+  location: string
+  distance: string
+  hours: string
+  accepts: string
+}
+
+interface PackageData {
+  name: string
+  brand: string
+  material: string
+  size: string
+  recyclability: string
+  image: string
+  description: string
+  environmentalImpact: string
+  recyclingProcess: string
+  tips: string
+  facts: string
+  donationPrep: string
+  nearbyOrganizations: Organization[]
+  tutorials: Tutorial[]
+}
+
 export default function PackagePage({ params }: { params: { id: string } }) {
   const packageId = params.id
-  const [packageData, setPackageData] = useState<any>(null)
+  const [packageData, setPackageData] = useState<PackageData | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -118,7 +152,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
 
             <h3 className="text-lg font-medium mb-3">Nearby Organizations</h3>
             <div className="space-y-3">
-              {packageData.nearbyOrganizations.slice(0, 3).map((org: any, index: number) => (
+              {packageData.nearbyOrganizations.slice(0, 3).map((org: Organization, index: number) => (
                 <Card key={index} className="overflow-hidden">
                   <div className="flex flex-col sm:flex-row">
                     <div className="p-4 flex-grow">
@@ -160,7 +194,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
           <TabsContent value="diy" className="space-y-4">
             <h3 className="text-lg font-medium mb-3">DIY Recycling Tutorials</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {packageData.tutorials.slice(0, 4).map((tutorial: any, index: number) => (
+              {packageData.tutorials.slice(0, 4).map((tutorial: Tutorial, index: number) => (
                 <Card key={index} className="overflow-hidden hover:shadow-md transition-shadow">
                   <Link href={`/tutorials/${tutorial.id}`}>
                     <div className="aspect-video overflow-hidden">
@@ -232,7 +266,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
 }
 
 // Mock function to get package data (would be replaced with API call)
-function getPackageData(packageId: string) {
+function getPackageData(packageId: string): PackageData | null {
   const packages: { [key: string]: any } = {
     "demo-plastic-001": {
       name: "Cafelayan Lettuce Chips - Package",
