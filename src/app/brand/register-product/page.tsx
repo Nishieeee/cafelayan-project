@@ -63,11 +63,19 @@ const formSchema = z.object({
     message: "You must agree to the terms and conditions.",
   }),
 })
+type ProductFormData = z.infer<typeof formSchema>
+
+type GeneratedProduct = ProductFormData & {
+  id: string
+  url: string
+  registrationDate: string
+}
 
 export default function RegisterProductPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [generatedProduct, setGeneratedProduct] = useState<any>(null)
+  const [generatedProduct, setGeneratedProduct] = useState<GeneratedProduct | null>(null)
+
   const { name } = useAuth()
   
   const form = useForm<z.infer<typeof formSchema>>({
@@ -119,28 +127,30 @@ export default function RegisterProductPage() {
   }
 
   const downloadQRCode = () => {
-    const svg = document.getElementById("qr-code-svg")
-    if (svg) {
-      const svgData = new XMLSerializer().serializeToString(svg)
-      const canvas = document.createElement("canvas")
-      const ctx = canvas.getContext("2d")
-      const img = new Image()
+  if (!generatedProduct) return;
 
-      img.onload = () => {
-        canvas.width = img.width
-        canvas.height = img.height
-        ctx?.drawImage(img, 0, 0)
+  const svg = document.getElementById("qr-code-svg")
+  if (svg) {
+    const svgData = new XMLSerializer().serializeToString(svg)
+    const canvas = document.createElement("canvas")
+    const ctx = canvas.getContext("2d")
+    const img = new Image()
 
-        const pngFile = canvas.toDataURL("image/png")
-        const downloadLink = document.createElement("a")
-        downloadLink.download = `${generatedProduct.id}-qr-code.png`
-        downloadLink.href = pngFile
-        downloadLink.click()
-      }
+    img.onload = () => {
+      canvas.width = img.width
+      canvas.height = img.height
+      ctx?.drawImage(img, 0, 0)
 
-      img.src = "data:image/svg+xml;base64," + btoa(svgData)
+      const pngFile = canvas.toDataURL("image/png")
+      const downloadLink = document.createElement("a")
+      downloadLink.download = `${generatedProduct.id}-qr-code.png`
+      downloadLink.href = pngFile
+      downloadLink.click()
     }
+
+    img.src = "data:image/svg+xml;base64," + btoa(svgData)
   }
+}
 
   if (isSubmitted && generatedProduct) {
     return (
@@ -215,7 +225,7 @@ export default function RegisterProductPage() {
                   <QrCode className="h-5 w-5" />
                   Generated QR Code
                 </CardTitle>
-                <CardDescription>This QR code links to your product's recycling information page</CardDescription>
+                <CardDescription>This QR code links to your product`&apos;`s recycling information page</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex justify-center">
@@ -232,7 +242,7 @@ export default function RegisterProductPage() {
 
                 <div className="text-center">
                   <p className="text-sm text-gray-600 mb-4">
-                    Scan this QR code to view the product's recycling information
+                    Scan this QR code to view the product`&apos;`s recycling information
                   </p>
                   <div className="space-y-2">
                     <Button onClick={downloadQRCode} className="w-full">
@@ -646,7 +656,7 @@ export default function RegisterProductPage() {
                           <FormControl>
                             <Input type="url" placeholder="https://yourbrand.com" {...field} />
                           </FormControl>
-                          <FormDescription>Your brand's website for more information</FormDescription>
+                          <FormDescription>Your brand`&apos;`s website for more information</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
