@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState } from "react"
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/context/AuthContext"
 import type { Role } from "@/context/AuthContext"
@@ -70,9 +69,9 @@ export default function LoginPage() {
                 <SelectTrigger className="border-green-200 focus:ring-green-500">
                   <SelectValue placeholder="Select your account type" />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
-                  <SelectItem value="brand" className="hover:bg-green-300">Brand</SelectItem>
-                  <SelectItem value="org" className="hover:bg-green-300">Organization</SelectItem>
+                <SelectContent>
+                  <SelectItem value="brand">Brand</SelectItem>
+                  <SelectItem value="org">Organization</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -117,12 +116,9 @@ export default function LoginPage() {
           </Button>
           <div className="mt-2 text-sm text-gray-500">
             Don't have an account?{" "}
-            <Link href="/signup">
-              <Button variant="link" className="p-0 text-green-700 hover:text-green-800">
-                Sign up
-              </Button>
-            </Link>
-
+            <Button variant="link" className="p-0 text-green-700 hover:text-green-800">
+              Sign up
+            </Button>
           </div>
         </CardFooter>
       </Card>

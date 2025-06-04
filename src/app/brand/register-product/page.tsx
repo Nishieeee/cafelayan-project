@@ -35,9 +35,9 @@ const formSchema = z.object({
   size: z.string().min(1, {
     message: "Please specify the size.",
   }),
-  weight: z.string().optional(),
+  totalManufactured: z.string().optional(),
   recyclability: z.string().min(1, {
-    message: "Please select recyclability level.",
+    message: "Please specify the total amount.",
   }),
   environmentalImpact: z.string().min(10, {
     message: "Environmental impact description must be at least 10 characters.",
@@ -87,7 +87,7 @@ export default function RegisterProductPage() {
       materialType: "",
       materialSubtype: "",
       size: "",
-      weight: "",
+      totalManufactured: "",
       recyclability: "",
       environmentalImpact: "",
       recyclingInstructions: "",
@@ -225,7 +225,7 @@ export default function RegisterProductPage() {
                   <QrCode className="h-5 w-5" />
                   Generated QR Code
                 </CardTitle>
-                <CardDescription>This QR code links to your product`&apos;`s recycling information page</CardDescription>
+                <CardDescription>This QR code links to your product&apos;s recycling information page</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex justify-center">
@@ -242,19 +242,14 @@ export default function RegisterProductPage() {
 
                 <div className="text-center">
                   <p className="text-sm text-gray-600 mb-4">
-                    Scan this QR code to view the product`&apos;`s recycling information
+                    Scan this QR code to view the product&apos;s recycling information
                   </p>
                   <div className="space-y-2">
-                    <Button onClick={downloadQRCode} className="w-full">
+                    <Button variant="outline" onClick={downloadQRCode} className="w-full hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                       <Download className="mr-2 h-4 w-4" />
                       Download QR Code
                     </Button>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/scan/cafelayan" target="_blank">
-                        <Eye className="mr-2 h-4 w-4" />
-                        Preview Landing Page
-                      </Link>
-                    </Button>
+                    
                   </div>
                 </div>
 
@@ -339,7 +334,7 @@ export default function RegisterProductPage() {
                           <FormItem>
                             <FormLabel>Product Name</FormLabel>
                             <FormControl>
-                              <Input placeholder="e.g., AquaPure 500ml Water Bottle" {...field} />
+                              <Input placeholder="e.g., Cafelayan lettuce chips" {...field} />
                             </FormControl>
                             <FormDescription>The full name of your product</FormDescription>
                             <FormMessage />
@@ -347,19 +342,7 @@ export default function RegisterProductPage() {
                         )}
                       />
 
-                      {/* <FormField
-                        control={form.control}
-                        name="brandName"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Brand Name</FormLabel>
-                            <FormControl>
-                              <Input placeholder="e.g., AquaPure" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      /> */}
+                     
                     </div>
 
                     <FormField
@@ -426,12 +409,12 @@ export default function RegisterProductPage() {
 
                       <FormField
                         control={form.control}
-                        name="weight"
+                        name="totalManufactured"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Weight (Optional)</FormLabel>
+                            <FormLabel>Total Manufactured</FormLabel>
                             <FormControl>
-                              <Input placeholder="e.g., 15g, 0.5kg" {...field} />
+                              <Input placeholder="9999" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -656,7 +639,7 @@ export default function RegisterProductPage() {
                           <FormControl>
                             <Input type="url" placeholder="https://yourbrand.com" {...field} />
                           </FormControl>
-                          <FormDescription>Your brand`&apos;`s website for more information</FormDescription>
+                          <FormDescription>Your brand&apos;s website for more information</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -698,7 +681,7 @@ export default function RegisterProductPage() {
                 </Tabs>
 
                 <div className="flex justify-end pt-6">
-                  <Button type="submit" className="bg-green-700 hover:bg-green-800 px-8" disabled={isSubmitting}>
+                  <Button type="submit" className="bg-green-700 text-white hover:bg-green-800 px-8" disabled={isSubmitting}>
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />

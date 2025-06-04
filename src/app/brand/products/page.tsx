@@ -51,6 +51,7 @@ type Product = {
   totalScans: number
   totalDonations: number
   conversionRate: number
+  donationRate: number
   lastScan: string
   image: string
   recyclability: string
@@ -78,6 +79,7 @@ export default function ProductsPage() {
       totalScans: 2847,
       totalDonations: 1256,
       conversionRate: 44.1,
+      donationRate: 56.2,
       lastScan: "2 hours ago",
       image: "/placeholder.svg?height=60&width=60",
       recyclability: "Highly Recyclable",
@@ -406,7 +408,7 @@ export default function ProductsPage() {
                   </div>
 
                   {/* Analytics */}
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:w-80">
+                  <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:w-90">
                     <div className="text-center p-3 bg-blue-50 rounded-lg">
                       <div className="text-lg font-bold text-blue-700">{product.totalScans.toLocaleString()}</div>
                       <div className="text-xs text-gray-600">Total Scans</div>
@@ -418,6 +420,10 @@ export default function ProductsPage() {
                     <div className="text-center p-3 bg-purple-50 rounded-lg">
                       <div className="text-lg font-bold text-purple-700">{product.conversionRate}%</div>
                       <div className="text-xs text-gray-600">Conversion</div>
+                    </div>
+                    <div className="text-center p-3 bg-purple-50 rounded-lg">
+                      <div className="text-lg font-bold text-purple-700">{product.donationRate}%</div>
+                      <div className="text-xs text-gray-600">Donation rate</div>
                     </div>
                     <div className="text-center p-3 bg-orange-50 rounded-lg">
                       <div className="text-lg font-bold text-orange-700">

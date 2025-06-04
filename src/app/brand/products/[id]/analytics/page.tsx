@@ -40,7 +40,7 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
     totalScans: 2847,
     totalDonations: 1256,
     conversionRate: 44.1,
-    uniqueUsers: 2234,
+    donationRate: 2234,
     avgScansPerUser: 1.27,
     topCities: [
       { city: "Metro Manila", scans: 1423, donations: 628 },
@@ -187,12 +187,12 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
 
           <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Unique Users</CardTitle>
+              <CardTitle className="text-sm font-medium">Donation Rate</CardTitle>
               <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{analyticsData.uniqueUsers.toLocaleString()}</div>
-              <p className="text-xs text-muted-foreground">+8% from last period</p>
+              <div className="text-2xl font-bold">56.2%</div>
+              <p className="text-xs text-muted-foreground">Total manufactured: {analyticsData.donationRate.toLocaleString()}</p>
             </CardContent>
           </Card>
 
@@ -501,6 +501,10 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
                         <span className="font-medium">85/100</span>
                       </div>
                       <div className="flex justify-between text-sm">
+                        <span>Donation Rate</span>
+                        <span className="font-medium">56/100</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
                         <span>User Engagement</span>
                         <span className="font-medium">84/100</span>
                       </div>
@@ -532,6 +536,15 @@ export default function ProductAnalyticsPage({ params }: { params: { id: string 
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div className="bg-blue-600 h-2 rounded-full" style={{ width: "72%" }}></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex justify-between text-sm mb-1">
+                        <span>Donation Volume</span>
+                        <span className="text-yellow-600">+7% above avg</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div className="bg-yellow-600 h-2 rounded-full" style={{ width: "56%" }}></div>
                       </div>
                     </div>
                     <div>

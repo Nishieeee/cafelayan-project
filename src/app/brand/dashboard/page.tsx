@@ -101,14 +101,8 @@ export default function BrandDashboard() {
               Export Report
             </Button>
             <Button asChild className="bg-green-700 text-white hover:scale-103 transition-transform duration-200 ease">
-              <Link href="/brand/register-product">
-                <Plus className="mr-2 h-4 w-4 " />
-                Register Product
-              </Link>
-            </Button>
-            <Button asChild className="bg-green-700 text-white hover:scale-103 transition-transform duration-200 ease">
               <Link href="/brand/products">
-                View Products
+                View All Products
               </Link>
             </Button>
           </div>
