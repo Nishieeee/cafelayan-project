@@ -92,7 +92,7 @@ export function RequestDonationForm({ donationId }: { donationId: string }) {
               <FormControl>
                 <Textarea
                   placeholder="Explain why you're interested in this item and how you plan to use it on your farm or environmental project."
-                  className="min-h-[120px]"
+                  className="min-h-[120px] border-gray-500/50"
                   {...field}
                 />
               </FormControl>
@@ -111,7 +111,7 @@ export function RequestDonationForm({ donationId }: { donationId: string }) {
             <FormItem>
               <FormLabel>Your Name</FormLabel>
               <FormControl>
-                <Input placeholder="Full name" {...field} />
+                <Input placeholder="Full name" {...field} className="border-gray-500/50"/>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -125,7 +125,7 @@ export function RequestDonationForm({ donationId }: { donationId: string }) {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="your@email.com" {...field} />
+                <Input type="email" placeholder="your@email.com" className="border-gray-500/50" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -139,7 +139,7 @@ export function RequestDonationForm({ donationId }: { donationId: string }) {
             <FormItem>
               <FormLabel>Phone (Optional)</FormLabel>
               <FormControl>
-                <Input placeholder="09XX XXX XXXX" {...field} />
+                <Input placeholder="09XX XXX XXXX" className="border-gray-500/50" {...field} />
               </FormControl>
               <FormDescription>Some donors prefer to coordinate by phone.</FormDescription>
               <FormMessage />
@@ -166,7 +166,7 @@ export function RequestDonationForm({ donationId }: { donationId: string }) {
           )}
         />
 
-        <Button type="submit" className="w-full bg-green-700 hover:bg-green-800" disabled={isSubmitting}>
+        <Button type="submit" className="w-full text-white bg-green-700 hover:bg-green-800" disabled={isSubmitting}>
           {isSubmitting ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />

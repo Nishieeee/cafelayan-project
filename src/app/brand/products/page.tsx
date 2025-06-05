@@ -201,7 +201,7 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="container py-8 px-4 md:px-6">
+    <div className="container py-8 px-4 bg-gray-100 md:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-6">
           <Link href="/brand/dashboard" className="inline-flex items-center text-gray-600 hover:text-gray-900">
@@ -225,7 +225,7 @@ export default function ProductsPage() {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Products</CardTitle>
               <Package className="h-4 w-4 text-muted-foreground" />
@@ -238,7 +238,7 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
 
-          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Scans</CardTitle>
               <QrCode className="h-4 w-4 text-muted-foreground" />
@@ -251,7 +251,7 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
 
-          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Donations</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -264,7 +264,7 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
 
-          <Card className="hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Avg Conversion</CardTitle>
               <BarChart3 className="h-4 w-4 text-muted-foreground" />
@@ -283,21 +283,21 @@ export default function ProductsPage() {
         </div>
 
         {/* Filters */}
-        <Card className="mb-6">
+        <Card className="mb-6 border-gray-500/50">
           <CardContent className="pt-6">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-grow">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   placeholder="Search products..."
-                  className="pl-10"
+                  className="pl-10 border-gray-500/50"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
               <div className="flex gap-4">
                 <Select value={statusFilter} onValueChange={setStatusFilter}>
-                  <SelectTrigger className="w-[140px]">
+                  <SelectTrigger className="w-[140px] border-gray-500/50">
                     <SelectValue placeholder="Status" />
                   </SelectTrigger>
                   <SelectContent className="bg-white">
@@ -308,7 +308,7 @@ export default function ProductsPage() {
                   </SelectContent>
                 </Select>
                 <Select value={materialFilter} onValueChange={setMaterialFilter}>
-                  <SelectTrigger className="w-[140px]">
+                  <SelectTrigger className="w-[140px] border-gray-500/50">
                     <SelectValue placeholder="Material" />
                   </SelectTrigger>
                   <SelectContent className="bg-white">
@@ -327,7 +327,7 @@ export default function ProductsPage() {
         {/* Products List */}
         <div className="space-y-4">
           {filteredProducts.map((product) => (
-            <Card key={product.id} className="overflow-hidden">
+            <Card key={product.id} className="overflow-hidden border-gray-500/50">
               <CardContent className="p-6">
                 <div className="flex flex-col lg:flex-row gap-6">
                   {/* Product Info */}
@@ -482,8 +482,8 @@ export default function ProductsPage() {
 
         {/* QR Code Dialog */}
         {selectedProduct && (
-          <AlertDialog open={showQRDialog} onOpenChange={setShowQRDialog}>
-            <AlertDialogContent className="max-w-md">
+          <AlertDialog open={showQRDialog} onOpenChange={setShowQRDialog} >
+            <AlertDialogContent className="max-w-md bg-white">
               <AlertDialogHeader>
                 <AlertDialogTitle className="flex items-center gap-2">
                   <QrCode className="h-5 w-5" />
@@ -497,7 +497,7 @@ export default function ProductsPage() {
                 <div className="p-4 bg-white border-2 border-gray-200 rounded-lg">
                   <QRCodeSVG
                     id={`qr-code-${selectedProduct.id}`}
-                    value={`${window.location.origin}/package/${selectedProduct.id}`}
+                    value={`${window.location.origin}/scan/cafelayan`}
                     size={200}
                     level="M"
                     includeMargin={true}

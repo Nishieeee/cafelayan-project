@@ -69,24 +69,24 @@ export default function TutorialsPage() {
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-white rounded-lg shadow-sm border p-4 mb-8">
+        <div className="bg-white border-gray-500/50 rounded-lg shadow-sm border p-4 mb-8">
           <div className="flex flex-col md:flex-row gap-4 mb-6">
             <div className="relative flex-grow">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
               <Input
                 type="text"
                 placeholder="Search tutorials..."
-                className="pl-10"
+                className="pl-10 border-gray-500/50"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Select value={difficulty} onValueChange={setDifficulty}>
-                <SelectTrigger className="w-full sm:w-[180px]">
+                <SelectTrigger className="w-full sm:w-[180px] border-gray-500/50">
                   <SelectValue placeholder="Difficulty" />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent className="bg-white border-gray-500/50">
                   <SelectItem value="all" className="hover:bg-green-200">All Levels</SelectItem>
                   <SelectItem value="Easy" className="hover:bg-green-200">Easy</SelectItem>
                   <SelectItem value="Medium" className="hover:bg-green-200">Medium</SelectItem>
@@ -94,10 +94,10 @@ export default function TutorialsPage() {
                 </SelectContent>
               </Select>
               <Select value={material} onValueChange={setMaterial}>
-                <SelectTrigger className="w-full sm:w-[180px]">
+                <SelectTrigger className="w-full sm:w-[180px] border-gray-500/50">
                   <SelectValue placeholder="Material" />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent className="bg-white border-gray-500/50">
                   <SelectItem value="all" className="hover:bg-green-200">All Materials</SelectItem>
                   <SelectItem value="Plastic Bottles" className="hover:bg-green-200">Plastic Bottles</SelectItem>
                   <SelectItem value="Cardboard" className="hover:bg-green-200">Cardboard</SelectItem>
@@ -120,7 +120,7 @@ export default function TutorialsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredTutorials.map((tutorial, index) => (
               <Link key={index} href={`${tutorial.id}`}>
-                <Card className="h-full overflow-hidden hover:shadow-md transition-shadow">
+                <Card className="h-full border-gray-500/50 hover:border-green-700 overflow-hidden hover:shadow-md transition-all duration-300 ease">
                   <div className="aspect-video overflow-hidden">
                     <iframe width="366" height="215" src={tutorial.url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                   </div>
@@ -143,7 +143,7 @@ export default function TutorialsPage() {
                         <span className="text-xs">{tutorial.rating}</span>
                       </div>
                     </div>
-                    <CardTitle className="text-lg line-clamp-2">{tutorial.title}</CardTitle>
+                    <CardTitle className="text-lg text-black line-clamp-2">{tutorial.title}</CardTitle>
                     <CardDescription className="text-sm">{tutorial.organization}</CardDescription>
                   </CardHeader>
                   <CardContent className="p-4 pt-0">
@@ -200,7 +200,7 @@ export default function TutorialsPage() {
 
         {/* Back to Scan */}
         <div className="text-center mt-8">
-          <Button asChild variant="outline" className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+          <Button asChild variant="outline" className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
             <Link href="/scan">Scan Another Package</Link>
           </Button>
         </div>

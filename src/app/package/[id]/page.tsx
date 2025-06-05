@@ -96,7 +96,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
     <div className="container py-8 px-4 md:px-6">
       <div className="max-w-4xl mx-auto">
         {/* Package Information Card */}
-        <Card className="mb-6">
+        <Card className="mb-6 border-gray-500/50">
           <CardHeader className="pb-3">
             <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
               <div className="w-32 h-32 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
@@ -153,7 +153,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
             <h3 className="text-lg font-medium mb-3">Nearby Organizations</h3>
             <div className="space-y-3">
               {packageData.nearbyOrganizations.slice(0, 3).map((org: Organization, index: number) => (
-                <Card key={index} className="overflow-hidden">
+                <Card key={index} className="overflow-hidden border-gray-500/50">
                   <div className="flex flex-col sm:flex-row">
                     <div className="p-4 flex-grow">
                       <h4 className="font-medium mb-1">{org.name}</h4>
@@ -168,7 +168,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
                         <span>{org.hours}</span>
                       </div>
                     </div>
-                    <div className="sm:w-32 p-4 bg-gray-50 flex flex-row sm:flex-col items-center justify-center gap-2 border-t sm:border-t-0 sm:border-l">
+                    <div className="sm:w-32 p-4 bg-gray-50 border-gray-500/50 flex flex-row sm:flex-col items-center justify-center gap-2 border-t sm:border-t-0 sm:border-l">
                       <Button size="sm" className="w-full hover:text-green-700">
                         Get Directions
                       </Button>
@@ -195,7 +195,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
             <h3 className="text-lg font-medium mb-3">DIY Recycling Tutorials</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {packageData.tutorials.slice(0, 4).map((tutorial: Tutorial, index: number) => (
-                <Card key={index} className="overflow-hidden hover:shadow-md transition-shadow">
+                <Card key={index} className="overflow-hidden border-gray-500/50 hover:shadow-md transition-shadow">
                   <Link href={`/tutorials/${tutorial.id}`}>
                     <div className="aspect-video overflow-hidden">
                       <img
@@ -239,7 +239,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
         </Tabs>
 
         {/* Additional Information */}
-        <Card>
+        <Card className="border-gray-500/50">
           <CardHeader>
             <CardTitle>Recycling Tips</CardTitle>
           </CardHeader>

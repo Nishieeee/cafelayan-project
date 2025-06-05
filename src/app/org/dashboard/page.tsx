@@ -22,7 +22,7 @@ import {
 } from "recharts"
 import { Package, Recycle, MapPin, TrendingUp, Building2, Download, Star, Clock, Truck } from "lucide-react"
 import { PartnershipDetailsDialog } from "@/components/partnership-details-dialog";
-
+import Link from "next/link"
 import Header from "@/components/headerNew"
 
 type DonationRequest = {
@@ -219,20 +219,22 @@ const handleViewDetails = (request: PartnershipRequest) => {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button variant="outline" className=" hover:scale-103 transition-transform duration-300 ease">
+            <Button variant="outline" className="border-gray-500/50 hover:scale-103 transition-transform duration-300 ease">
               <Download className="mr-2 h-4 w-4" />
               Export Report
             </Button>
-            {/* <Button className="bg-green-700 hover:bg-green-800 text-white">
+            <Link href="/browse">
+              <Button className="bg-green-700 hover:bg-green-800 text-white">
               <Truck className="mr-2 h-4 w-4" />
               Schedule Pickup
-            </Button> */}
+            </Button>
+            </Link>
           </div>
         </div>
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
-          <Card className="hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Donations</CardTitle>
               <Package className="h-4 w-4 text-muted-foreground" />
@@ -243,7 +245,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
             </CardContent>
           </Card>
 
-          <Card className="hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Active Donors</CardTitle>
               <Building2 className="h-4 w-4 text-muted-foreground" />
@@ -254,7 +256,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
             </CardContent>
           </Card>
 
-          <Card className="hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Cities Served</CardTitle>
               <MapPin className="h-4 w-4 text-muted-foreground" />
@@ -265,7 +267,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
             </CardContent>
           </Card>
 
-          <Card className="hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Processing Rate</CardTitle>
               <Recycle className="h-4 w-4 text-muted-foreground" />
@@ -276,7 +278,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
             </CardContent>
           </Card>
 
-          <Card className="hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">This Month</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -301,7 +303,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
           <TabsContent value="overview" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Donation Volume Over Time */}
-              <Card>
+              <Card className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Donation Volume Over Time</CardTitle>
                   <CardDescription>Monthly donations received and processed</CardDescription>
@@ -335,7 +337,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
               </Card>
 
               {/* Material Types */}
-              <Card>
+              <Card className="border-gray-500/50"> 
                 <CardHeader>
                   <CardTitle>Material Types Received</CardTitle>
                   <CardDescription>Breakdown by material category</CardDescription>
@@ -365,7 +367,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
             </div>
 
             {/* Processing Capacity */}
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Processing Capacity</CardTitle>
                 <CardDescription>Current utilization and capacity planning</CardDescription>
@@ -399,7 +401,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
 
           {/*Donors Tab */}
           <TabsContent value="donors" className="space-y-6">
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Top Donors</CardTitle>
                 <CardDescription>Brands and organizations with the most product donations</CardDescription>
@@ -407,7 +409,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
               <CardContent>
                 <div className="space-y-4">
                   {topDonors.map((donor, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:scale-103  transition-transform duration-300 ease">
+                    <div key={index} className="flex items-center justify-between border-gray-500/50 p-4 border rounded-lg hover:scale-103 hover:border-green-700 transition-all duration-300 ease">
                       <div className="flex items-center gap-4 ">
                         <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden">
                           <img
@@ -478,7 +480,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
 
           {/* Geography Tab */}
           <TabsContent value="geography" className="space-y-6">
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Donations by City</CardTitle>
                 <CardDescription>Geographic distribution of received donations</CardDescription>
@@ -522,7 +524,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
               </CardContent>
             </Card> */}
 
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Service Area Impact</CardTitle>
                 <CardDescription>Environmental impact across service areas</CardDescription>
@@ -550,7 +552,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
           <TabsContent value="partnerships" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Pending Partnership Requests */}
-              <Card>
+              <Card className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Pending Partnership Requests</CardTitle>
                   <CardDescription>New partnership requests awaiting your review</CardDescription>
@@ -595,7 +597,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
                         city: "Taguig City",
                       },
                     ].map((request, index) => (
-                      <div key={index} className="p-4 border rounded-lg space-y-3">
+                      <div key={index} className="p-4 border rounded-lg space-y-3  border-gray-500/50 hover:border-green-700 transition-colors duration-300 ease">
                         <div className="flex items-start justify-between">
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-10 bg-gray-100 rounded-lg overflow-hidden">
@@ -651,7 +653,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
               </Card>
 
               {/* Current Partnerships */}
-              <Card>
+              <Card className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Current Partnerships</CardTitle>
                   <CardDescription>Active partnerships and their status</CardDescription>
@@ -659,7 +661,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
                 <CardContent>
                   <div className="space-y-4">
                     {topDonors.slice(0, 3).map((donor, index) => (
-                      <div key={index} className="p-4 border rounded-lg">
+                      <div key={index} className="p-4 border rounded-lg border-gray-500/50 hover:border-green-700 transition-colors duration-300 ease">
                         <div className="flex items-center justify-between mb-3">
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-10 bg-gray-100 rounded-lg overflow-hidden">
@@ -766,7 +768,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
             </Card> */}
 
             {/* Partnership Benefits */}
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Partnership Benefits & Requirements</CardTitle>
                 <CardDescription>What we offer and what we expect from partners</CardDescription>
@@ -847,7 +849,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
 
           {/* Activity Tab */}
           <TabsContent value="activity" className="space-y-6">
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Recent Activity</CardTitle>
                 <CardDescription>Latest donations, pickups, and processing activities</CardDescription>
@@ -855,7 +857,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
               <CardContent>
                 <div className="space-y-4">
                   {recentActivity.map((activity, index) => (
-                    <div key={index} className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                    <div key={index} className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg ">
                       <div className="p-2 rounded-full bg-white">
                         {activity.type === "donation" && <Package className="h-4 w-4 text-blue-600" />}
                         {activity.type === "processing" && <Recycle className="h-4 w-4 text-green-600" />}
@@ -887,7 +889,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
             </Card>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card>
+              <Card className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Weekly Schedule</CardTitle>
                   <CardDescription>Upcoming pickups and processing</CardDescription>
@@ -901,7 +903,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
                       { day: "Thursday", pickups: 1, processing: "Tetra Pak" },
                       { day: "Friday", pickups: 3, processing: "PP Plastic" },
                     ].map((day, index) => (
-                      <div key={index} className="flex justify-between items-center p-3 border rounded">
+                      <div key={index} className="flex justify-between items-center p-3 border rounded  border-gray-500/50 hover:border-green-700 transition-colors duration-300 ease" >
                         <div>
                           <p className="font-medium">{day.day}</p>
                           <p className="text-sm text-gray-500">{day.processing}</p>
@@ -915,7 +917,7 @@ const handleViewDetails = (request: PartnershipRequest) => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="border-gray-500/50"> 
                 <CardHeader>
                   <CardTitle>Performance Metrics</CardTitle>
                   <CardDescription>Key performance indicators</CardDescription>

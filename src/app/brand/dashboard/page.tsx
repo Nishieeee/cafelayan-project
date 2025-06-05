@@ -96,11 +96,11 @@ export default function BrandDashboard() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button variant="outline" className=" hover:scale-103 transition-transform duration-200 ease">
+            <Button variant="outline" className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-200 ease">
               <Download className="mr-2 h-4 w-4" />
               Export Report
             </Button>
-            <Button asChild className="bg-green-700 text-white hover:scale-103 transition-transform duration-200 ease">
+            <Button variant="outline" asChild className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-200 ease">
               <Link href="/brand/products">
                 View All Products
               </Link>
@@ -110,7 +110,7 @@ export default function BrandDashboard() {
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
-          <Card className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+          <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Products</CardTitle>
               <Package className="h-4 w-4 text-muted-foreground" />
@@ -121,7 +121,7 @@ export default function BrandDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+          <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Donations</CardTitle>
               <Recycle className="h-4 w-4 text-muted-foreground" />
@@ -132,7 +132,7 @@ export default function BrandDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+          <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">QR Scans</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -143,7 +143,7 @@ export default function BrandDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+          <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Partner Organizations</CardTitle>
               <Building2 className="h-4 w-4 text-muted-foreground" />
@@ -154,7 +154,7 @@ export default function BrandDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+          <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Active Cities</CardTitle>
               <MapPin className="h-4 w-4 text-muted-foreground" />
@@ -178,7 +178,7 @@ export default function BrandDashboard() {
           <TabsContent value="overview" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Monthly Trends */}
-              <Card>
+              <Card className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Monthly Trends</CardTitle>
                   <CardDescription>QR scans and donations over time</CardDescription>
@@ -198,7 +198,7 @@ export default function BrandDashboard() {
               </Card>
 
               {/* Product Types */}
-              <Card>
+              <Card className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Product Types Donated</CardTitle>
                   <CardDescription>Breakdown by product category</CardDescription>
@@ -228,7 +228,7 @@ export default function BrandDashboard() {
             </div>
 
             {/* Conversion Rate */}
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Scan to Donation Conversion</CardTitle>
                 <CardDescription>How many scans result in actual donations</CardDescription>
@@ -257,7 +257,7 @@ export default function BrandDashboard() {
 
           {/* Organizations Tab */}
           <TabsContent value="organizations" className="space-y-6">
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Top Receiving Organizations</CardTitle>
                 <CardDescription>Organizations that received the most of your products</CardDescription>
@@ -265,7 +265,7 @@ export default function BrandDashboard() {
               <CardContent>
                 <div className="space-y-4">
                   {topOrganizations.map((org, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:scale-103 transition-transform duration-300 ease">
+                    <div key={index} className="flex items-center justify-between p-4 border rounded-lg border-gray-500/50 hover:scale-101 hover:border-green-700 transition-all duration-300 ease">
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                           <Building2 className="h-5 w-5 text-green-600" />
@@ -291,7 +291,7 @@ export default function BrandDashboard() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Organization Performance</CardTitle>
                 <CardDescription>Donations received by organization</CardDescription>
@@ -312,7 +312,7 @@ export default function BrandDashboard() {
 
           {/* Geography Tab */}
           <TabsContent value="geography" className="space-y-6">
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Cities with Most Scans</CardTitle>
                 <CardDescription>Geographic distribution of QR code scans</CardDescription>
@@ -339,7 +339,7 @@ export default function BrandDashboard() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Regional Impact</CardTitle>
                 <CardDescription>Environmental impact by region</CardDescription>
@@ -366,7 +366,7 @@ export default function BrandDashboard() {
           {/* Partnerships Tab */}
           <TabsContent value="partnerships" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card>
+              <Card className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Official Partners</CardTitle>
                   <CardDescription>Organizations with formal partnerships</CardDescription>
@@ -376,7 +376,7 @@ export default function BrandDashboard() {
                     {topOrganizations
                       .filter((org) => org.partnership === "Official")
                       .map((org, index) => (
-                        <div key={index} className="flex items-center justify-between p-3 border rounded-lg hover:scale-103 transition-transform duration-300 ease">
+                        <div key={index} className="flex items-center justify-between p-3 border rounded-lg border-gray-500/50 hover:scale-101 hover:border-green-700 transition-all duration-300 ease">
                           <div className="flex items-center gap-3">
                             <Award className="h-5 w-5 text-yellow-500" />
                             <div>
@@ -384,7 +384,7 @@ export default function BrandDashboard() {
                               <p className="text-sm text-gray-500">{org.city}</p>
                             </div>
                           </div>
-                          <Button variant="outline" size="sm" className="hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+                          <Button variant="outline" size="sm" className="hover:bg-green-700 hover:text-white border-gray-500/50 transition-color duration-300 ease">
                             <ExternalLink className="h-4 w-4" />
                           </Button>
                         </div>
@@ -393,7 +393,7 @@ export default function BrandDashboard() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Partnership Benefits</CardTitle>
                   <CardDescription>What you get with official partnerships</CardDescription>
@@ -426,7 +426,7 @@ export default function BrandDashboard() {
               </Card>
             </div>
 
-            <Card>
+            <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Request New Partnership</CardTitle>
                 <CardDescription>Connect with organizations in new cities</CardDescription>

@@ -174,7 +174,7 @@ export default function RegisterProductPage() {
             {/* Product Information */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 text-zinc-900">
                   <Package className="h-5 w-5" />
                   Product Information
                 </CardTitle>
@@ -303,13 +303,13 @@ export default function RegisterProductPage() {
           </p>
         </div>
 
-        <Card>
+        <Card className="border-gray-500/50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-gray-900">
               <Package className="h-5 w-5" />
               Product Registration Form
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-gray-500">
               Fill out the information below to register your product and generate a QR code
             </CardDescription>
           </CardHeader>
@@ -317,7 +317,7 @@ export default function RegisterProductPage() {
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <Tabs defaultValue="basic" className="w-full">
-                  <TabsList className="grid w-full grid-cols-4">
+                  <TabsList className="grid text-gray-950/80 bg-gray-300 w-full grid-cols-4">
                     <TabsTrigger value="basic">Basic Info</TabsTrigger>
                     <TabsTrigger value="material">Material</TabsTrigger>
                     <TabsTrigger value="recycling">Recycling</TabsTrigger>
@@ -332,11 +332,11 @@ export default function RegisterProductPage() {
                         name="productName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Product Name</FormLabel>
+                            <FormLabel className="text-gray-900">Product Name</FormLabel>
                             <FormControl>
-                              <Input placeholder="e.g., Cafelayan lettuce chips" {...field} />
+                              <Input placeholder="e.g., Cafelayan lettuce chips" {...field} className="border-gray-500/50"/>
                             </FormControl>
-                            <FormDescription>The full name of your product</FormDescription>
+                            <FormDescription className="text-gray-900">The full name of your product</FormDescription>
                             <FormMessage />
                           </FormItem>
                         )}
