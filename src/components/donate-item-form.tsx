@@ -158,13 +158,13 @@ export function DonateItemForm() {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className="border-gray-500/50 bg-white">
-                      <SelectItem value="Plastic">Plastic</SelectItem>
-                      <SelectItem value="Paper">Paper</SelectItem>
-                      <SelectItem value="Glass">Glass</SelectItem>
-                      <SelectItem value="Metal">Metal</SelectItem>
-                      <SelectItem value="Electronics">Electronics</SelectItem>
-                      <SelectItem value="Textiles">Textiles</SelectItem>
-                      <SelectItem value="Other">Other</SelectItem>
+                      <SelectItem value="Plastic" className="hover:bg-green-300">Plastic</SelectItem>
+                      <SelectItem value="Paper" className="hover:bg-green-300">Paper</SelectItem>
+                      <SelectItem value="Glass" className="hover:bg-green-300">Glass</SelectItem>
+                      <SelectItem value="Metal" className="hover:bg-green-300">Metal</SelectItem>
+                      <SelectItem value="Electronics" className="hover:bg-green-300">Electronics</SelectItem>
+                      <SelectItem value="Textiles" className="hover:bg-green-300">Textiles</SelectItem>
+                      <SelectItem value="Other" className="hover:bg-green-300">Other</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -201,11 +201,11 @@ export function DonateItemForm() {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className="border-gray-500/50 bg-white" >
-                      <SelectItem value="New">New</SelectItem>
-                      <SelectItem value="Like New">Like New</SelectItem>
-                      <SelectItem value="Good">Good</SelectItem>
-                      <SelectItem value="Fair">Fair</SelectItem>
-                      <SelectItem value="Clean">Clean</SelectItem>
+                      <SelectItem value="New" className="hover:bg-green-300">New</SelectItem>
+                      <SelectItem value="Like New" className="hover:bg-green-300">Like New</SelectItem>
+                      <SelectItem value="Good" className="hover:bg-green-300">Good</SelectItem>
+                      <SelectItem value="Fair" className="hover:bg-green-300">Fair</SelectItem>
+                      <SelectItem value="Clean" className="hover:bg-green-300">Clean</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />

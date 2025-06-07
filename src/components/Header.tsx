@@ -1,17 +1,18 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
-import { Recycle, Menu, Search, LogOut, Home, BookOpen, MapPin, Info, LayoutDashboard } from "lucide-react"
+import { Recycle, Menu, Search, LogOut, Home, BookOpen, MapPin, Info, LayoutDashboard, User, Trophy } from "lucide-react"
 
 import { useAuth } from "@/context/AuthContext"
 
 export default function Header() {
   const { isLoggedIn, role, logout } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isUser, setisUser] = useState(false)
 
   const handleLogout = () => {
     logout()
@@ -21,6 +22,14 @@ export default function Header() {
   const closeMobileMenu = () => {
     setMobileMenuOpen(false)
   }
+
+  useEffect(() => {
+    if(role === 'user') {
+      setisUser(true)
+    } else {
+      setisUser(false)
+    }
+  })
 
   return (
     <>
@@ -45,6 +54,15 @@ export default function Header() {
                     Home
                   </Link>
                   {isLoggedIn && (
+                    isUser ? (
+                      <Link
+                      href="/user/profile"
+                      className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                    >
+                      <User className="h-4 w-4 mr-1" />
+                      Profile
+                    </Link>
+                    ) : (
                     <Link
                       href={`/${role}/dashboard`}
                       className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
@@ -52,6 +70,7 @@ export default function Header() {
                       <LayoutDashboard className="h-4 w-4 mr-1" />
                       Dashboard
                     </Link>
+                    )
                   )}
                   <Link
                     href="/tutorials"
@@ -66,6 +85,13 @@ export default function Header() {
                   >
                     <MapPin className="h-4 w-4 mr-1" />
                     Donation Centers
+                  </Link>
+                  <Link
+                    href="/donate"
+                    className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                  >
+                    <Trophy className="h-4 w-4 mr-1" />
+                    Top Recyclers
                   </Link>
                   <Link
                     href="/about"
@@ -99,7 +125,7 @@ export default function Header() {
                     asChild
                     variant="outline"
                     size="sm"
-                    className="hover:bg-green-700 hover:text-white hover:scale-[1.03] transition-all duration-300 ease"
+                    className="border-gray-500/50 hover:bg-green-700 hover:text-white hover:scale-[1.03] transition-all duration-300 ease"
                   >
                     <Link href="/login">Log In</Link>
                   </Button>
@@ -146,15 +172,24 @@ export default function Header() {
                     </Link>
 
                     {isLoggedIn && (
+                    isUser ? (
                       <Link
-                        href={`/${role}/dashboard`}
-                        onClick={closeMobileMenu}
-                        className="flex items-center px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-md transition-colors"
-                      >
-                        <LayoutDashboard className="h-5 w-5 mr-3" />
-                        Dashboard
-                      </Link>
-                    )}
+                      href="/user/profile"
+                      className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                    >
+                      <User className="h-4 w-4 mr-1" />
+                      Profile
+                    </Link>
+                    ) : (
+                    <Link
+                      href={`/${role}/dashboard`}
+                      className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                    >
+                      <LayoutDashboard className="h-4 w-4 mr-1" />
+                      Dashboard
+                    </Link>
+                    )
+                  )}
 
                     <Link
                       href="/tutorials"
@@ -173,7 +208,13 @@ export default function Header() {
                       <MapPin className="h-5 w-5 mr-3" />
                       Donation Centers
                     </Link>
-
+                    <Link
+                      href="/donate"
+                      className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                    >
+                      <Trophy className="h-4 w-4 mr-1" />
+                      Top Recyclers
+                    </Link>
                     <Link
                       href="/about"
                       onClick={closeMobileMenu}

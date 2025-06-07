@@ -11,8 +11,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { QrCode, Facebook, Mail, Loader2 } from "lucide-react"
-
-type UserType = "brand" | "org"
+import Link from "next/link"
+type UserType = "user" | "brand" | "org"
 
 export default function SignUpPage() {
   const router = useRouter()
@@ -20,7 +20,7 @@ export default function SignUpPage() {
   // Basic fields
   const [fullName, setFullName] = useState("")
   const [email, setEmail] = useState("")
-  const [userType, setUserType] = useState<UserType>("brand")
+  const [userType, setUserType] = useState<UserType>("user")
   const [password, setPassword] = useState("")
 
   // Org extra fields
@@ -155,6 +155,7 @@ export default function SignUpPage() {
                     <SelectValue placeholder="Select your account type" />
                   </SelectTrigger>
                   <SelectContent className="bg-white">
+                    <SelectItem value="user" className="hover:bg-green-300">User</SelectItem>
                     <SelectItem value="brand" className="hover:bg-green-300">Brand</SelectItem>
                     <SelectItem value="org" className="hover:bg-green-300">Organization</SelectItem>
                   </SelectContent>
@@ -256,7 +257,38 @@ export default function SignUpPage() {
                 </div>
               </div>
             )}
+            {userType == "user" && (
+              <div className="space-y-4 pt-4 border-t border-green-100">
+                <h3 className="text-sm font-semibold text-green-800">User Details</h3>
 
+                <div className="space-y-2">
+                  <Label htmlFor="orgCity">City</Label>
+                  <Input
+                    id="orgCity"
+                    type="text"
+                    placeholder="Enter your city"
+                    value={orgCity}
+                    onChange={(e) => setOrgCity(e.target.value)}
+                    disabled={loading}
+                    required
+                    className="border-green-200 focus:border-green-500 focus:ring-green-500"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="orgDesc">Description</Label>
+                  <Textarea
+                    id="orgDesc"
+                    placeholder="Tell us about yourself"
+                    value={orgDesc}
+                    onChange={(e) => setOrgDesc(e.target.value)}
+                    disabled={loading}
+                    rows={3}
+                    className="border-green-200 focus:border-green-500 focus:ring-green-500 resize-none"
+                  />
+                </div>
+              </div>
+            )}
             {error && (
               <Alert variant="destructive">
                 <AlertDescription>{error}</AlertDescription>
@@ -311,7 +343,9 @@ export default function SignUpPage() {
           <div className="text-sm text-gray-500">
             Already have an account?{" "}
             <Button variant="link" className="p-0 text-green-700 hover:text-green-800">
-              Sign in
+              <Link href="/login">
+                sign in
+              </Link>
             </Button>
           </div>
         </CardFooter>

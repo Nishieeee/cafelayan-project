@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/context/AuthContext"
@@ -17,8 +17,9 @@ import { QrCode, Facebook, Mail } from "lucide-react"
 export default function LoginPage() {
   const { login } = useAuth()
   const router = useRouter()
-  const [role, setRole] = useState<"brand" | "org">("brand")
+  const [role, setRole] = useState<"user" | "brand" | "org">("user")
   const [name, setName] = useState("")
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -71,6 +72,7 @@ export default function LoginPage() {
                   <SelectValue placeholder="Select your account type" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
+                  <SelectItem value="user" className="hover:bg-green-300">User</SelectItem>
                   <SelectItem value="brand" className="hover:bg-green-300">Brand</SelectItem>
                   <SelectItem value="org" className="hover:bg-green-300">Organization</SelectItem>
                 </SelectContent>
@@ -122,7 +124,6 @@ export default function LoginPage() {
                 Sign up
               </Button>
             </Link>
-
           </div>
         </CardFooter>
       </Card>

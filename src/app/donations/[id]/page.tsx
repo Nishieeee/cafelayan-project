@@ -131,10 +131,10 @@ export default function DonationPage({ params }: { params: { id: string } }) {
           </div>
 
           <div className="flex gap-4 mt-6">
-            <Button variant="outline" className="flex-1 border-gray-500/50" size="sm">
+            <Button variant="outline" className="flex-1 border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease" size="sm">
               <Share2 className="mr-2 h-4 w-4" /> Share
             </Button>
-            <Button variant="outline" className="flex-1 border-gray-500/50" size="sm">
+            <Button variant="outline" className="flex-1 border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease" size="sm">
               <Flag className="mr-2 h-4 w-4" /> Report
             </Button>
           </div>
@@ -250,8 +250,8 @@ const donations = [
     donor: "Jhon Clein",
     age: "2 days",
     brand: "Cafelayan",
-    dimensions: "Approximately 5kg",
-    weight: "5kg",
+    dimensions: "Approximately 250g",
+    weight: "0.5kg",
     pickupLocation: "Zamboanga City",
     pickupAvailability: "Weekdays 8am-5pm, weekends by appointment",
     pickupNotes:
@@ -259,17 +259,17 @@ const donations = [
   },
   {
     id: "2",
-    title: "Garden Tiller",
+    title: "Aluminum cans",
     description:
-      "Manual garden tiller in good working condition. Perfect for small to medium-sized plots. Sturdy metal construction.",
-    category: "Tools",
-    condition: "Used but functional",
+      "Soda cans ready for recycling",
+    category: "Metal",
+    condition: "Good",
     location: "Quezon City",
     postedDate: "1 day ago",
     image: "/placeholder.svg?height=500&width=800",
     donor: "Juan Reyes",
     age: "3 years",
-    brand: "Local Craftsman",
+    brand: "Pepsi",
     dimensions: "80cm length, 30cm width",
     weight: "Approximately 5kg",
     pickupLocation: "Cubao, Quezon City",

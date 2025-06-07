@@ -57,14 +57,14 @@ export default function BrowsePage() {
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent className="border-gray-500/50 bg-white">
-                <SelectItem value="all">All Categories</SelectItem>
-                <SelectItem value="Tools">Farm Tools</SelectItem>
-                <SelectItem value="Seeds">Seeds & Plants</SelectItem>
-                <SelectItem value="Equipment">Equipment</SelectItem>
-                <SelectItem value="Eco-Friendly">Eco-Friendly</SelectItem>
-                <SelectItem value="Irrigation">Irrigation</SelectItem>
-                <SelectItem value="Books">Agricultural Books</SelectItem>
-                <SelectItem value="Other">Other</SelectItem>
+                <SelectItem value="all" className="hover:bg-green-300">All Categories</SelectItem>
+                <SelectItem value="Tools" className="hover:bg-green-300">Plastic</SelectItem>
+                <SelectItem value="Seeds" className="hover:bg-green-300">Metal</SelectItem>
+                <SelectItem value="Equipment" className="hover:bg-green-300">Paper</SelectItem>
+                <SelectItem value="Eco-Friendly" className="hover:bg-green-300">Glass</SelectItem>
+                <SelectItem value="Irrigation" className="hover:bg-green-300">Electronics</SelectItem>
+                <SelectItem value="Books" className="hover:bg-green-300">textiles</SelectItem>
+                <SelectItem value="Other" className="hover:bg-green-300">Other</SelectItem>
               </SelectContent>
             </Select>
             <Select value={sortBy} onValueChange={setSortBy}>
@@ -72,10 +72,10 @@ export default function BrowsePage() {
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent className="border-gray-500/50 bg-white">
-                <SelectItem value="recent">Most Recent</SelectItem>
-                <SelectItem value="oldest">Oldest First</SelectItem>
-                <SelectItem value="az">A-Z</SelectItem>
-                <SelectItem value="za">Z-A</SelectItem>
+                <SelectItem value="recent" className="hover:bg-green-300">Most Recent</SelectItem>
+                <SelectItem value="oldest" className="hover:bg-green-300">Oldest First</SelectItem>
+                <SelectItem value="az" className="hover:bg-green-300">A-Z</SelectItem>
+                <SelectItem value="za" className="hover:bg-green-300">Z-A</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -167,31 +167,31 @@ export default function BrowsePage() {
 const donations = [
   {
     id: "1",
-    title: "Organic Rice Seeds",
-    description: "High-quality organic rice seeds suitable for lowland farming. Approximately 5kg of seeds available.",
-    category: "Seeds",
+    title: "Cafelayan lettuce Chips - package",
+    description: "Reusable packages",
+    category: "Food",
     condition: "Good condition",
-    location: "Laguna Province",
+    location: "Zamboanga City",
     postedDate: "2 days ago",
     image: "/placeholder.svg?height=300&width=300",
   },
   {
     id: "2",
-    title: "Garden Tiller",
+    title: "Aluminum cans",
     description:
-      "Manual garden tiller in good working condition. Perfect for small to medium-sized plots. Sturdy metal construction.",
-    category: "Tools",
-    condition: "Used but functional",
+      "Soda cans redy for recycling",
+    category: "Metal",
+    condition: "Good",
     location: "Quezon City",
     postedDate: "1 day ago",
     image: "/placeholder.svg?height=300&width=300",
   },
   {
     id: "3",
-    title: "Bamboo Plant Holders",
+    title: "Plastic Water Bottles",
     description:
-      "Set of 10 handcrafted bamboo plant holders. Eco-friendly alternative to plastic pots. Various sizes available.",
-    category: "Eco-Friendly",
+      "50 used plastice water bottle",
+    category: "Plastic",
     condition: "New",
     location: "Cebu City",
     postedDate: "3 days ago",
@@ -199,10 +199,10 @@ const donations = [
   },
   {
     id: "4",
-    title: "Vermicompost Starter Kit",
+    title: "Glass Jars",
     description:
-      "Complete vermicompost starter kit with worms, bedding material, and instructions. Great for organic gardening.",
-    category: "Eco-Friendly",
+      "Clean food jars with lids",
+    category: "Glass",
     condition: "New",
     location: "Davao City",
     postedDate: "5 days ago",
@@ -210,44 +210,12 @@ const donations = [
   },
   {
     id: "5",
-    title: "Agricultural Books Collection",
+    title: "Carton Boxes",
     description:
-      "Collection of 8 books on sustainable farming practices in the Philippines. Covers crop rotation, pest management, and more.",
-    category: "Books",
+      "Flattened boxes in usable condition",
+    category: "Carton",
     condition: "Excellent",
     location: "Iloilo City",
-    postedDate: "1 week ago",
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: "6",
-    title: "Solar Water Pump",
-    description:
-      "Small solar-powered water pump for irrigation. Perfect for areas without reliable electricity. Includes solar panel.",
-    category: "Irrigation",
-    condition: "Like new",
-    location: "Batangas Province",
-    postedDate: "4 days ago",
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: "7",
-    title: "Coconut Husk Planters",
-    description:
-      "Set of 20 coconut husk planters. Biodegradable and perfect for seedlings. Locally made from recycled materials.",
-    category: "Eco-Friendly",
-    condition: "New",
-    location: "Bohol Province",
-    postedDate: "2 weeks ago",
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: "8",
-    title: "Bamboo Trellis Set",
-    description: "Set of 5 bamboo trellises for climbing plants. Sustainable alternative to plastic or metal options.",
-    category: "Tools",
-    condition: "Good condition",
-    location: "Pampanga Province",
     postedDate: "1 week ago",
     image: "/placeholder.svg?height=300&width=300",
   },

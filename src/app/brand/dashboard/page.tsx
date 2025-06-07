@@ -24,8 +24,6 @@ import { Package, Recycle, MapPin, TrendingUp, Building2, Award, Plus, ExternalL
 import { PartnershipRequestDialog } from "@/components/partnership-request-dialog"
 import Link from "next/link"
 
-import Header from "@/components/headerNew"
-
 export default function BrandDashboard() {
   const [showPartnershipDialog, setShowPartnershipDialog] = useState(false)
 
@@ -77,7 +75,6 @@ export default function BrandDashboard() {
 
   return (
     <>
-    <Header />
     <div className="container py-8 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -167,8 +164,9 @@ export default function BrandDashboard() {
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="donors">Top Donors</TabsTrigger>
             <TabsTrigger value="organizations">Organizations</TabsTrigger>
             <TabsTrigger value="geography">Geography</TabsTrigger>
             <TabsTrigger value="partnerships">Partnerships</TabsTrigger>

@@ -149,8 +149,8 @@ export default function DonatePage() {
 function getMockOrganizations() {
   return [
     {
-      name: "Green Manila Initiative",
-      location: "Makati City, Metro Manila",
+      name: "Kids Who Farm",
+      location: "Zamboanga City",
       rating: 4.8,
       phone: "+63 2 8123 4567",
       hours: "Mon-Fri 8AM-5PM",
@@ -159,7 +159,7 @@ function getMockOrganizations() {
     },
     {
       name: "EcoHub Philippines",
-      location: "Taguig City, Metro Manila",
+      location: "Taguig City",
       rating: 4.6,
       phone: "+63 2 8234 5678",
       hours: "Daily 7AM-7PM",
@@ -168,7 +168,7 @@ function getMockOrganizations() {
     },
     {
       name: "Recycle Center BGC",
-      location: "Bonifacio Global City, Taguig",
+      location: "Bonifacio Global City",
       rating: 4.9,
       phone: "+63 2 8345 6789",
       hours: "Mon-Sat 9AM-6PM",
@@ -177,7 +177,7 @@ function getMockOrganizations() {
     },
     {
       name: "Quezon City Waste Management",
-      location: "Quezon City, Metro Manila",
+      location: "Quezon City",
       rating: 4.4,
       phone: "+63 2 8456 7890",
       hours: "Mon-Fri 6AM-4PM",

@@ -1,11 +1,10 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { QrCode, Recycle, MapPin } from "lucide-react"
-import Header from "@/components/headerNew";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { QrCode, Recycle, MapPin } from "lucide-react";
 export default function LandingPage() {
   return (
     <>
-      <Header />
+
       {/* Hero Section */}
       <header className="bg-gradient-to-r from-green-50 to-emerald-50 py-20">
         <div className="container px-4 md:px-6">
@@ -93,9 +92,12 @@ export default function LandingPage() {
       <section className="py-20 bg-gray-50">
         <div className="container px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Try Our Demo</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Try Our Demo
+            </h2>
             <p className="text-gray-600 mb-8">
-              See how the platform works by trying our demo with a sample plastic bottle package.
+              See how the platform works by trying our demo with a sample
+              plastic bottle package.
             </p>
             <div className="bg-white p-8 rounded-lg shadow-sm border">
               <div className="flex flex-col md:flex-row items-center gap-6">
@@ -107,12 +109,20 @@ export default function LandingPage() {
                   />
                 </div>
                 <div className="flex-grow text-center md:text-left">
-                  <h3 className="text-xl font-bold mb-2">AquaPure 500ml Plastic Bottle</h3>
+                  <h3 className="text-xl font-bold mb-2">
+                    AquaPure 500ml Plastic Bottle
+                  </h3>
                   <p className="text-gray-600 mb-4">
-                    Experience how users will see recycling options after scanning a QR code on this plastic bottle.
+                    Experience how users will see recycling options after
+                    scanning a QR code on this plastic bottle.
                   </p>
-                  <Button asChild className="bg-green-700 text-white hover:bg-green-800 hover:scale-103 transition-all duration-300 ease">
-                    <Link href="/package/demo-bottle-001">View Demo Package</Link>
+                  <Button
+                    asChild
+                    className="bg-green-700 text-white hover:bg-green-800 hover:scale-103 transition-all duration-300 ease"
+                  >
+                    <Link href="/package/demo-bottle-001">
+                      View Demo Package
+                    </Link>
                   </Button>
                 </div>
               </div>
