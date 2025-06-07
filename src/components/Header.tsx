@@ -87,7 +87,7 @@ export default function Header() {
                     Donation Centers
                   </Link>
                   <Link
-                    href="/donate"
+                    href="/leaderboards"
                     className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
                   >
                     <Trophy className="h-4 w-4 mr-1" />
@@ -209,7 +209,7 @@ export default function Header() {
                       Donation Centers
                     </Link>
                     <Link
-                      href="/donate"
+                      href="/leaderboards"
                       className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
                     >
                       <Trophy className="h-4 w-4 mr-1" />

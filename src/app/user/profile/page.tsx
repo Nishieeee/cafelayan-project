@@ -308,7 +308,6 @@ export default function UserProfilePage() {
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
             <TabsTrigger value="requests">Organization Requests</TabsTrigger>
-            <TabsTrigger value="achievements">Achievements</TabsTrigger>
           </TabsList>
 
           {/* Overview Tab */}
