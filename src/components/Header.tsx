@@ -40,7 +40,7 @@ export default function Header() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
                 <Recycle className="h-6 w-6 text-green-600 mr-2" />
-                <span className="font-bold text-xl text-gray-900">Cafelayan Prototype</span>
+                <span className="font-bold text-xl text-gray-900">LoopLinkEco</span>
               </Link>
 
               {/* Desktop Navigation */}

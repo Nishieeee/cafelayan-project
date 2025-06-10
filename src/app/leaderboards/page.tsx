@@ -89,7 +89,7 @@ export default function () {
     },
     {
       rank: 4,
-      name: "Rita's Mushroom Chips",
+      name: "Ruru's Mushroom Chips",
       avatar: "/placeholder.svg?height=40&width=40",
       donations: 127,
       weight: 45.2,
@@ -195,7 +195,7 @@ export default function () {
         </div>
         {/* Leaderboards */}
         <Tabs defaultValue="community" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 bg-gray-500">
+          <TabsList className="grid w-full grid-cols-3 bg-gray-300/20">
             <TabsTrigger value="community">Commuity</TabsTrigger>
             <TabsTrigger value="brands">Brands</TabsTrigger>
             <TabsTrigger value="organization">Organization</TabsTrigger>
@@ -216,11 +216,7 @@ export default function () {
                       {communityLeaderboardData.map((user, index) => (
                         <div
                           key={index}
-                          className={`flex items-center justify-between p-4 rounded-lg border border-gray-500/50 ${
-                            user.isCurrentUser
-                              ? "bg-blue-50 border-blue-200"
-                              : "bg-white"
-                          } hover:scale-102 hover:border-green-700 transition-all duration-300 ease`}
+                          className="flex items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
                         >
                           <div className="flex items-center gap-4">
                             <div className="w-12 h-12 flex items-center justify-center">
@@ -241,9 +237,7 @@ export default function () {
                             <div>
                               <h4 className="font-medium flex items-center gap-2">
                                 {user.name}
-                                {user.isCurrentUser && (
-                                  <Badge variant="outline">You</Badge>
-                                )}
+                                
                               </h4>
                               <Badge
                                 variant="outline"
@@ -286,11 +280,7 @@ export default function () {
                       {brandLeaderboardsdata.map((user, index) => (
                         <div
                           key={index}
-                          className={`flex items-center justify-between p-4 rounded-lg border border-gray-500/50 ${
-                            user.isCurrentUser
-                              ? "bg-blue-50 border-blue-200"
-                              : "bg-white"
-                          } hover:scale-102 hover:border-green-700 transition-all duration-300 ease`}
+                          className="flex items-center justify-between p-4 rounded-lg border border-gray-500/50  hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
                         >
                           <div className="flex items-center gap-4">
                             <div className="w-12 h-12 flex items-center justify-center">
@@ -311,9 +301,6 @@ export default function () {
                             <div>
                               <h4 className="font-medium flex items-center gap-2">
                                 {user.name}
-                                {user.isCurrentUser && (
-                                  <Badge variant="outline">You</Badge>
-                                )}
                               </h4>
                               <Badge
                                 variant="outline"
@@ -356,11 +343,7 @@ export default function () {
                       {organizationLeaderboards.map((user, index) => (
                         <div
                           key={index}
-                          className={`flex items-center justify-between p-4 rounded-lg border border-gray-500/50 ${
-                            user.isCurrentUser
-                              ? "bg-blue-50 border-blue-200"
-                              : "bg-white"
-                          } hover:scale-102 hover:border-green-700 transition-all duration-300 ease`}
+                          className="flex items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
                         >
                           <div className="flex items-center gap-4">
                             <div className="w-12 h-12 flex items-center justify-center">
@@ -381,9 +364,6 @@ export default function () {
                             <div>
                               <h4 className="font-medium flex items-center gap-2">
                                 {user.name}
-                                {user.isCurrentUser && (
-                                  <Badge variant="outline">You</Badge>
-                                )}
                               </h4>
                               <Badge
                                 variant="outline"

@@ -43,9 +43,36 @@ import {
 } from "lucide-react";
 import { PartnershipRequestDialog } from "@/components/partnership-request-dialog";
 import Link from "next/link";
+import  {DonatorDetails}  from "@/components/donator-details";
+
+export type DonatorRequest = {
+  donorName: string
+  city: string
+  image: string
+  rank: string
+  email: string 
+  phone: string
+}
 
 export default function BrandDashboard() {
+
+  const donorDummy: DonatorRequest = {
+    donorName: "John Doe",
+    city: "Zamboanga City",
+    image: "/placeholder.svg?height=40&width=40",
+    rank: "Eco Guardian",
+    email: "johnDoe@test.com", 
+    phone: "0912345678",
+  }
+
   const [showPartnershipDialog, setShowPartnershipDialog] = useState(false);
+  const [showDonatorDetails, setShowDonatorDetails] = useState(false)
+  const [selectedRequest, setSelectedRequest] = useState<DonatorRequest|null>(null)
+
+  const HandleViewDetails = (request: DonatorRequest) => {
+    setSelectedRequest(request)
+    setShowDonatorDetails(true)
+  }
 
   // Mock data - would come from API
   const brandData = {
@@ -123,7 +150,7 @@ export default function BrandDashboard() {
       donations: 234,
       weight: 89.5,
       level: "Eco Guardian",
-      isCurrentUser: false,
+
     },
     {
       rank: 2,
@@ -132,7 +159,7 @@ export default function BrandDashboard() {
       donations: 198,
       weight: 76.2,
       level: "Forest Friend",
-      isCurrentUser: false,
+
     },
     {
       rank: 3,
@@ -141,7 +168,7 @@ export default function BrandDashboard() {
       donations: 167,
       weight: 62.8,
       level: "Forest Friend",
-      isCurrentUser: false,
+
     },
     {
       rank: 4,
@@ -150,7 +177,7 @@ export default function BrandDashboard() {
       donations: 127,
       weight: 45.2,
       level: "Young Tree",
-      isCurrentUser: true,
+
     },
     {
       rank: 5,
@@ -159,7 +186,7 @@ export default function BrandDashboard() {
       donations: 112,
       weight: 41.7,
       level: "Sapling",
-      isCurrentUser: false,
+
     },
   ];
 
@@ -318,8 +345,8 @@ export default function BrandDashboard() {
             </Card>
           </div>
 
-          <Tabs defaultValue="overview" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-5">
+          <Tabs defaultValue="overview" className="space-y-6 ">
+            <TabsList className="grid w-full grid-cols-5 bg-gray-300/20">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="donors">Top Donors</TabsTrigger>
               <TabsTrigger value="organizations">Organizations</TabsTrigger>
@@ -528,11 +555,7 @@ export default function BrandDashboard() {
                     {leaderboardData.map((user, index) => (
                       <div
                         key={index}
-                        className={`flex items-center justify-between p-4 rounded-lg border border-gray-500/50 ${
-                          user.isCurrentUser
-                            ? "bg-blue-50 border-blue-200"
-                            : "bg-white"
-                        } hover:scale-102 hover:border-green-700 transition-all duration-300 ease`}
+                        className="flex items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:border-green-700 hover:scale-102 transition-all duration-300 ease"
                       >
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 flex items-center justify-center">
@@ -553,9 +576,6 @@ export default function BrandDashboard() {
                           <div>
                             <h4 className="font-medium flex items-center gap-2">
                               {user.name}
-                              {user.isCurrentUser && (
-                                <Badge variant="outline">You</Badge>
-                              )}
                             </h4>
                             <Badge
                               variant="outline"
@@ -577,6 +597,7 @@ export default function BrandDashboard() {
                           <Button
                               variant="outline"
                               size="sm"
+                              onClick={() => HandleViewDetails(donorDummy)}
                               className="hover:bg-green-700 hover:text-white border-gray-500/50 transition-color duration-300 ease m-1"
                             >
                               <User className="h-4 w-4" />
@@ -789,6 +810,10 @@ export default function BrandDashboard() {
             onOpenChange={setShowPartnershipDialog}
             brandName={brandData.name}
           />
+          <DonatorDetails 
+            open={showDonatorDetails}
+            onOpenChange={setShowDonatorDetails}
+            request={selectedRequest ?? donorDummy}/>
         </div>
       </div>
     </>

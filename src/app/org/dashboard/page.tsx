@@ -39,7 +39,7 @@ import {
 } from "lucide-react";
 import { PartnershipDetailsDialog } from "@/components/partnership-details-dialog";
 import Link from "next/link";
-import Header from "@/components/Header";
+
 
 type DonationRequest = {
   type: "donation";
