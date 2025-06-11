@@ -18,7 +18,7 @@ export default function DonationPage({ params }: { params: { id: string } }) {
     return (
       <div className="container py-12 px-4 md:px-6 text-center">
         <h1 className="text-2xl font-bold mb-4">Donation Not Found</h1>
-        <p className="mb-6">The donation you're looking for doesn't exist or has been removed.</p>
+        <p className="mb-6">The donation you&apos;re looking for doesn&apos;t exist or has been removed.</p>
         <Button asChild>
           <Link href="/browse">
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Browse

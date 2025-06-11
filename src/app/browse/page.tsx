@@ -145,7 +145,7 @@ export default function BrowsePage() {
           </div>
           <h3 className="text-lg font-medium text-gray-900 mb-2">No donations found</h3>
           <p className="text-gray-600 max-w-md mx-auto mb-6">
-            We couldn't find any donations matching your search criteria. Try adjusting your filters or search term.
+            We couldn&apos;t find any donations matching your search criteria. Try adjusting your filters or search term.
           </p>
           <Button
             variant="outline"

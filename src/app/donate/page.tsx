@@ -10,10 +10,19 @@ import { MapPin, Phone, Clock, Navigation, Star } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { DonateItemForm } from "@/components/donate-item-form"
 
+interface Organizations {
+      name: string
+      location: string
+      rating: number
+      phone: string
+      hours: string
+      acceptedMaterials: string[],
+      description: string
+}
 export default function DonatePage() {
   const searchParams = useSearchParams()
   const packageId = searchParams.get("package")
-  const [organizations, setOrganizations] = useState<any[]>([])
+  const [organizations, setOrganizations] = useState<Organizations[]>([])
   const [searchLocation, setSearchLocation] = useState("")
 
   useEffect(() => {

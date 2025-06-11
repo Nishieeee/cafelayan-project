@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Check, Loader2, Upload, QrCode, Download, Eye, Package, Recycle, ArrowLeft } from "lucide-react"
+import { Check, Loader2, Upload, QrCode, Download, Package, Recycle, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { QRCodeSVG } from "qrcode.react"
 import { useAuth } from "@/context/AuthContext"

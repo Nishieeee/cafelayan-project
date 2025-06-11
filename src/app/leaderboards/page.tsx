@@ -2,7 +2,6 @@ import { Trophy, Medal } from "lucide-react";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -10,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export default function () {
+export default function Leaderboard() {
   const communityLeaderboardData = [
     {
       rank: 1,

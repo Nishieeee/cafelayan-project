@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/context/AuthContext"
@@ -118,7 +118,7 @@ export default function LoginPage() {
             Forgot your password?
           </Button>
           <div className="mt-2 text-sm text-gray-500">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/signup">
               <Button variant="link" className="p-0 text-green-700 hover:text-green-800">
                 Sign up
