@@ -43,10 +43,41 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
+interface DonationRequest {
+  id: string;
+  organizationName: string;
+  contactPerson: string;
+  email: string;
+  phone: string;
+  message: string;
+  requestDate: string;
+  status: string;
+  logo: string;
+  approvedDate?: string;
+  rejectedDate?: string;
+}
+
+interface Donation {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  quantity: string;
+  weight: number;
+  location: string;
+  postedDate: string;
+  image: string;
+  status: string;
+  requests: DonationRequest[];
+}
+
+
+
+
 export default function MyDonationsPage() {
   const [searchTerm, setSearchTerm] = useState("")
-  const [selectedDonation, setSelectedDonation] = useState<any>(null)
-  const [selectedRequest, setSelectedRequest] = useState<any>(null)
+  const [selectedDonation, setSelectedDonation] = useState<Donation | null>(null);
+  const [selectedRequest, setSelectedRequest] = useState<DonationRequest | null>(null);
   const [showApproveDialog, setShowApproveDialog] = useState(false)
   const [showRejectDialog, setShowRejectDialog] = useState(false)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
@@ -208,24 +239,31 @@ export default function MyDonationsPage() {
   }
 
   const confirmApprove = () => {
-    console.log("Approved request:", selectedRequest.id, "for donation:", selectedDonation.id)
-    setShowApproveDialog(false)
-    setSelectedDonation(null)
-    setSelectedRequest(null)
+  if (selectedRequest && selectedDonation) {
+    console.log("Approved request:", selectedRequest.id, "for donation:", selectedDonation.id);
   }
+  setShowApproveDialog(false);
+  setSelectedDonation(null);
+  setSelectedRequest(null);
+};
 
-  const confirmReject = () => {
-    console.log("Rejected request:", selectedRequest.id, "for donation:", selectedDonation.id)
-    setShowRejectDialog(false)
-    setSelectedDonation(null)
-    setSelectedRequest(null)
+const confirmReject = () => {
+  if (selectedRequest && selectedDonation) {
+    console.log("Rejected request:", selectedRequest.id, "for donation:", selectedDonation.id);
   }
+  setShowRejectDialog(false);
+  setSelectedDonation(null);
+  setSelectedRequest(null);
+};
 
-  const confirmDelete = () => {
-    console.log("Deleted donation:", selectedDonation.id)
-    setShowDeleteDialog(false)
-    setSelectedDonation(null)
+const confirmDelete = () => {
+  if (selectedDonation) {
+    console.log("Deleted donation:", selectedDonation.id);
   }
+  setShowDeleteDialog(false);
+  setSelectedDonation(null);
+};
+
 
   const getStatusColor = (status: string) => {
     switch (status) {

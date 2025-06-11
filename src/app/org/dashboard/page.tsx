@@ -67,7 +67,7 @@ type PickupRequest = {
   time: string;
 };
 
-type RequestDetails = DonationRequest | ProcessingRequest | PickupRequest;
+// type RequestDetails = DonationRequest | ProcessingRequest | PickupRequest;
 
 export type PartnershipRequest = {
   brandName: string;
@@ -84,11 +84,11 @@ export type PartnershipRequest = {
   companySize?: string;
   sustainabilityGoals?: string;
 };
-interface PartnershipDetailsDialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  request: PartnershipRequest;
-}
+// interface PartnershipDetailsDialogProps {
+//   open: boolean;
+//   onOpenChange: (open: boolean) => void;
+//   request: PartnershipRequest;
+// }
 export default function OrganizationDashboard() {
   // Mock data - would come from API
   const organizationData = {

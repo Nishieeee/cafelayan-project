@@ -267,7 +267,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
 
 // Mock function to get package data (would be replaced with API call)
 function getPackageData(packageId: string): PackageData | null {
-  const packages: { [key: string]: any } = {
+  const packages: { [key: string]: PackageData } = {
     "demo-plastic-001": {
       name: "Cafelayan Lettuce Chips - Package",
       brand: "Cafelayan Lettuce Chips",

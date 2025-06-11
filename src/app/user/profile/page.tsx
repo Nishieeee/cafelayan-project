@@ -1,19 +1,25 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Progress } from "@/components/ui/progress"
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Progress } from "@/components/ui/progress";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,7 +29,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
+} from "@/components/ui/alert-dialog";
 import {
   User,
   Award,
@@ -45,13 +51,30 @@ import {
   Gift,
   Edit,
   Settings,
-} from "lucide-react"
-import Link from "next/link"
+} from "lucide-react";
+import Link from "next/link";
+
+interface Organization {
+  id: string
+  organizationName: string
+  contactPerson: string
+  email: string
+  phone: string
+  location: string
+  requestDate: string
+  requestType: string
+  expectedVolume: string
+  description: string
+  materials: string[];
+  certifications: string[];
+  website: string
+  status: string
+}
 
 export default function UserProfilePage() {
-  const [selectedRequest, setSelectedRequest] = useState<any>(null)
-  const [showApproveDialog, setShowApproveDialog] = useState(false)
-  const [showRejectDialog, setShowRejectDialog] = useState(false)
+  const [selectedRequest, setSelectedRequest] = useState<Organization | null>(null);
+  const [showApproveDialog, setShowApproveDialog] = useState(false);
+  const [showRejectDialog, setShowRejectDialog] = useState(false);
 
   // Mock user data
   const userData = {
@@ -106,7 +129,7 @@ export default function UserProfilePage() {
         status: "Completed",
       },
     ],
-  }
+  };
 
   // Mock leaderboard data
   const leaderboardData = [
@@ -155,7 +178,7 @@ export default function UserProfilePage() {
       level: "Sapling",
       isCurrentUser: false,
     },
-  ]
+  ];
 
   // Mock organization requests
   const organizationRequests = [
@@ -210,57 +233,61 @@ export default function UserProfilePage() {
       website: "https://davaorecycling.ph",
       status: "Pending",
     },
-  ]
+  ];
 
   const handleApproveRequest = (request: any) => {
-    setSelectedRequest(request)
-    setShowApproveDialog(true)
-  }
+    setSelectedRequest(request);
+    setShowApproveDialog(true);
+  };
 
   const handleRejectRequest = (request: any) => {
-    setSelectedRequest(request)
-    setShowRejectDialog(true)
-  }
+    setSelectedRequest(request);
+    setShowRejectDialog(true);
+  };
 
-  const confirmApprove = () => {
-    console.log("Approved request:", selectedRequest.id)
-    setShowApproveDialog(false)
-    setSelectedRequest(null)
-  }
+ const confirmApprove = () => {
+  if (!selectedRequest) return;
 
-  const confirmReject = () => {
-    console.log("Rejected request:", selectedRequest.id)
-    setShowRejectDialog(false)
-    setSelectedRequest(null)
-  }
+  console.log("Approved request:", selectedRequest.id);
+  setShowApproveDialog(false);
+  setSelectedRequest(null);
+};
+
+const confirmReject = () => {
+  if (!selectedRequest) return;
+
+  console.log("Rejected request:", selectedRequest.id);
+  setShowRejectDialog(false);
+  setSelectedRequest(null);
+};
 
   const getLevelColor = (level: string) => {
     switch (level) {
       case "Eco Guardian":
-        return "bg-emerald-500 text-emerald-800 border-emerald-200"
+        return "bg-emerald-500 text-emerald-800 border-emerald-200";
       case "Forest Friend":
-        return "bg-green-400 text-green-800 border-green-200"
+        return "bg-green-400 text-green-800 border-green-200";
       case "Young Tree":
-        return "bg-emerald-400 text-green-200 border-green-200"
+        return "bg-emerald-400 text-green-200 border-green-200";
       case "Sapling":
-        return "bg-lime-100 text-lime-800 border-lime-200"
+        return "bg-lime-100 text-lime-800 border-lime-200";
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200"
+        return "bg-gray-100 text-gray-800 border-gray-200";
     }
-  }
+  };
 
   const getRankIcon = (rank: number) => {
     switch (rank) {
       case 1:
-        return <Trophy className="h-5 w-5 text-yellow-500" />
+        return <Trophy className="h-5 w-5 text-yellow-500" />;
       case 2:
-        return <Medal className="h-5 w-5 text-gray-400" />
+        return <Medal className="h-5 w-5 text-gray-400" />;
       case 3:
-        return <Medal className="h-5 w-5 text-amber-600" />
+        return <Medal className="h-5 w-5 text-amber-600" />;
       default:
-        return <span className="text-lg font-bold text-gray-600">#{rank}</span>
+        return <span className="text-lg font-bold text-gray-600">#{rank}</span>;
     }
-  }
+  };
 
   return (
     <div className="container py-8 px-4 md:px-6">
@@ -269,7 +296,10 @@ export default function UserProfilePage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div className="flex items-center gap-4">
             <Avatar className="w-20 h-20">
-              <AvatarImage src={userData.avatar || "/placeholder.svg"} alt={userData.name} />
+              <AvatarImage
+                src={userData.avatar || "/placeholder.svg"}
+                alt={userData.name}
+              />
               <AvatarFallback>
                 {userData.name
                   .split(" ")
@@ -278,7 +308,9 @@ export default function UserProfilePage() {
               </AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">{userData.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-900">
+                {userData.name}
+              </h1>
               <div className="flex items-center gap-4 text-gray-600 mt-1">
                 <div className="flex items-center gap-1">
                   <MapPin className="h-4 w-4" />
@@ -286,7 +318,9 @@ export default function UserProfilePage() {
                 </div>
                 <div className="flex items-center gap-1">
                   <Calendar className="h-4 w-4" />
-                  <span>Joined {new Date(userData.joinDate).toLocaleDateString()}</span>
+                  <span>
+                    Joined {new Date(userData.joinDate).toLocaleDateString()}
+                  </span>
                 </div>
               </div>
             </div>
@@ -316,45 +350,69 @@ export default function UserProfilePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Donations</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    Total Donations
+                  </CardTitle>
                   <Recycle className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{userData.totalDonations}</div>
-                  <p className="text-xs text-muted-foreground">+12 this month</p>
+                  <div className="text-2xl font-bold">
+                    {userData.totalDonations}
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    +12 this month
+                  </p>
                 </CardContent>
               </Card>
 
               <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Weight Donated</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    Weight Donated
+                  </CardTitle>
                   <TrendingUp className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{userData.totalWeight} kg</div>
-                  <p className="text-xs text-muted-foreground">+4.2 kg this month</p>
+                  <div className="text-2xl font-bold">
+                    {userData.totalWeight} kg
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    +4.2 kg this month
+                  </p>
                 </CardContent>
               </Card>
 
               <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">CO₂ Saved</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    CO₂ Saved
+                  </CardTitle>
                   <Leaf className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{userData.co2Saved} kg</div>
-                  <p className="text-xs text-muted-foreground">Environmental impact</p>
+                  <div className="text-2xl font-bold">
+                    {userData.co2Saved} kg
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Environmental impact
+                  </p>
                 </CardContent>
               </Card>
 
               <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Current Streak</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    Current Streak
+                  </CardTitle>
                   <Target className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{userData.currentStreak} days</div>
-                  <p className="text-xs text-muted-foreground">Longest: {userData.longestStreak} days</p>
+                  <div className="text-2xl font-bold">
+                    {userData.currentStreak} days
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Longest: {userData.longestStreak} days
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -367,14 +425,21 @@ export default function UserProfilePage() {
                     <Award className="h-5 w-5" />
                     Level Progress
                   </CardTitle>
-                  <CardDescription>Your journey to becoming a recycling champion</CardDescription>
+                  <CardDescription>
+                    Your journey to becoming a recycling champion
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <Badge variant="outline" className={getLevelColor(userData.level)}>
+                    <Badge
+                      variant="outline"
+                      className={getLevelColor(userData.level)}
+                    >
                       {userData.level}
                     </Badge>
-                    <span className="text-sm text-gray-500">Next: {userData.nextLevel}</span>
+                    <span className="text-sm text-gray-500">
+                      Next: {userData.nextLevel}
+                    </span>
                   </div>
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
@@ -384,7 +449,8 @@ export default function UserProfilePage() {
                     <Progress value={userData.levelProgress} className="h-2" />
                   </div>
                   <div className="text-sm text-gray-600">
-                    {100 - userData.levelProgress}% more to reach {userData.nextLevel}
+                    {100 - userData.levelProgress}% more to reach{" "}
+                    {userData.nextLevel}
                   </div>
                 </CardContent>
               </Card>
@@ -396,22 +462,30 @@ export default function UserProfilePage() {
                     <Leaf className="h-5 w-5" />
                     Environmental Impact
                   </CardTitle>
-                  <CardDescription>Your contribution to a greener planet</CardDescription>
+                  <CardDescription>
+                    Your contribution to a greener planet
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="text-center p-3 bg-green-50 rounded-lg">
-                      <div className="text-lg font-bold text-green-700">{userData.co2Saved} kg</div>
-                      <div className="text-xs text-gray-600">CO₂ Emissions Saved</div>
+                      <div className="text-lg font-bold text-green-700">
+                        {userData.co2Saved} kg
+                      </div>
+                      <div className="text-xs text-gray-600">
+                        CO₂ Emissions Saved
+                      </div>
                     </div>
                     <div className="text-center p-3 bg-blue-50 rounded-lg">
-                      <div className="text-lg font-bold text-blue-700">{userData.waterSaved}L</div>
+                      <div className="text-lg font-bold text-blue-700">
+                        {userData.waterSaved}L
+                      </div>
                       <div className="text-xs text-gray-600">Water Saved</div>
                     </div>
                   </div>
                   <div className="text-sm text-gray-600">
-                    Your recycling efforts have saved enough energy to power a home for{" "}
-                    <span className="font-medium">3.2 days</span>!
+                    Your recycling efforts have saved enough energy to power a
+                    home for <span className="font-medium">3.2 days</span>!
                   </div>
                 </CardContent>
               </Card>
@@ -421,12 +495,17 @@ export default function UserProfilePage() {
             <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Recent Donations</CardTitle>
-                <CardDescription>Your latest recycling contributions</CardDescription>
+                <CardDescription>
+                  Your latest recycling contributions
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {userData.recentDonations.map((donation, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border border-gray-500/50 rounded-lg">
+                    <div
+                      key={index}
+                      className="flex items-center justify-between p-4 border border-gray-500/50 rounded-lg"
+                    >
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                           <Recycle className="h-5 w-5 text-green-600" />
@@ -441,16 +520,25 @@ export default function UserProfilePage() {
                         </div>
                       </div>
                       <div className="text-right">
-                        <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                        <Badge
+                          variant="outline"
+                          className="bg-green-50 text-green-700 border-green-200"
+                        >
                           {donation.status}
                         </Badge>
-                        <p className="text-sm text-gray-500 mt-1">{new Date(donation.date).toLocaleDateString()}</p>
+                        <p className="text-sm text-gray-500 mt-1">
+                          {new Date(donation.date).toLocaleDateString()}
+                        </p>
                       </div>
                     </div>
                   ))}
                 </div>
                 <div className="text-center mt-6 border-gray-500/50">
-                  <Button variant="outline" asChild className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+                  <Button
+                    variant="outline"
+                    asChild
+                    className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease"
+                  >
                     <Link href="/user/my-donations">View All Donations</Link>
                   </Button>
                 </div>
@@ -466,7 +554,9 @@ export default function UserProfilePage() {
                   <Trophy className="h-5 w-5" />
                   Community Leaderboard
                 </CardTitle>
-                <CardDescription>Top recyclers in your area this month</CardDescription>
+                <CardDescription>
+                  Top recyclers in your area this month
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -474,13 +564,20 @@ export default function UserProfilePage() {
                     <div
                       key={index}
                       className={`flex items-center justify-between p-4 rounded-lg border border-gray-500/50 ${
-                        user.isCurrentUser ? "bg-blue-50 border-blue-200" : "bg-white" 
+                        user.isCurrentUser
+                          ? "bg-blue-50 border-blue-200"
+                          : "bg-white"
                       } hover:scale-102 hover:border-green-700 transition-all duration-300 ease`}
                     >
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 flex items-center justify-center">{getRankIcon(user.rank)}</div>
+                        <div className="w-12 h-12 flex items-center justify-center">
+                          {getRankIcon(user.rank)}
+                        </div>
                         <Avatar className="w-10 h-10">
-                          <AvatarImage src={user.avatar || "/placeholder.svg"} alt={user.name} />
+                          <AvatarImage
+                            src={user.avatar || "/placeholder.svg"}
+                            alt={user.name}
+                          />
                           <AvatarFallback>
                             {user.name
                               .split(" ")
@@ -491,16 +588,25 @@ export default function UserProfilePage() {
                         <div>
                           <h4 className="font-medium flex items-center gap-2">
                             {user.name}
-                            {user.isCurrentUser && <Badge variant="outline">You</Badge>}
+                            {user.isCurrentUser && (
+                              <Badge variant="outline">You</Badge>
+                            )}
                           </h4>
-                          <Badge variant="outline" className={getLevelColor(user.level)}>
+                          <Badge
+                            variant="outline"
+                            className={getLevelColor(user.level)}
+                          >
                             {user.level}
                           </Badge>
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="font-bold text-lg">{user.donations}</div>
-                        <div className="text-sm text-gray-500">{user.weight} kg donated</div>
+                        <div className="font-bold text-lg">
+                          {user.donations}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {user.weight} kg donated
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -515,7 +621,9 @@ export default function UserProfilePage() {
                   <Target className="h-5 w-5" />
                   Monthly Challenge
                 </CardTitle>
-                <CardDescription>Recycle 50 items this month to earn a special badge</CardDescription>
+                <CardDescription>
+                  Recycle 50 items this month to earn a special badge
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -524,10 +632,14 @@ export default function UserProfilePage() {
                     <span className="text-sm text-gray-500">32/50 items</span>
                   </div>
                   <Progress value={64} className="h-3" />
-                  <div className="text-sm text-gray-600">You&apos;re 64% of the way there! Keep up the great work.</div>
+                  <div className="text-sm text-gray-600">
+                    You&apos;re 64% of the way there! Keep up the great work.
+                  </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Gift className="h-4 w-4 text-purple-600" />
-                    <span>Reward: &quo;Monthly Champion&quo; badge + 500 points</span>
+                    <span>
+                      Reward: &quo;Monthly Champion&quo; badge + 500 points
+                    </span>
                   </div>
                 </div>
               </CardContent>
@@ -543,16 +655,22 @@ export default function UserProfilePage() {
                   Organization Partnership Requests
                 </CardTitle>
                 <CardDescription>
-                  Review and approve organizations wanting to join the RecyclePH network
+                  Review and approve organizations wanting to join the RecyclePH
+                  network
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
                   {organizationRequests.map((request, index) => (
-                    <div key={index} className="border rounded-lg p-6 space-y-4">
+                    <div
+                      key={index}
+                      className="border rounded-lg p-6 space-y-4"
+                    >
                       <div className="flex items-start justify-between">
                         <div>
-                          <h3 className="text-lg font-semibold">{request.organizationName}</h3>
+                          <h3 className="text-lg font-semibold">
+                            {request.organizationName}
+                          </h3>
                           <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
                             <div className="flex items-center gap-1">
                               <MapPin className="h-3 w-3" />
@@ -560,7 +678,12 @@ export default function UserProfilePage() {
                             </div>
                             <div className="flex items-center gap-1">
                               <Clock className="h-3 w-3" />
-                              <span>Requested {new Date(request.requestDate).toLocaleDateString()}</span>
+                              <span>
+                                Requested{" "}
+                                {new Date(
+                                  request.requestDate
+                                ).toLocaleDateString()}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -571,11 +694,15 @@ export default function UserProfilePage() {
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
-                            <DropdownMenuItem onClick={() => handleApproveRequest(request)}>
+                            <DropdownMenuItem
+                              onClick={() => handleApproveRequest(request)}
+                            >
                               <Check className="mr-2 h-4 w-4 text-green-600" />
                               Approve Request
                             </DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => handleRejectRequest(request)}>
+                            <DropdownMenuItem
+                              onClick={() => handleRejectRequest(request)}
+                            >
                               <X className="mr-2 h-4 w-4 text-red-600" />
                               Reject Request
                             </DropdownMenuItem>
@@ -590,7 +717,9 @@ export default function UserProfilePage() {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <h4 className="font-medium mb-2">Contact Information</h4>
+                          <h4 className="font-medium mb-2">
+                            Contact Information
+                          </h4>
                           <div className="space-y-1 text-sm">
                             <div className="flex items-center gap-2">
                               <User className="h-3 w-3 text-gray-400" />
@@ -608,12 +737,20 @@ export default function UserProfilePage() {
                         </div>
 
                         <div>
-                          <h4 className="font-medium mb-2">Partnership Details</h4>
+                          <h4 className="font-medium mb-2">
+                            Partnership Details
+                          </h4>
                           <div className="space-y-2">
-                            <Badge variant="outline">{request.requestType}</Badge>
+                            <Badge variant="outline">
+                              {request.requestType}
+                            </Badge>
                             <div className="text-sm">
-                              <span className="text-gray-500">Expected Volume:</span>
-                              <span className="ml-2">{request.expectedVolume}</span>
+                              <span className="text-gray-500">
+                                Expected Volume:
+                              </span>
+                              <span className="ml-2">
+                                {request.expectedVolume}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -621,7 +758,9 @@ export default function UserProfilePage() {
 
                       <div>
                         <h4 className="font-medium mb-2">Description</h4>
-                        <p className="text-sm text-gray-600">{request.description}</p>
+                        <p className="text-sm text-gray-600">
+                          {request.description}
+                        </p>
                       </div>
 
                       <div>
@@ -639,7 +778,11 @@ export default function UserProfilePage() {
                         <h4 className="font-medium mb-2">Certifications</h4>
                         <div className="flex flex-wrap gap-2">
                           {request.certifications.map((cert, idx) => (
-                            <Badge key={idx} variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                            <Badge
+                              key={idx}
+                              variant="outline"
+                              className="bg-green-50 text-green-700 border-green-200"
+                            >
                               {cert}
                             </Badge>
                           ))}
@@ -654,12 +797,19 @@ export default function UserProfilePage() {
                           <Check className="mr-2 h-4 w-4" />
                           Approve
                         </Button>
-                        <Button variant="outline" onClick={() => handleRejectRequest(request)}>
+                        <Button
+                          variant="outline"
+                          onClick={() => handleRejectRequest(request)}
+                        >
                           <X className="mr-2 h-4 w-4" />
                           Reject
                         </Button>
                         <Button variant="outline" asChild>
-                          <a href={request.website} target="_blank" rel="noopener noreferrer">
+                          <a
+                            href={request.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             Visit Website
                           </a>
                         </Button>
@@ -675,11 +825,16 @@ export default function UserProfilePage() {
           <TabsContent value="achievements" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {userData.badges.map((badge, index) => (
-                <Card key={index} className="border-gray-500/50 hover:scale-102 hover:bg-green-400 hover:text-white transition-all duration-300 ease">
+                <Card
+                  key={index}
+                  className="border-gray-500/50 hover:scale-102 hover:bg-green-400 hover:text-white transition-all duration-300 ease"
+                >
                   <CardContent className="p-6 text-center">
                     <div className="text-4xl mb-3">{badge.icon}</div>
                     <h3 className="font-semibold mb-2">{badge.name}</h3>
-                    <p className="text-sm text-gray-600">Earned on {new Date(badge.earned).toLocaleDateString()}</p>
+                    <p className="text-sm text-gray-600">
+                      Earned on {new Date(badge.earned).toLocaleDateString()}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -689,7 +844,9 @@ export default function UserProfilePage() {
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl mb-3">🔒</div>
                   <h3 className="font-semibold mb-2">Eco Master</h3>
-                  <p className="text-sm text-gray-600">Donate 500 items to unlock</p>
+                  <p className="text-sm text-gray-600">
+                    Donate 500 items to unlock
+                  </p>
                 </CardContent>
               </Card>
 
@@ -697,7 +854,9 @@ export default function UserProfilePage() {
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl mb-3">🔒</div>
                   <h3 className="font-semibold mb-2">Community Builder</h3>
-                  <p className="text-sm text-gray-600">Refer 10 friends to unlock</p>
+                  <p className="text-sm text-gray-600">
+                    Refer 10 friends to unlock
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -705,19 +864,26 @@ export default function UserProfilePage() {
         </Tabs>
 
         {/* Approval Dialog */}
-        <AlertDialog open={showApproveDialog} onOpenChange={setShowApproveDialog}>
+        <AlertDialog
+          open={showApproveDialog}
+          onOpenChange={setShowApproveDialog}
+        >
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>Approve Organization Request</AlertDialogTitle>
               <AlertDialogDescription>
                 Are you sure you want to approve the partnership request from{" "}
-                <strong>{selectedRequest?.organizationName}</strong>? This will add them to the RecyclePH network and
-                allow them to receive donations.
+                <strong>{selectedRequest?.organizationName}</strong>? This will
+                add them to the RecyclePH network and allow them to receive
+                donations.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={confirmApprove} className="bg-green-700 hover:bg-green-800">
+              <AlertDialogAction
+                onClick={confirmApprove}
+                className="bg-green-700 hover:bg-green-800"
+              >
                 Approve Request
               </AlertDialogAction>
             </AlertDialogFooter>
@@ -731,12 +897,16 @@ export default function UserProfilePage() {
               <AlertDialogTitle>Reject Organization Request</AlertDialogTitle>
               <AlertDialogDescription>
                 Are you sure you want to reject the partnership request from{" "}
-                <strong>{selectedRequest?.organizationName}</strong>? This action cannot be undone.
+                <strong>{selectedRequest?.organizationName}</strong>? This
+                action cannot be undone.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={confirmReject} className="bg-red-600 hover:bg-red-700">
+              <AlertDialogAction
+                onClick={confirmReject}
+                className="bg-red-600 hover:bg-red-700"
+              >
                 Reject Request
               </AlertDialogAction>
             </AlertDialogFooter>
@@ -744,5 +914,5 @@ export default function UserProfilePage() {
         </AlertDialog>
       </div>
     </div>
-  )
+  );
 }
