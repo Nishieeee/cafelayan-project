@@ -221,19 +221,19 @@ export default function MyDonationsPage() {
     return matchesSearch && matchesTab
   })
 
-  const handleApproveRequest = (donation: any, request: any) => {
+  const handleApproveRequest = (donation: Donation, request: DonationRequest) => {
     setSelectedDonation(donation)
     setSelectedRequest(request)
     setShowApproveDialog(true)
   }
 
-  const handleRejectRequest = (donation: any, request: any) => {
+  const handleRejectRequest = (donation: Donation, request: DonationRequest) => {
     setSelectedDonation(donation)
     setSelectedRequest(request)
     setShowRejectDialog(true)
   }
 
-  const handleDeleteDonation = (donation: any) => {
+  const handleDeleteDonation = (donation: Donation) => {
     setSelectedDonation(donation)
     setShowDeleteDialog(true)
   }

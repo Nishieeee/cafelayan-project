@@ -41,31 +41,31 @@ import { PartnershipDetailsDialog } from "@/components/partnership-details-dialo
 import Link from "next/link";
 
 
-type DonationRequest = {
-  type: "donation";
-  donor: string;
-  amount: number;
-  material: string;
-  city: string;
-  time: string;
-};
+// type DonationRequest = {
+//   type: "donation";
+//   donor: string;
+//   amount: number;
+//   material: string;
+//   city: string;
+//   time: string;
+// };
 
-type ProcessingRequest = {
-  type: "processing";
-  amount: number;
-  material: string;
-  status: string;
-  time: string;
-};
+// type ProcessingRequest = {
+//   type: "processing";
+//   amount: number;
+//   material: string;
+//   status: string;
+//   time: string;
+// };
 
-type PickupRequest = {
-  type: "pickup";
-  donor: string;
-  amount: number;
-  material: string;
-  city: string;
-  time: string;
-};
+// type PickupRequest = {
+//   type: "pickup";
+//   donor: string;
+//   amount: number;
+//   material: string;
+//   city: string;
+//   time: string;
+// };
 
 // type RequestDetails = DonationRequest | ProcessingRequest | PickupRequest;
 

@@ -235,15 +235,15 @@ export default function UserProfilePage() {
     },
   ];
 
-  const handleApproveRequest = (request: any) => {
-    setSelectedRequest(request);
-    setShowApproveDialog(true);
-  };
+  const handleApproveRequest = (request: Organization) => {
+  setSelectedRequest(request);
+  setShowApproveDialog(true);
+};
 
-  const handleRejectRequest = (request: any) => {
-    setSelectedRequest(request);
-    setShowRejectDialog(true);
-  };
+const handleRejectRequest = (request: Organization) => {
+  setSelectedRequest(request);
+  setShowRejectDialog(true);
+};
 
  const confirmApprove = () => {
   if (!selectedRequest) return;
