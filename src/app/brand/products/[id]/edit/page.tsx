@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Check, Loader2, Upload, Package, ArrowLeft, Save, AlertTriangle, Eye, QrCode } from "lucide-react"
+import { Check, Loader2, Upload, Package, ArrowLeft, Save, AlertTriangle, QrCode } from "lucide-react"
 import Link from "next/link"
 
 const formSchema = z.object({
@@ -59,11 +59,36 @@ const formSchema = z.object({
   }),
 })
 
+interface Product {
+  id: string
+  productName: string
+  brandName: string
+  description: string
+  materialType: string
+  materialSubtype: string
+  size: string
+  totalManufactured: string
+  recyclability: string
+  environmentalImpact: string
+  recyclingInstructions: string
+  donationPrep: string
+  category: string
+  contactEmail: string
+  contactPhone: string
+  website: string
+  sustainabilityGoals: string
+  status: string
+  registrationDate: string // or Date if parsed
+  totalScans: number
+  totalDonations: number
+  image: string
+}
+
 export default function EditProductPage({ params }: { params: { id: string } }) {
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [product, setProduct] = useState<any>(null)
+  const [product, setProduct] = useState<Product | null>(null)
   const router = useRouter()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -200,7 +225,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
           </div>
           <h1 className="text-2xl font-bold mb-2">Product Not Found</h1>
           <p className="text-gray-600 mb-6">
-            The product you're trying to edit doesn't exist or you don't have permission to edit it.
+            The product you&apos;re trying to edit doesn&apos;t exist or you don&apos;t have permission to edit it.
           </p>
           <Button asChild>
             <Link href="/brand/products">Back to Products</Link>
@@ -647,7 +672,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                           <FormControl>
                             <Input type="url" placeholder="https://yourbrand.com" {...field} />
                           </FormControl>
-                          <FormDescription>Your brand's website for more information</FormDescription>
+                          <FormDescription>Your brand&apos;s website for more information</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
