@@ -22,6 +22,12 @@ import {
 import { ArrowLeft, QrCode, TrendingUp, Users, MapPin, Download, Share2, Calendar, Target } from "lucide-react"
 import Link from "next/link"
 
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
 export default function ProductAnalyticsPage({ params }: { params: { id: string } }) {
   const [timeRange, setTimeRange] = useState("30d")
 
