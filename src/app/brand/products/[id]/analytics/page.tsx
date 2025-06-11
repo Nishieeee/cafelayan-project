@@ -22,25 +22,18 @@ import {
 import { ArrowLeft, QrCode, TrendingUp, Users, MapPin, Download, Share2, Calendar, Target } from "lucide-react"
 import Link from "next/link"
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
 
-export default function ProductAnalyticsPage({ params }: PageProps) {
-  const [timeRange, setTimeRange] = useState("30d")
+export default function ProductAnalyticsPage() {
+  const [timeRange, setTimeRange] = useState("30d");
 
-  // Mock data - would come from API
   const product = {
-    id: params.id,
     name: "Cafelayan Lettuce Chips",
     brand: "Cafelayan",
     material: "PET Plastic",
     status: "Active",
     registrationDate: "2025-01-15",
     image: "/placeholder.svg?height=60&width=60",
-  }
+  };
 
   const analyticsData = {
     totalScans: 2847,
