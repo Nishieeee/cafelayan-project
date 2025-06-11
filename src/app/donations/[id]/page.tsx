@@ -10,9 +10,13 @@ import { RequestDonationForm } from "@/components/request-donation-form"
 const getDonation = (id: string) => {
   return donations.find((donation) => donation.id === id) || null
 }
-
-export default function DonationPage({ params }: { params: { id: string } }) {
-  const donation = getDonation(params.id)
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
+export default function DonationPage({ params }: PageProps) {
+  const donation = getDonation(params.id);
 
   if (!donation) {
     return (
