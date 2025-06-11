@@ -84,7 +84,7 @@ interface Product {
   image: string
 }
 
-export default function EditProductPage({ params }: { params: { id: string } }) {
+export default function EditProductPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -119,7 +119,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
 
       // Mock product data - would come from API
       const mockProduct = {
-        id: params.id,
+        id: "001",
         productName: "Cafelayan Lettuce Chips",
         brandName: "Cafelayan",
         description:
@@ -177,14 +177,14 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
     }
 
     fetchProduct()
-  }, [params.id, form])
+  }, [form])
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
 
     // Simulate API call
     setTimeout(() => {
-      console.log("Updated product:", { id: params.id, ...values })
+      console.log("Updated product:", {...values })
       setIsSubmitting(false)
       setIsSubmitted(true)
       router.push("/brand/products")
