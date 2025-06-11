@@ -56,9 +56,9 @@ const similarDonations = [
 ]
 
 // This would normally come from a database
-const getDonation = (id: string) => {
-  return donations.find((donation) => donation.id === id) || null
-}
+// const getDonation = (id: string) => {
+//   return donations.find((donation) => donation.id === id) || null
+// }
 
 export default function Page() {
   // Just use the first donation for demo
