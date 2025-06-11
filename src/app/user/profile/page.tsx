@@ -524,10 +524,10 @@ export default function UserProfilePage() {
                     <span className="text-sm text-gray-500">32/50 items</span>
                   </div>
                   <Progress value={64} className="h-3" />
-                  <div className="text-sm text-gray-600">You're 64% of the way there! Keep up the great work.</div>
+                  <div className="text-sm text-gray-600">You&apos;re 64% of the way there! Keep up the great work.</div>
                   <div className="flex items-center gap-2 text-sm">
                     <Gift className="h-4 w-4 text-purple-600" />
-                    <span>Reward: "Monthly Champion" badge + 500 points</span>
+                    <span>Reward: &quo;Monthly Champion&quo; badge + 500 points</span>
                   </div>
                 </div>
               </CardContent>

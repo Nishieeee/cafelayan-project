@@ -438,7 +438,7 @@ export default function MyDonationsPage() {
                           </div>
 
                           <div className="mt-3 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                            <p>"{request.message}"</p>
+                            <p>&quo;{request.message}&quo;</p>
                           </div>
 
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
@@ -526,7 +526,7 @@ export default function MyDonationsPage() {
               <AlertDialogTitle>Approve Organization Request</AlertDialogTitle>
               <AlertDialogDescription>
                 Are you sure you want to approve the request from <strong>{selectedRequest?.organizationName}</strong>{" "}
-                for your donation "<strong>{selectedDonation?.title}</strong>"?
+                for your donation &quo;<strong>{selectedDonation?.title}</strong>&quo;?
                 <br />
                 <br />
                 By approving, you agree to donate the items to this organization. They will be notified and will contact
@@ -549,7 +549,7 @@ export default function MyDonationsPage() {
               <AlertDialogTitle>Reject Organization Request</AlertDialogTitle>
               <AlertDialogDescription >
                 Are you sure you want to reject the request from <strong>{selectedRequest?.organizationName}</strong>{" "}
-                for your donation "<strong>{selectedDonation?.title}</strong>"?
+                for your donation &quo;<strong>{selectedDonation?.title}</strong>&quo;?
                 <br />
                 <br />
                 The organization will be notified that their request was not accepted.
@@ -570,7 +570,7 @@ export default function MyDonationsPage() {
             <AlertDialogHeader>
               <AlertDialogTitle>Delete Donation</AlertDialogTitle>
               <AlertDialogDescription>
-                Are you sure you want to delete your donation "<strong>{selectedDonation?.title}</strong>"?
+                Are you sure you want to delete your donation &quo;<strong>{selectedDonation?.title}</strong>&quo;?
                 <br />
                 <br />
                 This action cannot be undone. All associated requests will also be deleted.

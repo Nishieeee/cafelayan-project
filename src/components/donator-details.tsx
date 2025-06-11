@@ -1,5 +1,4 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Mail, PhoneIcon } from "lucide-react";
 import { Card, CardTitle, CardContent, CardHeader } from "./ui/card";
 interface DonatorDetails {
   open: boolean;
