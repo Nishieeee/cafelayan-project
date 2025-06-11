@@ -28,7 +28,7 @@ interface PageProps {
   };
 }
 
-export default function ProductAnalyticsPage({ params }: { params: { id: string } }) {
+export default function ProductAnalyticsPage({ params }: PageProps) {
   const [timeRange, setTimeRange] = useState("30d")
 
   // Mock data - would come from API
