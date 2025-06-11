@@ -1,12 +1,12 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { MapPin, BookOpen, Recycle, Info, ArrowRight, MapPinned, Clock } from "lucide-react"
+import { MapPin, BookOpen, Recycle, ArrowRight, MapPinned, Clock } from "lucide-react"
 
 interface Tutorial {
   id: string
@@ -42,55 +42,85 @@ interface PackageData {
   tutorials: Tutorial[]
 }
 
-export default function PackagePage({ params }: { params: { id: string } }) {
-  const packageId = params.id
-  const [packageData, setPackageData] = useState<PackageData | null>(null)
-  const [loading, setLoading] = useState(true)
+// Sample package data
+const packageData: PackageData = {
+  name: "Cafelayan Lettuce Chips - Package",
+  brand: "Cafelayan Lettuce Chips",
+  material: "PET Plastic",
+  size: "250g",
+  recyclability: "Highly Recyclable",
+  image: "/placeholder.svg?height=200&width=200",
+  description:
+    "Reusable package made from PET plastic. This material is widely recyclable and can be turned into new packages, clothing fibers, or other products.",
+  environmentalImpact:
+    "Recycling this package saves enough energy to power a 60-watt light bulb for 6 hours. It also reduces the amount of plastic waste that could end up in oceans and harm marine life.",
+  recyclingProcess: "Clean the package and place in designated PET recycling bins.",
+  tips: "Rinse thoroughly and fold to save space.",
+  facts:
+    "It takes up to 450 years for a plastic to decompose in a landfill, but it can be recycled in just 60 days.",
+  donationPrep:
+    "Before donating, please rinse the package.",
+  nearbyOrganizations: [
+    {
+      name: "Kids Who Farm",
+      location: "Zamboanga City",
+      distance: "2.3 km",
+      hours: "Mon-Fri 8AM-5PM",
+      accepts: "PET bottles, aluminum cans",
+    },
+    {
+      name: "EcoHub ZC",
+      location: "Zamboanga City",
+      distance: "4.1 km",
+      hours: "Daily 7AM-7PM",
+      accepts: "All plastic containers",
+    },
+    {
+      name: "Recycle Center BGC",
+      location: "Bonifacio Global City",
+      distance: "3.8 km",
+      hours: "Mon-Sat 9AM-6PM",
+      accepts: "Plastic bottles, paper, electronics",
+    },
+  ],
+  tutorials: [
+    {
+      id: "1",
+      title: "Pot for Plants",
+      difficulty: "Easy",
+      duration: "15 mins",
+      organization: "Kids Who Farm",
+      image: "/placeholder.svg?height=150&width=200",
+    },
+    {
+      id: "2",
+      title: "Bird Feeder DIY Project",
+      difficulty: "Easy",
+      duration: "20 mins",
+      organization: "Wildlife Conservation PH",
+      image: "/placeholder.svg?height=150&width=200",
+    },
+    {
+      id: "3",
+      title: "Plastic Broom",
+      difficulty: "Medium",
+      duration: "45 mins",
+      organization: "Cebu Eco Warriors",
+      image: "/placeholder.svg?height=150&width=200",
+    },
+    {
+      id: "4",
+      title: "Plastice Bag using Plastic packages",
+      difficulty: "Hard",
+      duration: "1.5 hours",
+      organization: "Urban Farmers Manila",
+      image: "/placeholder.svg?height=150&width=200",
+    },
+  ],
+}
 
-  useEffect(() => {
-    // Simulate fetching package data based on QR code
-    const fetchPackageData = async () => {
-      setLoading(true)
-      // In real implementation, this would fetch from your API
-      const mockData = getPackageData(packageId)
-      setPackageData(mockData)
-      setLoading(false)
-    }
-
-    fetchPackageData()
-  }, [packageId])
-
-  if (loading) {
-    return (
-      <div className="container py-12 px-4 md:px-6 flex items-center justify-center min-h-[50vh]">
-        <div className="text-center">
-          <div className="inline-block p-3 bg-green-100 rounded-full mb-4 animate-pulse">
-            <Recycle className="h-8 w-8 text-green-600" />
-          </div>
-          <h2 className="text-xl font-medium">Loading package information...</h2>
-        </div>
-      </div>
-    )
-  }
-
-  if (!packageData) {
-    return (
-      <div className="container py-12 px-4 md:px-6">
-        <div className="max-w-md mx-auto text-center">
-          <div className="inline-block p-3 bg-red-100 rounded-full mb-4">
-            <Info className="h-8 w-8 text-red-600" />
-          </div>
-          <h1 className="text-2xl font-bold mb-2">Package Not Found</h1>
-          <p className="text-gray-600 mb-6">
-            We could not find information about this package. The QR code may be invalid or not registered in our system.
-          </p>
-          <Button asChild>
-            <Link href="/">Return Home</Link>
-          </Button>
-        </div>
-      </div>
-    )
-  }
+export default function PackagePage() {
+  const [activeTab, setActiveTab] = useState("donate")
 
   return (
     <div className="container py-8 px-4 md:px-6">
@@ -133,7 +163,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
         </Card>
 
         {/* Main Options Tabs */}
-        <Tabs defaultValue="donate" className="mb-8">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
           <TabsList className="grid w-full grid-cols-2 mb-6">
             <TabsTrigger value="donate" className="text-base py-3">
               <MapPin className="mr-2 h-5 w-5" /> Donate Package
@@ -183,7 +213,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
 
             <div className="text-center pt-4">
               <Button asChild>
-                <Link href={`/donate?package=${packageId}`}>
+                <Link href="/donate">
                   View All Donation Centers <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -230,7 +260,7 @@ export default function PackagePage({ params }: { params: { id: string } }) {
 
             <div className="text-center pt-4">
               <Button asChild>
-                <Link href={`/tutorials?package=${packageId}`}>
+                <Link href="/tutorials">
                   View All Tutorials <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -263,161 +293,4 @@ export default function PackagePage({ params }: { params: { id: string } }) {
       </div>
     </div>
   )
-}
-
-// Mock function to get package data (would be replaced with API call)
-function getPackageData(packageId: string): PackageData | null {
-  const packages: { [key: string]: PackageData } = {
-    "demo-plastic-001": {
-      name: "Cafelayan Lettuce Chips - Package",
-      brand: "Cafelayan Lettuce Chips",
-      material: "PET Plastic",
-      size: "250g",
-      recyclability: "Highly Recyclable",
-      image: "/placeholder.svg?height=200&width=200",
-      description:
-        "Reusable package made from PET plastic. This material is widely recyclable and can be turned into new packages, clothing fibers, or other products.",
-      environmentalImpact:
-        "Recycling this package saves enough energy to power a 60-watt light bulb for 6 hours. It also reduces the amount of plastic waste that could end up in oceans and harm marine life.",
-      recyclingProcess: "Clean the package and place in designated PET recycling bins.",
-      tips: "Rinse thoroughly and fold to save space.",
-      facts:
-        "It takes up to 450 years for a plastic to decompose in a landfill, but it can be recycled in just 60 days.",
-      donationPrep:
-        "Before donating, please rinse the package.",
-      nearbyOrganizations: [
-        {
-          name: "Kids Who Farm",
-          location: "Zamboanga City",
-          distance: "2.3 km",
-          hours: "Mon-Fri 8AM-5PM",
-          accepts: "PET bottles, aluminum cans",
-        },
-        {
-          name: "EcoHub ZC",
-          location: "Zamboanga City",
-          distance: "4.1 km",
-          hours: "Daily 7AM-7PM",
-          accepts: "All plastic containers",
-        },
-        {
-          name: "Recycle Center BGC",
-          location: "Bonifacio Global City",
-          distance: "3.8 km",
-          hours: "Mon-Sat 9AM-6PM",
-          accepts: "Plastic bottles, paper, electronics",
-        },
-      ],
-      tutorials: [
-        {
-          id: "1",
-          title: "Pot for Plants",
-          difficulty: "Easy",
-          duration: "15 mins",
-          organization: "Kids Who Farm",
-          image: "/placeholder.svg?height=150&width=200",
-        },
-        {
-          id: "2",
-          title: "Bird Feeder DIY Project",
-          difficulty: "Easy",
-          duration: "20 mins",
-          organization: "Wildlife Conservation PH",
-          image: "/placeholder.svg?height=150&width=200",
-        },
-        {
-          id: "3",
-          title: "Plastic Broom",
-          difficulty: "Medium",
-          duration: "45 mins",
-          organization: "Cebu Eco Warriors",
-          image: "/placeholder.svg?height=150&width=200",
-        },
-        {
-          id: "4",
-          title: "Plastice Bag using Plastic packages",
-          difficulty: "Hard",
-          duration: "1.5 hours",
-          organization: "Urban Farmers Manila",
-          image: "/placeholder.svg?height=150&width=200",
-        },
-      ],
-    },
-    "cardboard-box-001": {
-      name: "Cardboard Box",
-      brand: "PackWell Medium",
-      material: "Corrugated Cardboard",
-      size: "30cm x 25cm x 15cm",
-      recyclability: "Highly Recyclable",
-      image: "/placeholder.svg?height=200&width=200",
-      description:
-        "Standard corrugated cardboard box used for packaging. Made from recycled paper materials and designed for single use.",
-      environmentalImpact:
-        "Recycling one ton of cardboard saves 17 trees, 7,000 gallons of water, and 463 gallons of oil. Cardboard is one of the most recycled materials in the Philippines.",
-      recyclingProcess: "Flatten the box, remove any tape or labels, and keep it dry before recycling.",
-      tips: "Cardboard can be recycled 5-7 times before the fibers become too short to be useful.",
-      facts:
-        "Cardboard decomposes in about 2 months in a landfill, but recycling it saves valuable resources and energy.",
-      donationPrep: "Please flatten the box and remove any non-cardboard materials like plastic, tape, or styrofoam.",
-      nearbyOrganizations: [
-        {
-          name: "Paper Recyclers Inc.",
-          location: "Quezon City",
-          distance: "5.7 km",
-          hours: "Mon-Sat 8AM-6PM",
-          accepts: "Cardboard, paper, cartons",
-        },
-        {
-          name: "EcoHub Philippines",
-          location: "Taguig City",
-          distance: "4.1 km",
-          hours: "Daily 7AM-7PM",
-          accepts: "All paper products",
-        },
-        {
-          name: "Recycle Center BGC",
-          location: "Bonifacio Global City",
-          distance: "3.8 km",
-          hours: "Mon-Sat 9AM-6PM",
-          accepts: "Cardboard, paper, electronics",
-        },
-      ],
-      tutorials: [
-        {
-          id: "5",
-          title: "Cardboard Storage Organizers",
-          difficulty: "Medium",
-          duration: "45 mins",
-          organization: "Cebu Eco Warriors",
-          image: "/placeholder.svg?height=150&width=200",
-        },
-        {
-          id: "6",
-          title: "Cardboard Cat House",
-          difficulty: "Easy",
-          duration: "30 mins",
-          organization: "Pet Lovers Manila",
-          image: "/placeholder.svg?height=150&width=200",
-        },
-        {
-          id: "7",
-          title: "Cardboard Wall Art",
-          difficulty: "Medium",
-          duration: "1 hour",
-          organization: "Art for Earth PH",
-          image: "/placeholder.svg?height=150&width=200",
-        },
-        {
-          id: "8",
-          title: "Cardboard Furniture",
-          difficulty: "Hard",
-          duration: "3 hours",
-          organization: "Sustainable Design PH",
-          image: "/placeholder.svg?height=150&width=200",
-        },
-      ],
-    },
-  }
-
-  return packages[packageId] || null
 }
