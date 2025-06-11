@@ -175,7 +175,7 @@ export default function Header() {
                     isUser ? (
                       <Link
                       href="/user/profile"
-                      className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                      className="flex items-center px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-md transition-colors"
                     >
                       <User className="h-4 w-4 mr-1" />
                       Profile
@@ -183,7 +183,7 @@ export default function Header() {
                     ) : (
                     <Link
                       href={`/${role}/dashboard`}
-                      className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                      className="flex items-center px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-md transition-colors"
                     >
                       <LayoutDashboard className="h-4 w-4 mr-1" />
                       Dashboard
@@ -210,7 +210,7 @@ export default function Header() {
                     </Link>
                     <Link
                       href="/leaderboards"
-                      className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                      className="flex items-center px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-md transition-colors"
                     >
                       <Trophy className="h-4 w-4 mr-1" />
                       Top Recyclers
