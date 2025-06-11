@@ -257,26 +257,6 @@ const donations = [
     pickupNotes:
       "Please bring your own containers for the packages.",
   },
-  {
-    id: "2",
-    title: "Aluminum cans",
-    description:
-      "Soda cans ready for recycling",
-    category: "Metal",
-    condition: "Good",
-    location: "Quezon City",
-    postedDate: "1 day ago",
-    image: "/placeholder.svg?height=500&width=800",
-    donor: "Juan Reyes",
-    age: "3 years",
-    brand: "Pepsi",
-    dimensions: "80cm length, 30cm width",
-    weight: "Approximately 5kg",
-    pickupLocation: "Cubao, Quezon City",
-    pickupAvailability: "Weekends only, 9am-4pm",
-    pickupNotes: "The tiller is disassembled for easier transport. I can help with reassembly instructions.",
-  },
-  // Additional donations would be here
 ]
 
 // Sample data for similar donations
