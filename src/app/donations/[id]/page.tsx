@@ -6,13 +6,63 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MapPin, Calendar, User, MessageCircle, Share2, Flag, ArrowLeft } from "lucide-react"
 import { RequestDonationForm } from "@/components/request-donation-form"
 
+// Sample data for a single donation
+const donations = [
+  {
+    id: "1",
+    title: "Cafelayan Lettuce Chips - Package",
+    description:
+      "reusable food package",
+    category: "food",
+    condition: "Good condition",
+    location: "Zamboanga City",
+    postedDate: "2 days ago",
+    image: "/placeholder.svg?height=500&width=800",
+    donor: "Jhon Clein",
+    age: "2 days",
+    brand: "Cafelayan",
+    dimensions: "Approximately 250g",
+    weight: "0.5kg",
+    pickupLocation: "Zamboanga City",
+    pickupAvailability: "Weekdays 8am-5pm, weekends by appointment",
+    pickupNotes:
+      "Please bring your own containers for the packages.",
+  },
+]
+
+// Sample data for similar donations
+const similarDonations = [
+  {
+    id: "7",
+    title: "Plastic bottles",
+    category: "Beverage",
+    location: "Batangas Province",
+    image: "/placeholder.svg?height=64&width=64",
+  },
+  {
+    id: "8",
+    title: "Cardboard Boxes",
+    category: "Eco-Friendly",
+    location: "Manila",
+    image: "/placeholder.svg?height=64&width=64",
+  },
+  {
+    id: "9",
+    title: "Glass Bottles",
+    category: "Seeds",
+    location: "Cavite Province",
+    image: "/placeholder.svg?height=64&width=64",
+  },
+]
+
 // This would normally come from a database
 const getDonation = (id: string) => {
   return donations.find((donation) => donation.id === id) || null
 }
 
-export default function Page({ params }: { params: { id: string } }) {
-  const donation = getDonation(params.id);
+export default function Page() {
+  // Just use the first donation for demo
+  const donation = donations[0]
 
   if (!donation) {
     return (
@@ -234,52 +284,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   )
 }
-
-// Sample data for a single donation
-const donations = [
-  {
-    id: "1",
-    title: "Cafelayan Lettuce Chips - Package",
-    description:
-      "reusable food package",
-    category: "food",
-    condition: "Good condition",
-    location: "Zamboanga City",
-    postedDate: "2 days ago",
-    image: "/placeholder.svg?height=500&width=800",
-    donor: "Jhon Clein",
-    age: "2 days",
-    brand: "Cafelayan",
-    dimensions: "Approximately 250g",
-    weight: "0.5kg",
-    pickupLocation: "Zamboanga City",
-    pickupAvailability: "Weekdays 8am-5pm, weekends by appointment",
-    pickupNotes:
-      "Please bring your own containers for the packages.",
-  },
-]
-
-// Sample data for similar donations
-const similarDonations = [
-  {
-    id: "7",
-    title: "Plastic bottles",
-    category: "Beverage",
-    location: "Batangas Province",
-    image: "/placeholder.svg?height=64&width=64",
-  },
-  {
-    id: "8",
-    title: "Cardboard Boxes",
-    category: "Eco-Friendly",
-    location: "Manila",
-    image: "/placeholder.svg?height=64&width=64",
-  },
-  {
-    id: "9",
-    title: "Glass Bottles",
-    category: "Seeds",
-    location: "Cavite Province",
-    image: "/placeholder.svg?height=64&width=64",
-  },
-]
