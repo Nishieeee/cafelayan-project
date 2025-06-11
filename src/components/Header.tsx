@@ -156,7 +156,7 @@ export default function Header() {
                   <SheetHeader>
                     <SheetTitle className="flex items-center text-left">
                       <Recycle className="h-5 w-5 text-green-600 mr-2" />
-                      Cafelayan Prototype
+                      LoopLinkEco
                     </SheetTitle>
                   </SheetHeader>
 
