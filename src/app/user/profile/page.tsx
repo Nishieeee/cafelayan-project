@@ -338,10 +338,10 @@ const confirmReject = () => {
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="flex overflow-x-auto whitespace-nowrap space-x-3 no-scrollbar">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
-            <TabsTrigger value="requests">Organization Requests</TabsTrigger>
+            <TabsTrigger value="requests">Requests</TabsTrigger>
           </TabsList>
 
           {/* Overview Tab */}

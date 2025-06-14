@@ -338,7 +338,7 @@ export default function OrganizationDashboard() {
           </div>
 
           <Tabs defaultValue="overview" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-5">
+            <TabsList className="flex overflow-x-auto whitespace-nowrap space-x-4 no-scrollbar">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="donors">Donors</TabsTrigger>
               <TabsTrigger value="geography">Geography</TabsTrigger>

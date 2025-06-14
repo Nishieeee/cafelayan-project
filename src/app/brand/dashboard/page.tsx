@@ -346,7 +346,7 @@ export default function BrandDashboard() {
           </div>
 
           <Tabs defaultValue="overview" className="space-y-6 ">
-            <TabsList className="grid w-full grid-cols-5 bg-gray-300/20">
+            <TabsList className="flex overflow-x-auto whitespace-nowrap space-x-4 no-scrollbar bg-gray-300/20">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="donors">Top Donors</TabsTrigger>
               <TabsTrigger value="organizations">Organizations</TabsTrigger>

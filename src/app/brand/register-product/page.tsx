@@ -18,6 +18,8 @@ import Link from "next/link"
 import { QRCodeSVG } from "qrcode.react"
 import { useAuth } from "@/context/AuthContext"
 
+
+// Define the form schema first
 const formSchema = z.object({
   productName: z.string().min(2, {
     message: "Product name must be at least 2 characters.",
@@ -31,13 +33,17 @@ const formSchema = z.object({
   materialType: z.string().min(1, {
     message: "Please select a material type.",
   }),
-  materialSubtype: z.string().optional(),
+  materialSubtype: z.string().min(1, {
+    message: "Please select a material subtype.",
+  }),
   size: z.string().min(1, {
     message: "Please specify the size.",
   }),
-  totalManufactured: z.string().optional(),
+  totalManufactured: z.string().min(1, {
+    message: "Please specify the total manufactured.",
+  }),
   recyclability: z.string().min(1, {
-    message: "Please specify the total amount.",
+    message: "Please specify the recyclability.",
   }),
   environmentalImpact: z.string().min(10, {
     message: "Environmental impact description must be at least 10 characters.",
@@ -57,14 +63,19 @@ const formSchema = z.object({
   contactPhone: z.string().min(10, {
     message: "Please enter a valid phone number.",
   }),
-  website: z.string().url().optional().or(z.literal("")),
-  sustainabilityGoals: z.string().optional(),
+  website: z.union([z.string().url(), z.literal("")]).optional(),
+  sustainabilityGoals: z.string().min(1, {
+    message: "Please enter your sustainability goals.",
+  }),
   agreeToTerms: z.boolean().refine((value) => value === true, {
     message: "You must agree to the terms and conditions.",
   }),
 })
+
+// Infer the type from the schema
 type ProductFormData = z.infer<typeof formSchema>
 
+// Extended type for generated product
 type GeneratedProduct = ProductFormData & {
   id: string
   url: string
@@ -77,8 +88,8 @@ export default function RegisterProductPage() {
   const [generatedProduct, setGeneratedProduct] = useState<GeneratedProduct | null>(null)
 
   const { name } = useAuth()
-  
-  const form = useForm<z.infer<typeof formSchema>>({
+
+  const form = useForm<ProductFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       productName: "",
@@ -102,10 +113,13 @@ export default function RegisterProductPage() {
   })
 
   useEffect(() => {
-    if(name) form.setValue('brandName', name)
+    if (name) form.setValue('brandName', name)
   }, [name, form])
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: ProductFormData) {
+
+    console.log("button clcked")
+
     setIsSubmitting(true)
 
     // Simulate API call and QR code generation
@@ -113,10 +127,10 @@ export default function RegisterProductPage() {
       const productId = `${values.brandName.toLowerCase().replace(/\s+/g, "-")}-${Date.now()}`
       const productUrl = `${window.location.origin}/scan/cafelayan`
 
-      const product = {
+      const product: GeneratedProduct = {
+        ...values,
         id: productId,
         url: productUrl,
-        ...values,
         registrationDate: new Date().toLocaleDateString(),
       }
 
@@ -127,30 +141,33 @@ export default function RegisterProductPage() {
   }
 
   const downloadQRCode = () => {
-  if (!generatedProduct) return;
+    if (!generatedProduct) return
 
-  const svg = document.getElementById("qr-code-svg")
-  if (svg) {
-    const svgData = new XMLSerializer().serializeToString(svg)
-    const canvas = document.createElement("canvas")
-    const ctx = canvas.getContext("2d")
-    const img = new Image()
+    const svg = document.getElementById("qr-code-svg")
+    if (svg) {
+      const svgData = new XMLSerializer().serializeToString(svg)
+      const canvas = document.createElement("canvas")
+      const ctx = canvas.getContext("2d")
+      const img = new Image()
 
-    img.onload = () => {
-      canvas.width = img.width
-      canvas.height = img.height
-      ctx?.drawImage(img, 0, 0)
+      img.onload = () => {
+        canvas.width = img.width
+        canvas.height = img.height
+        ctx?.drawImage(img, 0, 0)
 
-      const pngFile = canvas.toDataURL("image/png")
-      const downloadLink = document.createElement("a")
-      downloadLink.download = `${generatedProduct.id}-qr-code.png`
-      downloadLink.href = pngFile
-      downloadLink.click()
+        const pngFile = canvas.toDataURL("image/png")
+        const downloadLink = document.createElement("a")
+        downloadLink.download = `${generatedProduct.id}-qr-code.png`
+        downloadLink.href = pngFile
+        downloadLink.click()
+      }
+
+      img.src = "data:image/svg+xml;base64," + btoa(svgData)
     }
-
-    img.src = "data:image/svg+xml;base64," + btoa(svgData)
   }
-}
+
+
+
 
   if (isSubmitted && generatedProduct) {
     return (
