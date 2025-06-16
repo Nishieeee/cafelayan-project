@@ -221,7 +221,7 @@ export default function RegisterProductPage() {
                   <QrCode className="h-5 w-5" />
                   Generated QR Code
                 </CardTitle>
-                <CardDescription>This QR code links to your product's recycling information page</CardDescription>
+                <CardDescription>This QR code links to your product&apos;s recycling information page</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex justify-center">
@@ -238,7 +238,7 @@ export default function RegisterProductPage() {
 
                 <div className="text-center">
                   <p className="text-sm text-gray-600 mb-4">
-                    Scan this QR code to view the product's recycling information
+                    Scan this QR code to view the product&apos;s recycling information
                   </p>
                   <div className="space-y-2">
                     <Button onClick={downloadQRCode} className="w-full">
@@ -655,7 +655,7 @@ export default function RegisterProductPage() {
                           <FormControl>
                             <Input type="url" placeholder="https://yourbrand.com" className="border-gray-500/50" {...field} />
                           </FormControl>
-                          <FormDescription>Your brand's website for more information</FormDescription>
+                          <FormDescription>Your brand&apos;s website for more information</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}

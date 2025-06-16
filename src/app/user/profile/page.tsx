@@ -647,7 +647,7 @@ const confirmReject = () => {
           </TabsContent>
 
           {/* Organization Requests Tab : Commented*/}
-          {/* <TabsContent value="requests" className="space-y-6">
+          <TabsContent value="requests" className="space-y-6">
             <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -819,7 +819,7 @@ const confirmReject = () => {
                 </div>
               </CardContent>
             </Card>
-          </TabsContent> */}
+          </TabsContent>
 
           {/* Achievements Tab */}
           <TabsContent value="achievements" className="space-y-6">
