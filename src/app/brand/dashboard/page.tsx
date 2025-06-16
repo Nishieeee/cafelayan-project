@@ -346,12 +346,12 @@ export default function BrandDashboard() {
           </div>
 
           <Tabs defaultValue="overview" className="space-y-6 ">
-            <TabsList className="flex overflow-x-auto whitespace-nowrap space-x-4 no-scrollbar bg-gray-300/20">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="donors">Top Donors</TabsTrigger>
-              <TabsTrigger value="organizations">Organizations</TabsTrigger>
-              <TabsTrigger value="geography">Geography</TabsTrigger>
-              <TabsTrigger value="partnerships">Partnerships</TabsTrigger>
+            <TabsList className="flex justify-between overflow-x-auto whitespace-nowrap no-scrollbar sm:px-5 px-2 bg-gray-300/20">
+              <TabsTrigger value="overview" className="w-full">Overview</TabsTrigger>
+              <TabsTrigger value="donors" className="w-full">Top Donors</TabsTrigger>
+              <TabsTrigger value="organizations" className="w-full">Organizations</TabsTrigger>
+              <TabsTrigger value="geography" className="w-full">Geography</TabsTrigger>
+              <TabsTrigger value="partnerships" className="w-full">Partnerships</TabsTrigger>
             </TabsList>
 
             {/* Overview Tab */}

@@ -34,7 +34,9 @@ const formSchema = z.object({
   size: z.string().min(1, {
     message: "Please specify the size.",
   }),
-  weight: z.string().optional(),
+  totalManufactured: z.string().min(1, {
+    message: "Please Specify amount manufactured.",
+  }),
   recyclability: z.string().min(1, {
     message: "Please select recyclability level.",
   }),
@@ -80,12 +82,12 @@ export default function RegisterProductPage() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       productName: "",
-      brandName: "",
+      brandName: "Cafelayan",
       description: "",
       materialType: "",
       materialSubtype: "",
       size: "",
-      weight: "",
+      totalManufactured: "",
       recyclability: "",
       environmentalImpact: "",
       recyclingInstructions: "",
@@ -420,13 +422,16 @@ export default function RegisterProductPage() {
 
                       <FormField
                         control={form.control}
-                        name="weight"
+                        name="totalManufactured"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Weight (Optional)</FormLabel>
+                            <FormLabel>Total Manufactured</FormLabel>
                             <FormControl>
-                              <Input placeholder="e.g., 15g, 0.5kg" className="border-gray-500/50" {...field} />
+                              <Input placeholder="e.g. 999, 50000" className="border-gray-500/50" {...field} />
                             </FormControl>
+                            <FormDescription>
+                              Total Units Manufactured
+                            </FormDescription>
                             <FormMessage />
                           </FormItem>
                         )}

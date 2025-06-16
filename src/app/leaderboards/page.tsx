@@ -1,3 +1,5 @@
+"use client";
+
 import { Trophy, Medal } from "lucide-react";
 import {
   Card,
@@ -180,6 +182,9 @@ export default function Leaderboard() {
         return <span className="text-lg font-bold text-gray-600">#{rank}</span>;
     }
   };
+
+  const tabTriggerClass = "px-3 py-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md shadow-gray-300 data-[state=active]:border-1 border-gray-200";
+  
   return (
     <div className="container py-12 px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
@@ -193,14 +198,14 @@ export default function Leaderboard() {
           </p>
         </div>
         {/* Leaderboards */}
-        <Tabs defaultValue="community" className="space-y-6">
+        <Tabs defaultValue="ld-1" className="space-y-6">
           <TabsList className="grid w-full grid-cols-3 bg-gray-300/20">
-            <TabsTrigger value="community">Commuity</TabsTrigger>
-            <TabsTrigger value="brands">Brands</TabsTrigger>
-            <TabsTrigger value="organization">Organization</TabsTrigger>
+            <TabsTrigger value="ld-1" className={tabTriggerClass}>Community</TabsTrigger>
+            <TabsTrigger value="ld-2" className={tabTriggerClass}>Brands</TabsTrigger>
+            <TabsTrigger value="ld-3" className={tabTriggerClass}>Organization</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="community" className="space-y-6">
+          <TabsContent value="ld-1" className="space-y-6">
             <div className="bg-white border-0 rounded-lg shadow-sm p-4 mb-8">
               <div className="flex flex-col md:flex-row gap-4 mb-6">
                 <Card className="border-gray-500/50 w-full">
@@ -264,7 +269,7 @@ export default function Leaderboard() {
           </TabsContent>
 
           {/* brand leaderboards */}
-          <TabsContent value="brands">
+          <TabsContent value="ld-2">
             <div className="bg-white rounded-lg shadow-sm p-4 mb-8">
               <div className="flex flex-col md:flex-row gap-4 mb-6">
                 <Card className="border-gray-500/50 w-full">
@@ -327,7 +332,7 @@ export default function Leaderboard() {
           </TabsContent>
 
           {/* organization leaderbaords */}
-          <TabsContent value="organization">
+          <TabsContent value="ld-3">
             <div className="bg-white rounded-lg shadow-sm p-4 mb-8">
               <div className="flex flex-col md:flex-row gap-4 mb-6">
                 <Card className="border-gray-500/50 w-full">

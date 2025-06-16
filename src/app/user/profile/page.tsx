@@ -338,10 +338,10 @@ const confirmReject = () => {
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="flex overflow-x-auto whitespace-nowrap space-x-3 no-scrollbar">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
-            <TabsTrigger value="requests">Requests</TabsTrigger>
+          <TabsList className="flex justify-between overflow-x-auto whitespace-nowrap no-scrollbar sm:px-5 px-2 bg-gray-300/20">
+            <TabsTrigger value="overview" className="w-full">Overview</TabsTrigger>
+            <TabsTrigger value="leaderboard" className="w-full">Leaderboard</TabsTrigger>
+            {/* <TabsTrigger value="requests" className="w-full">Requests</TabsTrigger> */}
           </TabsList>
 
           {/* Overview Tab */}
@@ -504,7 +504,7 @@ const confirmReject = () => {
                   {userData.recentDonations.map((donation, index) => (
                     <div
                       key={index}
-                      className="flex items-center justify-between p-4 border border-gray-500/50 rounded-lg"
+                      className="flex flex-col md:flex-row items-end md:items-center justify-between p-4 border border-gray-500/50 rounded-lg"
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
@@ -519,7 +519,7 @@ const confirmReject = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="text-right">
+                      <div className="text-center p-2">
                         <Badge
                           variant="outline"
                           className="bg-green-50 text-green-700 border-green-200"
@@ -646,8 +646,8 @@ const confirmReject = () => {
             </Card>
           </TabsContent>
 
-          {/* Organization Requests Tab */}
-          <TabsContent value="requests" className="space-y-6">
+          {/* Organization Requests Tab : Commented*/}
+          {/* <TabsContent value="requests" className="space-y-6">
             <Card className="border-gray-500/50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -819,7 +819,7 @@ const confirmReject = () => {
                 </div>
               </CardContent>
             </Card>
-          </TabsContent>
+          </TabsContent> */}
 
           {/* Achievements Tab */}
           <TabsContent value="achievements" className="space-y-6">

@@ -338,12 +338,12 @@ export default function OrganizationDashboard() {
           </div>
 
           <Tabs defaultValue="overview" className="space-y-6">
-            <TabsList className="flex overflow-x-auto whitespace-nowrap space-x-4 no-scrollbar">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="donors">Donors</TabsTrigger>
-              <TabsTrigger value="geography">Geography</TabsTrigger>
-              <TabsTrigger value="partnerships">Partnerships</TabsTrigger>
-              <TabsTrigger value="activity">Activity</TabsTrigger>
+            <TabsList className="flex justify-between overflow-x-auto whitespace-nowrap no-scrollbar sm:px-5 px-2 bg-gray-300/20">
+              <TabsTrigger value="overview" className="w-full">Overview</TabsTrigger>
+              <TabsTrigger value="donors" className="w-full">Donors</TabsTrigger>
+              <TabsTrigger value="geography" className="w-full">Geography</TabsTrigger>
+              <TabsTrigger value="partnerships" className="w-full">Partnerships</TabsTrigger>
+              <TabsTrigger value="activity" className="w-full">Activity</TabsTrigger>
             </TabsList>
 
             {/* Overview Tab */}
@@ -767,7 +767,7 @@ export default function OrganizationDashboard() {
                             {request.message}
                           </p>
 
-                          <div className="flex gap-2 pt-2">
+                          <div className="flex flex-col md:flex-row gap-2 pt-2">
                             <Button
                               size="sm"
                               className="bg-green-700 hover:bg-green-800 text-white hover:scale-103 transition-transform duration-300 ease"
@@ -866,14 +866,14 @@ export default function OrganizationDashboard() {
                             </div>
                           </div>
 
-                          <div className="flex gap-2">
-                            <Button size="sm" variant="outline">
+                          <div className="flex flex-col md:flex-row gap-2">
+                            <Button size="sm" variant="outline" className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                               View Contract
                             </Button>
-                            <Button size="sm" variant="outline">
+                            <Button size="sm" variant="outline" className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                               Contact
                             </Button>
-                            <Button size="sm" variant="outline">
+                            <Button size="sm" variant="outline" className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                               Renew
                             </Button>
                           </div>
