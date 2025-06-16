@@ -121,8 +121,6 @@ export default function RegisterProductPage() {
   }
 
   const downloadQRCode = () => {
-    if (!generatedProduct) return
-
     const svg = document.getElementById("qr-code-svg")
     if (svg) {
       const svgData = new XMLSerializer().serializeToString(svg)
@@ -166,7 +164,7 @@ export default function RegisterProductPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Product Information */}
-            <Card className="border-gray-500/50">
+            <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Package className="h-5 w-5" />
@@ -213,7 +211,7 @@ export default function RegisterProductPage() {
             </Card>
 
             {/* QR Code */}
-            <Card className="border-gray-500/50">
+            <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <QrCode className="h-5 w-5" />
@@ -243,7 +241,7 @@ export default function RegisterProductPage() {
                       <Download className="mr-2 h-4 w-4" />
                       Download QR Code
                     </Button>
-                    <Button variant="outline" className="w-full border-gray-500/50" asChild>
+                    <Button variant="outline" className="w-full" asChild>
                       <Link href={generatedProduct.url} target="_blank">
                         <Eye className="mr-2 h-4 w-4" />
                         Preview Landing Page
@@ -302,7 +300,7 @@ export default function RegisterProductPage() {
           </p>
         </div>
 
-        <Card className="border-gray-500/50">
+        <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Package className="h-5 w-5" />
@@ -333,7 +331,7 @@ export default function RegisterProductPage() {
                           <FormItem>
                             <FormLabel>Product Name</FormLabel>
                             <FormControl>
-                              <Input placeholder="e.g., AquaPure 500ml Water Bottle" className="border-gray-500/50" {...field} />
+                              <Input placeholder="e.g., AquaPure 500ml Water Bottle" {...field} />
                             </FormControl>
                             <FormDescription>The full name of your product</FormDescription>
                             <FormMessage />
@@ -365,7 +363,7 @@ export default function RegisterProductPage() {
                           <FormControl>
                             <Textarea
                               placeholder="Describe your product, its use, and any special features..."
-                              className="min-h-[100px] border-gray-500/50"
+                              className="min-h-[100px]"
                               {...field}
                             />
                           </FormControl>
@@ -386,17 +384,17 @@ export default function RegisterProductPage() {
                             <FormLabel>Category</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
-                                <SelectTrigger className="border-gray-500/50">
+                                <SelectTrigger>
                                   <SelectValue placeholder="Select category" />
                                 </SelectTrigger>
                               </FormControl>
-                              <SelectContent className="bg-white">
-                                <SelectItem value="Beverages" className="hover:bg-green-300">Beverages</SelectItem>
-                                <SelectItem value="Food" className="hover:bg-green-300">Food</SelectItem>
-                                <SelectItem value="Personal Care" className="hover:bg-green-300">Personal Care</SelectItem>
-                                <SelectItem value="Household" className="hover:bg-green-300">Household</SelectItem>
-                                <SelectItem value="Electronics" className="hover:bg-green-300">Electronics</SelectItem>
-                                <SelectItem value="Other" className="hover:bg-green-300">Other</SelectItem>
+                              <SelectContent>
+                                <SelectItem value="Beverages">Beverages</SelectItem>
+                                <SelectItem value="Food">Food</SelectItem>
+                                <SelectItem value="Personal Care">Personal Care</SelectItem>
+                                <SelectItem value="Household">Household</SelectItem>
+                                <SelectItem value="Electronics">Electronics</SelectItem>
+                                <SelectItem value="Other">Other</SelectItem>
                               </SelectContent>
                             </Select>
                             <FormMessage />
@@ -411,7 +409,7 @@ export default function RegisterProductPage() {
                           <FormItem>
                             <FormLabel>Size/Volume</FormLabel>
                             <FormControl>
-                              <Input placeholder="e.g., 500ml, 250g, Large" className="border-gray-500/50" {...field} />
+                              <Input placeholder="e.g., 500ml, 250g, Large" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -425,7 +423,7 @@ export default function RegisterProductPage() {
                           <FormItem>
                             <FormLabel>Weight (Optional)</FormLabel>
                             <FormControl>
-                              <Input placeholder="e.g., 15g, 0.5kg" className="border-gray-500/50" {...field} />
+                              <Input placeholder="e.g., 15g, 0.5kg" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -441,7 +439,7 @@ export default function RegisterProductPage() {
                       <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
                         <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
                         <p className="text-sm text-gray-600 mb-2">Upload a photo of your product</p>
-                        <Button type="button" variant="outline" size="sm" className="border-gray-500/50">
+                        <Button type="button" variant="outline" size="sm">
                           Choose File
                         </Button>
                         <p className="text-xs text-gray-500 mt-2">PNG, JPG up to 5MB</p>
@@ -460,20 +458,20 @@ export default function RegisterProductPage() {
                             <FormLabel>Primary Material</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
-                                <SelectTrigger className="border-gray-500/50">
+                                <SelectTrigger>
                                   <SelectValue placeholder="Select material" />
                                 </SelectTrigger>
                               </FormControl>
-                              <SelectContent className="bg-white">
-                                <SelectItem value="PET Plastic" className="hover:bg-green-300">PET Plastic</SelectItem>
-                                <SelectItem value="HDPE Plastic" className="hover:bg-green-300">HDPE Plastic</SelectItem>
-                                <SelectItem value="PP Plastic" className="hover:bg-green-300">PP Plastic</SelectItem>
-                                <SelectItem value="Cardboard" className="hover:bg-green-300">Cardboard</SelectItem>
-                                <SelectItem value="Paper" className="hover:bg-green-300">Paper</SelectItem>
-                                <SelectItem value="Glass" className="hover:bg-green-300">Glass</SelectItem>
-                                <SelectItem value="Aluminum" className="hover:bg-green-300">Aluminum</SelectItem>
-                                <SelectItem value="Tetra Pak" className="hover:bg-green-300">Tetra Pak</SelectItem>
-                                <SelectItem value="Mixed Materials" className="hover:bg-green-300">Mixed Materials</SelectItem>
+                              <SelectContent>
+                                <SelectItem value="PET Plastic">PET Plastic</SelectItem>
+                                <SelectItem value="HDPE Plastic">HDPE Plastic</SelectItem>
+                                <SelectItem value="PP Plastic">PP Plastic</SelectItem>
+                                <SelectItem value="Cardboard">Cardboard</SelectItem>
+                                <SelectItem value="Paper">Paper</SelectItem>
+                                <SelectItem value="Glass">Glass</SelectItem>
+                                <SelectItem value="Aluminum">Aluminum</SelectItem>
+                                <SelectItem value="Tetra Pak">Tetra Pak</SelectItem>
+                                <SelectItem value="Mixed Materials">Mixed Materials</SelectItem>
                               </SelectContent>
                             </Select>
                             <FormMessage />
@@ -488,7 +486,7 @@ export default function RegisterProductPage() {
                           <FormItem>
                             <FormLabel>Material Subtype (Optional)</FormLabel>
                             <FormControl>
-                              <Input placeholder="e.g., Clear PET, Colored HDPE" className="border-gray-500/50" {...field} />
+                              <Input placeholder="e.g., Clear PET, Colored HDPE" {...field} />
                             </FormControl>
                             <FormDescription>Specific type or grade of material</FormDescription>
                             <FormMessage />
@@ -505,17 +503,17 @@ export default function RegisterProductPage() {
                           <FormLabel>Recyclability Level</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger className="border-gray-500/50">
+                              <SelectTrigger>
                                 <SelectValue placeholder="Select recyclability" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent className="bg-white">
-                              <SelectItem value="Highly Recyclable" className="hover:bg-green-300">Highly Recyclable</SelectItem>
-                              <SelectItem value="Recyclable" className="hover:bg-green-300">Recyclable</SelectItem>
-                              <SelectItem value="Limited Recyclability" className="hover:bg-green-300">Limited Recyclability</SelectItem>
-                              <SelectItem value="Not Recyclable" className="hover:bg-green-300">Not Recyclable</SelectItem>
-                              <SelectItem value="Compostable" className="hover:bg-green-300">Compostable</SelectItem>
-                              <SelectItem value="Biodegradable" className="hover:bg-green-300">Biodegradable</SelectItem>
+                            <SelectContent>
+                              <SelectItem value="Highly Recyclable">Highly Recyclable</SelectItem>
+                              <SelectItem value="Recyclable">Recyclable</SelectItem>
+                              <SelectItem value="Limited Recyclability">Limited Recyclability</SelectItem>
+                              <SelectItem value="Not Recyclable">Not Recyclable</SelectItem>
+                              <SelectItem value="Compostable">Compostable</SelectItem>
+                              <SelectItem value="Biodegradable">Biodegradable</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormDescription>How easily can this product be recycled in the Philippines?</FormDescription>
@@ -533,7 +531,7 @@ export default function RegisterProductPage() {
                           <FormControl>
                             <Textarea
                               placeholder="Describe the environmental benefits of recycling this product..."
-                              className="min-h-[100px] border-gray-500/50"
+                              className="min-h-[100px]"
                               {...field}
                             />
                           </FormControl>
@@ -555,7 +553,7 @@ export default function RegisterProductPage() {
                           <FormControl>
                             <Textarea
                               placeholder="Provide step-by-step instructions on how to prepare this product for recycling..."
-                              className="min-h-[100px] border-gray-500/50"
+                              className="min-h-[100px]"
                               {...field}
                             />
                           </FormControl>
@@ -576,7 +574,7 @@ export default function RegisterProductPage() {
                           <FormControl>
                             <Textarea
                               placeholder="Instructions for preparing this product before donating to organizations..."
-                              className="min-h-[100px] border-gray-500/50"
+                              className="min-h-[100px]"
                               {...field}
                             />
                           </FormControl>
@@ -595,7 +593,7 @@ export default function RegisterProductPage() {
                           <FormControl>
                             <Textarea
                               placeholder="Share your brand's sustainability commitments and goals..."
-                              className="min-h-[80px] border-gray-500/50"
+                              className="min-h-[80px]"
                               {...field}
                             />
                           </FormControl>
@@ -618,7 +616,7 @@ export default function RegisterProductPage() {
                           <FormItem>
                             <FormLabel>Contact Email</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="contact@yourbrand.com" className="border-gray-500/50" {...field} />
+                              <Input type="email" placeholder="contact@yourbrand.com" {...field} />
                             </FormControl>
                             <FormDescription>For partnership inquiries and support</FormDescription>
                             <FormMessage />
@@ -633,7 +631,7 @@ export default function RegisterProductPage() {
                           <FormItem>
                             <FormLabel>Contact Phone</FormLabel>
                             <FormControl>
-                              <Input placeholder="09XX XXX XXXX" className="border-gray-500/50" {...field} />
+                              <Input placeholder="09XX XXX XXXX" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -648,7 +646,7 @@ export default function RegisterProductPage() {
                         <FormItem>
                           <FormLabel>Website (Optional)</FormLabel>
                           <FormControl>
-                            <Input type="url" placeholder="https://yourbrand.com" className="border-gray-500/50" {...field} />
+                            <Input type="url" placeholder="https://yourbrand.com" {...field} />
                           </FormControl>
                           <FormDescription>Your brand's website for more information</FormDescription>
                           <FormMessage />
@@ -692,7 +690,7 @@ export default function RegisterProductPage() {
                 </Tabs>
 
                 <div className="flex justify-end pt-6">
-                  <Button type="submit" className="bg-green-700 text-white outline-transparent outline-3 hover:bg-green-800 hover:outline-green-400 transition-all duration-300 ease px-8" disabled={isSubmitting}>
+                  <Button type="submit" className="bg-green-700 hover:bg-green-800 px-8" disabled={isSubmitting}>
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -701,7 +699,7 @@ export default function RegisterProductPage() {
                     ) : (
                       <>
                         <QrCode className="mr-2 h-4 w-4" />
-                        Register Product
+                        Register Product & Generate QR Code
                       </>
                     )}
                   </Button>
