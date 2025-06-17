@@ -142,10 +142,10 @@ export default function ProductAnalyticsPage() {
               <Download className="mr-2 h-4 w-4" />
               Export
             </Button>
-            <Button variant="outline" className="border-gray-500/50">
+            {/* <Button variant="outline" className="border-gray-500/50">
               <Share2 className="mr-2 h-4 w-4" />
               Share
-            </Button>
+            </Button> */}
           </div>
         </div>
 
@@ -208,12 +208,12 @@ export default function ProductAnalyticsPage() {
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="geography">Geography</TabsTrigger>
-            <TabsTrigger value="behavior">User Behavior</TabsTrigger>
-            <TabsTrigger value="devices">Devices</TabsTrigger>
-            <TabsTrigger value="performance">Performance</TabsTrigger>
+          <TabsList className="flex justify-between overflow-x-auto whitespace-nowrap no-scrollbar sm:px-5 px-2 bg-gray-300/20">
+            <TabsTrigger value="overview" className="w-full">Overview</TabsTrigger>
+            <TabsTrigger value="geography" className="w-full">Geography</TabsTrigger>
+            <TabsTrigger value="behavior" className="w-full">User Behavior</TabsTrigger>
+            <TabsTrigger value="devices" className="w-full">Devices</TabsTrigger>
+            <TabsTrigger value="performance" className="w-full">Performance</TabsTrigger>
           </TabsList>
 
           {/* Overview Tab */}

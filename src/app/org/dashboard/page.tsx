@@ -480,9 +480,9 @@ export default function OrganizationDashboard() {
                     {topDonors.map((donor, index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-between border-gray-500/50 p-4 border rounded-lg hover:scale-103 hover:border-green-700 transition-all duration-300 ease"
+                        className="flex flex-col md:flex-row items-center justify-between border-gray-500/50 p-4 border rounded-lg hover:scale-103 hover:border-green-700 transition-all duration-300 ease"
                       >
-                        <div className="flex items-center gap-4 ">
+                        <div className="flex flex-col md:flex-row items-center gap-4">
                           <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden">
                             <img
                               src={donor.logo || "/placeholder.svg"}
@@ -491,7 +491,7 @@ export default function OrganizationDashboard() {
                             />
                           </div>
                           <div>
-                            <div className="flex items-center gap-2 mb-1">
+                            <div className="flex flex-col md:flex-row items-center gap-2 mb-1">
                               <h4 className="font-medium">{donor.name}</h4>
                               <Badge
                                 variant={
@@ -504,7 +504,7 @@ export default function OrganizationDashboard() {
                                 {donor.partnership}
                               </Badge>
                             </div>
-                            <div className="flex items-center gap-4 text-sm text-gray-500">
+                            <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-500">
                               <div className="flex items-center gap-1">
                                 <Clock className="h-3 w-3" />
                                 <span>{donor.lastDonation}</span>
@@ -686,7 +686,7 @@ export default function OrganizationDashboard() {
                           logo: "/placeholder.svg?height=40&width=40",
                           requestDate: "2 days ago",
                           expectedVolume: "Medium (500-2000 items)",
-                          partnershipType: "Official Partnership",
+                          partnershipType: "Official",
                           contactPerson: "Jeffrey Sereno",
                           email: "freyy@gmail.com",
                           message:
@@ -698,7 +698,7 @@ export default function OrganizationDashboard() {
                           logo: "/placeholder.svg?height=40&width=40",
                           requestDate: "5 days ago",
                           expectedVolume: "Large (2000+ items)",
-                          partnershipType: "Official Partnership",
+                          partnershipType: "Official",
                           contactPerson: "Juan Dela Cruz",
                           email: "juan@greenpack.ph",
                           message:
@@ -710,7 +710,7 @@ export default function OrganizationDashboard() {
                           logo: "/placeholder.svg?height=40&width=40",
                           requestDate: "1 week ago",
                           expectedVolume: "Small (0-500 items)",
-                          partnershipType: "Community Partnership",
+                          partnershipType: "Community",
                           contactPerson: "Ana Rodriguez",
                           email: "ana@cleandrinks.com",
                           message:
