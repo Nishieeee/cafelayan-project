@@ -476,14 +476,14 @@ export default function BrandDashboard() {
                     {topOrganizations.map((org, index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-between p-4 border rounded-lg border-gray-500/50 hover:scale-101 hover:border-green-700 transition-all duration-300 ease"
+                        className="flex flex-col md:flex-row items-center justify-between p-4 border rounded-lg border-gray-500/50 hover:scale-101 hover:border-green-700 transition-all duration-300 ease"
                       >
-                        <div className="flex items-center gap-4">
+                        <div className="flex flex-col md:flex-row items-center gap-4">
                           <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                             <Building2 className="h-5 w-5 text-green-600" />
                           </div>
                           <div>
-                            <h4 className="font-medium">{org.name}</h4>
+                            <h4 className="font-medium text-center md:text-start">{org.name}</h4>
                             <div className="flex items-center gap-2 text-sm text-gray-500">
                               <MapPin className="h-3 w-3" />
                               <span>{org.city}</span>
@@ -500,7 +500,7 @@ export default function BrandDashboard() {
                             </div>
                           </div>
                         </div>
-                        <div className="text-right">
+                        <div className="text-center">
                           <p className="font-bold text-lg">
                             {org.donations.toLocaleString()}
                           </p>
@@ -555,9 +555,9 @@ export default function BrandDashboard() {
                     {leaderboardData.map((user, index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:border-green-700 hover:scale-102 transition-all duration-300 ease"
+                        className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:border-green-700 hover:scale-102 transition-all duration-300 ease"
                       >
-                        <div className="flex items-center gap-4">
+                        <div className="flex flex-col md:flex-row items-center gap-4">
                           <div className="w-12 h-12 flex items-center justify-center">
                             {getRankIcon(user.rank)}
                           </div>
@@ -585,7 +585,7 @@ export default function BrandDashboard() {
                             </Badge>
                           </div>
                         </div>
-                        <div className="text-right flex justify-center items-center">
+                        <div className="text-center flex flex-col md:flex-row justify-center items-center">
                           <div>
                             <div className="font-bold text-lg">
                               {user.donations}
