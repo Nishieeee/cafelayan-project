@@ -159,15 +159,15 @@ export default function Leaderboard() {
   const getLevelColor = (level: string) => {
     switch (level) {
       case "Eco Guardian":
-        return "bg-emerald-500 text-emerald-800 border-emerald-200";
+        return "bg-emerald-500 text-emerald-800 border-emerald-200 text-center";
       case "Forest Friend":
-        return "bg-green-400 text-green-800 border-green-200";
+        return "bg-green-400 text-green-800 border-green-200 text-center";
       case "Young Tree":
-        return "bg-emerald-400 text-green-200 border-green-200";
+        return "bg-emerald-400 text-green-200 border-green-200 text-center";
       case "Sapling":
-        return "bg-lime-100 text-lime-800 border-lime-200";
+        return "bg-lime-100 text-lime-800 border-lime-200 text-center";
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
+        return "bg-gray-100 text-gray-800 border-gray-200 text-center";
     }
   };
   const getRankIcon = (rank: number) => {
@@ -199,7 +199,7 @@ export default function Leaderboard() {
         </div>
         {/* Leaderboards */}
         <Tabs defaultValue="ld-1" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 bg-gray-300/20">
+          <TabsList className="grid rounded-m w-full grid-cols-3 bg-gray-300/20">
             <TabsTrigger value="ld-1" className={tabTriggerClass}>Community</TabsTrigger>
             <TabsTrigger value="ld-2" className={tabTriggerClass}>Brands</TabsTrigger>
             <TabsTrigger value="ld-3" className={tabTriggerClass}>Organization</TabsTrigger>
@@ -211,7 +211,7 @@ export default function Leaderboard() {
                 <Card className="border-gray-500/50 w-full">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Trophy className="h-5 w-5" />
+                      <Trophy className="h-5 w-5 text-lime-400" />
                       Community Leaderboard
                     </CardTitle>
                   </CardHeader>
@@ -220,9 +220,9 @@ export default function Leaderboard() {
                       {communityLeaderboardData.map((user, index) => (
                         <div
                           key={index}
-                          className="flex items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
+                          className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
                         >
-                          <div className="flex items-center gap-4">
+                          <div className="flex flex-col md:flex-row items-center gap-4">
                             <div className="w-12 h-12 flex items-center justify-center">
                               {getRankIcon(user.rank)}
                             </div>
@@ -238,10 +238,9 @@ export default function Leaderboard() {
                                   .join("")}
                               </AvatarFallback>
                             </Avatar>
-                            <div>
-                              <h4 className="font-medium flex items-center gap-2">
+                            <div className="flex flex-col items-center md:block">
+                              <h4 className="font-medium flex gap-2">
                                 {user.name}
-                                
                               </h4>
                               <Badge
                                 variant="outline"
@@ -251,7 +250,7 @@ export default function Leaderboard() {
                               </Badge>
                             </div>
                           </div>
-                          <div className="text-right">
+                          <div className="text-center">
                             <div className="font-bold text-lg">
                               {user.donations}
                             </div>
@@ -275,7 +274,7 @@ export default function Leaderboard() {
                 <Card className="border-gray-500/50 w-full">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Trophy className="h-5 w-5" />
+                      <Trophy className="h-5 w-5 text-lime-800" />
                       Most Impactful Brands
                     </CardTitle>
                   </CardHeader>
@@ -284,9 +283,9 @@ export default function Leaderboard() {
                       {brandLeaderboardsdata.map((user, index) => (
                         <div
                           key={index}
-                          className="flex items-center justify-between p-4 rounded-lg border border-gray-500/50  hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
+                          className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50  hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
                         >
-                          <div className="flex items-center gap-4">
+                          <div className="flex flex-col md:flex-row items-center gap-4">
                             <div className="w-12 h-12 flex items-center justify-center">
                               {getRankIcon(user.rank)}
                             </div>
@@ -302,7 +301,7 @@ export default function Leaderboard() {
                                   .join("")}
                               </AvatarFallback>
                             </Avatar>
-                            <div>
+                            <div className="flex md:block flex-col items-center">
                               <h4 className="font-medium flex items-center gap-2">
                                 {user.name}
                               </h4>
@@ -314,7 +313,7 @@ export default function Leaderboard() {
                               </Badge>
                             </div>
                           </div>
-                          <div className="text-right">
+                          <div className="text-center">
                             <div className="font-bold text-lg">
                               {user.donations}
                             </div>
@@ -347,9 +346,9 @@ export default function Leaderboard() {
                       {organizationLeaderboards.map((user, index) => (
                         <div
                           key={index}
-                          className="flex items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
+                          className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
                         >
-                          <div className="flex items-center gap-4">
+                          <div className="flex flex-col md:flex-row  items-center gap-4">
                             <div className="w-12 h-12 flex items-center justify-center">
                               {getRankIcon(user.rank)}
                             </div>
@@ -365,7 +364,7 @@ export default function Leaderboard() {
                                   .join("")}
                               </AvatarFallback>
                             </Avatar>
-                            <div>
+                            <div className="flex md:block flex-col items-center ">
                               <h4 className="font-medium flex items-center gap-2">
                                 {user.name}
                               </h4>
@@ -377,7 +376,7 @@ export default function Leaderboard() {
                               </Badge>
                             </div>
                           </div>
-                          <div className="text-right">
+                          <div className="text-center">
                             <div className="font-bold text-lg">
                               {user.donations}
                             </div>
