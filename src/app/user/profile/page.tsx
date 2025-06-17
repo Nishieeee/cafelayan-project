@@ -264,15 +264,15 @@ const confirmReject = () => {
   const getLevelColor = (level: string) => {
     switch (level) {
       case "Eco Guardian":
-        return "bg-emerald-500 text-emerald-800 border-emerald-200";
+        return "bg-emerald-500 text-emerald-800 border-emerald-200 text-center";
       case "Forest Friend":
-        return "bg-green-400 text-green-800 border-green-200";
+        return "bg-green-400 text-green-800 border-green-200 text-center";
       case "Young Tree":
-        return "bg-emerald-400 text-green-200 border-green-200";
+        return "bg-emerald-400 text-green-200 border-green-200 text-center";
       case "Sapling":
-        return "bg-lime-100 text-lime-800 border-lime-200";
+        return "bg-lime-100 text-lime-800 border-lime-200 text-center";
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
+        return "bg-gray-100 text-gray-800 border-gray-200 text-center";
     }
   };
 
@@ -504,15 +504,15 @@ const confirmReject = () => {
                   {userData.recentDonations.map((donation, index) => (
                     <div
                       key={index}
-                      className="flex flex-col md:flex-row items-end md:items-center justify-between p-4 border border-gray-500/50 rounded-lg"
+                      className="flex flex-col md:flex-row items-center md:items-center justify-between p-4 border border-gray-500/50 rounded-lg"
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="flex flex-col md:flex-row items-center  gap-4">
                         <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                           <Recycle className="h-5 w-5 text-green-600" />
                         </div>
-                        <div>
+                        <div className="flex flex-col items-center md:items-start">
                           <h4 className="font-medium">{donation.item}</h4>
-                          <div className="flex items-center gap-4 text-sm text-gray-500">
+                          <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-500">
                             <span>{donation.quantity} items</span>
                             <span>{donation.weight} kg</span>
                             <span>{donation.organization}</span>
@@ -563,13 +563,13 @@ const confirmReject = () => {
                   {leaderboardData.map((user, index) => (
                     <div
                       key={index}
-                      className={`flex items-center justify-between p-4 rounded-lg border border-gray-500/50 ${
+                      className={`flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 ${
                         user.isCurrentUser
                           ? "bg-blue-50 border-blue-200"
                           : "bg-white"
                       } hover:scale-102 hover:border-green-700 transition-all duration-300 ease`}
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="flex flex-col md:flex-row items-center gap-4">
                         <div className="w-12 h-12 flex items-center justify-center">
                           {getRankIcon(user.rank)}
                         </div>
@@ -585,7 +585,7 @@ const confirmReject = () => {
                               .join("")}
                           </AvatarFallback>
                         </Avatar>
-                        <div>
+                        <div className="flex flex-col items-center md:block">
                           <h4 className="font-medium flex items-center gap-2">
                             {user.name}
                             {user.isCurrentUser && (
@@ -600,7 +600,7 @@ const confirmReject = () => {
                           </Badge>
                         </div>
                       </div>
-                      <div className="text-right">
+                      <div className="text-center">
                         <div className="font-bold text-lg">
                           {user.donations}
                         </div>
