@@ -19,7 +19,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts"
-import { ArrowLeft, QrCode, TrendingUp, Users, MapPin, Download, Share2, Calendar, Target } from "lucide-react"
+import { ArrowLeft, QrCode, TrendingUp, Users, MapPin, Download, Calendar, Target } from "lucide-react"
 import Link from "next/link"
 
 
