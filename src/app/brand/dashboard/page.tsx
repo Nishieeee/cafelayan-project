@@ -573,7 +573,7 @@ export default function BrandDashboard() {
                                 .join("")}
                             </AvatarFallback>
                           </Avatar>
-                          <div>
+                          <div className="flex md:block flex-col items-center ">
                             <h4 className="font-medium flex items-center gap-2">
                               {user.name}
                             </h4>

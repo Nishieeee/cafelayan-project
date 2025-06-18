@@ -238,7 +238,7 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Scans</CardTitle>
               <QrCode className="h-4 w-4 text-muted-foreground" />
@@ -251,7 +251,7 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Donations</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -264,7 +264,7 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Avg Conversion</CardTitle>
               <BarChart3 className="h-4 w-4 text-muted-foreground" />
