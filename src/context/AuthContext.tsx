@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }:{ children:ReactNode}) => {
     const isLoggedIn = role !== null
 
     useEffect(() => {
-        AOS.init({duration: 300, once: true});
+        AOS.init({duration: 700, once: true});
     }, [])
     
     return (
