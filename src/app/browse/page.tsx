@@ -103,7 +103,7 @@ export default function BrowsePage() {
       {filteredDonations.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredDonations.map((donation) => (
-            <Link key={donation.id} href={`/donations/${donation.id}`}>
+            <Link key={donation.id} href={`/donations/${donation.id}`} data-aos="fade-up">
               <Card className="h-full border-gray-500/50 overflow-hidden hover:shadow-md hover:border-green-700 transition-all duration-300 ease">
                 <div className="aspect-square overflow-hidden">
                   <img
@@ -139,7 +139,7 @@ export default function BrowsePage() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-12 bg-gray-50 rounded-lg">
+        <div data-aos="fade-up" className="text-center py-12 bg-gray-50 rounded-lg">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-4">
             <Search className="h-8 w-8 text-gray-400" />
           </div>
