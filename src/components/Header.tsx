@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
-import { Recycle, Menu, Search, LogOut, Home, BookOpen, MapPin, Info, LayoutDashboard, User, Trophy } from "lucide-react"
+import { Recycle, Menu,  LogOut, Home, BookOpen, MapPin, Info, LayoutDashboard, User, Trophy } from "lucide-react"
 
 import { useAuth } from "@/context/AuthContext"
 
