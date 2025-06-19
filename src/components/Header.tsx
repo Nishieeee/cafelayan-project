@@ -108,9 +108,9 @@ export default function Header() {
             {isLoggedIn ? (
               <div className="hidden md:block">
                 <div className="flex items-center space-x-4">
-                  <Button variant="ghost" size="icon">
+                  {/* <Button variant="ghost" size="icon">
                     <Search className="h-5 w-5" />
-                  </Button>
+                  </Button> */}
                   <Link href="/">
                     <Button variant="ghost" size="icon" className="hover:bg-red-50 hover:text-red-600" onClick={logout}>
                     <LogOut className="h-5 w-5" />
@@ -229,10 +229,10 @@ export default function Header() {
                     {/* Auth Section */}
                     {isLoggedIn ? (
                       <div className="space-y-3">
-                        <Button variant="ghost" className="w-full justify-start px-4 py-3 h-auto hover:bg-gray-50">
+                        {/* <Button variant="ghost" className="w-full justify-start px-4 py-3 h-auto hover:bg-gray-50">
                           <Search className="h-5 w-5 mr-3" />
                           Search
-                        </Button>
+                        </Button> */}
                         <Link href="/">
                           <Button
                           variant="ghost"
