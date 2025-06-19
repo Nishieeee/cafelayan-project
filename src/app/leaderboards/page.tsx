@@ -1,12 +1,7 @@
 "use client";
 
 import { Trophy, Medal } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -147,7 +142,7 @@ export default function Leaderboard() {
     },
     {
       rank: 5,
-      name: "Kangkong ChipsRecycle Center BGC",
+      name: "Recycle Center BGC",
       avatar: "/placeholder.svg?height=40&width=40",
       donations: 112,
       weight: 41.7,
@@ -183,8 +178,9 @@ export default function Leaderboard() {
     }
   };
 
-  const tabTriggerClass = "px-3 py-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md shadow-gray-300 data-[state=active]:border-1 border-gray-200";
-  
+  const tabTriggerClass =
+    "px-3 py-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md shadow-gray-300 data-[state=active]:border-1 border-gray-200";
+
   return (
     <div className="container py-12 px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
@@ -200,9 +196,15 @@ export default function Leaderboard() {
         {/* Leaderboards */}
         <Tabs defaultValue="ld-1" className="space-y-6">
           <TabsList className="grid rounded-m w-full grid-cols-3 bg-gray-300/20">
-            <TabsTrigger value="ld-1" className={tabTriggerClass}>Community</TabsTrigger>
-            <TabsTrigger value="ld-2" className={tabTriggerClass}>Brands</TabsTrigger>
-            <TabsTrigger value="ld-3" className={tabTriggerClass}>Organization</TabsTrigger>
+            <TabsTrigger value="ld-1" className={tabTriggerClass}>
+              Community
+            </TabsTrigger>
+            <TabsTrigger value="ld-2" className={tabTriggerClass}>
+              Brands
+            </TabsTrigger>
+            <TabsTrigger value="ld-3" className={tabTriggerClass}>
+              Organization
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="ld-1" className="space-y-6">
@@ -220,42 +222,45 @@ export default function Leaderboard() {
                       {communityLeaderboardData.map((user, index) => (
                         <div
                           key={index}
-                          className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
+                          data-aos="fade-up"
+                          data-aos-delay="200"
                         >
-                          <div className="flex flex-col md:flex-row items-center gap-4">
-                            <div className="w-12 h-12 flex items-center justify-center">
-                              {getRankIcon(user.rank)}
+                          <div className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:scale-102 hover:border-green-700 transition-all duration-300 ease">
+                            <div className="flex flex-col md:flex-row items-center gap-4">
+                              <div className="w-12 h-12 flex items-center justify-center">
+                                {getRankIcon(user.rank)}
+                              </div>
+                              <Avatar className="w-10 h-10">
+                                <AvatarImage
+                                  src={user.avatar || "/placeholder.svg"}
+                                  alt={user.name}
+                                />
+                                <AvatarFallback>
+                                  {user.name
+                                    .split(" ")
+                                    .map((n) => n[0])
+                                    .join("")}
+                                </AvatarFallback>
+                              </Avatar>
+                              <div className="flex flex-col items-center md:block">
+                                <h4 className="font-medium flex gap-2">
+                                  {user.name}
+                                </h4>
+                                <Badge
+                                  variant="outline"
+                                  className={getLevelColor(user.level)}
+                                >
+                                  {user.level}
+                                </Badge>
+                              </div>
                             </div>
-                            <Avatar className="w-10 h-10">
-                              <AvatarImage
-                                src={user.avatar || "/placeholder.svg"}
-                                alt={user.name}
-                              />
-                              <AvatarFallback>
-                                {user.name
-                                  .split(" ")
-                                  .map((n) => n[0])
-                                  .join("")}
-                              </AvatarFallback>
-                            </Avatar>
-                            <div className="flex flex-col items-center md:block">
-                              <h4 className="font-medium flex gap-2">
-                                {user.name}
-                              </h4>
-                              <Badge
-                                variant="outline"
-                                className={getLevelColor(user.level)}
-                              >
-                                {user.level}
-                              </Badge>
-                            </div>
-                          </div>
-                          <div className="text-center">
-                            <div className="font-bold text-lg">
-                              {user.donations}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {user.weight} kg donated
+                            <div className="text-center">
+                              <div className="font-bold text-lg">
+                                {user.donations}
+                              </div>
+                              <div className="text-sm text-gray-500">
+                                {user.weight} kg donated
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -283,42 +288,45 @@ export default function Leaderboard() {
                       {brandLeaderboardsdata.map((user, index) => (
                         <div
                           key={index}
-                          className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50  hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
+                          data-aos="fade-up"
+                          data-aos-delay="200"
                         >
-                          <div className="flex flex-col md:flex-row items-center gap-4">
-                            <div className="w-12 h-12 flex items-center justify-center">
-                              {getRankIcon(user.rank)}
+                          <div className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50  hover:scale-102 hover:border-green-700 transition-all duration-300 ease">
+                            <div className="flex flex-col md:flex-row items-center gap-4">
+                              <div className="w-12 h-12 flex items-center justify-center">
+                                {getRankIcon(user.rank)}
+                              </div>
+                              <Avatar className="w-10 h-10">
+                                <AvatarImage
+                                  src={user.avatar || "/placeholder.svg"}
+                                  alt={user.name}
+                                />
+                                <AvatarFallback>
+                                  {user.name
+                                    .split(" ")
+                                    .map((n) => n[0])
+                                    .join("")}
+                                </AvatarFallback>
+                              </Avatar>
+                              <div className="flex md:block flex-col items-center">
+                                <h4 className="font-medium flex items-center gap-2">
+                                  {user.name}
+                                </h4>
+                                <Badge
+                                  variant="outline"
+                                  className={getLevelColor(user.level)}
+                                >
+                                  {user.level}
+                                </Badge>
+                              </div>
                             </div>
-                            <Avatar className="w-10 h-10">
-                              <AvatarImage
-                                src={user.avatar || "/placeholder.svg"}
-                                alt={user.name}
-                              />
-                              <AvatarFallback>
-                                {user.name
-                                  .split(" ")
-                                  .map((n) => n[0])
-                                  .join("")}
-                              </AvatarFallback>
-                            </Avatar>
-                            <div className="flex md:block flex-col items-center">
-                              <h4 className="font-medium flex items-center gap-2">
-                                {user.name}
-                              </h4>
-                              <Badge
-                                variant="outline"
-                                className={getLevelColor(user.level)}
-                              >
-                                {user.level}
-                              </Badge>
-                            </div>
-                          </div>
-                          <div className="text-center">
-                            <div className="font-bold text-lg">
-                              {user.donations}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {user.weight} kg donated
+                            <div className="text-center">
+                              <div className="font-bold text-lg">
+                                {user.donations}
+                              </div>
+                              <div className="text-sm text-gray-500">
+                                {user.weight} kg donated
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -346,42 +354,45 @@ export default function Leaderboard() {
                       {organizationLeaderboards.map((user, index) => (
                         <div
                           key={index}
-                          className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:scale-102 hover:border-green-700 transition-all duration-300 ease"
+                          data-aos="fade-up"
+                          data-aos-delay="200"
                         >
-                          <div className="flex flex-col md:flex-row  items-center gap-4">
-                            <div className="w-12 h-12 flex items-center justify-center">
-                              {getRankIcon(user.rank)}
+                          <div className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:scale-102 hover:border-green-700 transition-all duration-300 ease">
+                            <div className="flex flex-col md:flex-row  items-center gap-4">
+                              <div className="w-12 h-12 flex items-center justify-center">
+                                {getRankIcon(user.rank)}
+                              </div>
+                              <Avatar className="w-10 h-10">
+                                <AvatarImage
+                                  src={user.avatar || "/placeholder.svg"}
+                                  alt={user.name}
+                                />
+                                <AvatarFallback>
+                                  {user.name
+                                    .split(" ")
+                                    .map((n) => n[0])
+                                    .join("")}
+                                </AvatarFallback>
+                              </Avatar>
+                              <div className="flex md:block flex-col items-center ">
+                                <h4 className="font-medium flex items-center gap-2">
+                                  {user.name}
+                                </h4>
+                                <Badge
+                                  variant="outline"
+                                  className={getLevelColor(user.level)}
+                                >
+                                  {user.level}
+                                </Badge>
+                              </div>
                             </div>
-                            <Avatar className="w-10 h-10">
-                              <AvatarImage
-                                src={user.avatar || "/placeholder.svg"}
-                                alt={user.name}
-                              />
-                              <AvatarFallback>
-                                {user.name
-                                  .split(" ")
-                                  .map((n) => n[0])
-                                  .join("")}
-                              </AvatarFallback>
-                            </Avatar>
-                            <div className="flex md:block flex-col items-center ">
-                              <h4 className="font-medium flex items-center gap-2">
-                                {user.name}
-                              </h4>
-                              <Badge
-                                variant="outline"
-                                className={getLevelColor(user.level)}
-                              >
-                                {user.level}
-                              </Badge>
-                            </div>
-                          </div>
-                          <div className="text-center">
-                            <div className="font-bold text-lg">
-                              {user.donations}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {user.weight} kg donated
+                            <div className="text-center">
+                              <div className="font-bold text-lg">
+                                {user.donations}
+                              </div>
+                              <div className="text-sm text-gray-500">
+                                {user.weight} kg donated
+                              </div>
                             </div>
                           </div>
                         </div>

@@ -348,7 +348,8 @@ const confirmReject = () => {
           <TabsContent value="overview" className="space-y-6">
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+              <div data-aos="fade-up">
+                <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     Total Donations
@@ -364,8 +365,10 @@ const confirmReject = () => {
                   </p>
                 </CardContent>
               </Card>
+              </div>
 
-              <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+              <div data-aos="fade-up">
+                <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     Weight Donated
@@ -381,8 +384,10 @@ const confirmReject = () => {
                   </p>
                 </CardContent>
               </Card>
+              </div>
 
-              <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+              <div data-aos="fade-up">
+                  <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     CO₂ Saved
@@ -398,8 +403,10 @@ const confirmReject = () => {
                   </p>
                 </CardContent>
               </Card>
+              </div>
 
-              <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+              <div data-aos="fade-up">
+                <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     Current Streak
@@ -415,11 +422,12 @@ const confirmReject = () => {
                   </p>
                 </CardContent>
               </Card>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Level Progress */}
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Award className="h-5 w-5" />
@@ -456,7 +464,7 @@ const confirmReject = () => {
               </Card>
 
               {/* Environmental Impact */}
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Leaf className="h-5 w-5" />
@@ -492,7 +500,7 @@ const confirmReject = () => {
             </div>
 
             {/* Recent Donations */}
-            <Card className="border-gray-500/50">
+            <Card data-aos="fade-up" className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>Recent Donations</CardTitle>
                 <CardDescription>
@@ -504,6 +512,7 @@ const confirmReject = () => {
                   {userData.recentDonations.map((donation, index) => (
                     <div
                       key={index}
+                      data-aos="fade-up"
                       className="flex flex-col md:flex-row items-center md:items-center justify-between p-4 border border-gray-500/50 rounded-lg"
                     >
                       <div className="flex flex-col md:flex-row items-center  gap-4">
@@ -548,7 +557,7 @@ const confirmReject = () => {
 
           {/* Leaderboard Tab */}
           <TabsContent value="leaderboard" className="space-y-6">
-            <Card className="border-gray-500/50">
+            <Card  className="border-gray-500/50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Trophy className="h-5 w-5" />
@@ -563,6 +572,9 @@ const confirmReject = () => {
                   {leaderboardData.map((user, index) => (
                     <div
                       key={index}
+                      data-aos="fade-up"
+                    > 
+                    <div
                       className={`flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 ${
                         user.isCurrentUser
                           ? "bg-blue-50 border-blue-200"
@@ -609,13 +621,14 @@ const confirmReject = () => {
                         </div>
                       </div>
                     </div>
+                    </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
 
             {/* Monthly Challenge */}
-            <Card className="border-gray-500/50">
+            <Card data-aos="fade-up" className="border-gray-500/50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Target className="h-5 w-5" />

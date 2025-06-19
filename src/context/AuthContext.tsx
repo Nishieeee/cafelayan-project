@@ -1,6 +1,9 @@
 "use client";
 
-import {createContext, useContext, useState, ReactNode} from "react";
+import {createContext, useContext, useState, useEffect, ReactNode} from "react";
+// @ts-ignore
+import AOS from 'aos'
+import 'aos/dist/aos.css';
 
 export type Role = "user" | "brand" | "org"
 
@@ -50,6 +53,11 @@ export const AuthProvider = ({ children }:{ children:ReactNode}) => {
     }
 
     const isLoggedIn = role !== null
+
+    useEffect(() => {
+        AOS.init({duration: 300, once: true});
+    }, [])
+    
     return (
         <AuthContext.Provider value={{ role, name, login, logout, isLoggedIn }}>
             {children}

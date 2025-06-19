@@ -12,7 +12,7 @@ export default function LandingPage() {
             <div className="inline-block p-2 bg-green-100 rounded-full mb-4">
               <QrCode className="h-10 w-10 text-green-600" />
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-green-800">
+            <h1 data-aos="fade-up" className="text-4xl md:text-6xl font-bold tracking-tighter text-green-800">
               Scan. Recycle. Impact.
             </h1>
             <p className="max-w-[700px] text-lg text-gray-600 md:text-xl">
@@ -54,7 +54,10 @@ export default function LandingPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg">
+            <div 
+             data-aos="fade-up"
+             data-aos-delay="100"
+             className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg">
               <div className="p-3 bg-green-100 rounded-full mb-4">
                 <QrCode className="h-8 w-8 text-green-600" />
               </div>
@@ -64,7 +67,10 @@ export default function LandingPage() {
                 bottle, or container.
               </p>
             </div>
-            <div className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg">
+            <div 
+              data-aos="fade-up"
+              data-aos-delay="200"
+              className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg">
               <div className="p-3 bg-green-100 rounded-full mb-4">
                 <MapPin className="h-8 w-8 text-green-600" />
               </div>
@@ -74,7 +80,10 @@ export default function LandingPage() {
                 how to recycle it yourself.
               </p>
             </div>
-            <div className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg">
+            <div
+             data-aos="fade-up"
+             data-aos-delay="300"
+             className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg">
               <div className="p-3 bg-green-100 rounded-full mb-4">
                 <Recycle className="h-8 w-8 text-green-600" />
               </div>
@@ -96,8 +105,8 @@ export default function LandingPage() {
             <p className="text-gray-600 mb-8">
               See how the platform works by trying our demo with a sample plastic bottle package.
             </p>
-            <div className="bg-white p-8 rounded-lg shadow-sm border">
-              <div className="flex flex-col md:flex-row items-center gap-6">
+            <div data-aos="fade-up" className="bg-white p-8 rounded-lg shadow-sm border border-gray-500/50">
+              <div className="flex flex-col md:flex-row items-center gap-6 " >
                 <div className="w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
                   <img
                     src="/placeholder.svg?height=128&width=128"
@@ -105,7 +114,7 @@ export default function LandingPage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-grow text-center md:text-left">
+                <div className="flex-grow  text-center md:text-left">
                   <h3 className="text-xl font-bold mb-2">Cafelayan Lettuce Chips</h3>
                   <p className="text-gray-600 mb-4">
                     Experience how users will see recycling options after scanning a QR code on this plastic bottle.
@@ -132,19 +141,19 @@ export default function LandingPage() {
               practices across the Philippines.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <p className="text-4xl font-bold">15,000+</p>
+              <div data-aos="fade" data-aos-delay="100" className="text-center">
+                <p  className="text-4xl font-bold">15,000+</p>
                 <p className="text-sm mt-2">Packages Recycled</p>
               </div>
-              <div className="text-center">
+              <div data-aos="fade" data-aos-delay="100" className="text-center">
                 <p className="text-4xl font-bold">120+</p>
                 <p className="text-sm mt-2">Partner Organizations</p>
               </div>
-              <div className="text-center">
+              <div data-aos="fade" data-aos-delay="100" className="text-center">
                 <p className="text-4xl font-bold">50+</p>
                 <p className="text-sm mt-2">Cities Covered</p>
               </div>
-              <div className="text-center">
+              <div data-aos="fade" data-aos-delay="100" className="text-center">
                 <p className="text-4xl font-bold">8 tons</p>
                 <p className="text-sm mt-2">Waste Diverted</p>
               </div>

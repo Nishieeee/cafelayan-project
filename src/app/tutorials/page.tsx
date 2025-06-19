@@ -120,7 +120,7 @@ export default function TutorialsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredTutorials.map((tutorial, index) => (
               <Link key={index} href={`${tutorial.id}`}>
-                <Card className="h-full border-gray-500/50 hover:border-green-700 overflow-hidden hover:shadow-md transition-all duration-300 ease">
+                <Card data-aos="fade" data-aos-delay="100" className="h-full border-gray-500/50 hover:border-green-700 overflow-hidden hover:shadow-md transition-all duration-300 ease">
                   <div className="aspect-video overflow-hidden">
                     <iframe width="366" height="215" src={tutorial.url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                   </div>

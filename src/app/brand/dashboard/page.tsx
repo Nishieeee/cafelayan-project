@@ -39,40 +39,41 @@ import {
   Download,
   Trophy,
   Medal,
-  User
+  User,
 } from "lucide-react";
 import { PartnershipRequestDialog } from "@/components/partnership-request-dialog";
 import Link from "next/link";
-import  {DonatorDetails}  from "@/components/donator-details";
+import { DonatorDetails } from "@/components/donator-details";
 
 export type DonatorRequest = {
-  donorName: string
-  city: string
-  image: string
-  rank: string
-  email: string 
-  phone: string
-}
+  donorName: string;
+  city: string;
+  image: string;
+  rank: string;
+  email: string;
+  phone: string;
+};
 
 export default function BrandDashboard() {
-
   const donorDummy: DonatorRequest = {
     donorName: "John Doe",
     city: "Zamboanga City",
     image: "/placeholder.svg?height=40&width=40",
     rank: "Eco Guardian",
-    email: "johnDoe@test.com", 
+    email: "johnDoe@test.com",
     phone: "0912345678",
-  }
+  };
 
   const [showPartnershipDialog, setShowPartnershipDialog] = useState(false);
-  const [showDonatorDetails, setShowDonatorDetails] = useState(false)
-  const [selectedRequest, setSelectedRequest] = useState<DonatorRequest|null>(null)
+  const [showDonatorDetails, setShowDonatorDetails] = useState(false);
+  const [selectedRequest, setSelectedRequest] = useState<DonatorRequest | null>(
+    null
+  );
 
   const HandleViewDetails = (request: DonatorRequest) => {
-    setSelectedRequest(request)
-    setShowDonatorDetails(true)
-  }
+    setSelectedRequest(request);
+    setShowDonatorDetails(true);
+  };
 
   // Mock data - would come from API
   const brandData = {
@@ -150,7 +151,6 @@ export default function BrandDashboard() {
       donations: 234,
       weight: 89.5,
       level: "Eco Guardian",
-
     },
     {
       rank: 2,
@@ -159,7 +159,6 @@ export default function BrandDashboard() {
       donations: 198,
       weight: 76.2,
       level: "Forest Friend",
-
     },
     {
       rank: 3,
@@ -168,7 +167,6 @@ export default function BrandDashboard() {
       donations: 167,
       weight: 62.8,
       level: "Forest Friend",
-
     },
     {
       rank: 4,
@@ -177,7 +175,6 @@ export default function BrandDashboard() {
       donations: 127,
       weight: 45.2,
       level: "Young Tree",
-
     },
     {
       rank: 5,
@@ -186,7 +183,6 @@ export default function BrandDashboard() {
       donations: 112,
       weight: 41.7,
       level: "Sapling",
-
     },
   ];
 
@@ -261,104 +257,126 @@ export default function BrandDashboard() {
 
           {/* Key Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
-            <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Total Products
-                </CardTitle>
-                <Package className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {brandData.totalProducts.toLocaleString()}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  +12% from last month
-                </p>
-              </CardContent>
-            </Card>
+            <div data-aos="fade-up">
+              <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Total Products
+                  </CardTitle>
+                  <Package className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">
+                    {brandData.totalProducts.toLocaleString()}
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    +12% from last month
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
-            <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Total Donations
-                </CardTitle>
-                <Recycle className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {brandData.totalDonations.toLocaleString()}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  +18% from last month
-                </p>
-              </CardContent>
-            </Card>
+            <div data-aos="fade-up">
+              <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Total Donations
+                  </CardTitle>
+                  <Recycle className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">
+                    {brandData.totalDonations.toLocaleString()}
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    +18% from last month
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
-            <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">QR Scans</CardTitle>
-                <TrendingUp className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {brandData.totalScans.toLocaleString()}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  +25% from last month
-                </p>
-              </CardContent>
-            </Card>
+            <div data-aos="fade-up">
+              <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    QR Scans
+                  </CardTitle>
+                  <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">
+                    {brandData.totalScans.toLocaleString()}
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    +25% from last month
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
-            <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Partner Organizations
-                </CardTitle>
-                <Building2 className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {brandData.partneredOrganizations}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  +3 new this month
-                </p>
-              </CardContent>
-            </Card>
+            <div data-aos="fade-up">
+              <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Partner Organizations
+                  </CardTitle>
+                  <Building2 className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">
+                    {brandData.partneredOrganizations}
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    +3 new this month
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
-            <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Active Cities
-                </CardTitle>
-                <MapPin className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {brandData.activeCities}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Across Philippines
-                </p>
-              </CardContent>
-            </Card>
+            <div data-aos="fade-up">
+              <Card className="border-gray-500/50 hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Active Cities
+                  </CardTitle>
+                  <MapPin className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">
+                    {brandData.activeCities}
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Across Philippines
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
 
           <Tabs defaultValue="overview" className="space-y-6 ">
             <TabsList className="flex justify-between overflow-x-auto whitespace-nowrap no-scrollbar sm:px-5 px-2 bg-gray-300/20">
-              <TabsTrigger value="overview" className="w-full">Overview</TabsTrigger>
-              <TabsTrigger value="donors" className="w-full">Top Donors</TabsTrigger>
-              <TabsTrigger value="organizations" className="w-full">Organizations</TabsTrigger>
-              <TabsTrigger value="geography" className="w-full">Geography</TabsTrigger>
-              <TabsTrigger value="partnerships" className="w-full">Partnerships</TabsTrigger>
+              <TabsTrigger value="overview" className="w-full">
+                Overview
+              </TabsTrigger>
+              <TabsTrigger value="donors" className="w-full">
+                Top Donors
+              </TabsTrigger>
+              <TabsTrigger value="organizations" className="w-full">
+                Organizations
+              </TabsTrigger>
+              <TabsTrigger value="geography" className="w-full">
+                Geography
+              </TabsTrigger>
+              <TabsTrigger value="partnerships" className="w-full">
+                Partnerships
+              </TabsTrigger>
             </TabsList>
 
             {/* Overview Tab */}
             <TabsContent value="overview" className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Monthly Trends */}
-                <Card className="border-gray-500/50">
+                <Card data-aos="fade-up" className="border-gray-500/50">
                   <CardHeader>
                     <CardTitle>Monthly Trends</CardTitle>
                     <CardDescription>
@@ -390,7 +408,7 @@ export default function BrandDashboard() {
                 </Card>
 
                 {/* Product Types */}
-                <Card className="border-gray-500/50">
+                <Card data-aos="fade-up" className="border-gray-500/50">
                   <CardHeader>
                     <CardTitle>Product Types Donated</CardTitle>
                     <CardDescription>
@@ -427,7 +445,7 @@ export default function BrandDashboard() {
               </div>
 
               {/* Conversion Rate */}
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Scan to Donation Conversion</CardTitle>
                   <CardDescription>
@@ -464,7 +482,7 @@ export default function BrandDashboard() {
 
             {/* Organizations Tab */}
             <TabsContent value="organizations" className="space-y-6">
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Top Receiving Organizations</CardTitle>
                   <CardDescription>
@@ -474,39 +492,40 @@ export default function BrandDashboard() {
                 <CardContent>
                   <div className="space-y-4">
                     {topOrganizations.map((org, index) => (
-                      <div
-                        key={index}
-                        className="flex flex-col md:flex-row items-center justify-between p-4 border rounded-lg border-gray-500/50 hover:scale-101 hover:border-green-700 transition-all duration-300 ease"
-                      >
-                        <div className="flex flex-col md:flex-row items-center gap-4">
-                          <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                            <Building2 className="h-5 w-5 text-green-600" />
-                          </div>
-                          <div>
-                            <h4 className="font-medium text-center md:text-start">{org.name}</h4>
-                            <div className="flex items-center gap-2 text-sm text-gray-500">
-                              <MapPin className="h-3 w-3" />
-                              <span>{org.city}</span>
-                              <Badge
-                                variant={
-                                  org.partnership === "Official"
-                                    ? "default"
-                                    : "outline"
-                                }
-                                className="text-xs"
-                              >
-                                {org.partnership}
-                              </Badge>
+                      <div key={index} data-aos="fade-up">
+                        <div className="flex flex-col md:flex-row items-center justify-between p-4 border rounded-lg border-gray-500/50 hover:scale-101 hover:border-green-700 transition-all duration-300 ease">
+                          <div className="flex flex-col md:flex-row items-center gap-4">
+                            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                              <Building2 className="h-5 w-5 text-green-600" />
+                            </div>
+                            <div>
+                              <h4 className="font-medium text-center md:text-start">
+                                {org.name}
+                              </h4>
+                              <div className="flex items-center gap-2 text-sm text-gray-500">
+                                <MapPin className="h-3 w-3" />
+                                <span>{org.city}</span>
+                                <Badge
+                                  variant={
+                                    org.partnership === "Official"
+                                      ? "default"
+                                      : "outline"
+                                  }
+                                  className="text-xs"
+                                >
+                                  {org.partnership}
+                                </Badge>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="text-center">
-                          <p className="font-bold text-lg">
-                            {org.donations.toLocaleString()}
-                          </p>
-                          <p className="text-sm text-gray-500">
-                            donations received
-                          </p>
+                          <div className="text-center">
+                            <p className="font-bold text-lg">
+                              {org.donations.toLocaleString()}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              donations received
+                            </p>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -514,7 +533,7 @@ export default function BrandDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Organization Performance</CardTitle>
                   <CardDescription>
@@ -540,7 +559,7 @@ export default function BrandDashboard() {
               </Card>
             </TabsContent>
             <TabsContent value="donors">
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Trophy className="h-5 w-5" />
@@ -553,48 +572,46 @@ export default function BrandDashboard() {
                 <CardContent>
                   <div className="space-y-4">
                     {leaderboardData.map((user, index) => (
-                      <div
-                        key={index}
-                        className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:border-green-700 hover:scale-102 transition-all duration-300 ease"
-                      >
-                        <div className="flex flex-col md:flex-row items-center gap-4">
-                          <div className="w-12 h-12 flex items-center justify-center">
-                            {getRankIcon(user.rank)}
-                          </div>
-                          <Avatar className="w-10 h-10">
-                            <AvatarImage
-                              src={user.avatar || "/placeholder.svg"}
-                              alt={user.name}
-                            />
-                            <AvatarFallback>
-                              {user.name
-                                .split(" ")
-                                .map((n) => n[0])
-                                .join("")}
-                            </AvatarFallback>
-                          </Avatar>
-                          <div className="flex md:block flex-col items-center ">
-                            <h4 className="font-medium flex items-center gap-2">
-                              {user.name}
-                            </h4>
-                            <Badge
-                              variant="outline"
-                              className={getLevelColor(user.level)}
-                            >
-                              {user.level}
-                            </Badge>
-                          </div>
-                        </div>
-                        <div className="text-center flex flex-col md:flex-row justify-center items-center">
-                          <div>
-                            <div className="font-bold text-lg">
-                              {user.donations}
+                      <div key={index} data-aos="fade-up">
+                        <div className="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg border border-gray-500/50 hover:border-green-700 hover:scale-102 transition-all duration-300 ease">
+                          <div className="flex flex-col md:flex-row items-center gap-4">
+                            <div className="w-12 h-12 flex items-center justify-center">
+                              {getRankIcon(user.rank)}
                             </div>
-                            <div className="text-sm text-gray-500">
-                              {user.weight} kg donated
+                            <Avatar className="w-10 h-10">
+                              <AvatarImage
+                                src={user.avatar || "/placeholder.svg"}
+                                alt={user.name}
+                              />
+                              <AvatarFallback>
+                                {user.name
+                                  .split(" ")
+                                  .map((n) => n[0])
+                                  .join("")}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div className="flex md:block flex-col items-center ">
+                              <h4 className="font-medium flex items-center gap-2">
+                                {user.name}
+                              </h4>
+                              <Badge
+                                variant="outline"
+                                className={getLevelColor(user.level)}
+                              >
+                                {user.level}
+                              </Badge>
                             </div>
                           </div>
-                          <Button
+                          <div className="text-center flex flex-col md:flex-row justify-center items-center">
+                            <div>
+                              <div className="font-bold text-lg">
+                                {user.donations}
+                              </div>
+                              <div className="text-sm text-gray-500">
+                                {user.weight} kg donated
+                              </div>
+                            </div>
+                            <Button
                               variant="outline"
                               size="sm"
                               onClick={() => HandleViewDetails(donorDummy)}
@@ -602,6 +619,7 @@ export default function BrandDashboard() {
                             >
                               <User className="h-4 w-4" />
                             </Button>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -611,7 +629,7 @@ export default function BrandDashboard() {
             </TabsContent>
             {/* Geography Tab */}
             <TabsContent value="geography" className="space-y-6">
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Cities with Most Scans</CardTitle>
                   <CardDescription>
@@ -621,7 +639,7 @@ export default function BrandDashboard() {
                 <CardContent>
                   <div className="space-y-4">
                     {cityData.map((city, index) => (
-                      <div key={index} className="space-y-2">
+                      <div key={index}  className="space-y-2">
                         <div className="flex justify-between items-center">
                           <span className="font-medium">{city.city}</span>
                           <div className="text-right">
@@ -651,7 +669,7 @@ export default function BrandDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Regional Impact</CardTitle>
                   <CardDescription>
@@ -692,7 +710,7 @@ export default function BrandDashboard() {
             {/* Partnerships Tab */}
             <TabsContent value="partnerships" className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card className="border-gray-500/50">
+                <Card data-aos="fade-up" className="border-gray-500/50">
                   <CardHeader>
                     <CardTitle>Official Partners</CardTitle>
                     <CardDescription>
@@ -706,6 +724,9 @@ export default function BrandDashboard() {
                         .map((org, index) => (
                           <div
                             key={index}
+                            data-aos="fade-up"
+                            > 
+                            <div
                             className="flex items-center justify-between p-3 border rounded-lg border-gray-500/50 hover:scale-101 hover:border-green-700 transition-all duration-300 ease"
                           >
                             <div className="flex items-center gap-3">
@@ -725,12 +746,13 @@ export default function BrandDashboard() {
                               <ExternalLink className="h-4 w-4" />
                             </Button>
                           </div>
+                          </div>
                         ))}
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="border-gray-500/50">
+                <Card data-aos="fade-up" className="border-gray-500/50">
                   <CardHeader>
                     <CardTitle>Partnership Benefits</CardTitle>
                     <CardDescription>
@@ -773,7 +795,7 @@ export default function BrandDashboard() {
                 </Card>
               </div>
 
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Request New Partnership</CardTitle>
                   <CardDescription>
@@ -810,10 +832,11 @@ export default function BrandDashboard() {
             onOpenChange={setShowPartnershipDialog}
             brandName={brandData.name}
           />
-          <DonatorDetails 
+          <DonatorDetails
             open={showDonatorDetails}
             onOpenChange={setShowDonatorDetails}
-            request={selectedRequest ?? donorDummy}/>
+            request={selectedRequest ?? donorDummy}
+          />
         </div>
       </div>
     </>

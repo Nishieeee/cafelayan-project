@@ -151,7 +151,8 @@ export default function ProductAnalyticsPage() {
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
-          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <div data-aos="fade-up">
+            <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Scans</CardTitle>
               <QrCode className="h-4 w-4 text-muted-foreground" />
@@ -161,8 +162,10 @@ export default function ProductAnalyticsPage() {
               <p className="text-xs text-muted-foreground">+12% from last period</p>
             </CardContent>
           </Card>
+          </div>
 
-          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <div data-aos="fade-up">
+            <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Donations</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -172,8 +175,10 @@ export default function ProductAnalyticsPage() {
               <p className="text-xs text-muted-foreground">+18% from last period</p>
             </CardContent>
           </Card>
+          </div>
 
-          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <div data-aos="fade-up">
+            <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
               <Target className="h-4 w-4 text-muted-foreground" />
@@ -183,8 +188,10 @@ export default function ProductAnalyticsPage() {
               <p className="text-xs text-muted-foreground">+2.1% from last period</p>
             </CardContent>
           </Card>
+          </div>
 
-          <Card className=" border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <div data-aos="fade-up">
+            <Card className=" border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Donation Rate</CardTitle>
               <Users className="h-4 w-4 text-muted-foreground" />
@@ -194,8 +201,10 @@ export default function ProductAnalyticsPage() {
               <p className="text-xs text-muted-foreground">Total manufactured: {analyticsData.donationRate.toLocaleString()}</p>
             </CardContent>
           </Card>
+          </div>
 
-          <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <div data-aos="fade-up">
+            <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Avg Scans/User</CardTitle>
               <Calendar className="h-4 w-4 text-muted-foreground" />
@@ -205,6 +214,7 @@ export default function ProductAnalyticsPage() {
               <p className="text-xs text-muted-foreground">+0.15 from last period</p>
             </CardContent>
           </Card>
+          </div>
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
@@ -220,7 +230,7 @@ export default function ProductAnalyticsPage() {
           <TabsContent value="overview" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Daily Scans Trend */}
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Daily Scans & Donations</CardTitle>
                   <CardDescription>Scan and donation trends over time</CardDescription>
@@ -254,7 +264,7 @@ export default function ProductAnalyticsPage() {
               </Card>
 
               {/* Hourly Distribution */}
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Hourly Scan Distribution</CardTitle>
                   <CardDescription>When users scan your QR codes</CardDescription>
@@ -274,7 +284,7 @@ export default function ProductAnalyticsPage() {
             </div>
 
             {/* User Actions */}
-            <Card className="border-gray-500/50">
+            <Card data-aos="fade-up" className="border-gray-500/50">
               <CardHeader>
                 <CardTitle>User Actions After Scanning</CardTitle>
                 <CardDescription>What users do after scanning your QR code</CardDescription>
@@ -308,7 +318,7 @@ export default function ProductAnalyticsPage() {
           {/* Geography Tab */}
           <TabsContent value="geography" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Top Cities</CardTitle>
                   <CardDescription>Cities with the most QR code scans</CardDescription>
@@ -316,7 +326,7 @@ export default function ProductAnalyticsPage() {
                 <CardContent>
                   <div className="space-y-4">
                     {analyticsData.topCities.map((city, index) => (
-                      <div key={index} className="flex items-center border-gray-500/50 justify-between p-3 border rounded-lg">
+                      <div key={index}  className="flex items-center border-gray-500/50 justify-between p-3 border rounded-lg">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                             <MapPin className="h-4 w-4 text-blue-600" />
@@ -336,7 +346,7 @@ export default function ProductAnalyticsPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Geographic Performance</CardTitle>
                   <CardDescription>Scan volume by city</CardDescription>
@@ -359,7 +369,7 @@ export default function ProductAnalyticsPage() {
           {/* User Behavior Tab */}
           <TabsContent value="behavior" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Conversion Funnel</CardTitle>
                   <CardDescription>User journey from scan to donation</CardDescription>
@@ -386,7 +396,7 @@ export default function ProductAnalyticsPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Time on Page</CardTitle>
                   <CardDescription>How long users spend on your product page</CardDescription>
@@ -416,7 +426,7 @@ export default function ProductAnalyticsPage() {
           {/* Devices Tab */}
           <TabsContent value="devices" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Device Types</CardTitle>
                   <CardDescription>Devices used to scan QR codes</CardDescription>
@@ -444,7 +454,7 @@ export default function ProductAnalyticsPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Device Performance</CardTitle>
                   <CardDescription>Conversion rates by device type</CardDescription>
@@ -481,7 +491,7 @@ export default function ProductAnalyticsPage() {
           {/* Performance Tab */}
           <TabsContent value="performance" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Performance Score</CardTitle>
                   <CardDescription>Overall product performance</CardDescription>
@@ -512,7 +522,7 @@ export default function ProductAnalyticsPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Benchmarks</CardTitle>
                   <CardDescription>vs. industry average</CardDescription>
@@ -559,7 +569,7 @@ export default function ProductAnalyticsPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-500/50">
+              <Card data-aos="fade-up" className="border-gray-500/50">
                 <CardHeader>
                   <CardTitle>Recommendations</CardTitle>
                   <CardDescription>Improve your performance</CardDescription>

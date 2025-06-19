@@ -1,5 +1,7 @@
+'use client';
+
 import LandingPage from "./landing/page"
-// import Header from "@/components/headerNew"
+
 
 export default function Home() {
   return (

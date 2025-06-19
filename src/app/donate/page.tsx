@@ -67,7 +67,7 @@ export default function DonatePage() {
             {/* Organizations List */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {organizations.map((org, index) => (
-                <Card key={index} className="border-gray-500/50 hover:border-green-700 hover:shadow-md transition-all duration-300 ease">
+                <Card key={index} data-aos="fade" data-aos-delay="100" data-aos-duration="800" className="border-gray-500/50 hover:border-green-700 hover:shadow-md transition-all duration-300 ease">
                   <CardHeader>
                     <div className="flex justify-between items-start">
                       <div>

@@ -40,7 +40,6 @@ import {
 import { PartnershipDetailsDialog } from "@/components/partnership-details-dialog";
 import Link from "next/link";
 
-
 // type DonationRequest = {
 //   type: "donation";
 //   donor: string;
@@ -255,102 +254,127 @@ export default function OrganizationDashboard() {
 
           {/* Key Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
-            <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Total Donations
-                </CardTitle>
-                <Package className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {organizationData.totalDonations.toLocaleString()}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  +{organizationData.monthlyGrowth}% from last month
-                </p>
-              </CardContent>
-            </Card>
+            <div data-aos="fade-up">
+              <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Total Donations
+                  </CardTitle>
+                  <Package className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">
+                    {organizationData.totalDonations.toLocaleString()}
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    +{organizationData.monthlyGrowth}% from last month
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
-            <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Active Donors
-                </CardTitle>
-                <Building2 className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {organizationData.totalDonors}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  +3 new this month
-                </p>
-              </CardContent>
-            </Card>
+            <div data-aos="fade-up">
+              <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Active Donors
+                  </CardTitle>
+                  <Building2 className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">
+                    {organizationData.totalDonors}
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    +3 new this month
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
-            <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Cities Served
-                </CardTitle>
-                <MapPin className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {organizationData.activeCities}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Metro Manila area
-                </p>
-              </CardContent>
-            </Card>
+            <div data-aos="fade-up">
+              <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Cities Served
+                  </CardTitle>
+                  <MapPin className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">
+                    {organizationData.activeCities}
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Metro Manila area
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
-            <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Processing Rate
-                </CardTitle>
-                <Recycle className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {organizationData.processingCapacity}%
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Current capacity
-                </p>
-              </CardContent>
-            </Card>
+            <div data-aos="fade-up">
+              <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Processing Rate
+                  </CardTitle>
+                  <Recycle className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">
+                    {organizationData.processingCapacity}%
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Current capacity
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
-            <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  This Month
-                </CardTitle>
-                <TrendingUp className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">2,100</div>
-                <p className="text-xs text-muted-foreground">Items received</p>
-              </CardContent>
-            </Card>
+            <div data-aos="fade-up">
+              <Card className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-color duration-300 ease">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    This Month
+                  </CardTitle>
+                  <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">2,100</div>
+                  <p className="text-xs text-muted-foreground">
+                    Items received
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
-
           <Tabs defaultValue="overview" className="space-y-6">
             <TabsList className="flex justify-between overflow-x-auto whitespace-nowrap no-scrollbar sm:px-5 px-2 bg-gray-300/20">
-              <TabsTrigger value="overview" className="w-full">Overview</TabsTrigger>
-              <TabsTrigger value="donors" className="w-full">Donors</TabsTrigger>
-              <TabsTrigger value="geography" className="w-full">Geography</TabsTrigger>
-              <TabsTrigger value="partnerships" className="w-full">Partnerships</TabsTrigger>
-              <TabsTrigger value="activity" className="w-full">Activity</TabsTrigger>
+              <TabsTrigger value="overview" className="w-full">
+                Overview
+              </TabsTrigger>
+              <TabsTrigger value="donors" className="w-full">
+                Donors
+              </TabsTrigger>
+              <TabsTrigger value="geography" className="w-full">
+                Geography
+              </TabsTrigger>
+              <TabsTrigger value="partnerships" className="w-full">
+                Partnerships
+              </TabsTrigger>
+              <TabsTrigger value="activity" className="w-full">
+                Activity
+              </TabsTrigger>
             </TabsList>
 
             {/* Overview Tab */}
             <TabsContent value="overview" className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Donation Volume Over Time */}
-                <Card className="border-gray-500/50">
+                <Card
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                  className="border-gray-500/50"
+                >
                   <CardHeader>
                     <CardTitle>Donation Volume Over Time</CardTitle>
                     <CardDescription>
@@ -386,7 +410,11 @@ export default function OrganizationDashboard() {
                 </Card>
 
                 {/* Material Types */}
-                <Card className="border-gray-500/50">
+                <Card
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                  className="border-gray-500/50"
+                >
                   <CardHeader>
                     <CardTitle>Material Types Received</CardTitle>
                     <CardDescription>
@@ -420,7 +448,11 @@ export default function OrganizationDashboard() {
               </div>
 
               {/* Processing Capacity */}
-              <Card className="border-gray-500/50">
+              <Card
+                data-aos="fade-up"
+                data-aos-delay="200"
+                className="border-gray-500/50"
+              >
                 <CardHeader>
                   <CardTitle>Processing Capacity</CardTitle>
                   <CardDescription>
@@ -468,7 +500,11 @@ export default function OrganizationDashboard() {
 
             {/*Donors Tab */}
             <TabsContent value="donors" className="space-y-6">
-              <Card className="border-gray-500/50">
+              <Card
+                data-aos="fade-up"
+                data-aos-delay="200"
+                className="border-gray-500/50"
+              >
                 <CardHeader>
                   <CardTitle>Most Donated Brands</CardTitle>
                   <CardDescription>
@@ -478,75 +514,74 @@ export default function OrganizationDashboard() {
                 <CardContent>
                   <div className="space-y-4">
                     {topDonors.map((donor, index) => (
-                      <div
-                        key={index}
-                        className="flex flex-col md:flex-row items-center justify-between border-gray-500/50 p-4 border rounded-lg hover:scale-103 hover:border-green-700 transition-all duration-300 ease"
-                      >
-                        <div className="flex flex-col md:flex-row items-center gap-4">
-                          <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden">
-                            <img
-                              src={donor.logo || "/placeholder.svg"}
-                              alt={donor.name}
-                              className="w-full h-full object-cover"
-                            />
+                      <div key={index} data-aos="fade-up" data-aos-delay="200">
+                        <div className="flex flex-col md:flex-row items-center justify-between border-gray-500/50 p-4 border rounded-lg hover:scale-102 hover:border-green-700 transition-all duration-300 ease">
+                          <div className="flex flex-col md:flex-row items-center gap-4">
+                            <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden">
+                              <img
+                                src={donor.logo || "/placeholder.svg"}
+                                alt={donor.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div>
+                              <div className="flex flex-col md:flex-row items-center gap-2 mb-1">
+                                <h4 className="font-medium">{donor.name}</h4>
+                                <Badge
+                                  variant={
+                                    donor.partnership === "Official"
+                                      ? "default"
+                                      : "outline"
+                                  }
+                                  className="text-xs"
+                                >
+                                  {donor.partnership}
+                                </Badge>
+                              </div>
+                              <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-500">
+                                <div className="flex items-center gap-1">
+                                  <Clock className="h-3 w-3" />
+                                  <span>{donor.lastDonation}</span>
+                                </div>
+                                <div className="flex flex-wrap gap-1">
+                                  {donor.productTypes
+                                    .slice(0, 2)
+                                    .map((type, idx) => (
+                                      <Badge
+                                        key={idx}
+                                        variant="outline"
+                                        className="text-xs"
+                                      >
+                                        {type}
+                                      </Badge>
+                                    ))}
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <div className="flex flex-col md:flex-row items-center gap-2 mb-1">
-                              <h4 className="font-medium">{donor.name}</h4>
-                              <Badge
-                                variant={
-                                  donor.partnership === "Official"
-                                    ? "default"
-                                    : "outline"
+                          <div className="text-right">
+                            <p className="font-bold text-lg">
+                              {donor.donations.toLocaleString()}
+                            </p>
+                            <div className="flex items-center gap-1 text-sm">
+                              <TrendingUp
+                                className={`h-3 w-3 ${
+                                  donor.growth > 0
+                                    ? "text-green-500"
+                                    : "text-red-500"
+                                }`}
+                              />
+                              <span
+                                className={
+                                  donor.growth > 0
+                                    ? "text-green-500"
+                                    : "text-red-500"
                                 }
-                                className="text-xs"
                               >
-                                {donor.partnership}
-                              </Badge>
+                                {donor.growth > 0 ? "+" : ""}
+                                {donor.growth}%
+                              </span>
                             </div>
-                            <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-500">
-                              <div className="flex items-center gap-1">
-                                <Clock className="h-3 w-3" />
-                                <span>{donor.lastDonation}</span>
-                              </div>
-                              <div className="flex flex-wrap gap-1">
-                                {donor.productTypes
-                                  .slice(0, 2)
-                                  .map((type, idx) => (
-                                    <Badge
-                                      key={idx}
-                                      variant="outline"
-                                      className="text-xs"
-                                    >
-                                      {type}
-                                    </Badge>
-                                  ))}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-bold text-lg">
-                            {donor.donations.toLocaleString()}
-                          </p>
-                          <div className="flex items-center gap-1 text-sm">
-                            <TrendingUp
-                              className={`h-3 w-3 ${
-                                donor.growth > 0
-                                  ? "text-green-500"
-                                  : "text-red-500"
-                              }`}
-                            />
-                            <span
-                              className={
-                                donor.growth > 0
-                                  ? "text-green-500"
-                                  : "text-red-500"
-                              }
-                            >
-                              {donor.growth > 0 ? "+" : ""}
-                              {donor.growth}%
-                            </span>
                           </div>
                         </div>
                       </div>
@@ -576,7 +611,11 @@ export default function OrganizationDashboard() {
 
             {/* Geography Tab */}
             <TabsContent value="geography" className="space-y-6">
-              <Card className="border-gray-500/50">
+              <Card
+                data-aos="fade-up"
+                data-aos-delay="200"
+                className="border-gray-500/50"
+              >
                 <CardHeader>
                   <CardTitle>Donations by City</CardTitle>
                   <CardDescription>
@@ -631,7 +670,11 @@ export default function OrganizationDashboard() {
               </CardContent>
             </Card> */}
 
-              <Card className="border-gray-500/50">
+              <Card
+                data-aos="fade-up"
+                data-aos-delay="200"
+                className="border-gray-500/50"
+              >
                 <CardHeader>
                   <CardTitle>Service Area Impact</CardTitle>
                   <CardDescription>
@@ -720,6 +763,8 @@ export default function OrganizationDashboard() {
                       ].map((request, index) => (
                         <div
                           key={index}
+                          data-aos="fade-up"
+                          data-aos-delay="200"
                           className="p-4 border rounded-lg space-y-3  border-gray-500/50 hover:border-green-700 transition-colors duration-300 ease"
                         >
                           <div className="flex items-start justify-between">
@@ -809,6 +854,8 @@ export default function OrganizationDashboard() {
                       {topDonors.slice(0, 3).map((donor, index) => (
                         <div
                           key={index}
+                          data-aos="fade-up"
+                          data-aos-delay="200"
                           className="p-4 border rounded-lg border-gray-500/50 hover:border-green-700 transition-colors duration-300 ease"
                         >
                           <div className="flex items-center justify-between mb-3">
@@ -867,13 +914,25 @@ export default function OrganizationDashboard() {
                           </div>
 
                           <div className="flex flex-col md:flex-row gap-2">
-                            <Button size="sm" variant="outline" className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease"
+                            >
                               View Contract
                             </Button>
-                            <Button size="sm" variant="outline" className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease"
+                            >
                               Contact
                             </Button>
-                            <Button size="sm" variant="outline" className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-colors duration-300 ease"
+                            >
                               Renew
                             </Button>
                           </div>
@@ -933,7 +992,11 @@ export default function OrganizationDashboard() {
             </Card> */}
 
               {/* Partnership Benefits */}
-              <Card className="border-gray-500/50">
+              <Card
+                data-aos="fade-up"
+                data-aos-delay="200"
+                className="border-gray-500/50"
+              >
                 <CardHeader>
                   <CardTitle>Partnership Benefits & Requirements</CardTitle>
                   <CardDescription>
@@ -1050,7 +1113,11 @@ export default function OrganizationDashboard() {
 
             {/* Activity Tab */}
             <TabsContent value="activity" className="space-y-6">
-              <Card className="border-gray-500/50">
+              <Card
+                data-aos="fade-up"
+                data-aos-delay="200"
+                className="border-gray-500/50"
+              >
                 <CardHeader>
                   <CardTitle>Recent Activity</CardTitle>
                   <CardDescription>
@@ -1109,7 +1176,11 @@ export default function OrganizationDashboard() {
               </Card>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card className="border-gray-500/50">
+                <Card
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                  className="border-gray-500/50"
+                >
                   <CardHeader>
                     <CardTitle>Weekly Schedule</CardTitle>
                     <CardDescription>
@@ -1156,7 +1227,11 @@ export default function OrganizationDashboard() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-gray-500/50">
+                <Card
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                  className="border-gray-500/50"
+                >
                   <CardHeader>
                     <CardTitle>Performance Metrics</CardTitle>
                     <CardDescription>

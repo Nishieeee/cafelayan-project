@@ -225,7 +225,8 @@ export default function ProductsPage() {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <div data-aos="fade-up">
+            <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Products</CardTitle>
               <Package className="h-4 w-4 text-muted-foreground" />
@@ -237,8 +238,10 @@ export default function ProductsPage() {
               </p>
             </CardContent>
           </Card>
+          </div>
 
-          <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <div data-aos="fade-up">
+            <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Scans</CardTitle>
               <QrCode className="h-4 w-4 text-muted-foreground" />
@@ -250,8 +253,10 @@ export default function ProductsPage() {
               <p className="text-xs text-muted-foreground">+12% from last month</p>
             </CardContent>
           </Card>
+          </div>
 
-          <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <div data-aos="fade-up">
+            <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Donations</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -263,8 +268,10 @@ export default function ProductsPage() {
               <p className="text-xs text-muted-foreground">+18% from last month</p>
             </CardContent>
           </Card>
+          </div>
 
-          <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <div data-aos="fade-up">
+            <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Avg Conversion</CardTitle>
               <BarChart3 className="h-4 w-4 text-muted-foreground" />
@@ -280,6 +287,7 @@ export default function ProductsPage() {
               <p className="text-xs text-muted-foreground">Scan to donation rate</p>
             </CardContent>
           </Card>
+          </div>
         </div>
 
         {/* Filters */}
@@ -327,7 +335,7 @@ export default function ProductsPage() {
         {/* Products List */}
         <div className="space-y-4">
           {filteredProducts.map((product) => (
-            <Card key={product.id} className="overflow-hidden border-gray-500/50">
+            <Card key={product.id} data-aos="fade-up" className="overflow-hidden hover:border-green-700 border-gray-500/50">
               <CardContent className="p-6">
                 <div className="flex flex-col lg:flex-row gap-6">
                   {/* Product Info */}
