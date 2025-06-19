@@ -1,7 +1,7 @@
 "use client";
 
 import {createContext, useContext, useState, useEffect, ReactNode} from "react";
-// @ts-ignore
+// @ts-expect-error
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 
