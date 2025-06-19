@@ -1,7 +1,7 @@
 "use client";
 
 import {createContext, useContext, useState, useEffect, ReactNode} from "react";
-// @ts-expect-error
+// @ts-expect-error: AOS types are missing for this dynamic import
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 
