@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { QrCode, Recycle, MapPin } from "lucide-react"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { QrCode, Recycle, MapPin } from "lucide-react";
 
 export default function LandingPage() {
   return (
@@ -12,33 +12,43 @@ export default function LandingPage() {
             <div className="inline-block p-2 bg-green-100 rounded-full mb-4">
               <QrCode className="h-10 w-10 text-green-600" />
             </div>
-            <h1 data-aos="fade-up" className="text-4xl md:text-6xl font-bold tracking-tighter text-green-800">
+            <h1
+              data-aos="fade-up"
+              className="text-4xl md:text-6xl font-bold tracking-tighter text-green-800"
+            >
               Scan. Recycle. Impact.
             </h1>
-            <p className="max-w-[700px] text-lg text-gray-600 md:text-xl">
+            <p
+              data-aos="fade-up"
+              className="max-w-[700px] text-lg text-gray-600 md:text-xl"
+            >
               Scan QR codes on packages to discover recycling options. Donate to
               local organizations or learn DIY techniques to give your waste a
               second life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <Button
-                asChild
-                size="lg"
-                className="bg-green-700 hover:bg-green-800 text-white hover:scale-103 transition-transform duration-300 ease"
-              >
-                <Link href="/package/demo-plastic-001">
-                  <QrCode className="mr-2 h-5 w-5" />
-                  Donate
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease"
-              >
-                <Link href="/tutorials">Browse Tutorials</Link>
-              </Button>
+              <div data-aos="fade-up">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-green-700 hover:bg-green-800 text-white hover:scale-103 transition-transform duration-300 ease"
+                >
+                  <Link href="/package/demo-plastic-001">
+                    <QrCode className="mr-2 h-5 w-5" />
+                    Donate
+                  </Link>
+                </Button>
+              </div>
+              <div data-aos="fade-up">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease"
+                >
+                  <Link href="/tutorials">Browse Tutorials</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -54,10 +64,11 @@ export default function LandingPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div 
-             data-aos="fade-up"
-             data-aos-delay="100"
-             className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="100"
+              className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg"
+            >
               <div className="p-3 bg-green-100 rounded-full mb-4">
                 <QrCode className="h-8 w-8 text-green-600" />
               </div>
@@ -67,10 +78,11 @@ export default function LandingPage() {
                 bottle, or container.
               </p>
             </div>
-            <div 
+            <div
               data-aos="fade-up"
               data-aos-delay="200"
-              className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg">
+              className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg"
+            >
               <div className="p-3 bg-green-100 rounded-full mb-4">
                 <MapPin className="h-8 w-8 text-green-600" />
               </div>
@@ -81,9 +93,10 @@ export default function LandingPage() {
               </p>
             </div>
             <div
-             data-aos="fade-up"
-             data-aos-delay="300"
-             className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg">
+              data-aos="fade-up"
+              data-aos-delay="300"
+              className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg"
+            >
               <div className="p-3 bg-green-100 rounded-full mb-4">
                 <Recycle className="h-8 w-8 text-green-600" />
               </div>
@@ -101,12 +114,18 @@ export default function LandingPage() {
       <section className="py-20 bg-gray-50">
         <div className="container px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Try Our Demo</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Try Our Demo
+            </h2>
             <p className="text-gray-600 mb-8">
-              See how the platform works by trying our demo with a sample plastic bottle package.
+              See how the platform works by trying our demo with a sample
+              plastic bottle package.
             </p>
-            <div data-aos="fade-up" className="bg-white p-8 rounded-lg shadow-sm border border-gray-500/50">
-              <div className="flex flex-col md:flex-row items-center gap-6 " >
+            <div
+              data-aos="fade-up"
+              className="bg-white p-8 rounded-lg shadow-sm border border-gray-500/50"
+            >
+              <div className="flex flex-col md:flex-row items-center gap-6 ">
                 <div className="w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
                   <img
                     src="/placeholder.svg?height=128&width=128"
@@ -115,12 +134,20 @@ export default function LandingPage() {
                   />
                 </div>
                 <div className="flex-grow  text-center md:text-left">
-                  <h3 className="text-xl font-bold mb-2">Cafelayan Lettuce Chips</h3>
+                  <h3 className="text-xl font-bold mb-2">
+                    Cafelayan Lettuce Chips
+                  </h3>
                   <p className="text-gray-600 mb-4">
-                    Experience how users will see recycling options after scanning a QR code on this plastic bottle.
+                    Experience how users will see recycling options after
+                    scanning a QR code on this plastic bottle.
                   </p>
-                  <Button asChild className="bg-green-700 text-white hover:bg-green-800 hover:scale-103 transition-all duration-300 ease">
-                    <Link href="/package/demo-plastic-001">View Demo Package</Link>
+                  <Button
+                    asChild
+                    className="bg-green-700 text-white hover:bg-green-800 hover:scale-103 transition-all duration-300 ease"
+                  >
+                    <Link href="/package/demo-plastic-001">
+                      View Demo Package
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -142,7 +169,7 @@ export default function LandingPage() {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div data-aos="fade" data-aos-delay="100" className="text-center">
-                <p  className="text-4xl font-bold">15,000+</p>
+                <p className="text-4xl font-bold">15,000+</p>
                 <p className="text-sm mt-2">Packages Recycled</p>
               </div>
               <div data-aos="fade" data-aos-delay="100" className="text-center">
