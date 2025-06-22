@@ -651,11 +651,11 @@ export default function RegisterProductPage() {
                       name="website"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Website (Optional)</FormLabel>
+                          <FormLabel>E-Commerce Site (Optional)</FormLabel>
                           <FormControl>
                             <Input type="url" placeholder="https://yourbrand.com" className="border-gray-500/50" {...field} />
                           </FormControl>
-                          <FormDescription>Your brand&apos;s website for more information</FormDescription>
+                          <FormDescription>Your brand&apos;s e-commerce website</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
