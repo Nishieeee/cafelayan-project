@@ -398,12 +398,13 @@ export default function PackagePage() {
                           alt="product image"
                           className="h-full w-full "
                         />
+                        <Badge className="border m-1 bg-green-50 text-green-700 border-green-200">{product.category}</Badge>
                       </div>
                       <div className="row-span-1">
-                        <CardTitle className="my-2">
-                          <h2>{product.name}</h2>
+                        <CardTitle className="mt-2">
+                          <h2 className="text-2xl">{product.name}</h2>
                         </CardTitle>
-                        <p className="text-[15px] text-green-500">{product.brand}</p>
+                        <p className="text-[13px] text-green-500">{product.brand}</p>
                       </div>
                     </CardHeader>
                     <CardContent className="row-span-1 grid grid-rows-[1fr,auto] items-center text-center gap-4 min-h-[120px]">
