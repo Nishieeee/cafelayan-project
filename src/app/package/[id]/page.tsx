@@ -29,7 +29,7 @@ interface Tutorial {
   difficulty: "Easy" | "Medium" | "Hard";
   duration: string;
   organization: string;
-  image: string;
+  url: string;
 }
 
 interface Organization {
@@ -115,7 +115,7 @@ const packageData: PackageData = {
       difficulty: "Easy",
       duration: "15 mins",
       organization: "Kids Who Farm",
-      image: "/placeholder.svg?height=150&width=200",
+      url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
     },
     {
       id: "2",
@@ -123,23 +123,15 @@ const packageData: PackageData = {
       difficulty: "Easy",
       duration: "20 mins",
       organization: "Wildlife Conservation PH",
-      image: "/placeholder.svg?height=150&width=200",
+      url: "https://www.youtube.com/embed/00lH3LdW1iQ?si=zO9lp0CysvB8DurT",
     },
     {
       id: "3",
-      title: "Plastic Broom",
-      difficulty: "Medium",
-      duration: "45 mins",
-      organization: "Cebu Eco Warriors",
-      image: "/placeholder.svg?height=150&width=200",
-    },
-    {
-      id: "4",
       title: "Plastice Bag using Plastic packages",
       difficulty: "Hard",
       duration: "1.5 hours",
       organization: "Urban Farmers Manila",
-      image: "/placeholder.svg?height=150&width=200",
+      url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
     },
   ],
 };
@@ -325,11 +317,12 @@ export default function PackagePage() {
                   >
                     <Link href={`/tutorials/${tutorial.id}`}>
                       <div className="aspect-video overflow-hidden">
-                        <img
+                        {/* <img
                           src={tutorial.image || "/placeholder.svg"}
                           alt={tutorial.title}
                           className="h-full w-full object-cover transition-transform hover:scale-105"
-                        />
+                        /> */}
+                        <iframe width="450" height="215" src={tutorial.url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                       </div>
                       <div className="p-4">
                         <div className="flex justify-between items-center mb-2">

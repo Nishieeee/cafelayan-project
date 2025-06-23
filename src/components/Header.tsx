@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
-import { Recycle, Menu,  LogOut, Home, BookOpen, MapPin, Info, LayoutDashboard, User, Trophy } from "lucide-react"
+import { Recycle, Menu,  LogOut, Home, BookOpen, MapPin, Info, LayoutDashboard, Search, User, Trophy } from "lucide-react"
 
 import { useAuth } from "@/context/AuthContext"
 
@@ -13,6 +13,7 @@ export default function Header() {
   const { isLoggedIn, role, logout } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isUser, setisUser] = useState(false)
+
 
   const handleLogout = () => {
     logout()
@@ -24,12 +25,9 @@ export default function Header() {
   }
 
   useEffect(() => {
-    if(role === 'user') {
-      setisUser(true)
-    } else {
-      setisUser(false)
-    }
+    if(role === 'brand') setisUser(true); else setisUser(false)
   })
+
 
   return (
     <>
@@ -56,7 +54,7 @@ export default function Header() {
                   {isLoggedIn && (
                     isUser ? (
                       <Link
-                      href="/user/profile"
+                      href={`/${role}/profile`}
                       className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
                     >
                       <User className="h-4 w-4 mr-1" />
@@ -64,11 +62,11 @@ export default function Header() {
                     </Link>
                     ) : (
                     <Link
-                      href={`/${role}/profile`}
+                      href={`/${role}/dashboard`}
                       className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
                     >
-                      <User className="h-4 w-4 mr-1" />
-                      Profile
+                      <LayoutDashboard className="h-4 w-4 mr-1" />
+                      Dashboard
                     </Link>
                     )
                   )}
@@ -108,9 +106,9 @@ export default function Header() {
             {isLoggedIn ? (
               <div className="hidden md:block">
                 <div className="flex items-center space-x-4">
-                  {/* <Button variant="ghost" size="icon">
+                  <Button variant="ghost" size="icon">
                     <Search className="h-5 w-5" />
-                  </Button> */}
+                  </Button>
                   <Link href="/">
                     <Button variant="ghost" size="icon" className="hover:bg-red-50 hover:text-red-600" onClick={logout}>
                     <LogOut className="h-5 w-5" />
@@ -229,10 +227,10 @@ export default function Header() {
                     {/* Auth Section */}
                     {isLoggedIn ? (
                       <div className="space-y-3">
-                        {/* <Button variant="ghost" className="w-full justify-start px-4 py-3 h-auto hover:bg-gray-50">
+                        <Button variant="ghost" className="w-full justify-start px-4 py-3 h-auto hover:bg-gray-50">
                           <Search className="h-5 w-5 mr-3" />
                           Search
-                        </Button> */}
+                        </Button>
                         <Link href="/">
                           <Button
                           variant="ghost"
