@@ -60,9 +60,11 @@ interface PackageData {
 
 interface Product {
   name: string;
+  brand: string;
   image: string;
   link: string;
   description: string;
+  category: string;
 }
 // Sample package data
 const packageData: PackageData = {
@@ -143,16 +145,20 @@ const packageData: PackageData = {
 };
 const relatedProducts: Product[] = [
   {
-    name: "Cafelayan Kale Chips",
+    name: "Kale Chips",
+    brand: "Cafelayan",
     image: "/placeholder.svg?height=150&width=200",
     link: "https://cafelayan.netlify.app",
     description: "Crispy delicious kale with sweet salt.",
+    category: "Food",
   },
   {
-    name: "Cafelayan Potato Chips",
+    name: "Mushroom Chips",
+    brand: "RuRu Mushroom",
     image: "/placeholder.svg?height=150&width=200",
     link: "https://cafelayan.netlify.app",
-    description: "Baked Sweet potato perfection",
+    description: "Baked Sweet crunchy potato perfection",
+    category: "Food",
   },
 ];
 
@@ -372,29 +378,36 @@ export default function PackagePage() {
               Related Products
             </CardTitle>
             <CardDescription>
-              <p className="text-gray-600">Find more Sustainable products and support local brands.</p>
+              <p className="text-gray-600">
+                Find more Sustainable products and support local brands.
+              </p>
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {relatedProducts.map((product, index) => (
-                <Link key={index} href={product.link}>
                   <Card
+                  key={index}
                     data-aos="fade-up"
                     className="h-full w-full grid grid-rows-[1fr,auto] border-gray-500/50 hover:border-green-700"
                   >
-                    <CardHeader className="flex p-2 row-span-9 items-center text-center">
-                      <div className="h-50 w-full">
+                    <CardHeader className="p-2 row-span-9 grid grid-rows-[1fr,auto] items-center text-center gap-4">
+                      <div className="row-span-1 h-40 w-full">
                         <img
                           src={product.image}
                           alt="product image"
                           className="h-full w-full "
                         />
                       </div>
-                      <CardTitle className="my-2">{product.name}</CardTitle>
+                      <div className="row-span-1">
+                        <CardTitle className="my-2">
+                          <h2>{product.name}</h2>
+                        </CardTitle>
+                        <p className="text-[15px] text-green-500">{product.brand}</p>
+                      </div>
                     </CardHeader>
                     <CardContent className="row-span-1 grid grid-rows-[1fr,auto] items-center text-center gap-4 min-h-[120px]">
-                      <p>{product.description}</p>
+                      <p className="text-center text-[14px]">{product.description}</p>
                       <Button
                         asChild
                         size="sm"
@@ -411,7 +424,6 @@ export default function PackagePage() {
                       </Button>
                     </CardContent>
                   </Card>
-                </Link>
               ))}
             </div>
           </CardContent>
