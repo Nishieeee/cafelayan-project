@@ -64,11 +64,11 @@ export default function Header() {
                     </Link>
                     ) : (
                     <Link
-                      href={`/${role}/dashboard`}
+                      href={`/${role}/profile`}
                       className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
                     >
-                      <LayoutDashboard className="h-4 w-4 mr-1" />
-                      Dashboard
+                      <User className="h-4 w-4 mr-1" />
+                      Profile
                     </Link>
                     )
                   )}

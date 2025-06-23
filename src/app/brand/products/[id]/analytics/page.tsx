@@ -32,7 +32,7 @@ export default function ProductAnalyticsPage() {
     material: "PET Plastic",
     status: "Active",
     registrationDate: "2025-01-15",
-    image: "/placeholder.svg?height=60&width=60",
+    image: "/lettuce_chips-2.jpg",
   };
 
   const analyticsData = {

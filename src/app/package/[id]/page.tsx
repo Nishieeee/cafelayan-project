@@ -74,7 +74,7 @@ const packageData: PackageData = {
   material: "PET Plastic",
   size: "250g",
   recyclability: "Highly Recyclable",
-  image: "/placeholder.svg?height=200&width=200",
+  image: "/lettuce_chips-2.jpg",
   description:
     "Reusable package made from PET plastic. This material is widely recyclable and can be turned into new packages, clothing fibers, or other products.",
   environmentalImpact:
