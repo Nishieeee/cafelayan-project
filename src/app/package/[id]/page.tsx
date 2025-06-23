@@ -313,6 +313,7 @@ export default function PackagePage() {
                 .slice(0, 4)
                 .map((tutorial: Tutorial, index: number) => (
                   <Card
+                    data-aos="fade-up"
                     key={index}
                     className="overflow-hidden border-gray-500/50 hover:shadow-md transition-shadow"
                   >
@@ -383,7 +384,7 @@ export default function PackagePage() {
                     className="h-full w-full grid grid-rows-[1fr,auto] border-gray-500/50 hover:border-green-700"
                   >
                     <CardHeader className="flex p-2 row-span-9 items-center text-center">
-                      <div className="h-40 w-full">
+                      <div className="h-50 w-full">
                         <img
                           src={product.image}
                           alt="product image"
