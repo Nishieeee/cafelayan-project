@@ -5,8 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
-  ArrowLeft,
-  // MoreHorizontal,
   MessageCircle,
   Heart,
   Share2,
@@ -16,7 +14,6 @@ import {
   Instagram,
   Twitter,
   Facebook,
-  Linkedin,
   Package,
   Recycle,
   Award,
