@@ -123,9 +123,9 @@ export default function BrandProfilePage() {
     <div className="min-h-screen bg-gradient-to-br from-green-400 via-green-500 to-green-600">
       {/* Header */}
       <div className="flex items-center justify-between p-4 lg:px-8 text-white">
-        <Link href="/">
+        {/* <Link href="/">
           <ArrowLeft className="h-6 w-6" />
-        </Link>
+        </Link> */}
         <h1 className="text-lg lg:text-xl font-semibold">Brand Profile</h1>
         {/* <MoreHorizontal className="h-6 w-6" /> */}
         <Link href="/brand/dashboard">
