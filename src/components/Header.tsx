@@ -172,7 +172,7 @@ export default function Header() {
                     {isLoggedIn && (
                     isUser ? (
                       <Link
-                      href="/user/profile"
+                      href="/brand/profile"
                       className="flex items-center px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-md transition-colors"
                     >
                       <User className="h-4 w-4 mr-1" />
