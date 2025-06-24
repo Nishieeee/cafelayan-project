@@ -21,6 +21,7 @@ import {
   Mail,
   Phone,
   LayoutDashboard,
+  ShoppingBag,
 } from "lucide-react"
 import Link from "next/link"
 import { useAuth } from "@/context/AuthContext";
@@ -53,7 +54,7 @@ export default function BrandProfilePage() {
       instagram: "@cafelayan_ph",
       twitter: "@cafelayanph",
       facebook: "Cafelayan Hydroponics",
-      linkedin: "aquapure-philippines",
+      ecommerce: "https://cafelayan.netlify.app",
     },
     products: [
       {
@@ -243,10 +244,10 @@ export default function BrandProfilePage() {
                           <Facebook className="h-4 w-4" />
                           <span className="text-xs truncate">{brandData.socialMedia.facebook}</span>
                         </a>
-                        {/* <a href="#" className="flex items-center gap-2 text-blue-700 hover:bg-blue-50 p-2 rounded-lg">
-                          <Linkedin className="h-4 w-4" />
-                          <span className="text-xs truncate">{brandData.socialMedia.linkedin}</span>
-                        </a> */}
+                        <a href="#" className="flex items-center gap-2 text-blue-700 hover:bg-blue-50 p-2 rounded-lg">
+                          <ShoppingBag className="h-4 w-4" />
+                          <span className="text-xs truncate">{brandData.socialMedia.ecommerce}</span>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -528,10 +529,10 @@ export default function BrandProfilePage() {
                     <Facebook className="h-4 w-4" />
                     <span className="text-xs">{brandData.socialMedia.facebook}</span>
                   </a>
-                  {/* <a href="#" className="flex items-center gap-2 text-blue-700">
-                    <Linkedin className="h-4 w-4" />
-                    <span className="text-xs">{brandData.socialMedia.linkedin}</span>
-                  </a> */}
+                  <a href="#" className="flex items-center gap-2 text-blue-700">
+                    <ShoppingBag className="h-4 w-4" />
+                    <span className="text-xs">{brandData.socialMedia.ecommerce}</span>
+                  </a>
                 </div>
               </div>
             </div>

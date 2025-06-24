@@ -31,7 +31,7 @@ export default function LandingPage() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-green-700 hover:bg-green-800 text-white hover:scale-103 transition-transform duration-300 ease"
+                  className="bg-green-700 hover:bg-green-800 text-white outline-3 outline-transparent hover:outline-green-300 transition-colors duration-300 ease"
                 >
                   <Link href="/package/demo-plastic-001">
                     <QrCode className="mr-2 h-5 w-5" />
@@ -44,7 +44,7 @@ export default function LandingPage() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease"
+                  className="hover:scale-103 hover:bg-green-700 hover:text-white transition-all duration-300 ease border-gray-500/50"
                 >
                   <Link href="/tutorials">Browse Tutorials</Link>
                 </Button>
@@ -128,7 +128,7 @@ export default function LandingPage() {
               <div className="flex flex-col md:flex-row items-center gap-6 ">
                 <div className="w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
                   <img
-                    src="/placeholder.svg?height=128&width=128"
+                    src="/lettuce_chips-2.jpg"
                     alt="Demo plastic bottle"
                     className="w-full h-full object-cover"
                   />

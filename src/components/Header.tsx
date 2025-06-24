@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
-import { Recycle, Menu,  LogOut, Home, BookOpen, MapPin, Info, LayoutDashboard, Search, User, Trophy } from "lucide-react"
+import { Recycle, Menu,  LogOut, Home, BookOpen, MapPin, Info, LayoutDashboard, Search, User, Users, Trophy } from "lucide-react"
 
 import { useAuth } from "@/context/AuthContext"
 
@@ -31,7 +31,7 @@ export default function Header() {
 
   return (
     <>
-      <nav className="bg-white border-b sticky top-0 z-50">
+      <nav className="bg-white border-b border-gray-500/50 sticky top-0 z-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -42,8 +42,8 @@ export default function Header() {
               </Link>
 
               {/* Desktop Navigation */}
-              <div className="hidden md:block ml-10">
-                <div className="flex items-center space-x-4">
+              <div className="hidden md:block ml-8">
+                <div className="flex items-center space-x-1">
                   <Link
                     href="/"
                     className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
@@ -90,6 +90,13 @@ export default function Header() {
                   >
                     <Trophy className="h-4 w-4 mr-1" />
                     Top Recyclers
+                  </Link>
+                  <Link
+                    href="/leaderboards"
+                    className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                  >
+                    <Users className="h-4 w-4 mr-1" />
+                    Brands
                   </Link>
                   <Link
                     href="/about"
