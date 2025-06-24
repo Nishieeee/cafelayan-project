@@ -16,7 +16,7 @@ export default function LandingPage() {
               data-aos="fade-up"
               className="text-4xl md:text-6xl font-bold tracking-tighter text-green-800"
             >
-              Scan. Recycle. Impact.
+              Scan. Upcycle. Impact.
             </h1>
             <p
               data-aos="fade-up"
@@ -89,7 +89,7 @@ export default function LandingPage() {
               <h3 className="text-xl font-bold mb-2">2. Choose Your Action</h3>
               <p className="text-gray-600">
                 Decide to donate the package to nearby organizations or learn
-                how to recycle it yourself.
+                how to Upcycle it yourself.
               </p>
             </div>
             <div
@@ -170,7 +170,7 @@ export default function LandingPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div data-aos="fade" data-aos-delay="100" className="text-center">
                 <p className="text-4xl font-bold">15,000+</p>
-                <p className="text-sm mt-2">Packages Recycled</p>
+                <p className="text-sm mt-2">Packages Upcycled</p>
               </div>
               <div data-aos="fade" data-aos-delay="100" className="text-center">
                 <p className="text-4xl font-bold">120+</p>

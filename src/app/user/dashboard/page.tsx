@@ -123,7 +123,7 @@ export default function UserProfilePage() {
         id: "don-003",
         item: "Glass Jars",
         quantity: 6,
-        organization: "Recycle Center BGC",
+        organization: "Upcycle Center BGC",
         date: "2024-01-10",
         weight: 1.2,
         status: "Completed",
@@ -193,7 +193,7 @@ export default function UserProfilePage() {
       requestType: "Partnership",
       expectedVolume: "Large (2000+ items/month)",
       description:
-        "We are a non-profit organization focused on environmental education and waste management. We would like to partner with RecyclePH to expand our recycling programs in Quezon City and nearby areas.",
+        "We are a non-profit organization focused on environmental education and waste management. We would like to partner with LoopLinkEco to expand our recycling programs in Quezon City and nearby areas.",
       materials: ["PET Plastic", "Cardboard", "Paper", "Glass"],
       certifications: ["DOE Accredited", "DENR Registered"],
       website: "https://greenfuture.org",
@@ -210,7 +210,7 @@ export default function UserProfilePage() {
       requestType: "Community Partnership",
       expectedVolume: "Medium (500-2000 items/month)",
       description:
-        "Community-based recycling initiative serving Cebu City. We have been operating for 3 years and want to join the RecyclePH network to better serve our community.",
+        "Community-based recycling initiative serving Cebu City. We have been operating for 3 years and want to join the LoopLinkEco network to better serve our community.",
       materials: ["All Plastics", "Aluminum", "Electronics"],
       certifications: ["LGU Registered", "Community Certified"],
       website: "https://cebueco.com",
@@ -564,7 +564,7 @@ const confirmReject = () => {
                   Community Leaderboard
                 </CardTitle>
                 <CardDescription>
-                  Top recyclers in your area this month
+                  Top Upcyclers in your area this month
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -635,7 +635,7 @@ const confirmReject = () => {
                   Monthly Challenge
                 </CardTitle>
                 <CardDescription>
-                  Recycle 50 items this month to earn a special badge
+                  Upcycle 50 items this month to earn a special badge
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -668,7 +668,7 @@ const confirmReject = () => {
                   Organization Partnership Requests
                 </CardTitle>
                 <CardDescription>
-                  Review and approve organizations wanting to join the RecyclePH
+                  Review and approve organizations wanting to join the UpcyclePH
                   network
                 </CardDescription>
               </CardHeader>
@@ -887,7 +887,7 @@ const confirmReject = () => {
               <AlertDialogDescription>
                 Are you sure you want to approve the partnership request from{" "}
                 <strong>{selectedRequest?.organizationName}</strong>? This will
-                add them to the RecyclePH network and allow them to receive
+                add them to the LoopLinkEco network and allow them to receive
                 donations.
               </AlertDialogDescription>
             </AlertDialogHeader>

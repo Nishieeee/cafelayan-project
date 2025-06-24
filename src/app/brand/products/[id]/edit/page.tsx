@@ -540,7 +540,7 @@ export default function EditProductPage() {
                               <SelectItem value="Biodegradable" className="hover:bg-green-300">Biodegradable</SelectItem>
                             </SelectContent>
                           </Select>
-                          <FormDescription>How easily can this product be recycled in the Philippines?</FormDescription>
+                          <FormDescription>How easily can this product be Upcycled in the Philippines?</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}

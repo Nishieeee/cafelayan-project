@@ -691,7 +691,7 @@ export default function BrandDashboard() {
                         15,400
                       </div>
                       <div className="text-sm text-gray-600">
-                        Bottles recycled
+                        Bottles Upcycled
                       </div>
                     </div>
                     <div className="text-center p-4 bg-purple-50 rounded-lg">

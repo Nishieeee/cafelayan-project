@@ -190,7 +190,7 @@ export default function Leaderboard() {
             <Trophy className="h-8 me-2" /> Leaderboards
           </h1>
           <p className="text-gray-600">
-            Top Recyclers, Impactful Brands, and the Greenest Organizations.
+            Top Upcyclers, Impactful Brands, and the Greenest Organizations.
           </p>
         </div>
         {/* Leaderboards */}

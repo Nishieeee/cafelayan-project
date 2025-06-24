@@ -103,7 +103,7 @@ export default function BrandProfilePage() {
       // },
     ],
     achievements: [
-      { name: "Eco Pioneer", icon: "🌱", description: "First 1000 products recycled" },
+      { name: "Eco Pioneer", icon: "🌱", description: "First 1000 products Upcycled" },
       { name: "Green Leader", icon: "🏆", description: "Top sustainability brand 2025" },
       { name: "Community Champion", icon: "👥", description: "25+ organization partnerships" },
       { name: "Innovation Award", icon: "💡", description: "Best sustainable packaging 2025" },
@@ -270,7 +270,7 @@ export default function BrandProfilePage() {
                     <div data-aos="fade-up" className="bg-green-50 p-4 rounded-xl flex flex-col items-center">
                       <Recycle className="h-7 w-7 text-green-700"/>
                       <div className="text-2xl font-bold text-green-700">{brandData.impactStats.totalRecycled}</div>
-                      <div className="text-sm text-green-600">Products Recycled</div>
+                      <div className="text-sm text-green-600">Products Upcycled</div>
                     </div>
                     <div data-aos="fade-up" className="bg-blue-50 p-4 rounded-xl flex flex-col items-center">
                       <Wind className="h-7 w-7 text-blue-700" />
@@ -432,7 +432,7 @@ export default function BrandProfilePage() {
                   <div data-aos="fade-up" className="flex flex-col items-center">
                     <Recycle className="h-5 w-5 text-green-700" />
                     <div className="text-lg font-bold text-green-700">{brandData.impactStats.totalRecycled}</div>
-                    <div className="text-xs text-green-600">Items Recycled</div>
+                    <div className="text-xs text-green-600">Items Upcycled</div>
                   </div>
                   <div data-aos="fade-up" className="flex flex-col items-center">
                     <Wind className="h-5 w-5 text-green-700"/>

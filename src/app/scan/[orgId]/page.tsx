@@ -32,7 +32,7 @@ export default function ScanPage() {
               <QrCode className="h-10 w-10 text-green-600" />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-green-800">
-              Scan. Recycle. Impact.
+              Scan. Upcycle. Impact.
             </h1>
             <p className="max-w-[700px] text-lg text-gray-600 md:text-xl">
               Scan QR codes on packages to discover recycling options. Donate to
@@ -85,7 +85,7 @@ export default function ScanPage() {
               <h3 className="text-xl font-bold mb-2">2. Choose Your Action</h3>
               <p className="text-gray-600">
                 Decide to donate the package to nearby organizations or learn
-                how to recycle it yourself.
+                how to Upcycle it yourself.
               </p>
             </div>
             <div className="flex flex-col items-center text-center p-6 bg-green-50 rounded-lg">
@@ -148,7 +148,7 @@ export default function ScanPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
                 <p className="text-4xl font-bold">15,000+</p>
-                <p className="text-sm mt-2">Packages Recycled</p>
+                <p className="text-sm mt-2">Packages Upcycled</p>
               </div>
               <div className="text-center">
                 <p className="text-4xl font-bold">120+</p>
