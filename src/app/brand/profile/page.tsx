@@ -27,7 +27,7 @@ import { useAuth } from "@/context/AuthContext";
 
 export default function BrandProfilePage() {
   const [isFollowing, setIsFollowing] = useState(false)
-  const { isLoggedIn, role } = useAuth();
+  const { role } = useAuth();
   const [isBrand, setisBrand] = useState(false);
 
   // Mock brand data
@@ -165,7 +165,7 @@ export default function BrandProfilePage() {
                     <p className="text-gray-600 text-sm leading-relaxed mb-6">{brandData.bio}</p>
 
                     {/* Action Buttons */}
-                    {!isLoggedIn && (
+                    {!isBrand && (
                       <div className="flex gap-3 justify-center mb-6">
                         <Button
                           onClick={() => setIsFollowing(!isFollowing)}
@@ -381,7 +381,7 @@ export default function BrandProfilePage() {
               <p className="text-gray-600 text-sm leading-relaxed mb-4 px-2">{brandData.bio}</p>
 
               {/* Action Buttons */}
-              {isLoggedIn && (
+              {!isBrand && (
                 <div className="flex gap-3 justify-center mb-6">
                   <Button
                     onClick={() => setIsFollowing(!isFollowing)}
