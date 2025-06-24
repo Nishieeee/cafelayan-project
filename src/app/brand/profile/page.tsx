@@ -22,6 +22,8 @@ import {
   Phone,
   LayoutDashboard,
   ShoppingBag,
+  Wind,
+  Users,
 } from "lucide-react"
 import Link from "next/link"
 import { useAuth } from "@/context/AuthContext";
@@ -140,7 +142,7 @@ export default function BrandProfilePage() {
           <div className="grid grid-cols-12 gap-4">
             {/* Left Sidebar - Profile Info */}
             <div className="col-span-4">
-              <Card className="bg-white border-gray-500/50 rounded-3xl shadow-xl overflow-hidden sticky top-8">
+              <Card data-aos="fade-up" className="bg-white border-gray-500/50 rounded-3xl shadow-xl overflow-hidden sticky top-8">
                 <CardContent className="p-0">
                   {/* Cover Image */}
                   <div className="h-38 bg-gradient-to-r from-green-100 to-green-200 relative">
@@ -258,26 +260,30 @@ export default function BrandProfilePage() {
             {/* Right Content Area */}
             <div className="col-span-8 space-y-6">
               {/* Environmental Impact */}
-              <Card className="bg-white border-gray-500/50 rounded-2xl shadow-lg">
+              <Card data-aos="fade-up" className="bg-white border-gray-500/50 rounded-2xl shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-green-800 mb-4 flex items-center gap-2">
                     <Leaf className="h-5 w-5" />
                     Environmental Impact
                   </h3>
                   <div className="grid grid-cols-4 gap-6 text-center">
-                    <div className="bg-green-50 p-4 rounded-xl">
+                    <div data-aos="fade-up" className="bg-green-50 p-4 rounded-xl flex flex-col items-center">
+                      <Recycle className="h-7 w-7 text-green-700"/>
                       <div className="text-2xl font-bold text-green-700">{brandData.impactStats.totalRecycled}</div>
                       <div className="text-sm text-green-600">Products Recycled</div>
                     </div>
-                    <div className="bg-blue-50 p-4 rounded-xl">
+                    <div data-aos="fade-up" className="bg-blue-50 p-4 rounded-xl flex flex-col items-center">
+                      <Wind className="h-7 w-7 text-blue-700" />
                       <div className="text-2xl font-bold text-blue-700">{brandData.impactStats.co2Saved}</div>
                       <div className="text-sm text-blue-600">CO₂ Saved</div>
                     </div>
-                    <div className="bg-cyan-50 p-4 rounded-xl">
+                    <div data-aos="fade-up" className="bg-cyan-50 p-4 rounded-xl flex flex-col items-center">
+                      <Package className="h-7 w-7 text-cyan-600"/>
                       <div className="text-2xl font-bold text-cyan-700">{brandData.impactStats.waterSaved}</div>
                       <div className="text-sm text-cyan-600">Plastics Saved</div>
                     </div>
-                    <div className="bg-purple-50 p-4 rounded-xl">
+                    <div data-aos="fade-up" className="bg-purple-50 p-4 rounded-xl flex flex-col items-center">
+                      <Users className="h-7 w-7 text-purple-700"/>
                       <div className="text-2xl font-bold text-purple-700">{brandData.impactStats.partneredOrgs}</div>
                       <div className="text-sm text-purple-600">Partner Orgs</div>
                     </div>
@@ -286,7 +292,7 @@ export default function BrandProfilePage() {
               </Card>
 
               {/* Products Section */}
-              <Card className="bg-white border-gray-500/50 rounded-2xl shadow-lg">
+              <Card data-aos="fade-up" className="bg-white border-gray-500/50 rounded-2xl shadow-lg">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
@@ -299,7 +305,7 @@ export default function BrandProfilePage() {
                   </div>
                   <div className="grid grid-cols-3 gap-4">
                     {brandData.products.map((product) => (
-                      <div key={product.id} className="relative group cursor-pointer">
+                      <div key={product.id} data-aos="fade-up" className="relative group cursor-pointer">
                         <div className="aspect-square bg-gray-100 rounded-xl overflow-hidden">
                           <img
                             src={product.image || "/placeholder.svg"}
@@ -328,7 +334,7 @@ export default function BrandProfilePage() {
               </Card>
 
               {/* Achievements */}
-              <Card className="bg-white border-gray-500/50 rounded-2xl shadow-lg">
+              <Card data-aos="fade-up" className="bg-white border-gray-500/50 rounded-2xl shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
                     <Award className="h-5 w-5" />
@@ -336,7 +342,7 @@ export default function BrandProfilePage() {
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                     {brandData.achievements.map((achievement, index) => (
-                      <div key={index} className="flex items-center gap-4 p-4 bg-yellow-50 rounded-xl">
+                      <div key={index} data-aos="fade-up" className="flex items-center gap-4 p-4 bg-yellow-50 rounded-xl">
                         <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center text-2xl">
                           {achievement.icon}
                         </div>
@@ -360,7 +366,7 @@ export default function BrandProfilePage() {
           <CardContent className="p-0">
             {/* Cover Image */}
             <div className="h-28 bg-gradient-to-r from-green-100 to-green-200 relative">
-              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+              <div data-aos="fade-up" className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
                 <Avatar className="w-24 h-24 border-4 border-white shadow-lg">
                   <AvatarImage src={brandData.avatar || "/placeholder.svg"} alt={brandData.name} />
                   <AvatarFallback className="bg-green-100 text-green-700 text-xl font-bold">
@@ -372,18 +378,18 @@ export default function BrandProfilePage() {
 
             {/* Profile Info */}
             <div className="pt-16 px-6 pb-6 text-center">
-              <div className="flex items-center justify-center gap-2 mb-1">
+              <div data-aos="fade-up" className="flex items-center justify-center gap-2 mb-1">
                 <h2 className="text-xl font-bold text-gray-900">{brandData.name}</h2>
                 {brandData.verified && <Award className="h-5 w-5 text-green-500" />}
               </div>
-              <p className="text-gray-600 text-sm mb-1">{brandData.handle}</p>
-              <p className="text-gray-700 font-medium mb-3">{brandData.title}</p>
+              <p data-aos="fade-up" className="text-gray-600 text-sm mb-1">{brandData.handle}</p>
+              <p data-aos="fade-up" className="text-gray-700 font-medium mb-3">{brandData.title}</p>
 
-              <p className="text-gray-600 text-sm leading-relaxed mb-4 px-2">{brandData.bio}</p>
+              <p data-aos="fade-up" className="text-gray-600 text-sm leading-relaxed mb-4 px-2">{brandData.bio}</p>
 
               {/* Action Buttons */}
               {!isBrand && (
-                <div className="flex gap-3 justify-center mb-6">
+                <div data-aos="fade-up" className="flex gap-3 justify-center mb-6">
                   <Button
                     onClick={() => setIsFollowing(!isFollowing)}
                     className={`px-8 py-2 rounded-full font-medium ${
@@ -402,32 +408,34 @@ export default function BrandProfilePage() {
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="text-center">
+                <div data-aos="fade-up" className="text-center">
                   <div className="text-xl font-bold text-gray-900">{brandData.stats.products}</div>
                   <div className="text-xs text-gray-600 uppercase tracking-wide">Products</div>
                 </div>
-                <div className="text-center">
+                <div data-aos="fade-up" className="text-center">
                   <div className="text-xl font-bold text-gray-900">{brandData.stats.followers.toLocaleString()}</div>
                   <div className="text-xs text-gray-600 uppercase tracking-wide">Followers</div>
                 </div>
-                <div className="text-center">
+                <div data-aos="fade-up" className="text-center">
                   <div className="text-xl font-bold text-gray-900">{brandData.stats.partnerships}</div>
                   <div className="text-xs text-gray-600 uppercase tracking-wide">Partners</div>
                 </div>
               </div>
 
               {/* Environmental Impact */}
-              <div className="bg-green-50 rounded-2xl p-4 mb-6">
+              <div data-aos="fade-up" className="bg-green-50 rounded-2xl p-4 mb-6">
                 <h3 className="text-sm font-semibold text-green-800 mb-3 flex items-center gap-2">
                   <Leaf className="h-4 w-4" />
                   Environmental Impact
                 </h3>
                 <div className="grid grid-cols-2 gap-3 text-center">
-                  <div>
+                  <div data-aos="fade-up" className="flex flex-col items-center">
+                    <Recycle className="h-5 w-5 text-green-700" />
                     <div className="text-lg font-bold text-green-700">{brandData.impactStats.totalRecycled}</div>
                     <div className="text-xs text-green-600">Items Recycled</div>
                   </div>
-                  <div>
+                  <div data-aos="fade-up" className="flex flex-col items-center">
+                    <Wind className="h-5 w-5 text-green-700"/>
                     <div className="text-lg font-bold text-green-700">{brandData.impactStats.co2Saved}</div>
                     <div className="text-xs text-green-600">CO₂ Saved</div>
                   </div>
@@ -435,7 +443,7 @@ export default function BrandProfilePage() {
               </div>
 
               {/* Products Section */}
-              <div className="mb-6">
+              <div data-aos="fade-up" className="mb-6">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-sm font-semibold text-gray-800 flex items-center gap-2">
                     <Package className="h-4 w-4" />
@@ -447,7 +455,7 @@ export default function BrandProfilePage() {
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {brandData.products.slice(0, 4).map((product) => (
-                    <div key={product.id} className="relative">
+                    <div key={product.id} data-aos="fade-up" className="relative">
                       <div className="aspect-square bg-gray-100 rounded-xl overflow-hidden">
                         <img
                           src={product.image || "/placeholder.svg"}
@@ -474,14 +482,14 @@ export default function BrandProfilePage() {
               </div>
 
               {/* Achievements */}
-              <div className="mb-6">
+              <div data-aos="fade-up" className="mb-6">
                 <h3 className="text-sm font-semibold text-gray-800 mb-3 flex items-center gap-2">
                   <Award className="h-4 w-4" />
                   Achievements
                 </h3>
                 <div className="flex gap-2 justify-center">
                   {brandData.achievements.slice(0, 3).map((achievement, index) => (
-                    <div key={index} className="text-center">
+                    <div key={index} data-aos="fade-up" className="text-center">
                       <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-xl mb-1">
                         {achievement.icon}
                       </div>
@@ -492,7 +500,7 @@ export default function BrandProfilePage() {
               </div>
 
               {/* Contact Info */}
-              <div className="mb-6">
+              <div data-aos="fade-up" className="mb-6">
                 <div className="flex items-center justify-center gap-4 text-sm text-gray-600 mb-3">
                   <div className="flex items-center gap-1">
                     <MapPin className="h-3 w-3" />
@@ -512,7 +520,7 @@ export default function BrandProfilePage() {
               </div>
 
               {/* Social Media */}
-              <div>
+              <div data-aos="fade-up">
                 <h3 className="text-sm font-semibold text-gray-800 mb-3">Connect With Us</h3>
                 <div className="flex justify-center gap-4">
                   <a href="#" className="flex items-center gap-2 text-pink-600">
