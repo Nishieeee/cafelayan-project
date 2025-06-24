@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -30,7 +30,8 @@ import { useAuth } from "@/context/AuthContext";
 
 export default function BrandProfilePage() {
   const [isFollowing, setIsFollowing] = useState(false)
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, role } = useAuth();
+  const [isBrand, setisBrand] = useState(false);
 
   // Mock brand data
   const brandData = {
@@ -115,6 +116,9 @@ export default function BrandProfilePage() {
     },
   }
 
+  useEffect(() => {
+    if(role === 'brand') setisBrand(true); else setisBrand(false);
+  })
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-400 via-green-500 to-green-600">
       {/* Header */}
@@ -289,7 +293,7 @@ export default function BrandProfilePage() {
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
                       <Package className="h-5 w-5" />
-                      {isLoggedIn ? "My" : "Our"} Products
+                      {isBrand ? "My" : "Our"} Products
                     </h3>
                     <Link href="/brand/products" className="text-sm text-green-600 font-medium hover:underline">
                       View all products →
@@ -354,7 +358,7 @@ export default function BrandProfilePage() {
 
       {/* Mobile Layout */}
       <div className="lg:hidden px-4 pb-20">
-        <Card className="bg-white rounded-3xl shadow-xl overflow-hidden">
+        <Card className="bg-white border-gray-500/50 rounded-3xl shadow-xl overflow-hidden">
           <CardContent className="p-0">
             {/* Cover Image */}
             <div className="h-28 bg-gradient-to-r from-green-100 to-green-200 relative">
@@ -380,21 +384,23 @@ export default function BrandProfilePage() {
               <p className="text-gray-600 text-sm leading-relaxed mb-4 px-2">{brandData.bio}</p>
 
               {/* Action Buttons */}
-              <div className="flex gap-3 justify-center mb-6">
-                <Button
-                  onClick={() => setIsFollowing(!isFollowing)}
-                  className={`px-8 py-2 rounded-full font-medium ${
-                    isFollowing
-                      ? "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                      : "bg-green-600 text-white hover:bg-green-700"
-                  }`}
-                >
-                  {isFollowing ? "Following" : "Follow"}
-                </Button>
-                <Button variant="outline" className="px-6 py-2 rounded-full border-gray-300">
-                  Message
-                </Button>
-              </div>
+              {isLoggedIn && (
+                <div className="flex gap-3 justify-center mb-6">
+                  <Button
+                    onClick={() => setIsFollowing(!isFollowing)}
+                    className={`px-8 py-2 rounded-full font-medium ${
+                      isFollowing
+                        ? "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                        : "bg-green-600 text-white hover:bg-green-700"
+                    }`}
+                  >
+                    {isFollowing ? "Following" : "Follow"}
+                  </Button>
+                  <Button variant="outline" className="px-6 py-2 rounded-full border-gray-300">
+                    Message
+                  </Button>
+                </div>
+              )}
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 mb-6">
@@ -435,7 +441,7 @@ export default function BrandProfilePage() {
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-sm font-semibold text-gray-800 flex items-center gap-2">
                     <Package className="h-4 w-4" />
-                    Our Products
+                     {isBrand ? 'My' : 'Our'} Products
                   </h3>
                   <Link href="/brand/products" className="text-xs text-green-600 font-medium">
                     View all
@@ -525,10 +531,10 @@ export default function BrandProfilePage() {
                     <Facebook className="h-4 w-4" />
                     <span className="text-xs">{brandData.socialMedia.facebook}</span>
                   </a>
-                  <a href="#" className="flex items-center gap-2 text-blue-700">
+                  {/* <a href="#" className="flex items-center gap-2 text-blue-700">
                     <Linkedin className="h-4 w-4" />
                     <span className="text-xs">{brandData.socialMedia.linkedin}</span>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -537,22 +543,24 @@ export default function BrandProfilePage() {
       </div>
 
       {/* Bottom Action Bar - Mobile Only */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3">
-        <div className="flex items-center justify-around">
-          <button className="flex flex-col items-center gap-1">
-            <Heart className="h-5 w-5 text-gray-600" />
-            <span className="text-xs text-gray-600">Like</span>
-          </button>
-          <button className="flex flex-col items-center gap-1">
-            <MessageCircle className="h-5 w-5 text-gray-600" />
-            <span className="text-xs text-gray-600">Message</span>
-          </button>
-          <button className="flex flex-col items-center gap-1">
-            <Share2 className="h-5 w-5 text-gray-600" />
-            <span className="text-xs text-gray-600">Share</span>
-          </button>
+      {!isBrand && (
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3">
+          <div className="flex items-center justify-around">
+            <button className="flex flex-col items-center gap-1">
+              <Heart className="h-5 w-5 text-gray-600" />
+              <span className="text-xs text-gray-600">Like</span>
+            </button>
+            <button className="flex flex-col items-center gap-1">
+              <MessageCircle className="h-5 w-5 text-gray-600" />
+              <span className="text-xs text-gray-600">Message</span>
+            </button>
+            <button className="flex flex-col items-center gap-1">
+              <Share2 className="h-5 w-5 text-gray-600" />
+              <span className="text-xs text-gray-600">Share</span>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
