@@ -74,7 +74,7 @@ export default function LandingPage() {
               </div>
               <h3 className="text-xl font-bold mb-2">1. Scan QR Code</h3>
               <p className="text-gray-600">
-                Use your phone to scan the QR code on any recyclable package,
+                Use your phone to scan the QR code on any upcyclable package,
                 bottle, or container.
               </p>
             </div>
@@ -138,7 +138,7 @@ export default function LandingPage() {
                     Cafelayan Lettuce Chips
                   </h3>
                   <p className="text-gray-600 mb-4">
-                    Experience how users will see recycling options after
+                    Experience how users will see upcycling options after
                     scanning a QR code on this plastic bottle.
                   </p>
                   <Button
