@@ -128,12 +128,14 @@ export default function BrandProfilePage() {
         </Link> */}
         <h1 className="text-lg lg:text-xl font-semibold">Brand Profile</h1>
         {/* <MoreHorizontal className="h-6 w-6" /> */}
+        {isBrand && (
         <Link href="/brand/dashboard">
           <h2 className="text-md lg:text-lg font-semibold flex items-center justify-between">
             <LayoutDashboard className="h-5 w-5 mr-1"/>
             Go to Dashboard
           </h2>
         </Link>
+      )}
       </div>
 
       {/* Desktop Layout */}
