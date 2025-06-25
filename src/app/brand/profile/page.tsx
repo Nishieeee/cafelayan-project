@@ -39,7 +39,7 @@ export default function BrandProfilePage() {
     handle: "@cafelayan_ph",
     title: "Sustainable Water Solutions",
     bio: "Leading the way in sustainable packaging and environmental responsibility. Join us in creating a cleaner, greener Philippines through innovative recycling solutions.",
-    avatar: "/cafelayanlogo.jpg",
+    avatar: "/cafelayanlogo2.jpeg",
     coverImage: "/Cafelayan-3.jpg",
     location: "Zamboanga City, Philippines",
     joinDate: "2025",

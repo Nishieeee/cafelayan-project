@@ -66,7 +66,6 @@ export function DonateItemForm() {
       contactName: "",
       contactEmail: "",
       contactPhone: "",
-      pickupNotes: "",
       agreeToTerms: false,
     },
   })
@@ -292,7 +291,7 @@ export function DonateItemForm() {
             )}
           />
 
-          <FormField
+          {/* <FormField
             control={form.control}
             name="pickupNotes"
             render={({ field }) => (
@@ -308,7 +307,7 @@ export function DonateItemForm() {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
         </div>
 
         {/* Photo Upload */}

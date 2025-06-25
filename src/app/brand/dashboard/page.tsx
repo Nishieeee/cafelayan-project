@@ -78,7 +78,7 @@ export default function BrandDashboard() {
   // Mock data - would come from API
   const brandData = {
     name: "Cafelayan Lettuce Chips",
-    logo: "/cafelayanlogo.jpg",
+    logo: "/cafelayanlogo.jpeg",
     totalProducts: 45672,
     totalDonations: 12834,
     totalScans: 28945,
