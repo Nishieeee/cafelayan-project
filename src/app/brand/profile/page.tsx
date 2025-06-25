@@ -37,7 +37,7 @@ export default function BrandProfilePage() {
   const brandData = {
     name: "Cafelayan",
     handle: "@cafelayan_ph",
-    title: "Sustainable Water Solutions",
+    title: "Leading sustainable brand",
     bio: "Leading the way in sustainable packaging and environmental responsibility. Join us in creating a cleaner, greener Philippines through innovative recycling solutions.",
     avatar: "/cafelayanlogo2.jpeg",
     coverImage: "/Cafelayan-3.jpg",
