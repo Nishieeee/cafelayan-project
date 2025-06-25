@@ -22,7 +22,7 @@ export default function LandingPage() {
               data-aos="fade-up"
               className="max-w-[700px] text-lg text-gray-600 md:text-xl"
             >
-              Scan QR codes on packages to discover recycling options. Donate to
+              Scan QR codes on packages to discover upcycling options. Donate to
               local organizations or learn DIY techniques to give your waste a
               second life.
             </p>
