@@ -89,8 +89,8 @@ export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeTab, setActiveTab] = useState("all")
   const [sortBy, setSortBy] = useState("relevance")
-  const [filterCategory, setFilterCategory] = useState("all")
-  const [filterLocation, setFilterLocation] = useState("all")
+  // const [filterCategory, setFilterCategory] = useState("all")
+  // const [filterLocation, setFilterLocation] = useState("all")
   const [isLoading, setIsLoading] = useState(false)
 
   // Mock data - would come from API
@@ -119,7 +119,7 @@ export default function SearchPage() {
       recyclability: "Recyclable",
       image: "/placeholder.svg?height=60&width=60",
       description: "Organic chips in eco-friendly cardboard packaging",
-      registrationDate: "2024-02-01",
+      registrationDate: "2025-02-01",
       totalScans: 1523,
       totalDonations: 892,
     },
@@ -133,7 +133,7 @@ export default function SearchPage() {
       recyclability: "Highly Recyclable",
       image: "/placeholder.svg?height=60&width=60",
       description: "Premium glass bottle for fresh smoothies",
-      registrationDate: "2024-01-20",
+      registrationDate: "2025-01-20",
       totalScans: 1834,
       totalDonations: 967,
     },
@@ -165,7 +165,7 @@ export default function SearchPage() {
       totalProducts: 8,
       totalDonations: 8934,
       sustainabilityScore: 88,
-      joinDate: "2023-08-20",
+      joinDate: "2025-08-20",
       website: "https://ecosnacks.ph",
     },
     {
@@ -179,7 +179,7 @@ export default function SearchPage() {
       totalProducts: 6,
       totalDonations: 4521,
       sustainabilityScore: 85,
-      joinDate: "2023-11-10",
+      joinDate: "2025-11-10",
     },
   ]
 
@@ -237,7 +237,7 @@ export default function SearchPage() {
       level: "Eco Champion",
       totalDonations: 127,
       totalWeight: 45.2,
-      joinDate: "2023-06-15",
+      joinDate: "2025-06-15",
       badges: ["First Donation", "Week Warrior", "Plastic Hero"],
       isPublic: true,
     },
@@ -249,7 +249,7 @@ export default function SearchPage() {
       level: "Green Guardian",
       totalDonations: 234,
       totalWeight: 89.5,
-      joinDate: "2023-03-20",
+      joinDate: "2025-03-20",
       badges: ["Community Leader", "Streak Master", "Eco Master"],
       isPublic: true,
     },
@@ -261,7 +261,7 @@ export default function SearchPage() {
       level: "Eco Champion",
       totalDonations: 198,
       totalWeight: 76.2,
-      joinDate: "2023-05-10",
+      joinDate: "2025-05-10",
       badges: ["Monthly Champion", "Green Warrior", "Sustainability Star"],
       isPublic: true,
     },
@@ -334,8 +334,8 @@ export default function SearchPage() {
     setSearchQuery("")
     setActiveTab("all")
     setSortBy("relevance")
-    setFilterCategory("all")
-    setFilterLocation("all")
+    // setFilterCategory("all")
+    // setFilterLocation("all")
   }
 
   return (
