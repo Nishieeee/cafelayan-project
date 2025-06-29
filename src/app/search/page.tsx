@@ -408,21 +408,21 @@ export default function SearchPage() {
 
         {/* Results Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="all">All ({totalResults})</TabsTrigger>
-            <TabsTrigger value="products">
+          <TabsList className="flex justify-between overflow-x-auto whitespace-nowrap no-scrollbar sm:px-5 px-2 bg-gray-300/20">
+            <TabsTrigger value="all" className="w-full">All ({totalResults})</TabsTrigger>
+            <TabsTrigger value="products" className="w-full">
               <Package className="mr-2 h-4 w-4" />
               Products ({filteredResults.products.length})
             </TabsTrigger>
-            <TabsTrigger value="brands">
+            <TabsTrigger value="brands" className="w-full">
               <Building2 className="mr-2 h-4 w-4" />
               Brands ({filteredResults.brands.length})
             </TabsTrigger>
-            <TabsTrigger value="organizations">
+            <TabsTrigger value="organizations" className="w-full">
               <Users className="mr-2 h-4 w-4" />
               Organizations ({filteredResults.organizations.length})
             </TabsTrigger>
-            <TabsTrigger value="users">
+            <TabsTrigger value="users" className="w-full">
               <User className="mr-2 h-4 w-4" />
               Users ({filteredResults.users.length})
             </TabsTrigger>
