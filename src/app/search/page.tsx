@@ -398,8 +398,8 @@ export default function SearchPage() {
                 "Searching..."
               ) : (
                 <>
-                  Found <span className="font-medium">{totalResults}</span> results for "
-                  <span className="font-medium">{searchQuery}</span>"
+                  Found <span className="font-medium">{totalResults}</span> results for &ldquo;
+                  <span className="font-medium">{searchQuery}</span>&rdquo;
                 </>
               )}
             </p>
