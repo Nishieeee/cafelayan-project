@@ -10,7 +10,7 @@ import { Recycle, Menu,  LogOut, Home, BookOpen, MapPin, Info, LayoutDashboard, 
 import { useAuth } from "@/context/AuthContext"
 
 export default function Header() {
-  const { isLoggedIn, role, logout } = useAuth()
+  const { isLoggedIn, role, name, logout } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isUser, setisUser] = useState(false)
 
@@ -54,7 +54,7 @@ export default function Header() {
                   {isLoggedIn && (
                     isUser ? (
                       <Link
-                      href={`/${role}/profile`}
+                      href={`/brand/profile/${name}`}
                       className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
                     >
                       <User className="h-4 w-4 mr-1" />
@@ -181,7 +181,7 @@ export default function Header() {
                     {isLoggedIn && (
                     isUser ? (
                       <Link
-                      href="/brand/profile"
+                      href={`/brand/profile/${name}`}
                       className="flex items-center px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-md transition-colors"
                     >
                       <User className="h-4 w-4 mr-1" />
