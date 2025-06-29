@@ -41,21 +41,20 @@ import {
 import Link from "next/link"
 import { QRCodeSVG } from "qrcode.react"
 import type { BrandProducts, Product } from "@/types/brand"
-import { useAuth } from "@/context/AuthContext";
 
 // Mock brand products data - would come from API
 const brandProductsData: Record<string, BrandProducts> = {
-  cafelayan: {
-    name: "Cafelayan",
+  aquapure: {
+    name: "AquaPure",
     products: [
       {
-        id: "cafelayan-250g-001",
-        name: "Cafelayan lettuce chips",
-        brand: "Cafelayan",
+        id: "aquapure-500ml-001",
+        name: "AquaPure 500ml Water Bottle",
+        brand: "AquaPure",
         material: "PET Plastic",
-        category: "food",
+        category: "Beverages",
         status: "Active",
-        registrationDate: "2025-01-15",
+        registrationDate: "2024-01-15",
         totalScans: 2847,
         totalDonations: 1256,
         conversionRate: 44.1,
@@ -64,13 +63,13 @@ const brandProductsData: Record<string, BrandProducts> = {
         recyclability: "Highly Recyclable",
       },
       {
-        id: "cafelayan-250g-002",
-        name: "Cafelayan VBites Chips",
-        brand: "Cafelayan",
+        id: "aquapure-1l-002",
+        name: "AquaPure 1L Water Bottle",
+        brand: "AquaPure",
         material: "PET Plastic",
-        category: "Food",
+        category: "Beverages",
         status: "Active",
-        registrationDate: "2025-01-20",
+        registrationDate: "2024-01-20",
         totalScans: 1923,
         totalDonations: 834,
         conversionRate: 43.4,
@@ -78,29 +77,29 @@ const brandProductsData: Record<string, BrandProducts> = {
         image: "/placeholder.svg?height=60&width=60",
         recyclability: "Highly Recyclable",
       },
-      // {
-      //   id: "aquapure-sports-003",
-      //   name: "AquaPure Sports Drink 750ml",
-      //   brand: "AquaPure",
-      //   material: "PET Plastic",
-      //   category: "Sports Drinks",
-      //   status: "Active",
-      //   registrationDate: "2024-02-01",
-      //   totalScans: 1456,
-      //   totalDonations: 623,
-      //   conversionRate: 42.8,
-      //   lastScan: "3 hours ago",
-      //   image: "/placeholder.svg?height=60&width=60",
-      //   recyclability: "Highly Recyclable",
-      // },
       {
-        id: "cafelayan-250g-003",
-        name: "Cafelayan Kale Chips",
-        brand: "Cafelayan",
-        material: "PET plastic",
-        category: "Food",
+        id: "aquapure-sports-003",
+        name: "AquaPure Sports Drink 750ml",
+        brand: "AquaPure",
+        material: "PET Plastic",
+        category: "Sports Drinks",
+        status: "Active",
+        registrationDate: "2024-02-01",
+        totalScans: 1456,
+        totalDonations: 623,
+        conversionRate: 42.8,
+        lastScan: "3 hours ago",
+        image: "/placeholder.svg?height=60&width=60",
+        recyclability: "Highly Recyclable",
+      },
+      {
+        id: "aquapure-juice-004",
+        name: "AquaPure Orange Juice 500ml",
+        brand: "AquaPure",
+        material: "Tetra Pak",
+        category: "Juices",
         status: "Draft",
-        registrationDate: "2025-02-10",
+        registrationDate: "2024-02-10",
         totalScans: 0,
         totalDonations: 0,
         conversionRate: 0,
@@ -108,21 +107,21 @@ const brandProductsData: Record<string, BrandProducts> = {
         image: "/placeholder.svg?height=60&width=60",
         recyclability: "Recyclable",
       },
-      // {
-      //   id: "aquapure-glass-005",
-      //   name: "AquaPure Glass Bottle 330ml",
-      //   brand: "AquaPure",
-      //   material: "Glass",
-      //   category: "Premium",
-      //   status: "Inactive",
-      //   registrationDate: "2024-01-05",
-      //   totalScans: 892,
-      //   totalDonations: 445,
-      //   conversionRate: 49.9,
-      //   lastScan: "2 weeks ago",
-      //   image: "/placeholder.svg?height=60&width=60",
-      //   recyclability: "Highly Recyclable",
-      // },
+      {
+        id: "aquapure-glass-005",
+        name: "AquaPure Glass Bottle 330ml",
+        brand: "AquaPure",
+        material: "Glass",
+        category: "Premium",
+        status: "Inactive",
+        registrationDate: "2024-01-05",
+        totalScans: 892,
+        totalDonations: 445,
+        conversionRate: 49.9,
+        lastScan: "2 weeks ago",
+        image: "/placeholder.svg?height=60&width=60",
+        recyclability: "Highly Recyclable",
+      },
     ],
   },
   ecobottle: {
@@ -262,7 +261,7 @@ export default function BrandProductsPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [showQRDialog, setShowQRDialog] = useState(false)
   const [brandData, setBrandData] = useState<BrandProducts | null>(null)
-  const { name } = useAuth();
+
   useEffect(() => {
     // Simulate API call
     const data = brandProductsData[brandId]
@@ -343,7 +342,7 @@ export default function BrandProductsPage() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-6">
           <Link
-            href={`/brand/${name}/dashboard`}
+            href={`/brand/${brandId}/dashboard`}
             className="inline-flex items-center text-gray-600 hover:text-gray-900"
           >
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Dashboard
@@ -356,7 +355,7 @@ export default function BrandProductsPage() {
             <h1 className="text-3xl font-bold text-gray-900">{brandData.name} - Product Management</h1>
             <p className="text-gray-600">Manage your registered products and track their performance</p>
           </div>
-          <Button asChild className="bg-green-700 text-white hover:bg-green-800">
+          <Button asChild className="bg-green-700 hover:bg-green-800">
             <Link href="/brand/register-product">
               <Plus className="mr-2 h-4 w-4" />
               Register New Product
@@ -366,8 +365,7 @@ export default function BrandProductsPage() {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div data-aos="fade-up">
-            <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Products</CardTitle>
               <Package className="h-4 w-4 text-muted-foreground" />
@@ -379,10 +377,8 @@ export default function BrandProductsPage() {
               </p>
             </CardContent>
           </Card>
-          </div>
 
-          <div data-aos="fade-up">
-            <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Scans</CardTitle>
               <QrCode className="h-4 w-4 text-muted-foreground" />
@@ -394,10 +390,8 @@ export default function BrandProductsPage() {
               <p className="text-xs text-muted-foreground">+12% from last month</p>
             </CardContent>
           </Card>
-          </div>
 
-          <div data-aos="fade-up">
-            <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Donations</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -409,10 +403,8 @@ export default function BrandProductsPage() {
               <p className="text-xs text-muted-foreground">+18% from last month</p>
             </CardContent>
           </Card>
-          </div>
 
-          <div data-aos="fade-up">
-            <Card className="border-gray-500/50 bg-white hover:bg-green-700 hover:text-white transition-colors duration-300 ease">
+          <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Avg Conversion</CardTitle>
               <BarChart3 className="h-4 w-4 text-muted-foreground" />
@@ -428,48 +420,47 @@ export default function BrandProductsPage() {
               <p className="text-xs text-muted-foreground">Scan to donation rate</p>
             </CardContent>
           </Card>
-          </div>
         </div>
 
         {/* Filters */}
-        <Card className="mb-6 border-gray-500/50">
+        <Card className="mb-6">
           <CardContent className="pt-6">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-grow">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 border-gray-500/50 h-4 w-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   placeholder="Search products..."
-                  className="pl-10 border-gray-500/50"
+                  className="pl-10"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
               <div className="flex gap-4">
                 <Select value={statusFilter} onValueChange={setStatusFilter}>
-                  <SelectTrigger className="w-[140px] border-gray-500/50">
+                  <SelectTrigger className="w-[140px]">
                     <SelectValue placeholder="Status" />
                   </SelectTrigger>
-                  <SelectContent className="bg-white">
-                    <SelectItem value="all" className="hover:bg-green-300">All Status</SelectItem>
-                    <SelectItem value="active" className="hover:bg-green-300">Active</SelectItem>
-                    <SelectItem value="draft" className="hover:bg-green-300">Draft</SelectItem>
-                    <SelectItem value="inactive" className="hover:bg-green-300">Inactive</SelectItem>
+                  <SelectContent>
+                    <SelectItem value="all">All Status</SelectItem>
+                    <SelectItem value="active">Active</SelectItem>
+                    <SelectItem value="draft">Draft</SelectItem>
+                    <SelectItem value="inactive">Inactive</SelectItem>
                   </SelectContent>
                 </Select>
                 <Select value={materialFilter} onValueChange={setMaterialFilter}>
-                  <SelectTrigger className="w-[140px] border-gray-500/50">
+                  <SelectTrigger className="w-[140px]">
                     <SelectValue placeholder="Material" />
                   </SelectTrigger>
-                  <SelectContent className="bg-white"> 
-                    <SelectItem value="all" className="hover:bg-green-300">All Materials</SelectItem>
-                    <SelectItem value="PET Plastic" className="hover:bg-green-300">PET Plastic</SelectItem>
-                    <SelectItem value="Glass " className="hover:bg-green-300">Glass</SelectItem>
-                    <SelectItem value="Tetra Pak" className="hover:bg-green-300">Tetra Pak</SelectItem>
-                    <SelectItem value="Cardboard " className="hover:bg-green-300">Cardboard</SelectItem>
-                    <SelectItem value="Biodegradable Plastic" className="hover:bg-green-300">Biodegradable Plastic</SelectItem>
-                    <SelectItem value="Bamboo Fiber" className="hover:bg-green-300">Bamboo Fiber</SelectItem>
-                    <SelectItem value="Corn Starch" className="hover:bg-green-300">Corn Starch</SelectItem>
-                    <SelectItem value="Hemp Fiber" className="hover:bg-green-300">Hemp Fiber</SelectItem>
+                  <SelectContent>
+                    <SelectItem value="all">All Materials</SelectItem>
+                    <SelectItem value="PET Plastic">PET Plastic</SelectItem>
+                    <SelectItem value="Glass">Glass</SelectItem>
+                    <SelectItem value="Tetra Pak">Tetra Pak</SelectItem>
+                    <SelectItem value="Cardboard">Cardboard</SelectItem>
+                    <SelectItem value="Biodegradable Plastic">Biodegradable Plastic</SelectItem>
+                    <SelectItem value="Bamboo Fiber">Bamboo Fiber</SelectItem>
+                    <SelectItem value="Corn Starch">Corn Starch</SelectItem>
+                    <SelectItem value="Hemp Fiber">Hemp Fiber</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -480,7 +471,7 @@ export default function BrandProductsPage() {
         {/* Products List */}
         <div className="space-y-4">
           {filteredProducts.map((product) => (
-            <Card data-aos="fade-up" key={product.id} className="overflow-hidden border-gray-500/50 hover:border-green-700">
+            <Card key={product.id} className="overflow-hidden">
               <CardContent className="p-6">
                 <div className="flex flex-col lg:flex-row gap-6">
                   {/* Product Info */}
@@ -504,7 +495,7 @@ export default function BrandProductsPage() {
                               <MoreHorizontal className="h-4 w-4" />
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end" className="bg-white">
+                          <DropdownMenuContent align="end">
                             <DropdownMenuItem asChild>
                               <Link href={`/brand/products/${product.id}/edit`}>
                                 <Edit className="mr-2 h-4 w-4" />
@@ -587,7 +578,7 @@ export default function BrandProductsPage() {
         </div>
 
         {filteredProducts.length === 0 && (
-          <Card className="border-gray-500/50">
+          <Card>
             <CardContent className="text-center py-12">
               <Package className="h-12 w-12 text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">No products found</h3>
@@ -608,7 +599,7 @@ export default function BrandProductsPage() {
 
         {/* Delete Confirmation Dialog */}
         <AlertDialog open={!!deleteProductId} onOpenChange={() => setDeleteProductId(null)}>
-          <AlertDialogContent className="border-gray-500/50">
+          <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>Delete Product</AlertDialogTitle>
               <AlertDialogDescription>
@@ -620,7 +611,7 @@ export default function BrandProductsPage() {
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction
                 onClick={() => deleteProductId && handleDeleteProduct(deleteProductId)}
-                className="bg-red-600 text-white hover:bg-red-700"
+                className="bg-red-600 hover:bg-red-700"
               >
                 Delete Product
               </AlertDialogAction>
@@ -658,11 +649,11 @@ export default function BrandProductsPage() {
                 </div>
               </div>
               <AlertDialogFooter className="flex-col sm:flex-row gap-2">
-                <Button onClick={() => downloadQRCode(selectedProduct)} className="w-full sm:w-auto border-gray-500/50">
+                <Button onClick={() => downloadQRCode(selectedProduct)} className="w-full sm:w-auto">
                   <Download className="mr-2 h-4 w-4" />
                   Download PNG
                 </Button>
-                <AlertDialogCancel className="w-full sm:w-auto border-gray-500/50">Close</AlertDialogCancel>
+                <AlertDialogCancel className="w-full sm:w-auto">Close</AlertDialogCancel>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>

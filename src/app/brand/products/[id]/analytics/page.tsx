@@ -21,10 +21,11 @@ import {
 } from "recharts"
 import { ArrowLeft, QrCode, TrendingUp, Users, MapPin, Download, Calendar, Target } from "lucide-react"
 import Link from "next/link"
-
+import { useAuth } from "@/context/AuthContext"
 
 export default function ProductAnalyticsPage() {
   const [timeRange, setTimeRange] = useState("30d");
+  const { name } = useAuth()
 
   const product = {
     name: "Cafelayan Lettuce Chips",
@@ -106,7 +107,7 @@ export default function ProductAnalyticsPage() {
     <div className="container py-8 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-6">
-          <Link href="/brand/products" className="inline-flex items-center text-gray-600 hover:text-gray-900">
+          <Link href={`/brand/${name}/products`} className="inline-flex items-center text-gray-600 hover:text-gray-900">
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Products
           </Link>
         </div>
