@@ -483,7 +483,7 @@ export default function BrandProfilePage() {
                 <div className="grid grid-cols-2 gap-3">
                   {brand.products.slice(0, 4).map((product) => (
                     <Link key={product.id} href={`/package/${product.id}`}>
-                      <Card className="overflow-hidden hover:shadow-md transition-shadow">
+                      <Card className="overflow-hidden hover:shadow-md transition-shadow border-gray-500/50">
                         <div className="aspect-square bg-gray-100 relative">
                           <img
                             src={product.image || "/placeholder.svg"}
