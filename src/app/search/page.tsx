@@ -109,7 +109,7 @@ export default function SearchPage() {
       category: "Food",
       material: "PET Plastic",
       recyclability: "Highly Recyclable",
-      image: "/lettuce_chips-2.jpeg",
+      image: "/lettuce_chips-2.jpg",
       description: "Organic chips in upcyclable packaging",
       registrationDate: "2026-01-15",
       totalScans: 2847,
