@@ -337,7 +337,7 @@ export default function BrandProfilePage() {
             size="icon"
             className="text-white hover:bg-white/20"
           >
-            <Link href="/search">
+            <Link href="/">
               <svg
                 className="h-6 w-6"
                 fill="none"
@@ -354,22 +354,15 @@ export default function BrandProfilePage() {
             </Link>
           </Button>
           <h1 className="text-lg font-semibold">Profile</h1>
+          <Link href={`/brand/${brand.id}/dashboard`}>
           <Button
-            variant="ghost"
-            size="icon"
-            className="text-white hover:bg-white/20"
+            variant="outline"
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-xs"
           >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <circle cx="12" cy="12" r="1"></circle>
-              <circle cx="19" cy="12" r="1"></circle>
-              <circle cx="5" cy="12" r="1"></circle>
-            </svg>
+            <LayoutDashboard className="h-1 w-1 mr-1" />
+            Dashboard
           </Button>
+          </Link>
         </div>
 
         {/* Profile Card */}
