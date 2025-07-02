@@ -124,7 +124,7 @@ const brandDashboardData: Record<string, BrandDashboard> = {
     ],
   },
   dios: {
-    name: "Dio&apos;s Heavenly Refreshing Juice",
+    name: "Dio's Heavenly Refreshing Juice",
     logo: "/diologo.jpg",
     totalProducts: 23450,
     totalDonations: 8920,

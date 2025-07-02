@@ -126,12 +126,12 @@ const brandProductsData: Record<string, BrandProducts> = {
     ],
   },
   dios: {
-    name: "Dio&apos;s Heavenly Refreshing Juice",
+    name: "Dio's Heavenly Refreshing Juice",
     products: [
       {
         id: "dio-500ml-001",
         name: "Heavenly Refreshing Juice 500ml",
-        brand: "Dio&apos;s Heavenly Refreshing Juice",
+        brand: "Dio's Heavenly Refreshing Juice",
         material: "PET Plastic",
         category: "Beverages",
         status: "Active",

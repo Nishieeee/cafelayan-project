@@ -140,8 +140,8 @@ const brandData: Record<string, Brand> = {
   },
   dios: {
     id: "dios",
-    name: "Dio&apos;s Heavenly Refreshing Juice",
-    username: "@dio&apos;s_ph",
+    name: "Dio's Heavenly Refreshing Juice",
+    username: "@dio's_ph",
     description:
       "Heavenly refreshing Juice made 100% from Blue Ternate, Lemon Grass & Calamansi Extract.",
     avatar: "/diologo.jpg",
@@ -166,7 +166,7 @@ const brandData: Record<string, Brand> = {
       {
         id: "dio-500ml-001",
         name: "Heavenly Refreshing Juice 500ml",
-        brand: "Dio&apos;s Heavenly Refreshing Juice",
+        brand: "Dio's Heavenly Refreshing Juice",
         material: "PET Plastic",
         category: "Beverages",
         status: "Active",
@@ -283,8 +283,8 @@ const brandData: Record<string, Brand> = {
     socialMedia: {
       instagram: "@dio.ph",
       twitter: "@diosheavenlyrefreshingjuice",
-      facebook: "Dio&apos;s eavenly Refreshing Juice",
-      shop: "Dio&apos;s Shop",
+      facebook: "Dio's eavenly Refreshing Juice",
+      shop: "Dio's Shop",
     },
   },
 };
