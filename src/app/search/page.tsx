@@ -820,7 +820,7 @@ export default function SearchPage() {
                   className="hover:shadow-md transition-shadow border-gray-500/50"
                 >
                   <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
+                    <div className="flex flex-col md:flex-row items-start gap-4">
                       <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
                         <img
                           src={brand.logo || "/placeholder.svg"}
@@ -878,7 +878,7 @@ export default function SearchPage() {
                             </span>
                           </div>
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                           <Button variant="outline" size="sm" asChild className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
                             <Link href={`/brand/profile/${brand.id}`}>
                               <User className="h-5 w-5"/>
