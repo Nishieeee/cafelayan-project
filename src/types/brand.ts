@@ -44,7 +44,7 @@ export interface SocialMedia {
   instagram: string
   twitter: string
   facebook: string
-  linkedin: string
+  shop: string
 }
 
 export interface Brand {

@@ -70,7 +70,7 @@ const donorDummy: DonatorRequest = {
 const brandDashboardData: Record<string, BrandDashboard> = {
   cafelayan: {
     name: "Cafelayan",
-    logo: "/placeholder.svg?height=60&width=60",
+    logo: "/cafelayanlogo.jpeg",
     totalProducts: 45672,
     totalDonations: 12834,
     totalScans: 28945,
@@ -123,9 +123,9 @@ const brandDashboardData: Record<string, BrandDashboard> = {
       { name: "Other", value: 334, color: "#FF8042" },
     ],
   },
-  ecobottle: {
-    name: "EcoBottle Co",
-    logo: "/placeholder.svg?height=60&width=60",
+  dios: {
+    name: "Dio's Heavenly Refreshing Juice",
+    logo: "/diologo.jpg",
     totalProducts: 23450,
     totalDonations: 8920,
     totalScans: 18650,
@@ -141,9 +141,9 @@ const brandDashboardData: Record<string, BrandDashboard> = {
     ],
     topOrganizations: [
       {
-        name: "Cebu Green Alliance",
+        name: "Kids Who farm",
         donations: 2890,
-        city: "Cebu City",
+        city: "Zamboanga City",
         partnership: "Official",
       },
       {
@@ -172,12 +172,7 @@ const brandDashboardData: Record<string, BrandDashboard> = {
       },
     ],
     productTypes: [
-      { name: "Biodegradable Bottles", value: 6500, color: "#0088FE" },
-      { name: "Glass Containers", value: 4200, color: "#00C49F" },
-      { name: "Bamboo Products", value: 3800, color: "#FFBB28" },
-      { name: "Paper Cartons", value: 2950, color: "#FF8042" },
-      { name: "Corn-based", value: 2100, color: "#8884D8" },
-      { name: "Hemp Composite", value: 1200, color: "#82CA9D" },
+      { name: "Heavenly Refreshing Juice", value: 6500, color: "#0088FE" },
     ],
   },
 };
