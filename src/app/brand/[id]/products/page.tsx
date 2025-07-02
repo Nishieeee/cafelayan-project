@@ -126,12 +126,12 @@ const brandProductsData: Record<string, BrandProducts> = {
     ],
   },
   dios: {
-    name: "Dio's Heavenly Refreshing Juice",
+    name: "Dio&apos;s Heavenly Refreshing Juice",
     products: [
       {
         id: "dio-500ml-001",
         name: "Heavenly Refreshing Juice 500ml",
-        brand: "Dio's Heavenly Refreshing Juice",
+        brand: "Dio&apos;s Heavenly Refreshing Juice",
         material: "PET Plastic",
         category: "Beverages",
         status: "Active",
@@ -276,7 +276,7 @@ export default function BrandProductsPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Brand Not Found</h1>
-          <p className="text-gray-600 mb-4">The brand products you're looking for don't exist.</p>
+          <p className="text-gray-600 mb-4">The brand products you&apos;re looking for don&apos;t exist.</p>
           <Button asChild>
             <Link href="/search">Search Brands</Link>
           </Button>

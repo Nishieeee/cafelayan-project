@@ -131,8 +131,8 @@ export default function SearchPage() {
     },
     {
       id: "dios-500ml-001",
-      name: "Dio's Heavenly Refreshing Juice",
-      brand: "Dio's",
+      name: "Dio&apos;s Heavenly Refreshing Juice",
+      brand: "Dio&apos;s",
       brandId: "heavenlyjuice",
       category: "Beverages",
       material: "PET Plastic",
@@ -164,7 +164,7 @@ export default function SearchPage() {
     },
     {
       id: "dios",
-      name: "Dio's Heavenly Refreshing Juice",
+      name: "Dio&apos;s Heavenly Refreshing Juice",
       logo: "/diologo.jpg",
       description:
         "Heavenly refreshing Juice made 100% from Blue Ternate, Lemon Grass & Calamansi Extract.",

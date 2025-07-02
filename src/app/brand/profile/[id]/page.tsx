@@ -140,8 +140,8 @@ const brandData: Record<string, Brand> = {
   },
   dios: {
     id: "dios",
-    name: "Dio's Heavenly Refreshing Juice",
-    username: "@dio's_ph",
+    name: "Dio&apos;s Heavenly Refreshing Juice",
+    username: "@dio&apos;s_ph",
     description:
       "Heavenly refreshing Juice made 100% from Blue Ternate, Lemon Grass & Calamansi Extract.",
     avatar: "/diologo.jpg",
@@ -166,7 +166,7 @@ const brandData: Record<string, Brand> = {
       {
         id: "dio-500ml-001",
         name: "Heavenly Refreshing Juice 500ml",
-        brand: "Dio's Heavenly Refreshing Juice",
+        brand: "Dio&apos;s Heavenly Refreshing Juice",
         material: "PET Plastic",
         category: "Beverages",
         status: "Active",
@@ -283,8 +283,8 @@ const brandData: Record<string, Brand> = {
     socialMedia: {
       instagram: "@dio.ph",
       twitter: "@diosheavenlyrefreshingjuice",
-      facebook: "Dio's eavenly Refreshing Juice",
-      shop: "Dio's Shop",
+      facebook: "Dio&apos;s eavenly Refreshing Juice",
+      shop: "Dio&apos;s Shop",
     },
   },
 };
@@ -316,7 +316,7 @@ export default function BrandProfilePage() {
             Brand Not Found
           </h1>
           <p className="text-gray-600 mb-4">
-            The brand profile you're looking for doesn't exist.
+            The brand profile you&apos;re looking for doesn&apos;t exist.
           </p>
           <Button asChild>
             <Link href="/search">Search Brands</Link>

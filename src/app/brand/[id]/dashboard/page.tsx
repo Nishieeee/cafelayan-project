@@ -124,7 +124,7 @@ const brandDashboardData: Record<string, BrandDashboard> = {
     ],
   },
   dios: {
-    name: "Dio's Heavenly Refreshing Juice",
+    name: "Dio&apos;s Heavenly Refreshing Juice",
     logo: "/diologo.jpg",
     totalProducts: 23450,
     totalDonations: 8920,
@@ -279,7 +279,7 @@ export default function BrandDashboardPage() {
             Brand Not Found
           </h1>
           <p className="text-gray-600 mb-4">
-            The brand dashboard you're looking for doesn't exist.
+            The brand dashboard you&apos;re looking for doesn&apos;t exist.
           </p>
           <Button asChild>
             <Link href="/search">Search Brands</Link>
