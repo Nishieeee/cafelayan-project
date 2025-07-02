@@ -176,20 +176,20 @@ export default function SearchPage() {
       sustainabilityScore: 88,
       joinDate: "2025-08-20",
     },
-    {
-      id: "greenjuice",
-      name: "GreenJuice Co.",
-      logo: "/placeholder.svg?height=60&width=60",
-      description:
-        "Fresh juice company promoting healthy living and environmental sustainability",
-      category: "Beverages",
-      location: "Cebu City, Cebu",
-      verified: false,
-      totalProducts: 6,
-      totalDonations: 4521,
-      sustainabilityScore: 85,
-      joinDate: "2025-11-10",
-    },
+    // {
+    //   id: "greenjuice",
+    //   name: "GreenJuice Co.",
+    //   logo: "/placeholder.svg?height=60&width=60",
+    //   description:
+    //     "Fresh juice company promoting healthy living and environmental sustainability",
+    //   category: "Beverages",
+    //   location: "Cebu City, Cebu",
+    //   verified: false,
+    //   totalProducts: 6,
+    //   totalDonations: 4521,
+    //   sustainabilityScore: 85,
+    //   joinDate: "2025-11-10",
+    // },
   ];
 
   const mockOrganizations: Organization[] = [

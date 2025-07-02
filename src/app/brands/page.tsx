@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 
 interface Brand {
+  id: string
   name: string;
   handle: string;
   title: string;
@@ -126,6 +127,7 @@ export default function SearchPage() {
 function getBrands(): Brand[] {
   const brandData: Brand[] = [
     {
+      id: "cafelayan",
       name: "Cafelayan",
       handle: "@cafelayan_ph",
       title: "Leading sustainable brand",
@@ -139,10 +141,11 @@ function getBrands(): Brand[] {
       // phone: "+63 2 8234 5678",
     },
     {
-      name: "Aquapure",
-      handle: "@aquapure",
-      title: "Leading sustainable brand",
-      bio: "Leading the way in sustainable packaging and environmental responsibility. Join us in creating a cleaner, greener Philippines through innovative recycling solutions.",
+      id: "dios",
+      name: "Dio's Heavenly Refreshing Juice",
+      handle: "@dios_ph",
+      title: "Community Builder",
+      bio: "Heavenly refreshing Juice made 100% from Blue Ternate, Lemon Grass & Calamansi Extract.",
       avatar: "/placeholder.svg?height=300&width=300",
       coverImage: "/Cafelayan-3.jpg",
       location: "Baguio City, Philippines",
@@ -151,19 +154,20 @@ function getBrands(): Brand[] {
       // email: "cafelayanhydroponicsfarm@gmail.com",
       // phone: "+63 2 8234 5678",
     },
-    {
-      name: "Ruru's Mushroom",
-      handle: "@rurushrooms",
-      title: "Leading sustainable brand",
-      bio: "Leading the way in sustainable packaging and environmental responsibility. Join us in creating a cleaner, greener Philippines through innovative recycling solutions.",
-      avatar: "/placeholder.svg?height=300&width=300",
-      coverImage: "/Cafelayan-3.jpg",
-      location: "Cavite City, Philippines",
-      // joinDate: "2025",
-      // website: "https://cafelayan.netlify.app",
-      // email: "cafelayanhydroponicsfarm@gmail.com",
-      // phone: "+63 2 8234 5678",
-    },
+    // {
+    //   id: "ruru",
+    //   name: "Ruru's Mushroom",
+    //   handle: "@rurushrooms",
+    //   title: "Leading sustainable brand",
+    //   bio: "Leading the way in sustainable packaging and environmental responsibility. Join us in creating a cleaner, greener Philippines through innovative recycling solutions.",
+    //   avatar: "/placeholder.svg?height=300&width=300",
+    //   coverImage: "/Cafelayan-3.jpg",
+    //   location: "Cavite City, Philippines",
+    //   // joinDate: "2025",
+    //   // website: "https://cafelayan.netlify.app",
+    //   // email: "cafelayanhydroponicsfarm@gmail.com",
+    //   // phone: "+63 2 8234 5678",
+    // },
   ];
 
   return brandData;
