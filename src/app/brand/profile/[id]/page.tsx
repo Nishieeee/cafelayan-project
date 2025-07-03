@@ -134,7 +134,7 @@ const brandData: Record<string, Brand> = {
     socialMedia: {
       instagram: "@cafelayan.ph",
       twitter: "@cafelayan",
-      facebook: "Cafelayan Hdroponic Farm Philippines",
+      facebook: "Cafelayan Hdroponic Farm",
       shop: "Cafelayan",
     },
   },
@@ -282,8 +282,8 @@ const brandData: Record<string, Brand> = {
     ],
     socialMedia: {
       instagram: "@dio.ph",
-      twitter: "@diosheavenlyrefreshingjuice",
-      facebook: "Dio's eavenly Refreshing Juice",
+      twitter: "@dio'sjuice",
+      facebook: "Dio's Heavenly Refreshing Juice",
       shop: "Dio's Shop",
     },
   },
@@ -294,7 +294,7 @@ export default function BrandProfilePage() {
   const brandId = params.id as string;
   const [isFollowing, setIsFollowing] = useState(false);
   const [brand, setBrand] = useState<Brand | null>(null);
-  const { role } = useAuth();
+  const { role, name } = useAuth();
   const [isBrand, setisBrand] = useState(false);
   useEffect(() => {
     if (role === "brand") setisBrand(true);
@@ -354,15 +354,19 @@ export default function BrandProfilePage() {
             </Link>
           </Button>
           <h1 className="text-lg font-semibold">Profile</h1>
-          <Link href={`/brand/${brand.id}/dashboard`}>
-          <Button
-            variant="outline"
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-xs"
-          >
-            <LayoutDashboard className="h-1 w-1 mr-1" />
-            Dashboard
-          </Button>
-          </Link>
+          <div>
+          {name === brand.id && (
+            <Link href={`/brand/${brand.id}/dashboard`}>
+              <Button
+                variant="outline"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-xs"
+              >
+                <LayoutDashboard className="h-1 w-1 mr-1" />
+                Dashboard
+              </Button>
+            </Link>
+          )}
+          </div>
         </div>
 
         {/* Profile Card */}
@@ -393,7 +397,7 @@ export default function BrandProfilePage() {
               <p className="text-gray-600 text-sm mb-1">{brand.username}</p>
               <p className="text-gray-700 text-sm mb-4">{brand.description}</p>
 
-              {!isBrand && (
+              {name !== brand.id && (
                 <div className="flex gap-3 justify-center mb-6">
                   <Button
                     onClick={() => setIsFollowing(!isFollowing)}
@@ -567,54 +571,48 @@ export default function BrandProfilePage() {
 
               {/* Social Media */}
               <div className="mt-6">
-                <h3 className="font-semibold text-gray-900 mb-3">
-                  Social Media
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 p-2 bg-pink-50 rounded-lg hover:bg-pink-100"
-                  >
-                    <div className="w-6 h-6 bg-pink-50 rounded flex itemx-center justify-center">
-                      <Instagram className="h-6 w-6 text-pink-500" />
-                    </div>
-                    <span className="text-sm text-gray-700">
-                      {brand.socialMedia.instagram}
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg hover:bg-blue-100"
-                  >
-                    <div className="w-6 h-6 bg-blue-50 rounded">
-                      <Twitter className="h-6 w-6 text-blue-500" />
-                    </div>
-                    <span className="text-sm text-gray-700">
-                      {brand.socialMedia.twitter}
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg hover:bg-blue-100"
-                  >
-                    <div className="w-6 h-6 bg-blue-50 rounded">
-                      <Facebook className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <span className="text-sm text-gray-700">
-                      {brand.socialMedia.facebook}
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg hover:bg-blue-100"
-                  >
-                    <div className="w-6 h-6 bg-blue-50 rounded">
-                      <ShoppingBag className="h-6 w-6 text-blue-700" />
-                    </div>
-                    <span className="text-sm text-gray-700">
-                      {brand.socialMedia.shop}
-                    </span>
-                  </a>
+                <div data-aos="fade-up" className="flex flex-col items-center">
+                  <h3 className="text-sm font-semibold text-gray-800 mb-3">
+                    Connect With Us
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <a
+                      href="#"
+                      className="flex items-center gap-2 text-pink-600"
+                    >
+                      <Instagram className="h-4 w-4" />
+                      <span className="text-xs">
+                        {brand.socialMedia.instagram}
+                      </span>
+                    </a>
+                    <a
+                      href="#"
+                      className="flex items-center gap-2 text-blue-500"
+                    >
+                      <Twitter className="h-4 w-4" />
+                      <span className="text-xs">
+                        {brand.socialMedia.twitter}
+                      </span>
+                    </a>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 mt-2">
+                    <a
+                      href="#"
+                      className="flex items-start gap-2 text-blue-600"
+                    >
+                      <Facebook className="h-4 w-4" />
+                      <span className="text-xs">
+                        {brand.socialMedia.facebook}
+                      </span>
+                    </a>
+                    <a
+                      href="#"
+                      className="flex items-center gap-2 text-blue-700"
+                    >
+                      <ShoppingBag className="h-4 w-4" />
+                      <span className="text-xs">{brand.socialMedia.shop}</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -678,7 +676,7 @@ export default function BrandProfilePage() {
               </Link>
             </Button>
             <div className="flex gap-3">
-              {isBrand && (
+              {name === brand.id && (
                 <Link href={`/brand/${brand.id}/dashboard`}>
                   <Button
                     variant="outline"
@@ -726,7 +724,7 @@ export default function BrandProfilePage() {
                     <p className="text-gray-600 mb-1">{brand.username}</p>
                     <p className="text-gray-700 mb-6">{brand.description}</p>
 
-                    {!isBrand && (
+                    {name !== brand.id && (
                       <div className="flex gap-3 mb-6">
                         <Button
                           onClick={() => setIsFollowing(!isFollowing)}
@@ -816,64 +814,46 @@ export default function BrandProfilePage() {
                     <CardTitle className="text-lg">Social Media</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid grid-cols-2 gap-3">
-                      <a
-                        href="#"
-                        className="flex items-center gap-2 p-3 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors"
-                      >
-                        <div className="w-8 h-8 bg-pink-50 rounded-lg">
-                          <Instagram className=" text-pink-500" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-medium">Instagram</div>
-                          <div className="text-xs text-gray-600">
+                      <div className="grid grid-cols-2 gap-4">
+                        <a
+                          href="#"
+                          className="flex items-center gap-2 text-pink-600"
+                        >
+                          <Instagram className="h-4 w-4" />
+                          <span className="text-xs">
                             {brand.socialMedia.instagram}
-                          </div>
-                        </div>
-                      </a>
-                      <a
-                        href="#"
-                        className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
-                      >
-                        <div className="w-8 h-8 bg-blue-50 rounded-lg">
-                          <Twitter className=" text-blue-500" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-medium">Twitter</div>
-                          <div className="text-xs text-gray-600">
+                          </span>
+                        </a>
+                        <a
+                          href="#"
+                          className="flex items-center gap-2 text-blue-500"
+                        >
+                          <Twitter className="h-4 w-4" />
+                          <span className="text-xs">
                             {brand.socialMedia.twitter}
-                          </div>
-                        </div>
-                      </a>
-                      <a
-                        href="#"
-                        className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
-                      >
-                        <div className="w-8 h-8 bg-blue-50 rounded-lg">
-                          <Facebook className="text-blue-600" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-medium">Facebook</div>
-                          <div className="text-xs text-gray-600">
+                          </span>
+                        </a>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4 mt-4">
+                        <a
+                          href="#"
+                          className="flex items-start gap-2 text-blue-600"
+                        >
+                          <Facebook className="h-4 w-4" />
+                          <span className="text-xs">
                             {brand.socialMedia.facebook}
-                          </div>
-                        </div>
-                      </a>
-                      <a
-                        href="#"
-                        className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
-                      >
-                        <div className="w-8 h-8 bg-blue-50 rounded-lg">
-                          <ShoppingBag className="text-blue-700" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-medium">E-commerce</div>
-                          <div className="text-xs text-gray-600">
+                          </span>
+                        </a>
+                        <a
+                          href="#"
+                          className="flex items-center gap-2 text-blue-700"
+                        >
+                          <ShoppingBag className="h-4 w-4" />
+                          <span className="text-xs">
                             {brand.socialMedia.shop}
-                          </div>
-                        </div>
-                      </a>
-                    </div>
+                          </span>
+                        </a>
+                      </div>
                   </CardContent>
                 </Card>
               </div>
