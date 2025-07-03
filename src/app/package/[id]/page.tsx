@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,7 +21,9 @@ import {
   Clock,
   ShoppingCart,
   ShoppingBag,
+  Package,
 } from "lucide-react";
+import { useParams } from "next/navigation";
 
 interface Tutorial {
   id: string;
@@ -41,6 +43,7 @@ interface Organization {
 }
 
 interface PackageData {
+  id: string
   name: string;
   brand: string;
   link: string;
@@ -67,7 +70,9 @@ interface Product {
   category: string;
 }
 // Sample package data
-const packageData: PackageData = {
+const product: Record<string, PackageData > = {
+ "cafelayan-250g-001": {
+  id: "cafelayan-250g-001",
   name: "Cafelayan Lettuce Chips - Package",
   brand: "Cafelayan Lettuce Chips",
   link: "https://cafelayan.netlify.app",
@@ -134,7 +139,8 @@ const packageData: PackageData = {
       url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
     },
   ],
-};
+  },
+}
 const relatedProducts: Product[] = [
   {
     name: "Kale Chips",
@@ -155,8 +161,29 @@ const relatedProducts: Product[] = [
 ];
 
 export default function PackagePage() {
+  const params = useParams()
   const [activeTab, setActiveTab] = useState("donate");
+  const [packageData, setpackageData] = useState<PackageData | null>(null);
+  useEffect(() => {
+    const productId = params.id as string
+    const productData = product[productId]
 
+    if(productData){ 
+      setpackageData(productData)
+    }
+  }, [params.id])
+
+  if(!packageData) {
+    return(
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <Package className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Package Not Found</h1>
+          <p className="text-gray-600">The package that you scanned doesn&apos;t exist.</p>
+        </div>
+      </div>
+    )
+  }
   return (
     <div className="container py-8 px-4 md:px-6">
       <div className="max-w-4xl mx-auto">
