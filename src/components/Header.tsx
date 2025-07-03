@@ -92,7 +92,7 @@ export default function Header() {
                     Top Recyclers
                   </Link>
                   <Link
-                    href="/brands"
+                    href="/partners"
                     className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
                   >
                     <Users className="h-4 w-4 mr-1" />
@@ -223,7 +223,7 @@ export default function Header() {
                       Top Recyclers
                     </Link>
                     <Link
-                      href="/brands"
+                      href="/partners"
                       className="flex items-center px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-md transition-colors"
                     >
                       <Users className="h-4 w-4 mr-1" />

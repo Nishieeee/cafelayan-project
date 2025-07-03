@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Card,
@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import Link from "next/link";
 
 interface Brand {
   id: string
@@ -45,7 +46,7 @@ export default function SearchPage() {
       setBrands(mockBrandData);
     };
     fetchBrands();
-  });
+  }, []);
 
   const filteredBrands = brands.filter((brand) => {
     const matchesSearch =
@@ -90,7 +91,7 @@ export default function SearchPage() {
                     src={brand.avatar}
                     className="rounded-full border-2 border-gray-500/50 h-25 w-25"
                   />
-                  <CardTitle className="">{brand.name}</CardTitle>
+                  <CardTitle className="text-center my-2">{brand.name}</CardTitle>
                   <p className="text-xs text-gray-600 mb-1">{brand.handle}</p>
                   <p className="mb-2 text-xs text-gray-600">{brand.location}</p>
                 </div>
@@ -105,12 +106,14 @@ export default function SearchPage() {
                   >
                     {isFollowing ? "Following" : "Follow"}
                   </Button>
-                  <Button
+                  <Link href={`/brand/profile/${brand.id}`}>
+                    <Button
                     variant="outline"
                     className="px-5 py-2 rounded-xl border-gray-300"
                   >
                     Profile
                   </Button>
+                  </Link>
                 </div>
               </CardHeader>
               <CardContent className="flex items-center text-center">
@@ -146,7 +149,7 @@ function getBrands(): Brand[] {
       handle: "@dios_ph",
       title: "Community Builder",
       bio: "Heavenly refreshing Juice made 100% from Blue Ternate, Lemon Grass & Calamansi Extract.",
-      avatar: "/placeholder.svg?height=300&width=300",
+      avatar: "/diologo.jpg",
       coverImage: "/Cafelayan-3.jpg",
       location: "Baguio City, Philippines",
       // joinDate: "2025",
