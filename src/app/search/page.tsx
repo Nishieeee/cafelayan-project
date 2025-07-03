@@ -194,7 +194,7 @@ export default function SearchPage() {
 
   const mockOrganizations: Organization[] = [
     {
-      id: "green-manila",
+      id: "kwf",
       name: "Kids Who Farm",
       logo: "/kwf.jpg",
       description:
@@ -599,48 +599,47 @@ export default function SearchPage() {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                   {filteredResults.organizations.slice(0, 4).map((org) => (
-                    <Card
-                      key={org.id}
-                      className="hover:shadow-md transition-shadow border-gray-500/50"
-                    >
-                      <CardContent className="p-4">
-                        <div className="flex items-start gap-3">
-                          <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                            <img
-                              src={org.logo || "/placeholder.svg"}
-                              alt={org.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="flex-grow">
-                            <div className="flex items-center gap-2 mb-1">
-                              <h3 className="font-medium">{org.name}</h3>
-                              {org.verified && (
-                                <Badge
-                                  variant="outline"
-                                  className="text-xs bg-green-50 text-green-700"
-                                >
-                                  Verified
-                                </Badge>
-                              )}
+                    <Link key={org.id} href={`/org/profile/${org.id}`}>
+                      <Card className="hover:shadow-md transition-shadow border-gray-500/50">
+                        <CardContent className="p-4">
+                          <div className="flex items-start gap-3">
+                            <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                              <img
+                                src={org.logo || "/placeholder.svg"}
+                                alt={org.name}
+                                className="w-full h-full object-cover"
+                              />
                             </div>
-                            <p className="text-sm text-gray-600 line-clamp-2 mb-2">
-                              {org.description}
-                            </p>
-                            <div className="flex items-center gap-4 text-xs text-gray-500">
-                              <div className="flex items-center gap-1">
-                                <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                                <span>{org.rating}</span>
+                            <div className="flex-grow">
+                              <div className="flex items-center gap-2 mb-1">
+                                <h3 className="font-medium">{org.name}</h3>
+                                {org.verified && (
+                                  <Badge
+                                    variant="outline"
+                                    className="text-xs bg-green-50 text-green-700"
+                                  >
+                                    Verified
+                                  </Badge>
+                                )}
                               </div>
-                              <span>
-                                {org.totalCollected.toLocaleString()} items
-                                collected
-                              </span>
+                              <p className="text-sm text-gray-600 line-clamp-2 mb-2">
+                                {org.description}
+                              </p>
+                              <div className="flex items-center gap-4 text-xs text-gray-500">
+                                <div className="flex items-center gap-1">
+                                  <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                                  <span>{org.rating}</span>
+                                </div>
+                                <span>
+                                  {org.totalCollected.toLocaleString()} items
+                                  collected
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                        </CardContent>
+                      </Card>
+                    </Link>
                   ))}
                 </div>
                 {filteredResults.organizations.length > 4 && (
@@ -879,14 +878,24 @@ export default function SearchPage() {
                           </div>
                         </div>
                         <div className="flex flex-wrap gap-2">
-                          <Button variant="outline" size="sm" asChild className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-all duration-300 ease">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            asChild
+                            className="border-gray-500/50 hover:bg-green-700 hover:text-white transition-all duration-300 ease"
+                          >
                             <Link href={`/brand/profile/${brand.id}`}>
-                              <User className="h-5 w-5"/>
+                              <User className="h-5 w-5" />
                               View Profile
                             </Link>
                           </Button>
                           {brand.website && (
-                            <Button size="sm" variant="outline" asChild className="border-gray-500/50">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              asChild
+                              className="border-gray-500/50"
+                            >
                               <a
                                 href={brand.website}
                                 target="_blank"
@@ -979,8 +988,13 @@ export default function SearchPage() {
                           </div>
                         </div>
                         <div className="flex gap-2">
-                          <Button size="sm" asChild>
-                            <Link href={`/organization/${org.id}`}>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            asChild
+                            className="border-gray-500/50"
+                          >
+                            <Link href={`/org/profile/${org.id}`}>
                               View Profile
                             </Link>
                           </Button>

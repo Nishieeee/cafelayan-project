@@ -18,6 +18,7 @@ export default function Header() {
   const handleLogout = () => {
     logout()
     setMobileMenuOpen(false)
+    setisUser(false)
   }
 
   const closeMobileMenu = () => {
@@ -25,7 +26,10 @@ export default function Header() {
   }
 
   useEffect(() => {
-    if(role === 'brand') setisUser(true); else setisUser(false)
+    if(role === 'brand' || role === 'org')
+       setisUser(true); 
+    else
+       setisUser(true);
   })
 
 
@@ -54,7 +58,7 @@ export default function Header() {
                   {isLoggedIn && (
                     isUser ? (
                       <Link
-                      href={`/brand/profile/${name}`}
+                      href={`/${role}/profile/${name}`}
                       className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center"
                     >
                       <User className="h-4 w-4 mr-1" />
