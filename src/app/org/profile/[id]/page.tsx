@@ -190,7 +190,7 @@ export default function OrganizationProfilePage() {
         <div className="text-center">
           <Building2 className="h-16 w-16 text-gray-400 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Organization Not Found</h1>
-          <p className="text-gray-600">The organization you're looking for doesn't exist.</p>
+          <p className="text-gray-600">The organization you&apos;re looking for doesn&apos;t exist.</p>
         </div>
       </div>
     )
