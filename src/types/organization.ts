@@ -41,6 +41,19 @@ export interface Partnership {
   since: string
   totalDonations: number
 }
+export interface Tutorial {
+  id: string
+  title: string
+  description: string
+  difficulty: "Easy" | "Medium" | "Hard"
+  duration: string
+  steps: number
+  rating: number
+  organization: string
+  materials: string[]
+  image: string
+  url: string
+}
 
 export interface Organization {
   id: string
@@ -65,6 +78,7 @@ export interface Organization {
   activeProgramsCount: number
   impactMetrics: ImpactMetric[]
   programs: Program[]
+  tutorials: Tutorial[]
   topVolunteers: Volunteer[]
   partnerships: Partnership[]
   donationStats: DonationStats[]

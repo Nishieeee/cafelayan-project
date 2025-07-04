@@ -1,15 +1,21 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect } from "react"
-import { useParams } from "next/navigation"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Progress } from "@/components/ui/progress"
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Progress } from "@/components/ui/progress";
 import {
   MapPin,
   Globe,
@@ -27,16 +33,21 @@ import {
   Building2,
   CheckCircle2,
   ExternalLink,
+  Clock,
+  Star,
+  BookOpen,
   Facebook,
   Twitter,
   Instagram,
   Linkedin,
-} from "lucide-react"
-import type { Organization } from "@/types/organization"
-
+  LayoutDashboard,
+} from "lucide-react";
+import type { Organization } from "@/types/organization";
+import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 // Mock data for organizations
 const organizationsData: Record<string, Organization> = {
-  "kwf": {
+  kwf: {
     id: "kwf",
     name: "Kids Who Farm",
     type: "NGO",
@@ -60,16 +71,41 @@ const organizationsData: Record<string, Organization> = {
     totalPartnerships: 28,
     activeProgramsCount: 12,
     impactMetrics: [
-      { label: "CO₂ Reduced", value: "2,450", unit: "tons", trend: 12, icon: "Leaf" },
-      { label: "Waste Diverted", value: "156.8", unit: "tons", trend: 8, icon: "Recycle" },
-      { label: "Communities Served", value: "45", unit: "areas", trend: 15, icon: "Users" },
-      { label: "Waste Upcycled", value: "8,920", unit: "kg", trend: 22, icon: "Target" },
+      {
+        label: "CO₂ Reduced",
+        value: "2,450",
+        unit: "tons",
+        trend: 12,
+        icon: "Leaf",
+      },
+      {
+        label: "Waste Diverted",
+        value: "156.8",
+        unit: "tons",
+        trend: 8,
+        icon: "Recycle",
+      },
+      {
+        label: "Communities Served",
+        value: "45",
+        unit: "areas",
+        trend: 15,
+        icon: "Users",
+      },
+      {
+        label: "Waste Upcycled",
+        value: "8,920",
+        unit: "kg",
+        trend: 22,
+        icon: "Target",
+      },
     ],
     programs: [
       {
         id: "1",
         name: "Gardenator",
-        description: "A vertical gardening system made from recycled margarine barrels that integrates composting and planting-ideal for small urban reduction.",
+        description:
+          "A vertical gardening system made from recycled margarine barrels that integrates composting and planting-ideal for small urban reduction.",
         category: "Processing",
         status: "Active",
         startDate: "2025-01-15",
@@ -79,7 +115,8 @@ const organizationsData: Record<string, Organization> = {
       {
         id: "2",
         name: "Tarpots",
-        description: "Upcycle seedling and vegetable pots made from old tarpaulins ( like election posters ) promoting eco-conscious planting and reusing waste materials.",
+        description:
+          "Upcycle seedling and vegetable pots made from old tarpaulins ( like election posters ) promoting eco-conscious planting and reusing waste materials.",
         category: "Community",
         status: "Active",
         startDate: "2025-03-01",
@@ -89,12 +126,43 @@ const organizationsData: Record<string, Organization> = {
       {
         id: "3",
         name: "Kids can compost",
-        description: "Teaches kids and families how to turn kitchen waste into compost using simple, household-friendly systems-encouraging circular agriculture and waste reduction.",
+        description:
+          "Teaches kids and families how to turn kitchen waste into compost using simple, household-friendly systems-encouraging circular agriculture and waste reduction.",
         category: "Community",
         status: "Active",
         startDate: "2025-06-01",
         participants: 890,
         impact: "12 barangays committed",
+      },
+    ],
+    tutorials: [
+      {
+        id: "1",
+        title: "Tarpots",
+        description:
+          "Upcycled seedlingand vegetables pots made from old tarpaulins (like election posters), promoting eco-conscious planting and reusing waste materials.",
+        difficulty: "Easy",
+        duration: "15 mins",
+        steps: 5,
+        rating: 4.8,
+        organization: "Kids Who Farm",
+        materials: ["Tarpaulins", "seeds", "Soil"],
+        image: "/tarpot.jpeg",
+        url: "https://www.youtube.com/embed/UB6y0Cy0fd8?si=oDPKcR4V4nnMHSP9",
+      },
+      {
+        id: "2",
+        title: "Gardenator",
+        description:
+          "A vertical garden system made from repurposed packages and barrels, combining composting and planting in one setup. Used in home gardens to grid food in small spaces",
+        difficulty: "Medium",
+        duration: "45 mins",
+        steps: 8,
+        rating: 4.6,
+        organization: "Kids Who Farm",
+        materials: ["Package", "Scissors", "Soil"],
+        image: "/gardenator.jpeg",
+        url: "https://www.youtube.com/embed/LK3WFqiSbnI?si=7f5ZQnJS4-TE-eV3",
       },
     ],
     topVolunteers: [
@@ -148,22 +216,23 @@ const organizationsData: Record<string, Organization> = {
       linkedin: "https://linkedin.com/company/kids-who-farm",
     },
   },
-}
+};
 
 export default function OrganizationProfilePage() {
-  const params = useParams()
-  const [organization, setOrganization] = useState<Organization | null>(null)
-  const [loading, setLoading] = useState(true)
+  const params = useParams();
+  const [organization, setOrganization] = useState<Organization | null>(null);
+  const [loading, setLoading] = useState(true);
+  const { name } = useAuth();
 
   useEffect(() => {
-    const orgId = params.id as string
-    const orgData = organizationsData[orgId]
+    const orgId = params.id as string;
+    const orgData = organizationsData[orgId];
 
     if (orgData) {
-      setOrganization(orgData)
+      setOrganization(orgData);
     }
-    setLoading(false)
-  }, [params.id])
+    setLoading(false);
+  }, [params.id]);
 
   if (loading) {
     return (
@@ -181,7 +250,7 @@ export default function OrganizationProfilePage() {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (!organization) {
@@ -189,11 +258,15 @@ export default function OrganizationProfilePage() {
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
         <div className="text-center">
           <Building2 className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Organization Not Found</h1>
-          <p className="text-gray-600">The organization you&apos;re looking for doesn&apos;t exist.</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            Organization Not Found
+          </h1>
+          <p className="text-gray-600">
+            The organization you&apos;re looking for doesn&apos;t exist.
+          </p>
         </div>
       </div>
-    )
+    );
   }
 
   const getIconComponent = (iconName: string) => {
@@ -204,9 +277,9 @@ export default function OrganizationProfilePage() {
       Target,
       Building2,
       Heart,
-    }
-    return icons[iconName] || Target
-  }
+    };
+    return icons[iconName] || Target;
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
@@ -227,7 +300,10 @@ export default function OrganizationProfilePage() {
           <div className="flex flex-col md:flex-row items-start md:items-end gap-6 mb-8">
             <div className="relative">
               <Avatar className="h-40 w-40 lg:w-60 lg:h-60 border-4 border-white shadow-xl">
-                <AvatarImage src={organization.avatar || "/placeholder.svg"} alt={organization.name} />
+                <AvatarImage
+                  src={organization.avatar || "/placeholder.svg"}
+                  alt={organization.name}
+                />
                 <AvatarFallback className="text-2xl bg-gradient-to-br from-green-500 to-blue-500 text-white">
                   {organization.name
                     .split(" ")
@@ -247,11 +323,16 @@ export default function OrganizationProfilePage() {
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <h1 className="text-3xl font-bold">{organization.name}</h1>
-                    <Badge variant="secondary" className="bg-green-100 text-green-800">
+                    <Badge
+                      variant="secondary"
+                      className="bg-green-100 text-green-800"
+                    >
                       {organization.type}
                     </Badge>
                   </div>
-                  <p className="text-lg opacity-90 md:opacity-70 mb-4">{organization.description}</p>
+                  <p className="text-lg opacity-90 md:opacity-70 mb-4">
+                    {organization.description}
+                  </p>
 
                   <div className="flex flex-wrap items-center gap-4 text-sm opacity-80 md:opacity-60">
                     <div className="flex items-center gap-1">
@@ -260,7 +341,8 @@ export default function OrganizationProfilePage() {
                     </div>
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
-                      Est. {new Date(organization.establishedDate).getFullYear()}
+                      Est.{" "}
+                      {new Date(organization.establishedDate).getFullYear()}
                     </div>
                     <div className="flex items-center gap-1">
                       <Users className="h-4 w-4" />
@@ -270,14 +352,29 @@ export default function OrganizationProfilePage() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <Button className="bg-green-600 text-white hover:bg-green-700">
-                    <Heart className="h-4 w-4 mr-2" />
-                    Follow Organization
+                  {name !== organization.id && (
+                    <Button className="bg-green-600 text-white hover:bg-green-700">
+                      <Heart className="h-4 w-4 mr-2" />
+                      Follow Organization
+                    </Button>
+                  )}
+                  { name === organization.id ? (
+                    <Button
+                    variant="outline"
+                    className="border-white/20 md:border-gray-300 bg-transparent"
+                  >
+                    <LayoutDashboard className="h-4 w-4 mr-2" />
+                    Dashboard
                   </Button>
-                  <Button variant="outline" className="border-white/20 md:border-gray-300 bg-transparent">
+                  ) : (
+                    <Button
+                    variant="outline"
+                    className="border-white/20 md:border-gray-300 bg-transparent"
+                  >
                     <HandHeart className="h-4 w-4 mr-2" />
                     Volunteer
                   </Button>
+                  )}
                 </div>
               </div>
             </div>
@@ -289,9 +386,12 @@ export default function OrganizationProfilePage() {
       <div className="max-w-6xl mx-auto px-4 mb-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {organization.impactMetrics.map((metric, index) => {
-            const IconComponent = getIconComponent(metric.icon)
+            const IconComponent = getIconComponent(metric.icon);
             return (
-              <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+              <Card
+                key={index}
+                className="bg-white/80 backdrop-blur-sm border-0 shadow-lg"
+              >
                 <CardContent className="p-4 text-center">
                   <div className="flex items-center justify-center mb-2">
                     <div className="p-2 bg-green-100 rounded-full">
@@ -300,15 +400,19 @@ export default function OrganizationProfilePage() {
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-1">
                     {metric.value}
-                    <span className="text-sm font-normal text-gray-600 ml-1">{metric.unit}</span>
+                    <span className="text-sm font-normal text-gray-600 ml-1">
+                      {metric.unit}
+                    </span>
                   </div>
-                  <div className="text-xs text-gray-600 mb-2">{metric.label}</div>
+                  <div className="text-xs text-gray-600 mb-2">
+                    {metric.label}
+                  </div>
                   <div className="flex items-center justify-center gap-1 text-xs text-green-600">
                     <TrendingUp className="h-3 w-3" />+{metric.trend}%
                   </div>
                 </CardContent>
               </Card>
-            )
+            );
           })}
         </div>
       </div>
@@ -317,12 +421,24 @@ export default function OrganizationProfilePage() {
       <div className="max-w-6xl mx-auto px-4 pb-8">
         <Tabs defaultValue="about" className="space-y-6">
           <TabsList className="flex justify-between overflow-x-auto whitespace-nowrap no-scrollbar sm:px-5 px-2 bg-gray-300/20">
-            <TabsTrigger value="about" className="w-full">About</TabsTrigger>
-            <TabsTrigger value="programs" className="w-full">Programs</TabsTrigger>
-            <TabsTrigger value="tutorials" className="w-full">Tutorials</TabsTrigger>
-            <TabsTrigger value="volunteers" className="w-full">Members</TabsTrigger>
-            <TabsTrigger value="partnerships" className="w-full">Partners</TabsTrigger>
-            <TabsTrigger value="impact" className="w-full">Impact</TabsTrigger>
+            <TabsTrigger value="about" className="w-full">
+              About
+            </TabsTrigger>
+            <TabsTrigger value="programs" className="w-full">
+              Programs
+            </TabsTrigger>
+            <TabsTrigger value="tutorials" className="w-full">
+              Tutorials
+            </TabsTrigger>
+            <TabsTrigger value="volunteers" className="w-full">
+              Members
+            </TabsTrigger>
+            <TabsTrigger value="partnerships" className="w-full">
+              Partners
+            </TabsTrigger>
+            <TabsTrigger value="impact" className="w-full">
+              Impact
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="about" className="space-y-6">
@@ -336,7 +452,9 @@ export default function OrganizationProfilePage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-700 leading-relaxed">{organization.mission}</p>
+                    <p className="text-gray-700 leading-relaxed">
+                      {organization.mission}
+                    </p>
                   </CardContent>
                 </Card>
 
@@ -353,21 +471,33 @@ export default function OrganizationProfilePage() {
                         <div className="text-2xl font-bold text-green-600 mb-1">
                           {organization.totalDonationsReceived.toLocaleString()}
                         </div>
-                        <div className="text-sm text-gray-600">Total Donations Received</div>
+                        <div className="text-sm text-gray-600">
+                          Total Donations Received
+                        </div>
                       </div>
                       <div>
                         <div className="text-2xl font-bold text-blue-600 mb-1">
                           {organization.totalItemsProcessed.toLocaleString()}
                         </div>
-                        <div className="text-sm text-gray-600">Items Processed</div>
+                        <div className="text-sm text-gray-600">
+                          Items Processed
+                        </div>
                       </div>
                       <div>
-                        <div className="text-2xl font-bold text-purple-600 mb-1">{organization.volunteers}</div>
-                        <div className="text-sm text-gray-600">Active Volunteers</div>
+                        <div className="text-2xl font-bold text-purple-600 mb-1">
+                          {organization.volunteers}
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          Active Volunteers
+                        </div>
                       </div>
                       <div>
-                        <div className="text-2xl font-bold text-orange-600 mb-1">{organization.totalPartnerships}</div>
-                        <div className="text-sm text-gray-600">Brand Partnerships</div>
+                        <div className="text-2xl font-bold text-orange-600 mb-1">
+                          {organization.totalPartnerships}
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          Brand Partnerships
+                        </div>
                       </div>
                     </div>
                   </CardContent>
@@ -377,25 +507,35 @@ export default function OrganizationProfilePage() {
               <div className="space-y-6">
                 <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
                   <CardHeader>
-                    <CardTitle className="text-lg">Contact Information</CardTitle>
+                    <CardTitle className="text-lg">
+                      Contact Information
+                    </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex items-center gap-3">
                       <Globe className="h-4 w-4 text-gray-500" />
-                      <a href={organization.website} className="text-blue-600 hover:underline text-sm">
+                      <a
+                        href={organization.website}
+                        className="text-blue-600 hover:underline text-sm"
+                      >
                         Visit Website
                         <ExternalLink className="h-3 w-3 inline ml-1" />
                       </a>
                     </div>
                     <div className="flex items-center gap-3">
                       <Mail className="h-4 w-4 text-gray-500" />
-                      <a href={`mailto:${organization.email}`} className="text-gray-700 text-sm">
+                      <a
+                        href={`mailto:${organization.email}`}
+                        className="text-gray-700 text-sm"
+                      >
                         {organization.email}
                       </a>
                     </div>
                     <div className="flex items-center gap-3">
                       <Phone className="h-4 w-4 text-gray-500" />
-                      <span className="text-gray-700 text-sm">{organization.phone}</span>
+                      <span className="text-gray-700 text-sm">
+                        {organization.phone}
+                      </span>
                     </div>
                   </CardContent>
                 </Card>
@@ -444,17 +584,28 @@ export default function OrganizationProfilePage() {
               </div>
             </div>
           </TabsContent>
-
+          {/* Programs tab */}
           <TabsContent value="programs" className="space-y-6">
             <div className="grid gap-6">
               {organization.programs.map((program) => (
-                <Card key={program.id} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <Card
+                  key={program.id}
+                  className="bg-white/80 backdrop-blur-sm border-0 shadow-lg"
+                >
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                       <div>
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-xl font-semibold">{program.name}</h3>
-                          <Badge variant={program.status === "Active" ? "default" : "secondary"}>
+                          <h3 className="text-xl font-semibold">
+                            {program.name}
+                          </h3>
+                          <Badge
+                            variant={
+                              program.status === "Active"
+                                ? "default"
+                                : "secondary"
+                            }
+                          >
                             {program.status}
                           </Badge>
                           <Badge variant="outline">{program.category}</Badge>
@@ -465,16 +616,28 @@ export default function OrganizationProfilePage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                       <div className="text-center p-4 bg-green-50 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">{program.participants}</div>
-                        <div className="text-sm text-gray-600">Participants</div>
+                        <div className="text-2xl font-bold text-green-600">
+                          {program.participants}
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          Participants
+                        </div>
                       </div>
                       <div className="text-center p-4 bg-blue-50 rounded-lg">
-                        <div className="text-sm font-medium text-blue-600">Started</div>
-                        <div className="text-sm text-gray-600">{new Date(program.startDate).toLocaleDateString()}</div>
+                        <div className="text-sm font-medium text-blue-600">
+                          Started
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          {new Date(program.startDate).toLocaleDateString()}
+                        </div>
                       </div>
                       <div className="text-center p-4 bg-purple-50 rounded-lg">
-                        <div className="text-sm font-medium text-purple-600">Impact</div>
-                        <div className="text-sm text-gray-600">{program.impact}</div>
+                        <div className="text-sm font-medium text-purple-600">
+                          Impact
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          {program.impact}
+                        </div>
                       </div>
                     </div>
                   </CardContent>
@@ -482,15 +645,104 @@ export default function OrganizationProfilePage() {
               ))}
             </div>
           </TabsContent>
-
+          {/* tutorials tab */}
+          <TabsContent value="tutorials" className="space-y-6">
+            <div className="grid gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {organization.tutorials.map((tutorial, index) => (
+                  <Link key={index} href={`${tutorial.id}`}>
+                    <Card
+                      data-aos="fade"
+                      data-aos-delay="100"
+                      className="h-full border-gray-500/50 hover:border-green-700 overflow-hidden hover:shadow-md transition-all duration-300 ease"
+                    >
+                      <div className="aspect-video overflow-hidden">
+                        <img
+                          src={tutorial.image}
+                          alt={tutorial.title}
+                          className="w-100 h-50"
+                        />
+                      </div>
+                      <CardHeader className="p-4 pb-2">
+                        <div className="flex justify-between items-start mb-2">
+                          <Badge
+                            variant="outline"
+                            className={`text-xs ${
+                              tutorial.difficulty === "Easy"
+                                ? "bg-green-50 text-green-700 border-green-200"
+                                : tutorial.difficulty === "Medium"
+                                ? "bg-yellow-50 text-yellow-700 border-yellow-200"
+                                : "bg-red-50 text-red-700 border-red-200"
+                            }`}
+                          >
+                            {tutorial.difficulty}
+                          </Badge>
+                          <div className="flex items-center gap-1">
+                            <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                            <span className="text-xs">{tutorial.rating}</span>
+                          </div>
+                        </div>
+                        <CardTitle className="text-lg text-black line-clamp-2">
+                          {tutorial.title}
+                        </CardTitle>
+                        <CardDescription className="text-sm">
+                          {tutorial.organization}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="p-4 pt-0">
+                        <p className="text-gray-600 text-sm line-clamp-2 mb-3">
+                          {tutorial.description}
+                        </p>
+                        <div className="flex items-center justify-between text-xs text-gray-500">
+                          <div className="flex items-center gap-1">
+                            <Clock className="h-3 w-3" />
+                            <span>{tutorial.duration}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <BookOpen className="h-3 w-3" />
+                            <span>{tutorial.steps} steps</span>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-1 mt-2">
+                          {tutorial.materials
+                            .slice(0, 2)
+                            .map((material: string, idx: number) => (
+                              <Badge
+                                key={idx}
+                                variant="outline"
+                                className="text-xs hover:bg-green-700 hover:text-white"
+                              >
+                                {material}
+                              </Badge>
+                            ))}
+                          {tutorial.materials.length > 2 && (
+                            <Badge variant="outline" className="text-xs">
+                              +{tutorial.materials.length - 2} more
+                            </Badge>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </TabsContent>
+          {/* Volunteers tab */}
           <TabsContent value="volunteers" className="space-y-6">
             <div className="grid gap-6">
               {organization.topVolunteers.map((volunteer) => (
-                <Card key={volunteer.id} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <Card
+                  key={volunteer.id}
+                  className="bg-white/80 backdrop-blur-sm border-0 shadow-lg"
+                >
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row items-center gap-4">
                       <Avatar className="h-20 w-20 md:w-16 md:h-16 items-center md:items-start">
-                        <AvatarImage src={volunteer.avatar || "/placeholder.svg"} alt={volunteer.name} />
+                        <AvatarImage
+                          src={volunteer.avatar || "/placeholder.svg"}
+                          alt={volunteer.name}
+                        />
                         <AvatarFallback>
                           {volunteer.name
                             .split(" ")
@@ -499,16 +751,25 @@ export default function OrganizationProfilePage() {
                         </AvatarFallback>
                       </Avatar>
                       <div className="flex flex-col md:flex-1 items-center md:items-start">
-                        <h3 className="text-lg font-semibold">{volunteer.name}</h3>
+                        <h3 className="text-lg font-semibold">
+                          {volunteer.name}
+                        </h3>
                         <p className="text-gray-600">{volunteer.role}</p>
                         <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
-                          <span>Joined {new Date(volunteer.joinDate).toLocaleDateString()}</span>
+                          <span>
+                            Joined{" "}
+                            {new Date(volunteer.joinDate).toLocaleDateString()}
+                          </span>
                           <span>•</span>
-                          <span>{volunteer.hoursContributed} hours contributed</span>
+                          <span>
+                            {volunteer.hoursContributed} hours contributed
+                          </span>
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-green-600">{volunteer.hoursContributed}</div>
+                        <div className="text-2xl font-bold text-green-600">
+                          {volunteer.hoursContributed}
+                        </div>
                         <div className="text-sm text-gray-600">Hours</div>
                       </div>
                     </div>
@@ -521,11 +782,17 @@ export default function OrganizationProfilePage() {
           <TabsContent value="partnerships" className="space-y-6">
             <div className="grid gap-6">
               {organization.partnerships.map((partnership) => (
-                <Card key={partnership.id} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <Card
+                  key={partnership.id}
+                  className="bg-white/80 backdrop-blur-sm border-0 shadow-lg"
+                >
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row items-center gap-4">
                       <Avatar className="w-16 h-16">
-                        <AvatarImage src={partnership.brandLogo || "/placeholder.svg"} alt={partnership.brandName} />
+                        <AvatarImage
+                          src={partnership.brandLogo || "/placeholder.svg"}
+                          alt={partnership.brandName}
+                        />
                         <AvatarFallback>
                           {partnership.brandName
                             .split(" ")
@@ -534,13 +801,22 @@ export default function OrganizationProfilePage() {
                         </AvatarFallback>
                       </Avatar>
                       <div className="flex-1">
-                        <h3 className="text-lg font-semibold">{partnership.brandName}</h3>
+                        <h3 className="text-lg font-semibold">
+                          {partnership.brandName}
+                        </h3>
                         <div className="flex items-center gap-2 mt-1">
-                          <Badge variant={partnership.type === "Official" ? "default" : "secondary"}>
+                          <Badge
+                            variant={
+                              partnership.type === "Official"
+                                ? "default"
+                                : "secondary"
+                            }
+                          >
                             {partnership.type} Partner
                           </Badge>
                           <span className="text-sm text-gray-500">
-                            Since {new Date(partnership.since).toLocaleDateString()}
+                            Since{" "}
+                            {new Date(partnership.since).toLocaleDateString()}
                           </span>
                         </div>
                       </div>
@@ -548,7 +824,9 @@ export default function OrganizationProfilePage() {
                         <div className="text-2xl font-bold text-blue-600">
                           {partnership.totalDonations.toLocaleString()}
                         </div>
-                        <div className="text-sm text-gray-600">Total Donations</div>
+                        <div className="text-sm text-gray-600">
+                          Total Donations
+                        </div>
                       </div>
                     </div>
                   </CardContent>
@@ -573,8 +851,14 @@ export default function OrganizationProfilePage() {
                         </span>
                       </div>
                       <div className="space-y-1">
-                        <Progress value={(stat.processed / stat.received) * 100} className="h-2 bg-gray-200" />
-                        <Progress value={(stat.recycled / stat.received) * 100} className="h-2 bg-gray-200" />
+                        <Progress
+                          value={(stat.processed / stat.received) * 100}
+                          className="h-2 bg-gray-200"
+                        />
+                        <Progress
+                          value={(stat.recycled / stat.received) * 100}
+                          className="h-2 bg-gray-200"
+                        />
                       </div>
                       <div className="flex justify-between text-xs text-gray-500">
                         <span>Processed: {stat.processed}</span>
@@ -589,5 +873,5 @@ export default function OrganizationProfilePage() {
         </Tabs>
       </div>
     </div>
-  )
+  );
 }

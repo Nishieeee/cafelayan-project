@@ -33,7 +33,7 @@ export default function LandingPage() {
                   size="lg"
                   className="bg-green-700 hover:bg-green-800 text-white outline-3 outline-transparent hover:outline-green-300 transition-colors duration-300 ease"
                 >
-                  <Link href="/package/demo-plastic-001">
+                  <Link href="/donate">
                     <QrCode className="mr-2 h-5 w-5" />
                     Donate
                   </Link>
