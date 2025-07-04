@@ -599,7 +599,7 @@ export default function SearchPage() {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                   {filteredResults.organizations.slice(0, 4).map((org) => (
-                    <Link key={org.id} href={`/org/profile/${org.id}`}>
+                    <Link key={org.id} href={`/org/dashboard`}>
                       <Card className="hover:shadow-md transition-shadow border-gray-500/50">
                         <CardContent className="p-4">
                           <div className="flex items-start gap-3">
@@ -994,7 +994,7 @@ export default function SearchPage() {
                             asChild
                             className="border-gray-500/50"
                           >
-                            <Link href={`/org/profile/${org.id}`}>
+                            <Link href={`/org/dashboard`}>
                               View Profile
                             </Link>
                           </Button>

@@ -319,6 +319,7 @@ export default function OrganizationProfilePage() {
           <TabsList className="flex justify-between overflow-x-auto whitespace-nowrap no-scrollbar sm:px-5 px-2 bg-gray-300/20">
             <TabsTrigger value="about" className="w-full">About</TabsTrigger>
             <TabsTrigger value="programs" className="w-full">Programs</TabsTrigger>
+            <TabsTrigger value="tutorials" className="w-full">Tutorials</TabsTrigger>
             <TabsTrigger value="volunteers" className="w-full">Members</TabsTrigger>
             <TabsTrigger value="partnerships" className="w-full">Partners</TabsTrigger>
             <TabsTrigger value="impact" className="w-full">Impact</TabsTrigger>
