@@ -68,31 +68,31 @@ const organizationsData: Record<string, Organization> = {
     programs: [
       {
         id: "1",
-        name: "Community Recycling Hubs",
-        description: "Establishing neighborhood recycling centers with volunteer coordinators",
-        category: "Collection",
+        name: "Gardenator",
+        description: "A vertical gardening system made from recycled margarine barrels that integrates composting and planting-ideal for small urban reduction.",
+        category: "Processing",
         status: "Active",
-        startDate: "2023-01-15",
+        startDate: "2025-01-15",
         participants: 1250,
-        impact: "45 tons of waste diverted monthly",
+        impact: "45 kg of waste diverted weekly",
       },
       {
         id: "2",
-        name: "School Green Champions",
-        description: "Environmental education program for students aged 8-16",
-        category: "Education",
+        name: "Tarpots",
+        description: "Upcycle seedling and vegetable pots made from old tarpaulins ( like election posters ) promoting eco-conscious planting and reusing waste materials.",
+        category: "Community",
         status: "Active",
-        startDate: "2023-03-01",
+        startDate: "2025-03-01",
         participants: 2800,
-        impact: "28 schools participating",
+        impact: "almost 25kg of election posters upcycled.",
       },
       {
         id: "3",
-        name: "Plastic-Free Barangays",
-        description: "Working with local government units to reduce single-use plastics",
+        name: "Kids can compost",
+        description: "Teaches kids and families how to turn kitchen waste into compost using simple, household-friendly systems-encouraging circular agriculture and waste reduction.",
         category: "Community",
         status: "Active",
-        startDate: "2023-06-01",
+        startDate: "2025-06-01",
         participants: 890,
         impact: "12 barangays committed",
       },
@@ -142,10 +142,10 @@ const organizationsData: Record<string, Organization> = {
       { month: "Jun", received: 10500, processed: 9800, recycled: 9400 },
     ],
     socialMedia: {
-      facebook: "https://facebook.com/greenearthfoundation",
-      twitter: "https://twitter.com/greenearthph",
-      instagram: "https://instagram.com/greenearthfoundation",
-      linkedin: "https://linkedin.com/company/green-earth-foundation",
+      facebook: "https://facebook.com/kidswhofarm",
+      twitter: "https://twitter.com/kidswhofarm_ph",
+      instagram: "https://instagram.com/kidswhofarm",
+      linkedin: "https://linkedin.com/company/kids-who-farm",
     },
   },
 }
@@ -488,8 +488,8 @@ export default function OrganizationProfilePage() {
               {organization.topVolunteers.map((volunteer) => (
                 <Card key={volunteer.id} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
                   <CardContent className="p-6">
-                    <div className="flex items-center gap-4">
-                      <Avatar className="w-16 h-16">
+                    <div className="flex flex-col md:flex-row items-center gap-4">
+                      <Avatar className="h-20 w-20 md:w-16 md:h-16 items-center md:items-start">
                         <AvatarImage src={volunteer.avatar || "/placeholder.svg"} alt={volunteer.name} />
                         <AvatarFallback>
                           {volunteer.name
@@ -498,7 +498,7 @@ export default function OrganizationProfilePage() {
                             .join("")}
                         </AvatarFallback>
                       </Avatar>
-                      <div className="flex-1">
+                      <div className="flex flex-col md:flex-1 items-center md:items-start">
                         <h3 className="text-lg font-semibold">{volunteer.name}</h3>
                         <p className="text-gray-600">{volunteer.role}</p>
                         <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
@@ -523,7 +523,7 @@ export default function OrganizationProfilePage() {
               {organization.partnerships.map((partnership) => (
                 <Card key={partnership.id} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
                   <CardContent className="p-6">
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-col md:flex-row items-center gap-4">
                       <Avatar className="w-16 h-16">
                         <AvatarImage src={partnership.brandLogo || "/placeholder.svg"} alt={partnership.brandName} />
                         <AvatarFallback>
@@ -544,7 +544,7 @@ export default function OrganizationProfilePage() {
                           </span>
                         </div>
                       </div>
-                      <div className="text-right">
+                      <div className=" text-center md:text-right">
                         <div className="text-2xl font-bold text-blue-600">
                           {partnership.totalDonations.toLocaleString()}
                         </div>
