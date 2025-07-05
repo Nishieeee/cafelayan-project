@@ -29,7 +29,7 @@ export default function Header() {
     if(role === 'brand' || role === 'org')
        setisUser(true); 
     else
-       setisUser(true);
+       setisUser(false);
   })
 
 
