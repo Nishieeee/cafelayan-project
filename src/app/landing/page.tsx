@@ -145,7 +145,7 @@ export default function LandingPage() {
                     asChild
                     className="bg-green-700 text-white hover:bg-green-800 hover:scale-103 transition-all duration-300 ease"
                   >
-                    <Link href="/package/demo-plastic-001">
+                    <Link href="/package/cafelayan-250g-001">
                       View Demo Package
                     </Link>
                   </Button>
