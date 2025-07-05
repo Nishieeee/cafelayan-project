@@ -148,7 +148,7 @@ const organizationsData: Record<string, Organization> = {
         organization: "Kids Who Farm",
         materials: ["Tarpaulins", "seeds", "Soil"],
         image: "/tarpot.jpeg",
-        url: "https://www.youtube.com/embed/UB6y0Cy0fd8?si=oDPKcR4V4nnMHSP9",
+        url: "https://www.youtube.com/UB6y0Cy0fd8?si=oDPKcR4V4nnMHSP9",
       },
       {
         id: "2",
@@ -162,7 +162,7 @@ const organizationsData: Record<string, Organization> = {
         organization: "Kids Who Farm",
         materials: ["Package", "Scissors", "Soil"],
         image: "/gardenator.jpeg",
-        url: "https://www.youtube.com/embed/LK3WFqiSbnI?si=7f5ZQnJS4-TE-eV3",
+        url: "https://www.youtube.com/LK3WFqiSbnI?si=7f5ZQnJS4-TE-eV3",
       },
     ],
     topVolunteers: [
@@ -650,7 +650,7 @@ export default function OrganizationProfilePage() {
             <div className="grid gap-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {organization.tutorials.map((tutorial, index) => (
-                  <Link key={index} href={`${tutorial.id}`}>
+                  <Link key={index} href={`${tutorial.url}`}>
                     <Card
                       data-aos="fade"
                       data-aos-delay="100"
