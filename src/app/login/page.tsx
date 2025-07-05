@@ -16,7 +16,6 @@ import { QrCode, Facebook, Mail, AlertCircle  } from "lucide-react"
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
