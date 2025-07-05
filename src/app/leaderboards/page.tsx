@@ -10,7 +10,7 @@ export default function Leaderboard() {
   const communityLeaderboardData = [
     {
       rank: 1,
-      name: "Giorno Giovanni",
+      name: "Jeffrey Sereno",
       avatar: "/placeholder.svg?height=40&width=40",
       donations: 234,
       weight: 89.5,

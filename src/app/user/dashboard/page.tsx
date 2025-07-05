@@ -79,10 +79,10 @@ export default function UserProfilePage() {
   // Mock user data
   const userData = {
     id: "user-001",
-    name: "Jhon Clein Pagarogan",
-    email: "angpanday@email.com",
+    name: "Jeffrey Sereno",
+    email: "jeff@email.com",
     avatar: "/placeholder.svg?height=80&width=80",
-    joinDate: "2023-06-15",
+    joinDate: "2025-06-15",
     location: "Zamboanga City",
     totalDonations: 127,
     totalWeight: 45.2, // kg
@@ -135,12 +135,12 @@ export default function UserProfilePage() {
   const leaderboardData = [
     {
       rank: 1,
-      name: "Giorno Giovanni",
+      name: "Jeffrey Sereno",
       avatar: "/placeholder.svg?height=40&width=40",
       donations: 234,
       weight: 89.5,
       level: "Eco Guardian",
-      isCurrentUser: false,
+      isCurrentUser: true,
     },
     {
       rank: 2,
@@ -167,7 +167,7 @@ export default function UserProfilePage() {
       donations: 127,
       weight: 45.2,
       level: "Young Tree",
-      isCurrentUser: true,
+      isCurrentUser: false,
     },
     {
       rank: 5,

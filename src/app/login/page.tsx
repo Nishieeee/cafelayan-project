@@ -12,19 +12,35 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
-import { QrCode, Facebook, Mail } from "lucide-react"
+import { QrCode, Facebook, Mail, AlertCircle  } from "lucide-react"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 export default function LoginPage() {
   const { login } = useAuth()
   const router = useRouter()
   const [role, setRole] = useState<"user" | "brand" | "org">("user")
   const [name, setName] = useState("")
-  
+  const [showAlert, setshowAlert] = useState(false)
+  const validUsers = ['cafelayan', 'dios', 'kwf', 'Jeffrey Sereno'];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    login(role, name)
-    router.push("/")
+    if(validUsers.includes(name.trim())) {
+      login(role, name)
+      router.push("/")
+    } else {
+      setshowAlert(true)
+    }
+    
   }
 
   return (
@@ -127,6 +143,26 @@ export default function LoginPage() {
           </div>
         </CardFooter>
       </Card>
+      <AlertDialog open={showAlert} onOpenChange={setshowAlert} >
+          <AlertDialogContent className="max-w-sm rounded-xl shadow-lg border bg-white">
+            <AlertDialogHeader className="flex items-start space-x-3">
+              <AlertCircle className="h-8 w-8 mr-2 mt-1 text-red-600"/>
+              <AlertDialogTitle className="text-lg font-semibold text-gray-800">Login failed</AlertDialogTitle>
+              <AlertDialogDescription className="text-sm text-gray-600 mt-1 ">
+                Incorrect username or password. Please try again.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              {/* <AlertDialogCancel>Cancel</AlertDialogCancel> */}
+              <AlertDialogAction
+                className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
+              >
+                Try Again
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
     </section>
+    
   )
 }
