@@ -358,22 +358,24 @@ export default function OrganizationProfilePage() {
                       Follow Organization
                     </Button>
                   )}
-                  { name === organization.id ? (
-                    <Button
-                    variant="outline"
-                    className="border-white/20 md:border-gray-300 bg-transparent"
-                  >
-                    <LayoutDashboard className="h-4 w-4 mr-2" />
-                    Dashboard
-                  </Button>
+                  {name === organization.id ? (
+                    <Link href="org/dashboard">
+                      <Button
+                        variant="outline"
+                        className="border-white/20 md:border-gray-300 bg-transparent"
+                      >
+                        <LayoutDashboard className="h-4 w-4 mr-2" />
+                        Dashboard
+                      </Button>
+                    </Link>
                   ) : (
                     <Button
-                    variant="outline"
-                    className="border-white/20 md:border-gray-300 bg-transparent"
-                  >
-                    <HandHeart className="h-4 w-4 mr-2" />
-                    Volunteer
-                  </Button>
+                      variant="outline"
+                      className="border-white/20 md:border-gray-300 bg-transparent"
+                    >
+                      <HandHeart className="h-4 w-4 mr-2" />
+                      Volunteer
+                    </Button>
                   )}
                 </div>
               </div>
