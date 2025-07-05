@@ -654,7 +654,7 @@ export default function OrganizationProfilePage() {
                     <Card
                       data-aos="fade"
                       data-aos-delay="100"
-                      className="h-full border-gray-500/50 hover:border-green-700 overflow-hidden hover:shadow-md transition-all duration-300 ease"
+                      className="h-full bg-white border-gray-500/50 hover:border-green-700 overflow-hidden hover:shadow-md transition-all duration-300 ease"
                     >
                       <div className="aspect-video overflow-hidden">
                         <img
