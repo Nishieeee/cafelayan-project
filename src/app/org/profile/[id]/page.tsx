@@ -359,7 +359,7 @@ export default function OrganizationProfilePage() {
                     </Button>
                   )}
                   {name === organization.id ? (
-                    <Link href="org/dashboard">
+                    <Link href="/org/dashboard" className="w-full">
                       <Button
                         variant="outline"
                         className="border-white/20 md:border-gray-300 bg-transparent"
