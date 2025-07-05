@@ -144,14 +144,14 @@ export default function LoginPage() {
       </Card>
       <AlertDialog open={showAlert} onOpenChange={setshowAlert} >
           <AlertDialogContent className="max-w-sm rounded-xl shadow-lg border bg-white">
-            <AlertDialogHeader className="flex items-start space-x-3">
+            <AlertDialogHeader className="flex items-center space-x-3">
               <AlertCircle className="h-8 w-8 mr-2 mt-1 text-red-600"/>
               <AlertDialogTitle className="text-lg font-semibold text-gray-800">Login failed</AlertDialogTitle>
               <AlertDialogDescription className="text-sm text-gray-600 mt-1 ">
                 Incorrect username or password. Please try again.
               </AlertDialogDescription>
             </AlertDialogHeader>
-            <AlertDialogFooter>
+            <AlertDialogFooter className="flex items-start">
               {/* <AlertDialogCancel>Cancel</AlertDialogCancel> */}
               <AlertDialogAction
                 className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
