@@ -151,7 +151,7 @@ export default function LoginPage() {
                 Incorrect username or password. Please try again.
               </AlertDialogDescription>
             </AlertDialogHeader>
-            <AlertDialogFooter className="flex items-start">
+            <AlertDialogFooter className="flex items-center">
               {/* <AlertDialogCancel>Cancel</AlertDialogCancel> */}
               <AlertDialogAction
                 className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
