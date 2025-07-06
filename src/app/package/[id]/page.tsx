@@ -140,6 +140,144 @@ const product: Record<string, PackageData > = {
     },
   ],
   },
+  "cafelayan-250g-002": {
+  id: "cafelayan-250g-002",
+  name: "Cafelayan VBites Chips - Package",
+  brand: "Cafelayan Lettuce Chips",
+  link: "https://cafelayan.netlify.app",
+  material: "PET Plastic",
+  size: "250g",
+  recyclability: "Highly Recyclable",
+  image: "/lettuce_chips-2.jpg",
+  description:
+    "Reusable package made from PET plastic. This material is widely recyclable and can be turned into new packages, clothing fibers, or other products.",
+  environmentalImpact:
+    "Recycling this package saves enough energy to power a 60-watt light bulb for 6 hours. It also reduces the amount of plastic waste that could end up in oceans and harm marine life.",
+  recyclingProcess:
+    "Clean the package and place in designated PET recycling bins.",
+  tips: "Rinse thoroughly and fold to save space.",
+  facts:
+    "It takes up to 450 years for a plastic to decompose in a landfill, but it can be recycled in just 60 days.",
+  donationPrep: "Before donating, please rinse the package.",
+  nearbyOrganizations: [
+    {
+      name: "Kids Who Farm",
+      location: "Zamboanga City",
+      distance: "2.3 km",
+      hours: "Mon-Fri 8AM-5PM",
+      accepts: "PET bottles, aluminum cans",
+    },
+    {
+      name: "EcoHub ZC",
+      location: "Zamboanga City",
+      distance: "4.1 km",
+      hours: "Daily 7AM-7PM",
+      accepts: "All plastic containers",
+    },
+    {
+      name: "Recycle Center BGC",
+      location: "Bonifacio Global City",
+      distance: "3.8 km",
+      hours: "Mon-Sat 9AM-6PM",
+      accepts: "Plastic bottles, paper, electronics",
+    },
+  ],
+  tutorials: [
+    {
+      id: "1",
+      title: "Pot for Plants",
+      difficulty: "Easy",
+      duration: "15 mins",
+      organization: "Kids Who Farm",
+      url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
+    },
+    {
+      id: "2",
+      title: "Bird Feeder DIY Project",
+      difficulty: "Easy",
+      duration: "20 mins",
+      organization: "Wildlife Conservation PH",
+      url: "https://www.youtube.com/embed/00lH3LdW1iQ?si=zO9lp0CysvB8DurT",
+    },
+    {
+      id: "3",
+      title: "Plastice Bag using Plastic packages",
+      difficulty: "Hard",
+      duration: "1.5 hours",
+      organization: "Urban Farmers Manila",
+      url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
+    },
+  ],
+  },
+  "dios-500ml-001": {
+  id: "dios-500ml-001",
+  name: "Dio's Heavenly Refreshing Juice - Package",
+  brand: "Dio's Heavenly Refreshing Juice",
+  link: "https://cafelayan.netlify.app",
+  material: "PET Plastic",
+  size: "500ml",
+  recyclability: "Highly Recyclable",
+  image: "/dhrj.jpeg",
+  description:
+    "Reusable juice package made from PET plastic. This material is widely recyclable and can be turned into new packages, clothing fibers, or other products.",
+  environmentalImpact:
+    "Recycling this package saves enough energy to power a 60-watt light bulb for 6 hours. It also reduces the amount of plastic waste that could end up in oceans and harm marine life.",
+  recyclingProcess:
+    "Clean the package and place in designated PET recycling bins.",
+  tips: "Rinse thoroughly and fold to save space.",
+  facts:
+    "It takes up to 450 years for a plastic to decompose in a landfill, but it can be recycled in just 60 days.",
+  donationPrep: "Before donating, please rinse the package.",
+  nearbyOrganizations: [
+    {
+      name: "Kids Who Farm",
+      location: "Zamboanga City",
+      distance: "2.3 km",
+      hours: "Mon-Fri 8AM-5PM",
+      accepts: "PET bottles, aluminum cans",
+    },
+    {
+      name: "EcoHub ZC",
+      location: "Zamboanga City",
+      distance: "4.1 km",
+      hours: "Daily 7AM-7PM",
+      accepts: "All plastic containers",
+    },
+    {
+      name: "Recycle Center BGC",
+      location: "Bonifacio Global City",
+      distance: "3.8 km",
+      hours: "Mon-Sat 9AM-6PM",
+      accepts: "Plastic bottles, paper, electronics",
+    },
+  ],
+  tutorials: [
+    {
+      id: "1",
+      title: "Pot for Plants",
+      difficulty: "Easy",
+      duration: "15 mins",
+      organization: "Kids Who Farm",
+      url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
+    },
+    {
+      id: "2",
+      title: "Bird Feeder DIY Project",
+      difficulty: "Easy",
+      duration: "20 mins",
+      organization: "Wildlife Conservation PH",
+      url: "https://www.youtube.com/embed/00lH3LdW1iQ?si=zO9lp0CysvB8DurT",
+    },
+    {
+      id: "3",
+      title: "Plastice Bag using Plastic packages",
+      difficulty: "Hard",
+      duration: "1.5 hours",
+      organization: "Urban Farmers Manila",
+      url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
+    },
+  ],
+  },
 }
 const relatedProducts: Product[] = [
   {
@@ -189,7 +327,7 @@ export default function PackagePage() {
       <div className="max-w-4xl mx-auto">
         {/* Package Information Card */}
         <Card className="mb-3 border-gray-500/50">
-          <CardHeader className="pb-3">
+          <CardHeader className="pb-3 ">
             <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
               <div className="w-32 h-32 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
                 <img
