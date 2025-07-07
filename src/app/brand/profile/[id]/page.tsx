@@ -415,7 +415,7 @@ export default function BrandProfilePage() {
                 </div>
               )}
 
-              <div className="grid grid-cols-3 gap-4 text-center mb-6">
+              <div className="grid grid-cols-3 gap-4 text-center mb-4">
                 <div>
                   <div className="text-lg font-bold text-gray-900">
                     {brand.totalProducts.toLocaleString()}
@@ -435,7 +435,10 @@ export default function BrandProfilePage() {
                   <div className="text-xs text-gray-600">PARTNERS</div>
                 </div>
               </div>
-
+              <Button data-aos="fade-up" className="w-full h-full text-white bg-green-600 hover:bg-green-700 mb-4">
+                      <ShoppingBag className="mr-2 h-5 w-5" />
+                      Shop Sustainable Snacks
+                    </Button>
               {/* Environmental Impact */}
               <Card className="mb-6 bg-green-50 border-green-200">
                 <CardContent className="p-4">
@@ -765,6 +768,10 @@ export default function BrandProfilePage() {
                         <div className="text-xs text-gray-600">PARTNERS</div>
                       </div>
                     </div>
+                    <Button data-aos="fade-up" className="w-full h-full text-white bg-green-600 hover:bg-green-700 mt-5">
+                      <ShoppingBag className="mr-2 h-5 w-5" />
+                      Shop Sustainable Snacks
+                    </Button>
                   </CardContent>
                 </Card>
 
@@ -891,7 +898,7 @@ export default function BrandProfilePage() {
                       </div>
                     </div>
                     <div className="text-center flex flex-col items-center p-4 bg-green-50 rounded-lg">
-                      <Recycle className="h-7 w-7 text-cyan-700" />
+                      <Recycle className="h-7 w-7 text-green-700" />
                       <div className="text-2xl font-bold text-green-700">
                         {brand.itemsRecycled.toLocaleString()}
                       </div>
