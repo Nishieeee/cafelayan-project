@@ -355,17 +355,17 @@ export default function BrandProfilePage() {
           </Button>
           <h1 className="text-lg font-semibold">Profile</h1>
           <div>
-          {name === brand.id && (
-            <Link href={`/brand/${brand.id}/dashboard`}>
-              <Button
-                variant="outline"
-                className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-xs"
-              >
-                <LayoutDashboard className="h-1 w-1 mr-1" />
-                Dashboard
-              </Button>
-            </Link>
-          )}
+            {name === brand.id && (
+              <Link href={`/brand/${brand.id}/dashboard`}>
+                <Button
+                  variant="outline"
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-xs"
+                >
+                  <LayoutDashboard className="h-1 w-1 mr-1" />
+                  Dashboard
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
 
@@ -435,10 +435,13 @@ export default function BrandProfilePage() {
                   <div className="text-xs text-gray-600">PARTNERS</div>
                 </div>
               </div>
-              <Button data-aos="fade-up" className="w-full h-full text-white bg-green-600 hover:bg-green-700 mb-4">
-                      <ShoppingBag className="mr-2 h-5 w-5" />
-                      Shop Sustainable Snacks
-                    </Button>
+              <Button
+                data-aos="fade-up"
+                className="w-full h-full text-white bg-green-600 hover:bg-green-700 mb-4"
+              >
+                <ShoppingBag className="mr-2 h-5 w-5" />
+                Shop Sustainable Snacks
+              </Button>
               {/* Environmental Impact */}
               <Card className="mb-6 bg-green-50 border-green-200">
                 <CardContent className="p-4">
@@ -768,7 +771,10 @@ export default function BrandProfilePage() {
                         <div className="text-xs text-gray-600">PARTNERS</div>
                       </div>
                     </div>
-                    <Button data-aos="fade-up" className="w-full h-full text-white bg-green-600 hover:bg-green-700 mt-5">
+                    <Button
+                      data-aos="fade-up"
+                      className="w-full h-full text-white bg-green-600 hover:bg-green-700 mt-5"
+                    >
                       <ShoppingBag className="mr-2 h-5 w-5" />
                       Shop Sustainable Snacks
                     </Button>
@@ -821,46 +827,46 @@ export default function BrandProfilePage() {
                     <CardTitle className="text-lg">Social Media</CardTitle>
                   </CardHeader>
                   <CardContent>
-                      <div className="grid grid-cols-2 gap-4">
-                        <a
-                          href="#"
-                          className="flex items-center gap-2 text-pink-600"
-                        >
-                          <Instagram className="h-4 w-4" />
-                          <span className="text-xs">
-                            {brand.socialMedia.instagram}
-                          </span>
-                        </a>
-                        <a
-                          href="#"
-                          className="flex items-center gap-2 text-blue-500"
-                        >
-                          <Twitter className="h-4 w-4" />
-                          <span className="text-xs">
-                            {brand.socialMedia.twitter}
-                          </span>
-                        </a>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4 mt-4">
-                        <a
-                          href="#"
-                          className="flex items-start gap-2 text-blue-600"
-                        >
-                          <Facebook className="h-4 w-4" />
-                          <span className="text-xs">
-                            {brand.socialMedia.facebook}
-                          </span>
-                        </a>
-                        <a
-                          href="#"
-                          className="flex items-center gap-2 text-blue-700"
-                        >
-                          <ShoppingBag className="h-4 w-4" />
-                          <span className="text-xs">
-                            {brand.socialMedia.shop}
-                          </span>
-                        </a>
-                      </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <a
+                        href="#"
+                        className="flex items-center gap-2 text-pink-600"
+                      >
+                        <Instagram className="h-4 w-4" />
+                        <span className="text-xs">
+                          {brand.socialMedia.instagram}
+                        </span>
+                      </a>
+                      <a
+                        href="#"
+                        className="flex items-center gap-2 text-blue-500"
+                      >
+                        <Twitter className="h-4 w-4" />
+                        <span className="text-xs">
+                          {brand.socialMedia.twitter}
+                        </span>
+                      </a>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 mt-4">
+                      <a
+                        href="#"
+                        className="flex items-start gap-2 text-blue-600"
+                      >
+                        <Facebook className="h-4 w-4" />
+                        <span className="text-xs">
+                          {brand.socialMedia.facebook}
+                        </span>
+                      </a>
+                      <a
+                        href="#"
+                        className="flex items-center gap-2 text-blue-700"
+                      >
+                        <ShoppingBag className="h-4 w-4" />
+                        <span className="text-xs">
+                          {brand.socialMedia.shop}
+                        </span>
+                      </a>
+                    </div>
                   </CardContent>
                 </Card>
               </div>

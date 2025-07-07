@@ -22,6 +22,7 @@ import {
   ShoppingCart,
   ShoppingBag,
   Package,
+  Cookie,
 } from "lucide-react";
 import { useParams } from "next/navigation";
 
@@ -301,6 +302,7 @@ const relatedProducts: Product[] = [
 export default function PackagePage() {
   const params = useParams()
   const [activeTab, setActiveTab] = useState("donate");
+  const [showBanner, setshowBanner] = useState(false)
   const [packageData, setpackageData] = useState<PackageData | null>(null);
   useEffect(() => {
     const productId = params.id as string
@@ -311,6 +313,17 @@ export default function PackagePage() {
     }
   }, [params.id])
 
+  useEffect(() => {
+    const consent = localStorage.getItem('cookie_consent');
+    if(!consent) {
+      setshowBanner(true)
+    }
+  }, [])
+
+  const handleAccept = () => {
+    localStorage.setItem('cookie_consent', 'accepted');
+    setshowBanner(false)
+  }
   if(!packageData) {
     return(
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
@@ -612,7 +625,25 @@ export default function PackagePage() {
             </div>
           </CardContent>
         </Card>
+        {showBanner && (
+          <div className="fixed bottom-4 right-4 z-50 bg-white shadow-lg border border-gray-500/50 p-4 rounded-xl max-w-xs text-sm leading-snug space-y-3 transition-all animate-fade-in">
+            
+            <h2 className="font-semibold text-gray-900 flex items-center text-md">
+               <Cookie className="h-6 w-6 mr-2"/>
+                Cookies
+            </h2>
+            <p className="text-sm text-gray-700 ">This page uses for analytics. By clicking &ldquo;Accept&rdquo;, you agree to our cookie policy.</p>
+            <Link href="/about" className="text-green-600 underline mb-2">Learn More</Link>
+            <div className="flex justify-end space-x-2">
+              <Button onClick={() => setshowBanner(false)} className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-1 text-sm rounded">
+                Decline
+            </Button>
+              <Button onClick={handleAccept} className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 text-sm rounded">Accept</Button>
+            </div>
+          </div>
+        )}
       </div>
+
     </div>
   );
 }
