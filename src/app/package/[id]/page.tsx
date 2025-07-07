@@ -150,14 +150,14 @@ const product: Record<string, PackageData > = {
   recyclability: "Highly Recyclable",
   image: "/lettuce_chips-2.jpg",
   description:
-    "Reusable package made from PET plastic. This material is widely recyclable and can be turned into new packages, clothing fibers, or other products.",
+    "Reusable package made from PET plastic designed for dry snack preservations.",
   environmentalImpact:
-    "Recycling this package saves enough energy to power a 60-watt light bulb for 6 hours. It also reduces the amount of plastic waste that could end up in oceans and harm marine life.",
+    "reduces C02 emissions by minimizing the need for virgin plastic production. Saves landfill space and supports circular economy practices.",
   recyclingProcess:
     "Clean the package and place in designated PET recycling bins.",
   tips: "Rinse thoroughly and fold to save space.",
   facts:
-    "It takes up to 450 years for a plastic to decompose in a landfill, but it can be recycled in just 60 days.",
+    "Each recycled 250g PET bag saves approximately 0.5 liters of oil in production energy",
   donationPrep: "Before donating, please rinse the package.",
   nearbyOrganizations: [
     {
@@ -219,9 +219,9 @@ const product: Record<string, PackageData > = {
   recyclability: "Highly Recyclable",
   image: "/dhrj.jpeg",
   description:
-    "Reusable juice package made from PET plastic. This material is widely recyclable and can be turned into new packages, clothing fibers, or other products.",
+    "Clear PET package designed to retain freshness of juices. It's an eco-concious alternative to bottles and glass",
   environmentalImpact:
-    "Recycling this package saves enough energy to power a 60-watt light bulb for 6 hours. It also reduces the amount of plastic waste that could end up in oceans and harm marine life.",
+    "Upcycling this package reduces greenhouse gas emissions and prevents ocean plastic recycling pollution.",
   recyclingProcess:
     "Clean the package and place in designated PET recycling bins.",
   tips: "Rinse thoroughly and fold to save space.",
