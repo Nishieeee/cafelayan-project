@@ -114,22 +114,25 @@ export default function Header() {
             </div>
 
             {/* Desktop Auth Section */}
-            {isLoggedIn ? (
+            
               <div className="hidden md:block">
                 <div className="flex items-center space-x-4">
                   <Link href="/search">
-                    <Button variant="ghost" size="icon" className="hover:bg-blue-50 hover:text-blue-600">
+                    <Button variant="ghost" size="icon" className="hover:bg-blue-50 w-full px-2 hover:text-blue-600">
                     <Search className="h-5 w-5" />
+                    Search
                   </Button>
                   </Link>
-                  <Link href="/">
-                    <Button variant="ghost" size="icon" className="hover:bg-red-50 hover:text-red-600" onClick={logout}>
+
+                  {isLoggedIn && (<Link href="/">
+                    <Button variant="ghost" size="icon" className="hover:bg-red-50 w-full px-2 hover:text-red-600" onClick={logout}>
                     <LogOut className="h-5 w-5" />
+                    Logout
                   </Button>
-                  </Link>
+                  </Link>)}
                 </div>
               </div>
-            ) : (
+            {!isLoggedIn && (
               <div className="hidden md:block">
                 <div className="flex items-center space-x-2">
                   <Button
@@ -245,7 +248,7 @@ export default function Header() {
                     <Separator className="my-4" />
 
                     {/* Auth Section */}
-                    {isLoggedIn ? (
+                    
                       <div className="space-y-3">
                         <Link href="/search">
                           <Button variant="ghost" className="w-full justify-start px-4 py-3 h-auto hover:bg-gray-50">
@@ -253,7 +256,7 @@ export default function Header() {
                           Search
                         </Button>
                         </Link>
-                        <Link href="/">
+                       {isLoggedIn && (<Link href="/">
                           <Button
                           variant="ghost"
                           onClick={handleLogout}
@@ -262,9 +265,9 @@ export default function Header() {
                           <LogOut className="h-5 w-5 mr-3" />
                           Log Out
                         </Button>
-                        </Link>
+                        </Link>)}
                       </div>
-                    ) : (
+                    {!isLoggedIn && (
                       <div className="space-y-3">
                         <Button
                           asChild
