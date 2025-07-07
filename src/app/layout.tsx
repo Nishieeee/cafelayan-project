@@ -3,10 +3,10 @@ import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/Header"
 import Footer from "@/components/footer"
-// import { Inter } from "next/font/google"
-// import { cn } from "@/lib/utils"
+import { Inter } from "next/font/google"
+import { cn } from "@/lib/utils"
 
-// const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] })
 
 import type { Metadata } from "next";
 import "./globals.css";
@@ -24,8 +24,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <body className={cn(inter.className, "min-h-screen bg-gray-50")}> */}
-      <body className="min-h-screen bg-gray-50">
+      <body className={cn(inter.className, "min-h-screen bg-gray-50")}>
+      {/* <body className="min-h-screen bg-gray-50"> */}
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           
           <AuthProvider>
