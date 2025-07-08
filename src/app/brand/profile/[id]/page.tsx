@@ -439,8 +439,10 @@ export default function BrandProfilePage() {
                 data-aos="fade-up"
                 className="w-full h-full text-white bg-green-600 hover:bg-green-700 mb-4"
               >
-                <ShoppingBag className="mr-2 h-5 w-5" />
-                Shop Sustainable Snacks
+                <Link href={brand.socialMedia.shop}>
+                  <ShoppingBag className="mr-2 h-5 w-5" />
+                  Shop Sustainable Snacks
+                </Link>
               </Button>
               {/* Environmental Impact */}
               <Card className="mb-6 bg-green-50 border-green-200">
@@ -775,8 +777,10 @@ export default function BrandProfilePage() {
                       data-aos="fade-up"
                       className="w-full h-full text-white bg-green-600 hover:bg-green-700 mt-5"
                     >
-                      <ShoppingBag className="mr-2 h-5 w-5" />
-                      Shop Sustainable Snacks
+                      <Link href={brand.socialMedia.shop}>
+                        <ShoppingBag className="mr-2 h-5 w-5" />
+                        Shop Sustainable Snacks
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
