@@ -632,7 +632,7 @@ export default function PackagePage() {
                <Cookie className="h-6 w-6 mr-2"/>
                 Cookies
             </h2>
-            <p className="text-sm text-gray-700 ">This page uses for analytics. By clicking &ldquo;Accept&rdquo;, you agree to our cookie policy.</p>
+            <p className="text-sm text-gray-700 ">This page uses cookies for analytics. By clicking &ldquo;Accept&rdquo;, you agree to our cookie policy.</p>
             <Link href="/about" className="text-green-600 underline mb-2">Learn More</Link>
             <div className="flex justify-end space-x-2">
               <Button onClick={() => setshowBanner(false)} className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-1 text-sm rounded">
