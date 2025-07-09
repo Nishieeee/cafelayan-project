@@ -60,7 +60,7 @@ const brandProductsData: Record<string, BrandProducts> = {
         totalDonations: 1256,
         conversionRate: 44.1,
         lastScan: "2 hours ago",
-        image: "/lettuce_chips-2.jpeg",
+        image: "/lettuce_chips-2.jpg",
         recyclability: "Highly Recyclable",
       },
       {
