@@ -36,8 +36,9 @@ import {
   Wind,
 } from "lucide-react";
 import Link from "next/link";
-import type { Brand } from "@/types/brand";
+import type { Brand, ProjectType } from "@/types/brand";
 import { useAuth } from "@/context/AuthContext";
+import { ProjectDialog } from "@/components/project-details";
 // Mock brand data - would come from API
 const brandData: Record<string, Brand> = {
   cafelayan: {
@@ -64,6 +65,16 @@ const brandData: Record<string, Brand> = {
     waterSaved: "15,400kg",
     itemsRecycled: 28945,
     wasteReduced: "890 kg",
+    projects: [
+      {
+        id: "project-001",
+        title: "#GrowYourSnack",
+        description:
+          "Cafelayan's flagship sustainability initiative that turns snack time into planting time.",
+        cover: "/project-01.jpeg",
+        dateStarted: "2023-01-15",
+      },
+    ],
     products: [
       {
         id: "cafelayan-250g-001",
@@ -162,6 +173,7 @@ const brandData: Record<string, Brand> = {
     waterSaved: "22,100kg",
     itemsRecycled: 18650,
     wasteReduced: "1.2 tons",
+    projects: null,
     products: [
       {
         id: "dio-500ml-001",
@@ -290,12 +302,31 @@ const brandData: Record<string, Brand> = {
 };
 
 export default function BrandProfilePage() {
+  const projectDummy: ProjectType = {
+    id: "project-001",
+    title: "#GrowYourSnack",
+    description:
+      "   Cafelayan's flagship sustainability initiative that turns snack time into planting time. Every pack of VBites Lettuce Chips includes free vegetable seeds and a QR code linkingconsumers to upcycling guides. Instead of discarding the packaging, customers are encouraged to reuse it as a planting pot-starting their own mini garden at home. This Campaign promotes Zero-waste lifestyles, food growing, and environmentalawareness. It's Cafelayan's way of empowering individuals to become everyday climate heroes-one snack at a time.",
+    cover: "/project-01.jpeg",
+    dateStarted: "2023-01-15",
+  };
+
   const params = useParams();
   const brandId = params.id as string;
   const [isFollowing, setIsFollowing] = useState(false);
   const [brand, setBrand] = useState<Brand | null>(null);
   const { role, name } = useAuth();
   const [isBrand, setisBrand] = useState(false);
+  const [showProjectDialog, setshowProjectDialog] = useState(false);
+  const [selectedRequest, setselectedRequest] = useState<ProjectType | null>(
+    null
+  );
+
+  const handleViewProject = (request: ProjectType) => {
+    setselectedRequest(request);
+    setshowProjectDialog(true);
+  };
+
   useEffect(() => {
     if (role === "brand") setisBrand(true);
   });
@@ -435,15 +466,15 @@ export default function BrandProfilePage() {
                   <div className="text-xs text-gray-600">PARTNERS</div>
                 </div>
               </div>
-              <Button
-                data-aos="fade-up"
-                className="w-full h-full text-white bg-green-600 hover:bg-green-700 mb-4"
-              >
-                <Link href={brand.socialMedia.shop}>
+              <Link href={brand.socialMedia.shop}>
+                <Button
+                  data-aos="fade-up"
+                  className="w-full h-full text-white bg-green-600 hover:bg-green-700 mb-4"
+                >
                   <ShoppingBag className="mr-2 h-5 w-5" />
                   Shop Sustainable Snacks
-                </Link>
-              </Button>
+                </Button>
+              </Link>
               {/* Environmental Impact */}
               <Card className="mb-6 bg-green-50 border-green-200">
                 <CardContent className="p-4">
@@ -473,7 +504,45 @@ export default function BrandProfilePage() {
                   </div>
                 </CardContent>
               </Card>
-
+              {/* brand projects */}
+              <div className="text-start mb-4">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold text-gray-900">Projects</h3>
+                  <Link
+                    href={`/brand/${brand.id}/products`}
+                    className="text-green-600 text-sm hover:underline"
+                  >
+                    View all
+                  </Link>
+                </div>
+                {Array.isArray(brand.projects) && brand.projects.length > 0 ? (
+                  <div
+                    className="grid grid-cols-2 gap-2 text-start mt-2"
+                    onClick={() => {
+                      handleViewProject(projectDummy);
+                    }}
+                  >
+                    {brand.projects.map((project, index) => (
+                      <Card
+                        key={index}
+                        className=" border-gray-500/50 hover:border-green-700 hover:shadow-md transition-all duration-300 ease"
+                      >
+                        <div className="aspect-square overflow-hidden bg-gray-100">
+                          <img src={project.cover} className="h-full w-full" />
+                        </div>
+                        <CardContent className="px-3 pt-4">
+                          <CardTitle className="font-semibold text-sm text-black mb-1 line-clamp-2">
+                            {project.title}
+                          </CardTitle>
+                          <p className="text-[0.7rem]">{project.description}</p>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                ) : (
+                  <div>No Projects to view</div>
+                )}
+              </div>
               {/* Products */}
               <div className="text-left">
                 <div className="flex items-center justify-between mb-4">
@@ -773,15 +842,15 @@ export default function BrandProfilePage() {
                         <div className="text-xs text-gray-600">PARTNERS</div>
                       </div>
                     </div>
-                    <Button
-                      data-aos="fade-up"
-                      className="w-full h-full text-white bg-green-600 hover:bg-green-700 mt-5"
-                    >
-                      <Link href={brand.socialMedia.shop}>
+                    <Link href={brand.socialMedia.shop}>
+                      <Button
+                        data-aos="fade-up"
+                        className="w-full h-full text-white bg-green-600 hover:bg-green-700 mt-5"
+                      >
                         <ShoppingBag className="mr-2 h-5 w-5" />
                         Shop Sustainable Snacks
-                      </Link>
-                    </Button>
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
 
@@ -929,6 +998,60 @@ export default function BrandProfilePage() {
                 </CardContent>
               </Card>
 
+              {/* brand projects */}
+              <Card className="bg-white border-gray-500/50">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="flex items-center gap-2">
+                      <Package className="h-6 w-6" />
+                      Projects
+                    </CardTitle>
+                    <Link href={`/brand/${brand.id}/products`}>
+                      <Button variant="outline" size="sm">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        View All Projects
+                      </Button>
+                    </Link>
+                  </div>
+                  <CardDescription>
+                    View and support sustainable brand projects
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {Array.isArray(brand.projects) &&
+                  brand.projects.length > 0 ? (
+                    <div className="grid grid-cols-3 gap-4">
+                      {brand.projects.map((project, index) => (
+                        <Card
+                          key={index}
+                          className=" border-gray-500/50 hover:shadow-md hover:scale-102 transition-all duration-300 ease"
+                          onClick={() => {
+                            handleViewProject(projectDummy);
+                          }}
+                        >
+                          <div className="aspect-square overflow-hidden bg-gray-100">
+                            <img
+                              src={project.cover}
+                              className="h-full w-full"
+                            />
+                          </div>
+                          <CardContent className="px-3 pt-4">
+                            <CardTitle className="font-semibold text-base text-black mb-1 line-clamp-2">
+                              {project.title}
+                            </CardTitle>
+                            <p className="text-xs text-gray-600">
+                              {project.description}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-gray-500 flex items-center justify-center p-6">No Projects to view</div>
+                  )}
+                </CardContent>
+              </Card>
+
               {/* Products */}
               <Card data-aos="fade-up" className="bg-white border-gray-500/50">
                 <CardHeader>
@@ -1056,6 +1179,11 @@ export default function BrandProfilePage() {
             </div>
           </div>
         </div>
+        <ProjectDialog
+          open={showProjectDialog}
+          onOpenChange={setshowProjectDialog}
+          request={selectedRequest ?? projectDummy}
+        />
       </div>
     </div>
   );

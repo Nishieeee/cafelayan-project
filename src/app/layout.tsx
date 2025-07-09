@@ -27,7 +27,6 @@ export default function RootLayout({
       <body className={cn(inter.className, "min-h-screen bg-gray-50")}>
       {/* <body className="min-h-screen bg-gray-50"> */}
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          
           <AuthProvider>
             <Header />
             {children}

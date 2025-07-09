@@ -32,7 +32,13 @@ export interface ProductType {
   value: number
   color: string
 }
-
+export interface ProjectType {
+  id: string
+  title: string
+  cover: string
+  description: string
+  dateStarted: string
+}
 export interface Achievement {
   name: string
   description: string
@@ -70,6 +76,7 @@ export interface Brand {
   waterSaved: string
   itemsRecycled: number
   wasteReduced: string
+  projects: ProjectType[] | null
   products: Product[]
   achievements: Achievement[]
   socialMedia: SocialMedia
