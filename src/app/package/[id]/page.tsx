@@ -23,8 +23,11 @@ import {
   ShoppingBag,
   Package,
   Cookie,
+  ExternalLink,
 } from "lucide-react";
 import { useParams } from "next/navigation";
+import { ProjectType } from "@/types/brand";
+import { ProjectDialog } from "@/components/project-details";
 
 interface Tutorial {
   id: string;
@@ -44,7 +47,7 @@ interface Organization {
 }
 
 interface PackageData {
-  id: string
+  id: string;
   name: string;
   brand: string;
   link: string;
@@ -60,6 +63,7 @@ interface PackageData {
   donationPrep: string;
   nearbyOrganizations: Organization[];
   tutorials: Tutorial[];
+  project: ProjectType[] | null;
 }
 
 interface Product {
@@ -71,215 +75,236 @@ interface Product {
   category: string;
 }
 // Sample package data
-const product: Record<string, PackageData > = {
- "cafelayan-250g-001": {
-  id: "cafelayan-250g-001",
-  name: "Cafelayan Lettuce Chips - Package",
-  brand: "Cafelayan Lettuce Chips",
-  link: "https://cafelayan.netlify.app",
-  material: "PET Plastic",
-  size: "250g",
-  recyclability: "Highly Recyclable",
-  image: "/lettuce_chips-2.jpg",
-  description:
-    "Reusable package made from PET plastic. This material is widely recyclable and can be turned into new packages, clothing fibers, or other products.",
-  environmentalImpact:
-    "Recycling this package saves enough energy to power a 60-watt light bulb for 6 hours. It also reduces the amount of plastic waste that could end up in oceans and harm marine life.",
-  recyclingProcess:
-    "Clean the package and place in designated PET recycling bins.",
-  tips: "Rinse thoroughly and fold to save space.",
-  facts:
-    "It takes up to 450 years for a plastic to decompose in a landfill, but it can be recycled in just 60 days.",
-  donationPrep: "Before donating, please rinse the package.",
-  nearbyOrganizations: [
-    {
-      name: "Kids Who Farm",
-      location: "Zamboanga City",
-      distance: "2.3 km",
-      hours: "Mon-Fri 8AM-5PM",
-      accepts: "PET bottles, aluminum cans",
-    },
-    {
-      name: "EcoHub ZC",
-      location: "Zamboanga City",
-      distance: "4.1 km",
-      hours: "Daily 7AM-7PM",
-      accepts: "All plastic containers",
-    },
-    {
-      name: "Recycle Center BGC",
-      location: "Bonifacio Global City",
-      distance: "3.8 km",
-      hours: "Mon-Sat 9AM-6PM",
-      accepts: "Plastic bottles, paper, electronics",
-    },
-  ],
-  tutorials: [
-    {
-      id: "1",
-      title: "Pot for Plants",
-      difficulty: "Easy",
-      duration: "15 mins",
-      organization: "Kids Who Farm",
-      url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
-    },
-    {
-      id: "2",
-      title: "Bird Feeder DIY Project",
-      difficulty: "Easy",
-      duration: "20 mins",
-      organization: "Wildlife Conservation PH",
-      url: "https://www.youtube.com/embed/00lH3LdW1iQ?si=zO9lp0CysvB8DurT",
-    },
-    {
-      id: "3",
-      title: "Plastice Bag using Plastic packages",
-      difficulty: "Hard",
-      duration: "1.5 hours",
-      organization: "Urban Farmers Manila",
-      url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
-    },
-  ],
+const product: Record<string, PackageData> = {
+  "cafelayan-250g-001": {
+    id: "cafelayan-250g-001",
+    name: "Cafelayan Lettuce Chips - Package",
+    brand: "Cafelayan Lettuce Chips",
+    link: "https://cafelayan.netlify.app",
+    material: "PET Plastic",
+    size: "250g",
+    recyclability: "Highly Recyclable",
+    image: "/lettuce_chips-2.jpg",
+    description:
+      "Reusable package made from PET plastic. This material is widely recyclable and can be turned into new packages, clothing fibers, or other products.",
+    environmentalImpact:
+      "Recycling this package saves enough energy to power a 60-watt light bulb for 6 hours. It also reduces the amount of plastic waste that could end up in oceans and harm marine life.",
+    recyclingProcess:
+      "Clean the package and place in designated PET recycling bins.",
+    tips: "Rinse thoroughly and fold to save space.",
+    facts:
+      "It takes up to 450 years for a plastic to decompose in a landfill, but it can be recycled in just 60 days.",
+    donationPrep: "Before donating, please rinse the package.",
+    nearbyOrganizations: [
+      {
+        name: "Kids Who Farm",
+        location: "Zamboanga City",
+        distance: "2.3 km",
+        hours: "Mon-Fri 8AM-5PM",
+        accepts: "PET bottles, aluminum cans",
+      },
+      {
+        name: "EcoHub ZC",
+        location: "Zamboanga City",
+        distance: "4.1 km",
+        hours: "Daily 7AM-7PM",
+        accepts: "All plastic containers",
+      },
+      {
+        name: "Recycle Center BGC",
+        location: "Bonifacio Global City",
+        distance: "3.8 km",
+        hours: "Mon-Sat 9AM-6PM",
+        accepts: "Plastic bottles, paper, electronics",
+      },
+    ],
+    tutorials: [
+      {
+        id: "1",
+        title: "Pot for Plants",
+        difficulty: "Easy",
+        duration: "15 mins",
+        organization: "Kids Who Farm",
+        url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
+      },
+      {
+        id: "2",
+        title: "Bird Feeder DIY Project",
+        difficulty: "Easy",
+        duration: "20 mins",
+        organization: "Wildlife Conservation PH",
+        url: "https://www.youtube.com/embed/00lH3LdW1iQ?si=zO9lp0CysvB8DurT",
+      },
+      {
+        id: "3",
+        title: "Plastice Bag using Plastic packages",
+        difficulty: "Hard",
+        duration: "1.5 hours",
+        organization: "Urban Farmers Manila",
+        url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
+      },
+    ],
+    project: [
+      {
+        id: "project-001",
+        title: "#GrowYourSnack",
+        description:
+          "Cafelayan's flagship sustainability initiative that turns snack time into planting time.",
+        cover: "/project-01.jpeg",
+        dateStarted: "2023-01-15",
+      },
+    ],
   },
   "cafelayan-250g-002": {
-  id: "cafelayan-250g-002",
-  name: "Cafelayan VBites Chips - Package",
-  brand: "Cafelayan Lettuce Chips",
-  link: "https://cafelayan.netlify.app",
-  material: "PET Plastic",
-  size: "250g",
-  recyclability: "Highly Recyclable",
-  image: "/lettuce_chips-2.jpg",
-  description:
-    "Reusable package made from PET plastic designed for dry snack preservations.",
-  environmentalImpact:
-    "reduces C02 emissions by minimizing the need for virgin plastic production. Saves landfill space and supports circular economy practices.",
-  recyclingProcess:
-    "Clean the package and place in designated PET recycling bins.",
-  tips: "Rinse thoroughly and fold to save space.",
-  facts:
-    "Each recycled 250g PET bag saves approximately 0.5 liters of oil in production energy",
-  donationPrep: "Before donating, please rinse the package.",
-  nearbyOrganizations: [
-    {
-      name: "Kids Who Farm",
-      location: "Zamboanga City",
-      distance: "2.3 km",
-      hours: "Mon-Fri 8AM-5PM",
-      accepts: "PET bottles, aluminum cans",
-    },
-    {
-      name: "EcoHub ZC",
-      location: "Zamboanga City",
-      distance: "4.1 km",
-      hours: "Daily 7AM-7PM",
-      accepts: "All plastic containers",
-    },
-    {
-      name: "Recycle Center BGC",
-      location: "Bonifacio Global City",
-      distance: "3.8 km",
-      hours: "Mon-Sat 9AM-6PM",
-      accepts: "Plastic bottles, paper, electronics",
-    },
-  ],
-  tutorials: [
-    {
-      id: "1",
-      title: "Pot for Plants",
-      difficulty: "Easy",
-      duration: "15 mins",
-      organization: "Kids Who Farm",
-      url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
-    },
-    {
-      id: "2",
-      title: "Bird Feeder DIY Project",
-      difficulty: "Easy",
-      duration: "20 mins",
-      organization: "Wildlife Conservation PH",
-      url: "https://www.youtube.com/embed/00lH3LdW1iQ?si=zO9lp0CysvB8DurT",
-    },
-    {
-      id: "3",
-      title: "Plastice Bag using Plastic packages",
-      difficulty: "Hard",
-      duration: "1.5 hours",
-      organization: "Urban Farmers Manila",
-      url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
-    },
-  ],
+    id: "cafelayan-250g-002",
+    name: "Cafelayan VBites Chips - Package",
+    brand: "Cafelayan Lettuce Chips",
+    link: "https://cafelayan.netlify.app",
+    material: "PET Plastic",
+    size: "250g",
+    recyclability: "Highly Recyclable",
+    image: "/lettuce_chips-2.jpg",
+    description:
+      "Reusable package made from PET plastic designed for dry snack preservations.",
+    environmentalImpact:
+      "reduces C02 emissions by minimizing the need for virgin plastic production. Saves landfill space and supports circular economy practices.",
+    recyclingProcess:
+      "Clean the package and place in designated PET recycling bins.",
+    tips: "Rinse thoroughly and fold to save space.",
+    facts:
+      "Each recycled 250g PET bag saves approximately 0.5 liters of oil in production energy",
+    donationPrep: "Before donating, please rinse the package.",
+    nearbyOrganizations: [
+      {
+        name: "Kids Who Farm",
+        location: "Zamboanga City",
+        distance: "2.3 km",
+        hours: "Mon-Fri 8AM-5PM",
+        accepts: "PET bottles, aluminum cans",
+      },
+      {
+        name: "EcoHub ZC",
+        location: "Zamboanga City",
+        distance: "4.1 km",
+        hours: "Daily 7AM-7PM",
+        accepts: "All plastic containers",
+      },
+      {
+        name: "Recycle Center BGC",
+        location: "Bonifacio Global City",
+        distance: "3.8 km",
+        hours: "Mon-Sat 9AM-6PM",
+        accepts: "Plastic bottles, paper, electronics",
+      },
+    ],
+    tutorials: [
+      {
+        id: "1",
+        title: "Pot for Plants",
+        difficulty: "Easy",
+        duration: "15 mins",
+        organization: "Kids Who Farm",
+        url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
+      },
+      {
+        id: "2",
+        title: "Bird Feeder DIY Project",
+        difficulty: "Easy",
+        duration: "20 mins",
+        organization: "Wildlife Conservation PH",
+        url: "https://www.youtube.com/embed/00lH3LdW1iQ?si=zO9lp0CysvB8DurT",
+      },
+      {
+        id: "3",
+        title: "Plastice Bag using Plastic packages",
+        difficulty: "Hard",
+        duration: "1.5 hours",
+        organization: "Urban Farmers Manila",
+        url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
+      },
+    ],
+    project: [
+      {
+        id: "project-001",
+        title: "#GrowYourSnack",
+        description:
+          "Cafelayan's flagship sustainability initiative that turns snack time into planting time.",
+        cover: "/project-01.jpeg",
+        dateStarted: "2023-01-15",
+      },
+    ],
   },
   "dios-500ml-001": {
-  id: "dios-500ml-001",
-  name: "Dio's Heavenly Refreshing Juice - Package",
-  brand: "Dio's Heavenly Refreshing Juice",
-  link: "https://cafelayan.netlify.app",
-  material: "PET Plastic",
-  size: "500ml",
-  recyclability: "Highly Recyclable",
-  image: "/dhrj.jpeg",
-  description:
-    "Clear PET package designed to retain freshness of juices. It's an eco-concious alternative to bottles and glass",
-  environmentalImpact:
-    "Upcycling this package reduces greenhouse gas emissions and prevents ocean plastic recycling pollution.",
-  recyclingProcess:
-    "Clean the package and place in designated PET recycling bins.",
-  tips: "Rinse thoroughly and fold to save space.",
-  facts:
-    "It takes up to 450 years for a plastic to decompose in a landfill, but it can be recycled in just 60 days.",
-  donationPrep: "Before donating, please rinse the package.",
-  nearbyOrganizations: [
-    {
-      name: "Kids Who Farm",
-      location: "Zamboanga City",
-      distance: "2.3 km",
-      hours: "Mon-Fri 8AM-5PM",
-      accepts: "PET bottles, aluminum cans",
-    },
-    {
-      name: "EcoHub ZC",
-      location: "Zamboanga City",
-      distance: "4.1 km",
-      hours: "Daily 7AM-7PM",
-      accepts: "All plastic containers",
-    },
-    {
-      name: "Recycle Center BGC",
-      location: "Bonifacio Global City",
-      distance: "3.8 km",
-      hours: "Mon-Sat 9AM-6PM",
-      accepts: "Plastic bottles, paper, electronics",
-    },
-  ],
-  tutorials: [
-    {
-      id: "1",
-      title: "Pot for Plants",
-      difficulty: "Easy",
-      duration: "15 mins",
-      organization: "Kids Who Farm",
-      url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
-    },
-    {
-      id: "2",
-      title: "Bird Feeder DIY Project",
-      difficulty: "Easy",
-      duration: "20 mins",
-      organization: "Wildlife Conservation PH",
-      url: "https://www.youtube.com/embed/00lH3LdW1iQ?si=zO9lp0CysvB8DurT",
-    },
-    {
-      id: "3",
-      title: "Plastice Bag using Plastic packages",
-      difficulty: "Hard",
-      duration: "1.5 hours",
-      organization: "Urban Farmers Manila",
-      url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
-    },
-  ],
+    id: "dios-500ml-001",
+    name: "Dio's Heavenly Refreshing Juice - Package",
+    brand: "Dio's Heavenly Refreshing Juice",
+    link: "https://cafelayan.netlify.app",
+    material: "PET Plastic",
+    size: "500ml",
+    recyclability: "Highly Recyclable",
+    image: "/dhrj.jpeg",
+    description:
+      "Clear PET package designed to retain freshness of juices. It's an eco-concious alternative to bottles and glass",
+    environmentalImpact:
+      "Upcycling this package reduces greenhouse gas emissions and prevents ocean plastic recycling pollution.",
+    recyclingProcess:
+      "Clean the package and place in designated PET recycling bins.",
+    tips: "Rinse thoroughly and fold to save space.",
+    facts:
+      "It takes up to 450 years for a plastic to decompose in a landfill, but it can be recycled in just 60 days.",
+    donationPrep: "Before donating, please rinse the package.",
+    nearbyOrganizations: [
+      {
+        name: "Kids Who Farm",
+        location: "Zamboanga City",
+        distance: "2.3 km",
+        hours: "Mon-Fri 8AM-5PM",
+        accepts: "PET bottles, aluminum cans",
+      },
+      {
+        name: "EcoHub ZC",
+        location: "Zamboanga City",
+        distance: "4.1 km",
+        hours: "Daily 7AM-7PM",
+        accepts: "All plastic containers",
+      },
+      {
+        name: "Recycle Center BGC",
+        location: "Bonifacio Global City",
+        distance: "3.8 km",
+        hours: "Mon-Sat 9AM-6PM",
+        accepts: "Plastic bottles, paper, electronics",
+      },
+    ],
+    tutorials: [
+      {
+        id: "1",
+        title: "Pot for Plants",
+        difficulty: "Easy",
+        duration: "15 mins",
+        organization: "Kids Who Farm",
+        url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
+      },
+      {
+        id: "2",
+        title: "Bird Feeder DIY Project",
+        difficulty: "Easy",
+        duration: "20 mins",
+        organization: "Wildlife Conservation PH",
+        url: "https://www.youtube.com/embed/00lH3LdW1iQ?si=zO9lp0CysvB8DurT",
+      },
+      {
+        id: "3",
+        title: "Plastice Bag using Plastic packages",
+        difficulty: "Hard",
+        duration: "1.5 hours",
+        organization: "Urban Farmers Manila",
+        url: "https://www.youtube.com/embed/ItL4FiZafCc?si=XGIWxYygFdDP8dvp",
+      },
+    ],
+    project: null,
   },
-}
+};
 const relatedProducts: Product[] = [
   {
     name: "Kale Chips",
@@ -300,40 +325,64 @@ const relatedProducts: Product[] = [
 ];
 
 export default function PackagePage() {
-  const params = useParams()
+  const projectDummy: ProjectType = {
+    id: "project-001",
+    title: "#GrowYourSnack",
+    description:
+      "   Cafelayan's flagship sustainability initiative that turns snack time into planting time. Every pack of VBites Lettuce Chips includes free vegetable seeds and a QR code linkingconsumers to upcycling guides. Instead of discarding the packaging, customers are encouraged to reuse it as a planting pot-starting their own mini garden at home. This Campaign promotes Zero-waste lifestyles, food growing, and environmentalawareness. It's Cafelayan's way of empowering individuals to become everyday climate heroes-one snack at a time.",
+    cover: "/project-01.jpeg",
+    dateStarted: "2023-01-15",
+  };
+
+  const params = useParams();
   const [activeTab, setActiveTab] = useState("donate");
-  const [showBanner, setshowBanner] = useState(false)
+  const [showBanner, setshowBanner] = useState(false);
   const [packageData, setpackageData] = useState<PackageData | null>(null);
-  useEffect(() => {
-    const productId = params.id as string
-    const productData = product[productId]
+  const [showProjectDialog, setshowProjectDialog] = useState(false);
+  const [selectedRequest, setselectedRequest] = useState<ProjectType | null>(
+    null
+  );
 
-    if(productData){ 
-      setpackageData(productData)
-    }
-  }, [params.id])
+  const handleViewProject = (request: ProjectType) => {
+    setselectedRequest(request);
+    setshowProjectDialog(true);
+  };
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookie_consent');
-    if(!consent) {
-      setshowBanner(true)
+    const productId = params.id as string;
+    const productData = product[productId];
+
+    if (productData) {
+      setpackageData(productData);
     }
-  }, [])
+  }, [params.id]);
+
+  useEffect(() => {
+    const consent = localStorage.getItem("cookie_consent");
+    if (!consent) {
+      setshowBanner(true);
+    }
+  }, []);
 
   const handleAccept = () => {
-    localStorage.setItem('cookie_consent', 'accepted');
-    setshowBanner(false)
-  }
-  if(!packageData) {
-    return(
+    localStorage.setItem("cookie_consent", "accepted");
+    setshowBanner(false);
+    //get city logic here
+  };
+  if (!packageData) {
+    return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
         <div className="text-center">
           <Package className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Package Not Found</h1>
-          <p className="text-gray-600">The package that you scanned doesn&apos;t exist.</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            Package Not Found
+          </h1>
+          <p className="text-gray-600">
+            The package that you scanned doesn&apos;t exist.
+          </p>
         </div>
       </div>
-    )
+    );
   }
   return (
     <div className="container py-8 px-4 md:px-6">
@@ -500,7 +549,16 @@ export default function PackagePage() {
                           alt={tutorial.title}
                           className="h-full w-full object-cover transition-transform hover:scale-105"
                         /> */}
-                        <iframe width="440" height="215" src={tutorial.url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                        <iframe
+                          width="440"
+                          height="215"
+                          src={tutorial.url}
+                          title="YouTube video player"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        ></iframe>
                       </div>
                       <div className="p-4">
                         <div className="flex justify-between items-center mb-2">
@@ -542,6 +600,58 @@ export default function PackagePage() {
           </TabsContent>
         </Tabs>
 
+        <Card className="bg-white border-gray-500/50 mb-4">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="flex items-center gap-2">
+                <Package className="h-6 w-6" />
+                Projects
+              </CardTitle>
+              <Link
+                href={`/brand/${packageData.id}/products`}
+                className="text-green-600 text-sm hover:underline"
+              >
+                View all
+              </Link>
+            </div>
+            <CardDescription>
+              View and support sustainable brand projects
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {Array.isArray(packageData.project) &&
+            packageData.project.length > 0 ? (
+              <div className="grid space-y-6 md:grid-cols-3 gap-4">
+                {packageData.project.map((project, index) => (
+                  <Card
+                    key={index}
+                    className=" border-gray-500/50 hover:shadow-md hover:scale-102 transition-all duration-300 ease"
+                    onClick={() => {
+                      handleViewProject(projectDummy);
+                    }}
+                  >
+                    <div className="aspect-square overflow-hidden bg-gray-100">
+                      <img src={project.cover} className="h-full w-full" />
+                    </div>
+                    <CardContent className="px-3 pt-4">
+                      <CardTitle className="font-semibold text-base text-black mb-1 line-clamp-2">
+                        {project.title}
+                      </CardTitle>
+                      <p className="text-xs text-gray-600">
+                        {project.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <div className="text-gray-500 flex items-center justify-center p-6">
+                No Projects to view
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
         <Card data-aos="fade-up" className="border-gray-500/50 mb-6">
           <CardHeader>
             <CardTitle className="flex items-center">
@@ -557,45 +667,51 @@ export default function PackagePage() {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {relatedProducts.map((product, index) => (
-                  <Card
+                <Card
                   key={index}
-                    data-aos="fade-up"
-                    className="h-full w-full grid grid-rows-[1fr,auto] border-gray-500/50 hover:border-green-700"
-                  >
-                    <CardHeader className="p-2 row-span-9 grid grid-rows-[1fr,auto] items-center text-center gap-4">
-                      <div className="row-span-1 h-40 w-full">
-                        <img
-                          src={product.image}
-                          alt="product image"
-                          className="h-full w-full "
-                        />
-                        <Badge className="border m-1 bg-green-50 text-green-700 border-green-200">{product.category}</Badge>
-                      </div>
-                      <div className="row-span-1">
-                        <CardTitle className="mt-2">
-                          <h2 className="text-2xl">{product.name}</h2>
-                        </CardTitle>
-                        <p className="text-[13px] text-green-500">{product.brand}</p>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="row-span-1 grid grid-rows-[1fr,auto] items-center text-center gap-4 min-h-[120px]">
-                      <p className="text-center text-[14px]">{product.description}</p>
-                      <Button
-                        asChild
-                        size="sm"
-                        className="bg-green-700 text-white hover:bg-green-800 outline-2 outline-transparent hover:outline-green-300 transition-all duration-300 ease-in-out focus:ring-2 focus:ring-green-300 my-2"
+                  data-aos="fade-up"
+                  className="h-full w-full grid grid-rows-[1fr,auto] border-gray-500/50 hover:border-green-700"
+                >
+                  <CardHeader className="p-2 row-span-9 grid grid-rows-[1fr,auto] items-center text-center gap-4">
+                    <div className="row-span-1 h-40 w-full">
+                      <img
+                        src={product.image}
+                        alt="product image"
+                        className="h-full w-full "
+                      />
+                      <Badge className="border m-1 bg-green-50 text-green-700 border-green-200">
+                        {product.category}
+                      </Badge>
+                    </div>
+                    <div className="row-span-1">
+                      <CardTitle className="mt-2">
+                        <h2 className="text-2xl">{product.name}</h2>
+                      </CardTitle>
+                      <p className="text-[13px] text-green-500">
+                        {product.brand}
+                      </p>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="row-span-1 grid grid-rows-[1fr,auto] items-center text-center gap-4 min-h-[120px]">
+                    <p className="text-center text-[14px]">
+                      {product.description}
+                    </p>
+                    <Button
+                      asChild
+                      size="sm"
+                      className="bg-green-700 text-white hover:bg-green-800 outline-2 outline-transparent hover:outline-green-300 transition-all duration-300 ease-in-out focus:ring-2 focus:ring-green-300 my-2"
+                    >
+                      <a
+                        href={packageData.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <a
-                          href={packageData.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ShoppingCart className="mr-1 h-4 w-5" />
-                          Go to Shop
-                        </a>
-                      </Button>
-                    </CardContent>
-                  </Card>
+                        <ShoppingCart className="mr-1 h-4 w-5" />
+                        Go to Shop
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </CardContent>
@@ -627,23 +743,39 @@ export default function PackagePage() {
         </Card>
         {showBanner && (
           <div className="fixed bottom-4 right-4 z-50 bg-white shadow-lg border border-gray-500/50 p-4 rounded-xl max-w-xs text-sm leading-snug space-y-3 transition-all animate-fade-in">
-            
             <h2 className="font-semibold text-gray-900 flex items-center text-md">
-               <Cookie className="h-6 w-6 mr-2"/>
-                Cookies
+              <Cookie className="h-6 w-6 mr-2" />
+              Cookies
             </h2>
-            <p className="text-sm text-gray-700 ">This page uses cookies for analytics. By clicking &ldquo;Accept&rdquo;, you agree to our cookie policy.</p>
-            <Link href="/about" className="text-green-600 underline mb-2">Learn More</Link>
+            <p className="text-sm text-gray-700 ">
+              This page uses cookies for analytics. By clicking
+              &ldquo;Accept&rdquo;, you agree to our cookie policy.
+            </p>
+            <Link href="/about" className="text-green-600 underline mb-2">
+              Learn More
+            </Link>
             <div className="flex justify-end space-x-2">
-              <Button onClick={() => setshowBanner(false)} className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-1 text-sm rounded">
+              <Button
+                onClick={() => setshowBanner(false)}
+                className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-1 text-sm rounded"
+              >
                 Decline
-            </Button>
-              <Button onClick={handleAccept} className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 text-sm rounded">Accept</Button>
+              </Button>
+              <Button
+                onClick={handleAccept}
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 text-sm rounded"
+              >
+                Accept
+              </Button>
             </div>
           </div>
         )}
       </div>
-
+      <ProjectDialog
+        open={showProjectDialog}
+        onOpenChange={setshowProjectDialog}
+        request={selectedRequest ?? projectDummy}
+      />
     </div>
   );
 }

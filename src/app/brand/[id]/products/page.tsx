@@ -60,7 +60,7 @@ const brandProductsData: Record<string, BrandProducts> = {
         totalDonations: 1256,
         conversionRate: 44.1,
         lastScan: "2 hours ago",
-        image: "/lettuce_chips-2.jpeg",
+        image: "/lettuce_chips-2.jpg",
         recyclability: "Highly Recyclable",
       },
       {
@@ -129,7 +129,7 @@ const brandProductsData: Record<string, BrandProducts> = {
     name: "Dio's Heavenly Refreshing Juice",
     products: [
       {
-        id: "dio-500ml-001",
+        id: "dios-500ml-001",
         name: "Heavenly Refreshing Juice 500ml",
         brand: "Dio's Heavenly Refreshing Juice",
         material: "PET Plastic",
