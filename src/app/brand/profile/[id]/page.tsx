@@ -329,7 +329,7 @@ export default function BrandProfilePage() {
 
   useEffect(() => {
     if (role === "brand") setisBrand(true);
-  });
+  }, []);
 
   useEffect(() => {
     // Simulate API call
