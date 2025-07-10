@@ -23,7 +23,7 @@ import {
   ShoppingBag,
   Package,
   Cookie,
-  ExternalLink,
+
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import { ProjectType } from "@/types/brand";
