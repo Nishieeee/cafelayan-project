@@ -507,7 +507,7 @@ export default function ProductsPage() {
                   <QRCodeSVG
                     id={`qr-code-${selectedProduct.id}`}
                     value={`${window.location.origin}/scan/cafelayan`}
-                    size={200}
+                    size={1000}
                     level="M"
                     includeMargin={true}
                   />
