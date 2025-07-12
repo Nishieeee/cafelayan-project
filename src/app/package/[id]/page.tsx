@@ -121,11 +121,11 @@ const product: Record<string, PackageData> = {
     tutorials: [
       {
         id: "1",
-        title: "Pot for Plants",
-        difficulty: "Easy",
+        title: "How to make DIY plant pot from Snack packaging.",
+        difficulty: "Medium",
         duration: "15 mins",
-        organization: "Kids Who Farm",
-        url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
+        organization: "Cafelayan",
+        url: "https://www.youtube.com/embed/m3sYvzMechM?si=KRmb0ME-WkgPm9iD",
       },
       {
         id: "2",
@@ -200,11 +200,11 @@ const product: Record<string, PackageData> = {
     tutorials: [
       {
         id: "1",
-        title: "Pot for Plants",
-        difficulty: "Easy",
+        title: "How to make DIY plant pot from Snack packaging.",
+        difficulty: "Medium",
         duration: "15 mins",
-        organization: "Kids Who Farm",
-        url: "https://www.youtube.com/embed/LM4InnPa3P8?si=L6QLCWGtrKXA0W25",
+        organization: "Cafelayan",
+        url: "https://www.youtube.com/embed/m3sYvzMechM?si=KRmb0ME-WkgPm9iD",
       },
       {
         id: "2",

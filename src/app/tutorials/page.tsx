@@ -214,17 +214,17 @@ function getMockTutorials(packageId: string | null): Tutorial[] {
   const allTutorials: Tutorial[] = [
     {
       id: "https://youtu.be/UB6y0Cy0fd8?si=hGu8H8J_ukNIRkO0",
-      title: "Self-Watering Planter from Plastic Bottle",
+      title: "How to make DIY plant pot from Snack packaging.",
       description:
-        "Transform a plastic bottle into an ingenious self-watering system for your plants. Perfect for herbs and small vegetables.",
-      difficulty: "Easy",
+        "Transform a plastic packages into an ingenious DIY plant pot for your plants.",
+      difficulty: "Medium",
       duration: "15 mins",
       steps: 5,
       rating: 4.8,
-      organization: "Green Manila Initiative",
-      materials: ["Plastic Bottles", "String", "Soil"],
+      organization: "Cafelayan",
+      materials: ["Plastic PET Package", "String", "Soil"],
       image: "/placeholder.svg?height=200&width=300",
-      url: "https://www.youtube.com/embed/UB6y0Cy0fd8?si=oDPKcR4V4nnMHSP9"
+      url: "https://www.youtube.com/embed/m3sYvzMechM?si=KRmb0ME-WkgPm9iD"
     },
     {
       id: "2",
